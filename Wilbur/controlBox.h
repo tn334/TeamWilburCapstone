@@ -15,13 +15,6 @@
 #include <QGroupBox>
 #include <QMainWindow>
 
-//QT_BEGIN_NAMESPACE
-//class QGroupBox;
-//class QLabel;
-//class QLineEdit;
-//class QStackedWidget;
-//QT_END_NAMESPACE
-
 class ControlBox : public QMainWindow
 {
 	Q_OBJECT

@@ -57,20 +57,26 @@ MainWindow::~MainWindow()
     
 }
 
-void MainWindow::printToConsole(const QString& message)
+void MainWindow::updateTextEdit(const QString& string)
 {
-
+    QTextEdit* textEdit = findChild<QTextEdit*>();
+    textEdit->append(string);
 }
 
-// Constructor ParamGrid
-ParamGrid::ParamGrid(QWidget* parent) : QGridLayout(parent)
-{
-
-}
-
-//Deconstructor ParamGrid
-ParamGrid::~ParamGrid()
-{
-
-}
+//void MainWindow::printToConsole(const QString& message)
+//{
+//
+//}
+//
+//// Constructor ParamGrid
+//ParamGrid::ParamGrid(QWidget* parent) : QGridLayout(parent)
+//{
+//
+//}
+//
+////Deconstructor ParamGrid
+//ParamGrid::~ParamGrid()
+//{
+//
+//}
 

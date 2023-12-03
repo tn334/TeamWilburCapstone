@@ -29,25 +29,28 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    void printToConsole(const QString& message);
+    //void printToConsole(const QString& message);
+
+public slots:
+    void updateTextEdit(const QString& string);
 
 private:
     QPlainTextEdit* consoleOutput;
 };
 
-class ParamGrid : public QGridLayout, MainWindow
-{
-    //What is this
-    Q_OBJECT
-
-public:
-    //Constructor
-    ParamGrid(QWidget *parent = nullptr);
-    //Deconstructor
-    ~ParamGrid();
-
-private:
-    
-};
+//class ParamGrid : public QGridLayout, MainWindow
+//{
+//    //What is this
+//    Q_OBJECT
+//
+//public:
+//    //Constructor
+//    ParamGrid(QWidget *parent = nullptr);
+//    //Deconstructor
+//    ~ParamGrid();
+//
+//private:
+//    
+//};
 
 #endif // WILBUR_H

@@ -108,7 +108,8 @@
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
     </ClCompile>
-    <ClCompile Include="dialogueWindow.cpp" />
+    <ClCompile Include="customDialog.cpp" />
+    <ClCompile Include="dialogBox.cpp" />
     <ClCompile Include="horizontalSlider.cpp" />
     <ClCompile Include="navigationBar.cpp" />
     <ClCompile Include="Wilbur.cpp" />
@@ -123,7 +124,10 @@
     <QtMoc Include="navigationBar.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="dialogueWindow.h" />
+    <QtMoc Include="customDialog.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="dialogBox.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

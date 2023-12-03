@@ -16,6 +16,9 @@ void HorizontalSlider::setValue(int value)
 
 {
     QSlider::setValue(value);
+
+    //this is an attempt to create a dialogue output to the mainwindow
+    emit stringReturned("Your string here");
 }
 
 void HorizontalSlider::setMinimum(int value)
@@ -29,4 +32,9 @@ void HorizontalSlider::setMaximum(int value)
 {
     QSlider::setMaximum(value);
 }
+
+//void HorizontalSlider::stringReturned(const QString& string)
+//{
+//
+//}
 

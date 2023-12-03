@@ -61,7 +61,10 @@
     <ClCompile Include="navigationBar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="dialogueWindow.cpp">
+    <ClCompile Include="customDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dialogBox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -78,8 +81,13 @@
     <QtMoc Include="navigationBar.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="dialogueWindow.h">
+    <QtMoc Include="customDialog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="dialogBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -18,14 +18,14 @@ public:
 
 signals:
     void valueChanged(int value);
+    void stringReturned(const QString& string);
 
 public slots:
     void setValue(int value);
     void setMinimum(int value);
     void setMaximum(int value);
 
-//private:
-//    QSlider* slider;
+
 };
 
 #endif // HORIZONTALSLIDERS_H
