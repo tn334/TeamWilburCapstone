@@ -29,10 +29,11 @@ ControlBox::ControlBox(QWidget* parent)
     QWidget* controllerBottom = new QWidget(controller);
     controllerBottom->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     
+    //add instance of customDialog
     customDialog = new CustomDialog;
 
     // setting up duct buttons
-    //trying to tie to dialog
+    // TODO integrate backend code
     Button* buttonOne = createButton("Duct One", &ControlBox::buttonClicked);
     QLabel* buttonOneTitle = new QLabel("Duct One:", controller);
     buttonOneTitle->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
@@ -53,9 +54,10 @@ ControlBox::ControlBox(QWidget* parent)
 
     // Set fixed size for the buttons
     buttonOne->setFixedSize(80, 30);  // Adjust the size as needed
-    buttonTwo->setFixedSize(80, 30);  // Adjust the size as needed
-    buttonThree->setFixedSize(80, 30);  // Adjust the size as needed
+    buttonTwo->setFixedSize(80, 30);  
+    buttonThree->setFixedSize(80, 30);   
 
+    // Horizontal inner box for buttons and labels
     QHBoxLayout* buttonLayout = new QHBoxLayout;
     buttonLayout->setContentsMargins(5, 5, 450, 5);
     buttonLayout->addWidget(buttonOneTitle);
@@ -67,10 +69,10 @@ ControlBox::ControlBox(QWidget* parent)
     
     // create a child widget inside box for sittfness slider
     HorizontalSlider* stiffness = new HorizontalSlider(controller);
-
     QLabel* sliderTitle = new QLabel("Stiffness:", controller);
     sliderTitle->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
     connect(stiffness, &QSlider::sliderReleased, customDialog, &CustomDialog::controlManipulated);
+    
     //TODO Connect to backend code and add update
 
     // Create a layout for the stiffness slider and its title
@@ -79,7 +81,7 @@ ControlBox::ControlBox(QWidget* parent)
     stiffnessLayout->addWidget(stiffness);
 
     QVBoxLayout* controlLayout = new QVBoxLayout;
-    controlLayout->setContentsMargins(5, 20, 500, 500);
+    controlLayout->setContentsMargins(5, 5, 5, 250);
     controlLayout->addWidget(controllerTop);
     controlLayout->addWidget(controlLabel);
     controlLayout->addLayout(buttonLayout);
@@ -102,6 +104,16 @@ Button* ControlBox::createButton(const QString& text, const PointerToMemberFunct
     Button* button = new Button(text);
     connect(button, &Button::clicked, this, member);
     return button;
+}
+
+void ControlBox::controlManipulated()
+{
+    // Set the main window as the parent of the dialog
+    customDialog->setParent(this);
+
+    // Show the existing customDialog without blocking
+    customDialog->show();
+    customDialog->setAttribute(Qt::WA_ShowWithoutActivating);
 }
 
 //TODO Check this is being used or not

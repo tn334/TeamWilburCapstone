@@ -26,7 +26,7 @@ public:
 	ControlBox(QWidget *parent = nullptr);
 	~ControlBox();
 
-signals:
+public slots:
 	void controlManipulated();
 
 private slots:
@@ -36,7 +36,7 @@ private:
 	CustomDialog* customDialog;
 	template<typename PointerToMemberFunction>
 	Button* createButton(const QString& text, const PointerToMemberFunction& member);
-	//void buttonClicked();
+	/*void buttonClicked();*/
 	// controller
 	QLabel* controlLabel;
 	QLabel* minimumLabel;

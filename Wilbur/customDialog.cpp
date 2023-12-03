@@ -4,7 +4,7 @@
 #include "customDialog.h"
 
 CustomDialog::CustomDialog(QWidget* parent)
-    : QDialog(parent)
+    : QDialog(parent, Qt::Window)
 {
     initUI();
 }
@@ -35,5 +35,5 @@ void CustomDialog::controlManipulated() {
     textEdit->setPlainText(textHandler.getAllText().join("\n"));
 
     // Show the dialog
-    this->exec();
+    this->show();
 }
