@@ -5,8 +5,7 @@
 #include "Wilbur.h"
 #include "controlBox.h"
 #include "navigationBar.h" //Nav Bar at Top of Window
-//#include "button.h"
-//#include "horizontalSlider.h"
+#include "customDialog.h"
 
 //Qt Header Files
 #include <QPlainTextEdit>
@@ -37,6 +36,9 @@ MainWindow::MainWindow(QWidget *parent)
     ControlBox* controller = new ControlBox(this);
     mainLayout->addWidget(controller);
 
+    /*CustomDialog* customDialog = new CustomDialog(this);
+    mainLayout->addWidget(customDialog);*/
+
     // Set the main layout for the central widget
     QWidget* centralWidget = new QWidget(this);
     centralWidget->setLayout(mainLayout);
@@ -63,20 +65,4 @@ void MainWindow::updateTextEdit(const QString& string)
     textEdit->append(string);
 }
 
-//void MainWindow::printToConsole(const QString& message)
-//{
-//
-//}
-//
-//// Constructor ParamGrid
-//ParamGrid::ParamGrid(QWidget* parent) : QGridLayout(parent)
-//{
-//
-//}
-//
-////Deconstructor ParamGrid
-//ParamGrid::~ParamGrid()
-//{
-//
-//}
 

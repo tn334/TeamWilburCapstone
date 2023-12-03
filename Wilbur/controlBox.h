@@ -5,9 +5,12 @@
 #ifndef CONTROLBOX_H
 #define CONTROLBOX_H
 
+// Local Headers
 #include "horizontalSlider.h"
 #include "button.h"
-// Qt header files
+#include "customDialog.h"
+
+// Qt Remote Headers
 #include <QWidget>
 #include <QSlider>
 #include <QLabel>
@@ -21,20 +24,24 @@ class ControlBox : public QMainWindow
 
 public:
 	ControlBox(QWidget *parent = nullptr);
+	~ControlBox();
 
-//protected:
+signals:
+	void controlManipulated();
+
+private slots:
+	void buttonClicked();
 
 private:
+	CustomDialog* customDialog;
 	template<typename PointerToMemberFunction>
 	Button* createButton(const QString& text, const PointerToMemberFunction& member);
-	void buttonClicked();
+	//void buttonClicked();
 	// controller
 	QLabel* controlLabel;
 	QLabel* minimumLabel;
 	QLabel* maximumLabel;
 	QLabel* valueLabel;
-
-
 
 };
 

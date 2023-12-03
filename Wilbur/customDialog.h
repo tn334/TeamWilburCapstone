@@ -5,9 +5,13 @@
 #ifndef CUSTOMDIALOG_H
 #define CUSTOMDIALOG_H
 
+#include "textHandler.h"
+
 #include <QApplication>
 #include <QDialog>
+#include <QLabel>
 #include <QTextEdit>
+#include <QStringList>
 #include <QPushButton>
 #include <QMainWindow>
 #include <QVBoxLayout>
@@ -18,29 +22,15 @@ class CustomDialog : public QDialog
 
 public:
 	CustomDialog(QWidget* parent = nullptr);
-	~CustomDialog();
 
-private slots:
-	void updateText();
+public slots:
+	void controlManipulated();
+	
 
 private:
-	void initUI() {
-		/*QWidget* centralWidget = new QWidget(this);
+	void initUI();
 
-		QVBoxLayout* dialogLayout = new QVBoxLayout(centralWidget);
-
-		textEdit = new QTextEdit(this);
-		dialogLayout->addWidget(textEdit);
-
-		QPushButton* updateButton = new QPushButton("Update Text", this);
-		connect(updateButton, &QPushButton::clicked, this, &CustomDialog::updateText);
-		dialogLayout->addWidget(updateButton);*/
-	}
-
-	QString getUpdatedText() {
-		// Replace this with your actual function logic to get the updated text
-		return "New text from function call\n";
-	}
+	TextHandler textHandler;
 
 	QTextEdit* textEdit;
 };

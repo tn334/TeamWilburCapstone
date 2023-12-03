@@ -64,7 +64,7 @@
     <ClCompile Include="customDialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="dialogBox.cpp">
+    <ClCompile Include="textHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -86,7 +86,7 @@
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="dialogBox.h">
+    <ClInclude Include="textHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

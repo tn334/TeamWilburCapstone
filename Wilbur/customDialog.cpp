@@ -9,16 +9,31 @@ CustomDialog::CustomDialog(QWidget* parent)
     initUI();
 }
 
-// Slot implementation
-void CustomDialog::updateText() {
-    // Call function here and get the string to update the text
-    QString newText = getUpdatedText();
+void CustomDialog::initUI()
+{
+    QVBoxLayout* dialogLayout = new QVBoxLayout(this);
 
-    // Append the new text to the existing text in the text box
-    textEdit->append(newText);
+    QLabel* titleLabel = new QLabel("Simulator:", this);
+    titleLabel->setAlignment(Qt::AlignCenter); // Adjust alignment as needed
+    titleLabel->setFont(QFont("Arial", 16, QFont::Bold)); // Adjust font as needed
+    dialogLayout->addWidget(titleLabel);
+
+    textEdit = new QTextEdit(this);
+    dialogLayout->addWidget(textEdit);
+    setLayout(dialogLayout);
+
+    
+
+    // Connect slider signal to slot
+    // Assuming you have a QSlider named slider
+    //connect(slider, &QSlider::valueChanged, this, &CustomDialog::handleSliderChange);
 }
 
-CustomDialog::~CustomDialog()
-{
-    // Clean up resources if needed
+void CustomDialog::controlManipulated() {
+    textHandler.controlManipulated();
+    // Optionally update the text in the QTextEdit immediately
+    textEdit->setPlainText(textHandler.getAllText().join("\n"));
+
+    // Show the dialog
+    this->exec();
 }
