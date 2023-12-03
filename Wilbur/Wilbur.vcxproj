@@ -69,6 +69,9 @@
     <Link>
       <AdditionalLibraryDirectories>C:\Qt\6.6.0\msvc2019_arm64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
@@ -98,17 +101,29 @@
     <QtRcc Include="Wilbur.qrc" />
     <QtUic Include="Wilbur.ui" />
     <QtMoc Include="Wilbur.h" />
-    <ClCompile Include="controller.cpp">
+    <ClCompile Include="button.cpp" />
+    <ClCompile Include="controlBox.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
     </ClCompile>
+    <ClCompile Include="dialogueWindow.cpp" />
+    <ClCompile Include="horizontalSlider.cpp" />
+    <ClCompile Include="navigationBar.cpp" />
     <ClCompile Include="Wilbur.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="controller.h" />
+    <QtMoc Include="button.h" />
+    <QtMoc Include="controlBox.h" />
+    <QtMoc Include="horizontalSlider.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="navigationBar.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="dialogueWindow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

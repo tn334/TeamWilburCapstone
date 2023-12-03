@@ -1,4 +1,7 @@
 #pragma once
+// Copyright (C) 2016 The Qt Company Ltd.
+// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
+
 #ifndef WILBUR_H
 #define WILBUR_H
 
@@ -7,6 +10,7 @@
 #include <QWidget>
 #include <QMainWindow>
 #include "ui_Wilbur.h"
+#include <QPlainTextEdit>
 #include <QGridLayout>
 
 // for menu
@@ -24,45 +28,11 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    //initialize visocity slider
-    //SlidersGroup *horizontalSliders;
-    //void createMenus();
 
-protected:
-    // Context Menu
-#ifndef QT_NO_CONTEXTMENU
-    void contextMenuEvent(QContextMenuEvent *event) override;
-#endif // QT_NO_CONTEXTMENU
-
-    //menuBar slots
-private slots:
-    void newFile();
-    void open();
-    void save();
-    void print();
-    void copy();
-    void about();
-    void aboutQt();
+    void printToConsole(const QString& message);
 
 private:
-    // MenuBar
-    void createActions();
-    void createMenus();
-    QMenu* fileMenu;
-    QMenu* editMenu;
-    QMenu* helpMenu;
-    QAction* newAct;
-    QAction* openAct;
-    QAction* saveAct;
-    QAction* printAct;
-    QAction* copyAct;
-    QAction* exitAct;
-    QLabel* infoLabel;
-    QAction* aboutAct;
-    QAction* aboutQtAct;
-    Ui::WilburClass ui;
-    // controller
-    QLabel* controlLabel;
+    QPlainTextEdit* consoleOutput;
 };
 
 class ParamGrid : public QGridLayout, MainWindow
