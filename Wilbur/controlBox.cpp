@@ -41,13 +41,13 @@ ControlBox::ControlBox(QWidget* parent)
     // TODO Manipulate with backend code
     connect(buttonOne, &Button::clicked, customDialog, [this]() {controlManipulated("buttonOne", 0);  });
 
-    buttonTwo = createButton("Duct Two", &ControlBox::buttonClicked);
+    buttonTwo = createButton("Duct Two", [this]() {handleButtonPressed(1);  });
     QLabel* buttonTwoTitle = new QLabel("Duct Two:", controller);
     buttonTwoTitle->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
     // TODO Manipulate with backend code
     connect(buttonTwo, &Button::clicked, customDialog, [this]() {controlManipulated("buttonTwo", 0);  });
 
-    buttonThree = createButton("Duct Three", &ControlBox::buttonClicked);
+    buttonThree = createButton("Duct Three", [this]() {handleButtonPressed(2);  });
     QLabel* buttonThreeTitle = new QLabel("Duct Three:", controller);
     buttonThreeTitle->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
     //TODO Manipulate with backend code
