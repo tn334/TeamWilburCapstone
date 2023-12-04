@@ -15,5 +15,20 @@ public:
 	explicit Button(const QString& text, QWidget* parent = nullptr);
 
 	QSize sizeHint() const override;
+
+	//Function to get current state
+	bool getState() const;
+
+	//function to set current state
+	void setState(bool newState);
+
+signals:
+		//void clicked(bool checked, const QString& objectName, int valueChanged);
+
+private slots:
+	void buttonStateChange();
+private:
+	//member variable to store state
+	bool currentState;
 };
 #endif // BUTTON_H

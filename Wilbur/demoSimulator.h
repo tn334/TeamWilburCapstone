@@ -5,7 +5,6 @@
 
 #include <iostream>
 #include <vector>
-using namespace std;
 #define OPEN true
 #define CLOSED false
 
@@ -20,7 +19,7 @@ public:
 
     bool getState();
 
-    string stringState();
+    std::string stringState();
 
 private:
     bool state;
@@ -36,7 +35,7 @@ public:
     bool setStiffness(float newStiffness);
 
     float getStiffness();
-    string percentStiffness();
+    std::string percentStiffness();
 
 private:
     float stiffness;
@@ -57,11 +56,11 @@ public:
 
     bool setPump(float stiffnessToSet);
 
-    string displayState();
+    std::string displayState();
 
 private:
     SimPump pneumaticPump;
-    vector<SimValve> valveList;
+    std::vector<SimValve> valveList;
     int numValves;
 };
 

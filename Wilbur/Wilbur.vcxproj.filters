@@ -67,9 +67,6 @@
     <ClCompile Include="textHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Simulator\simulatorUnitTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="demoSimulator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

@@ -28,15 +28,25 @@ public:
 	~ControlBox();
 
 public slots:
-	void controlManipulated();
+	void controlManipulated(std::string objectName, int newValue);
+	void handleButtonPressed(int valveNumber);
+	void handleSliderValueChanged(int value);
 
 private slots:
 	void buttonClicked();
 
 private:
+	// objects
+	Button* buttonOne;
+	Button* buttonTwo;
+	Button* buttonThree;
+	HorizontalSlider* stiffness;
+	// instances
+	DemoSimulator demoSimulator;
 	CustomDialog* customDialog;
 	template<typename PointerToMemberFunction>
 	Button* createButton(const QString& text, const PointerToMemberFunction& member);
+	HorizontalSlider* createSlider(const QString& title, const QString& objectName);
 	/*void buttonClicked();*/
 	// controller
 	QLabel* controlLabel;

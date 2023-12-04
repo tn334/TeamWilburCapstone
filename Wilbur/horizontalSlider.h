@@ -16,14 +16,25 @@ class HorizontalSlider : public QSlider
 public:
     HorizontalSlider(QWidget* parent = nullptr);
 
-signals:
-    void valueChanged(int value);
-    void stringReturned(const QString& string);
+    /*int getValue() const;
+    int setValue(int newVal);*/
 
-public slots:
-    void setValue(int value);
-    void setMinimum(int value);
-    void setMaximum(int value);
+signals:
+    void sliderValueChanged(bool newState);
+    //void stringReturned(const QString& string);
+
+//public slots:
+    //void setValue(int value);
+    /*void setMinimum(int value);
+    void setMaximum(int value)*/;
+
+private slots:
+    void updateValue(int value);
+
+private:
+    //int currentValue;
+    //int newValue;
+    bool validValue(int value);
 
 
 };

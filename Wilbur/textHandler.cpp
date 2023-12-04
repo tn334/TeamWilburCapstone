@@ -7,15 +7,28 @@ TextHandler::TextHandler() {
     // Initialize if needed
 }
 
-void TextHandler::controlManipulated() {
+void TextHandler::controlManipulated(std::string objectName, bool currentState, int valueChanged) {
     // Your logic to process button press and update text
-    
-    //TODO: Link to button presss
-    
-    //Later change to function call
-    QString buttonText = "Button to Duct One pressed: Some action";
-    textList.append(buttonText);
+    QString objectText;
+
+    // check for button
+    if (objectName == "buttonOne" || objectName == "buttonTwo" || objectName == "buttonThree") 
+    {
+        objectText = QString("%1 is changed to %2").arg(QString::fromStdString(objectName)).arg(currentState ? "On" : "Off");
+    }
+    else 
+    {
+        objectText = QString("Slider is changed to %1").arg(valueChanged);
+    }
+    textList.append(objectText);
 }
+
+//void TextHandler::controlManipulated() {
+//    // Your logic to process button press and update text
+//    
+//    QString finalText = "Duct One is changed";
+//    textList.append(finalText);
+//}
 
 void TextHandler::processSliderChange() {
     // Your logic to process slider change and update text

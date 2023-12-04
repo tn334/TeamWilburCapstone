@@ -1,17 +1,14 @@
 #include "demoSimulator.h"
 
 #include <sstream>
-#include "demoSimulator.h"
 #include <Windows.h>
-
-// Declare the Sleep function explicitly
-extern "C" void __stdcall Sleep(unsigned long dwMilliseconds);
 #include <stdlib.h>
 #include <time.h>
 #define OPEN true
 #define CLOSED false
 
-using namespace std;
+typedef unsigned char Byte;
+typedef Byte cs_byte;
 
 // Pump
 
@@ -33,9 +30,9 @@ float SimPump::getStiffness() {
     return stiffness;
 }
 
-string SimPump::percentStiffness() {
+std::string SimPump::percentStiffness() {
     int percentStiffness = (int)(stiffness * 100);
-    return (to_string(percentStiffness) + "%");
+    return (std::to_string(percentStiffness) + "%");
 }
 
 //Duct System Controls
@@ -56,7 +53,7 @@ bool SimValve::getState() {
     return state;
 }
 
-string SimValve::stringState() {
+std::string SimValve::stringState() {
     if (state) {
         return "open";
     }
@@ -93,12 +90,12 @@ bool DemoSimulator::setPump(float stiffnessToSet) {
     return pneumaticPump.setStiffness(stiffnessToSet);
 }
 
-string DemoSimulator::displayState() {
-    stringstream builtString;
-    builtString << "Simulator Component Status:" << endl;
-    builtString << "    Pump stiffness: " << pneumaticPump.percentStiffness() << endl;
+std::string DemoSimulator::displayState() {
+    std::stringstream builtString;
+    builtString << "Simulator Component Status:" << std::endl;
+    builtString << "    Pump stiffness: " << pneumaticPump.percentStiffness() << std::endl;
     for (int i = 0; i < numValves; i++) {
-        builtString << "    Valve " << i << " state: " << valveList.at(i).stringState() << endl;
+        builtString << "    Valve " << i << " state: " << valveList.at(i).stringState() << std::endl;
     }
     return builtString.str();
 }

@@ -112,7 +112,6 @@
     <ClCompile Include="demoSimulator.cpp" />
     <ClCompile Include="horizontalSlider.cpp" />
     <ClCompile Include="navigationBar.cpp" />
-    <ClCompile Include="Simulator\simulatorUnitTest.cpp" />
     <ClCompile Include="textHandler.cpp" />
     <ClCompile Include="Wilbur.cpp" />
     <ClCompile Include="main.cpp" />

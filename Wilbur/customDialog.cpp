@@ -29,11 +29,20 @@ void CustomDialog::initUI()
     //connect(slider, &QSlider::valueChanged, this, &CustomDialog::handleSliderChange);
 }
 
-void CustomDialog::controlManipulated() {
-    textHandler.controlManipulated();
+void CustomDialog::controlManipulated(std::string objectName, bool currentState, int valueChanged) {
+    textHandler.controlManipulated(objectName, currentState, valueChanged);
     // Optionally update the text in the QTextEdit immediately
     textEdit->setPlainText(textHandler.getAllText().join("\n"));
 
     // Show the dialog
     this->show();
 }
+
+//void CustomDialog::controlManipulated() {
+//    textHandler.controlManipulated();
+//    // Optionally update the text in the QTextEdit immediately
+//    textEdit->setPlainText(textHandler.getAllText().join("\n"));
+//
+//    // Show the dialog
+//    this->show();
+//}

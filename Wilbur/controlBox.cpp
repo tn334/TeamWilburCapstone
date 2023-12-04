@@ -30,27 +30,28 @@ ControlBox::ControlBox(QWidget* parent)
     controllerBottom->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     
     //add instance of customDialog
-    customDialog = new CustomDialog;
+    customDialog = new CustomDialog(this);
 
     // setting up duct buttons
     // TODO integrate backend code
-    Button* buttonOne = createButton("Duct One", &ControlBox::buttonClicked);
+    //&ControlBox::handleButtonClicked replaced by [this](){handleButtonClicked
+    buttonOne = createButton("Duct One", [this]() {handleButtonPressed(0);  });
     QLabel* buttonOneTitle = new QLabel("Duct One:", controller);
     buttonOneTitle->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
     // TODO Manipulate with backend code
-    connect(buttonOne, &Button::clicked, customDialog, &CustomDialog::controlManipulated);
+    connect(buttonOne, &Button::clicked, customDialog, [this]() {controlManipulated("buttonOne", 0);  });
 
-    Button* buttonTwo = createButton("Duct Two", &ControlBox::buttonClicked);
+    buttonTwo = createButton("Duct Two", &ControlBox::buttonClicked);
     QLabel* buttonTwoTitle = new QLabel("Duct Two:", controller);
     buttonTwoTitle->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
     // TODO Manipulate with backend code
-    connect(buttonTwo, &Button::clicked, customDialog, &CustomDialog::controlManipulated);
+    connect(buttonTwo, &Button::clicked, customDialog, [this]() {controlManipulated("buttonTwo", 0);  });
 
-    Button* buttonThree = createButton("Duct Three", &ControlBox::buttonClicked);
+    buttonThree = createButton("Duct Three", &ControlBox::buttonClicked);
     QLabel* buttonThreeTitle = new QLabel("Duct Three:", controller);
     buttonThreeTitle->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
     //TODO Manipulate with backend code
-    connect(buttonThree, &Button::clicked, customDialog, &CustomDialog::controlManipulated);
+    connect(buttonThree, &Button::clicked, customDialog, [this]() {controlManipulated("buttonThree", 0);  });
 
     // Set fixed size for the buttons
     buttonOne->setFixedSize(80, 30);  // Adjust the size as needed
@@ -68,10 +69,12 @@ ControlBox::ControlBox(QWidget* parent)
     buttonLayout->addWidget(buttonThree);
     
     // create a child widget inside box for sittfness slider
-    HorizontalSlider* stiffness = new HorizontalSlider(controller);
-    QLabel* sliderTitle = new QLabel("Stiffness:", controller);
+    stiffness = createSlider("Stiffness:", "StiffnessSlider");
+    QLabel* sliderTitle = new QLabel("Stiffness:", this);
     sliderTitle->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
-    connect(stiffness, &QSlider::sliderReleased, customDialog, &CustomDialog::controlManipulated);
+    /*connect(stiffness, &HorizontalSlider::sliderReleased, this, [this]() {
+        controlManipulated("StiffnessSlider", stiffness->value());
+        });*/
     
     //TODO Connect to backend code and add update
 
@@ -103,11 +106,80 @@ Button* ControlBox::createButton(const QString& text, const PointerToMemberFunct
 {
     Button* button = new Button(text);
     connect(button, &Button::clicked, this, member);
+    //TRY  THIS TOMORROW
+    //connect(buttonThree, &Button::clicked, customDialog, [this]() {controlManipulated("buttonThree", 0);  });
     return button;
 }
 
-void ControlBox::controlManipulated()
+
+HorizontalSlider* ControlBox::createSlider(const QString& title, const QString& objectName) {
+    HorizontalSlider* slider = new HorizontalSlider(this);
+    QLabel* sliderTitle = new QLabel(title, this);
+    sliderTitle->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+
+    // Disconnect any existing connections for the slider
+    disconnect(slider, &HorizontalSlider::sliderReleased, this, nullptr);
+
+    connect(slider, &HorizontalSlider::sliderReleased, this, [this, objectName, slider]() {
+        controlManipulated(objectName.toStdString(), slider->value());
+        });
+
+    return slider;
+}
+
+void ControlBox::handleButtonPressed(int valveNumber)
 {
+    bool newState;
+    // Get the current state of the button
+    if (valveNumber == 0)
+    {
+        newState = buttonOne->getState();
+    }
+    else if (valveNumber == 1)
+    {
+        newState = buttonTwo->getState();
+    }
+    else
+    {
+        newState = buttonThree->getState();
+    }
+
+     // Set to true for open, false for closed
+    demoSimulator.setValve(valveNumber , newState);
+
+    // Optionally, you can update the UI or do additional tasks here
+}
+
+void ControlBox::controlManipulated(std::string objectName, int newValue)
+{
+    bool newState;
+    
+    if (objectName == "buttonOne" || objectName == "buttonTwo" || objectName == "buttonThree")
+    {
+        // Get the current state of the button
+        if (objectName == "buttonOne")
+        {
+            newState = buttonOne->getState();
+        }
+        else if (objectName == "buttonTwo")
+        {
+            newState = buttonTwo->getState();
+        }
+        else
+        {
+            newState = buttonThree->getState();
+        }
+         
+        
+    }
+    else
+    {
+        std::string objectName = "PumpSlider"; // Provide an appropriate name
+        newState = true; // You need to determine the current state based on your logic
+
+    }
+
+    customDialog->controlManipulated(objectName, newState, newValue);
     // Set the main window as the parent of the dialog
     customDialog->setParent(this);
 
@@ -124,6 +196,23 @@ void ControlBox::buttonClicked()
     qDebug() << "Button Clicked";
 }
 
+void ControlBox::handleSliderValueChanged(int value) {
+    // Handle the slider value change here
+    // Trigger setPump function in demoSimulator
+    float sliderValue = static_cast<float>(value) / stiffness->maximum();
+    bool success = demoSimulator.setPump(sliderValue); // Assuming setPump is designed to take a float value
+    if (success) {
+        // Call controlManipulation with the correct arguments
+        // You need to define the correct arguments based on your requirements
+        // For example, assuming controlManipulation takes a string, a boolean, and an int
+        std::string objectName = "PumpSlider"; // Provide an appropriate name
+        bool currentState = true; // You need to determine the current state based on your logic
+        int valueChanged = value; // You might need to adjust this based on your requirements
+
+        // Call controlManipulation with the updated values
+        
+    }
+}
 
 ControlBox::~ControlBox()
 {

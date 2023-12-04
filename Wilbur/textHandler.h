@@ -12,7 +12,8 @@ class TextHandler
 public:
 	TextHandler();
 
-	void controlManipulated();
+	void controlManipulated(std::string objectName, bool currentState, int valueChanged);
+	/*void controlManipulated();*/
 	void processSliderChange();
 
 	QStringList getAllText() const;
