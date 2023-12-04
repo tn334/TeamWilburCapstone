@@ -109,8 +109,10 @@
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
     </ClCompile>
     <ClCompile Include="customDialog.cpp" />
+    <ClCompile Include="demoSimulator.cpp" />
     <ClCompile Include="horizontalSlider.cpp" />
     <ClCompile Include="navigationBar.cpp" />
+    <ClCompile Include="Simulator\simulatorUnitTest.cpp" />
     <ClCompile Include="textHandler.cpp" />
     <ClCompile Include="Wilbur.cpp" />
     <ClCompile Include="main.cpp" />
@@ -127,6 +129,7 @@
     <QtMoc Include="customDialog.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="demoSimulator.h" />
     <ClInclude Include="textHandler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

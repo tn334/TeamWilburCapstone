@@ -9,6 +9,7 @@
 #include "horizontalSlider.h"
 #include "button.h"
 #include "customDialog.h"
+#include "demoSimulator.h"
 
 // Qt Remote Headers
 #include <QWidget>

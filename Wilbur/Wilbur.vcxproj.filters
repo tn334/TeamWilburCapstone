@@ -67,6 +67,12 @@
     <ClCompile Include="textHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Simulator\simulatorUnitTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="demoSimulator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="button.h">
@@ -87,6 +93,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="textHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="demoSimulator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
