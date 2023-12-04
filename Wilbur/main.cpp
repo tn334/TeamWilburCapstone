@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
 
     // Wilbur widgets - initialize object
     MainWindow wilbur;
+
     wilbur.show();
 
     //std::cout << "Application started!" << std::endl;

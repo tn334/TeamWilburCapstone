@@ -14,21 +14,14 @@ void TextHandler::controlManipulated(std::string objectName, bool currentState, 
     // check for button
     if (objectName == "buttonOne" || objectName == "buttonTwo" || objectName == "buttonThree") 
     {
-        objectText = QString("%1 is changed to %2").arg(QString::fromStdString(objectName)).arg(currentState ? "On" : "Off");
+        objectText = QString("%1 is changed to %2").arg(QString::fromStdString(objectName)).arg(currentState ? "Open" : "Closed");
     }
     else 
     {
-        objectText = QString("Slider is changed to %1").arg(valueChanged);
+        objectText = QString("Prototype Stiffness is at %1%").arg(valueChanged);
     }
     textList.append(objectText);
 }
-
-//void TextHandler::controlManipulated() {
-//    // Your logic to process button press and update text
-//    
-//    QString finalText = "Duct One is changed";
-//    textList.append(finalText);
-//}
 
 void TextHandler::processSliderChange() {
     // Your logic to process slider change and update text
