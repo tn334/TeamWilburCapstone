@@ -1,5 +1,6 @@
 // Copyright (C) 2016 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
+// Qt webpage breakdown of abstract slider https://doc.qt.io/qt-6/qslider.html
 
 #include "horizontalSlider.h"
 
@@ -7,9 +8,16 @@ HorizontalSlider::HorizontalSlider(QWidget *parent)
     : QSlider(Qt::Horizontal, parent)
 {
     setFocusPolicy(Qt::StrongFocus);
+    //setting maximum limit for slider range
+    setMaximum(3);
+    //set minimum limit at 0
+    setMinimum(0);
+    //display tick marks on top and bottom of slider
     setTickPosition(QSlider::TicksBothSides);
-    setTickInterval(10);
-    setSingleStep(1);
+    // creates 4 total ticks at off, 33, 66 and 99
+    setTickInterval(1);
+
+    //TODO: Make 4 total ticks
 
     connect(this, &QSlider::valueChanged, this, &HorizontalSlider::updateValue);
 }

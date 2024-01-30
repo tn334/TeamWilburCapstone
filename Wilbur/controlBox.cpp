@@ -37,19 +37,19 @@ ControlBox::ControlBox(QWidget* parent)
     //&ControlBox::handleButtonClicked replaced by [this](){handleButtonClicked
     buttonOne = createButton("Duct One", [this]() {handleButtonPressed(0);  });
     QLabel* buttonOneTitle = new QLabel("Duct One:", controller);
-    buttonOneTitle->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+    buttonOneTitle->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
     // TODO Manipulate with backend code
     connect(buttonOne, &Button::clicked, customDialog, [this]() {controlManipulated("buttonOne", 0);  });
 
     buttonTwo = createButton("Duct Two", [this]() {handleButtonPressed(1);  });
     QLabel* buttonTwoTitle = new QLabel("Duct Two:", controller);
-    buttonTwoTitle->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+    buttonTwoTitle->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
     // TODO Manipulate with backend code
     connect(buttonTwo, &Button::clicked, customDialog, [this]() {controlManipulated("buttonTwo", 0);  });
 
     buttonThree = createButton("Duct Three", [this]() {handleButtonPressed(2);  });
     QLabel* buttonThreeTitle = new QLabel("Duct Three:", controller);
-    buttonThreeTitle->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+    buttonThreeTitle->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
     //TODO Manipulate with backend code
     connect(buttonThree, &Button::clicked, customDialog, [this]() {controlManipulated("buttonThree", 0);  });
 
@@ -69,6 +69,7 @@ ControlBox::ControlBox(QWidget* parent)
     buttonLayout->addWidget(buttonThree);
     
     // create a child widget inside box for sittfness slider
+    //remove stiffness title from here
     stiffness = createSlider("Stiffness:", "StiffnessSlider");
     QLabel* sliderTitle = new QLabel("Stiffness:", this);
     sliderTitle->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
