@@ -114,7 +114,7 @@ ControlBox::ControlBox(QWidget* parent)
     //controllerTop->setStyleSheet("QWidget { border: 1px solid black; }");
     controlLabel->setStyleSheet("QWidget { border: 1px solid black; }");
     controllerBottom->setStyleSheet("QWidget { border: 1px solid black; }");
-    stiffness->setStyleSheet("QWidget { border: 1.5px solid black; }");
+    stiffness->setStyleSheet("QWidget { border: 1px solid black;}");
 
 };
 

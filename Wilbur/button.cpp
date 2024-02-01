@@ -10,7 +10,12 @@ Button::Button(QString text, QWidget * parent)
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     
     //style sheet information https://doc.qt.io/qt-6/stylesheet-examples.html
-    this->setStyleSheet("color: white; background-color: #882255; font: bold 12px;");
+    this->setStyleSheet("color: white;"
+        "background-color: #882255;"
+        "border-width: 2px;"
+        "border-style: outset;"
+        "border-radius: 4px;"
+        "font: bold 12px; ");
 
     //State should always start in the open position
     setText(text);
@@ -47,12 +52,22 @@ void Button::buttonStateChange()
     if (currentState == true)
     {
         this->setText("Open");
-        this->setStyleSheet("color: white; background-color: #117733; font: bold 12px;");
+        this->setStyleSheet("color: white;"
+            "background-color: #117733;"
+            "border-width: 2px;"
+            "border-style: outset;"
+            "border-radius: 4px;"
+            "font: bold 12px;");
     }
     else 
     { 
         this->setText("Closed"); 
-        this->setStyleSheet("color: white; background-color: #882255; font: bold 12px;");
+        this->setStyleSheet("color: white;"
+            "background-color: #882255;"
+            "border-width: 2px;"
+            "border-style: outset;"
+            "border-radius: 4px;"
+            "font: bold 12px;");
     }
 
     // Emit the modified clicked signal
