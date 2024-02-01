@@ -6,6 +6,7 @@
 #define BUTTON_H
 
 #include <qtoolbutton.h>
+#include <qpalette.h>
 
 class Button : public QToolButton
 {

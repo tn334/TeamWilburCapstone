@@ -8,6 +8,16 @@ Button::Button(QString text, QWidget * parent)
     : QToolButton(parent), currentState(false) // initialize current state of button
 {
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+    //https://stackoverflow.com/questions/21685414/qt5-setting-background-color-to-qpushbutton-and-qcheckbox
+    
+    /*QPalette pal = this->palette();
+    pal.setColor(QPalette::Button, QColor(Qt::blue));
+    this->setAutoFillBackground(true);
+    this->setPalette(pal);
+    this->update();*/
+    
+    this->setStyleSheet("background-color: #882255; font-size: 1.5px solid white");
+
     //State should always start in the open position
     setText(text);
     setToolTip("Press button to open or close duct");
@@ -43,8 +53,13 @@ void Button::buttonStateChange()
     if (currentState == true)
     {
         this->setText("Open");
+        this->setStyleSheet("background-color: #117733;");
     }
-    else { this->setText("Closed"); }
+    else 
+    { 
+        this->setText("Closed"); 
+        this->setStyleSheet("background-color: #882255;");
+    }
 
     // Emit the modified clicked signal
     //emit clicked(currentState, text(), currentState);
