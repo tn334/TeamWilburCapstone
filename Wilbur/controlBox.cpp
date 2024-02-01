@@ -19,8 +19,8 @@ ControlBox::ControlBox(QWidget* parent)
     setCentralWidget(controller);
 
     // creating child widgets
-    QWidget* controllerTop = new QWidget;
-    controllerTop->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    //QWidget* controllerTop = new QWidget;
+    //controllerTop->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
     controlLabel = new QLabel(tr("<i>Choose prototype settings."));
     controlLabel->setFrameStyle(QFrame::StyledPanel | QFrame::Raised);
@@ -57,10 +57,11 @@ ControlBox::ControlBox(QWidget* parent)
     buttonOne->setFixedSize(80, 30);  // Adjust the size as needed
     buttonTwo->setFixedSize(80, 30);  
     buttonThree->setFixedSize(80, 30);   
-
+    
     // Horizontal inner box for buttons and labels
     QHBoxLayout* buttonLayout = new QHBoxLayout;
-    buttonLayout->setContentsMargins(5, 5, 450, 5);
+    // Not implemented correctly
+    buttonLayout->setContentsMargins(0, 0, 300, 0);
     buttonLayout->addWidget(buttonOneTitle);
     buttonLayout->addWidget(buttonOne);
     buttonLayout->addWidget(buttonTwoTitle);
@@ -68,9 +69,9 @@ ControlBox::ControlBox(QWidget* parent)
     buttonLayout->addWidget(buttonThreeTitle);
     buttonLayout->addWidget(buttonThree);
     
-    // create a child widget inside box for sittfness slider
-    //remove stiffness title from here
+    // create a child widget inside box for stiffness slide
     stiffness = createSlider("Stiffness:", "StiffnessSlider");
+    stiffness->adjustSize();
     QLabel* sliderTitle = new QLabel("Stiffness:", this);
     sliderTitle->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
     /*connect(stiffness, &HorizontalSlider::sliderReleased, this, [this]() {
@@ -78,27 +79,42 @@ ControlBox::ControlBox(QWidget* parent)
         });*/
     
     //TODO Connect to backend code and add update
+    QHBoxLayout* sliderLayout = new QHBoxLayout;
+    sliderLayout->addWidget(sliderTitle);
+    sliderLayout->addWidget(stiffness);
+    
+    // Control Layout for buttons and sliders
+    QVBoxLayout* controllerLayout = new QVBoxLayout;
+    // fix size of controller box
+    //controllerLayout->
+    controllerLayout->addLayout(buttonLayout);
+    controllerLayout->addLayout(sliderLayout);
+    //QVBoxLayout* stiffnessLayout = new QVBoxLayout;
+    //sliderLayout->addWidget(sliderTitle);
+    //sliderLayout->addWidget(stiffness);
+    // Add row to object Layout for slider
+    //buttonLayout->addLayout(sliderLayout);
 
-    // Create a layout for the stiffness slider and its title
-    QVBoxLayout* stiffnessLayout = new QVBoxLayout;
-    stiffnessLayout->addWidget(sliderTitle);
-    stiffnessLayout->addWidget(stiffness);
 
+    //TODO RENAME LAYOUT OBJECT
     QVBoxLayout* controlLayout = new QVBoxLayout;
-    controlLayout->setContentsMargins(5, 5, 5, 250);
-    controlLayout->addWidget(controllerTop);
+    
+    //controlLayout->setContentsMargins(5, 5, 500, 450);
+    controlLayout->setSizeConstraint(QLayout::SetFixedSize);
+    
+    //controlLayout->addWidget(controllerTop);
     controlLayout->addWidget(controlLabel);
-    controlLayout->addLayout(buttonLayout);
-    controlLayout->addLayout(stiffnessLayout);
+    controlLayout->addLayout(controllerLayout);
+    //controlLayout->addLayout(stiffnessLayout);
     controlLayout->addWidget(controllerBottom);
 
     controller->setLayout(controlLayout);
 
     // Set a border to each child widget
-    controllerTop->setStyleSheet("QWidget { border: 1px solid black; }");
+    //controllerTop->setStyleSheet("QWidget { border: 1px solid black; }");
     controlLabel->setStyleSheet("QWidget { border: 1px solid black; }");
     controllerBottom->setStyleSheet("QWidget { border: 1px solid black; }");
-    stiffness->setStyleSheet("QWidget { border: 1px solid black; }");
+    stiffness->setStyleSheet("QWidget { border: 1.5px solid black; }");
 
 };
 
@@ -107,7 +123,7 @@ Button* ControlBox::createButton(const QString& text, const PointerToMemberFunct
 {
     Button* button = new Button(text);
     connect(button, &Button::clicked, this, member);
-    //TRY  THIS TOMORROW
+    //TRY THIS TOMORROW
     //connect(buttonThree, &Button::clicked, customDialog, [this]() {controlManipulated("buttonThree", 0);  });
     return button;
 }
@@ -115,8 +131,9 @@ Button* ControlBox::createButton(const QString& text, const PointerToMemberFunct
 
 HorizontalSlider* ControlBox::createSlider(const QString& title, const QString& objectName) {
     HorizontalSlider* slider = new HorizontalSlider(this);
-    QLabel* sliderTitle = new QLabel(title, this);
-    sliderTitle->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+    //Remove broken title b/c title hovers inches above actual object
+    //QLabel* sliderTitle = new QLabel(title, this);
+    //sliderTitle->setAlignment(Qt::AlignLeft | Qt::AlignAbsolute);
 
     // Disconnect any existing connections for the slider
     disconnect(slider, &HorizontalSlider::sliderReleased, this, nullptr);

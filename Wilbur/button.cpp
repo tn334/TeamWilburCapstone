@@ -4,11 +4,13 @@
 #include "button.h"
 
 
-Button::Button(const QString& text, QWidget * parent)
+Button::Button(const QString& state, QWidget * parent)
     : QToolButton(parent), currentState(false) // initialize current state of button
 {
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-    setText(text);
+    //State should always start in the open position
+    setText(state);
+    setToolTip("Press button to open or close duct");
 
     connect(this, &Button::clicked, this, &Button::buttonStateChange);
 }
@@ -30,6 +32,7 @@ bool Button::getState() const
 void Button::setState(bool newState)
 {
     currentState = newState;
+    //TODO change text of button from Open to close or vice versa
 }
 
 void Button::buttonStateChange()

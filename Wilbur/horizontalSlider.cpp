@@ -16,8 +16,10 @@ HorizontalSlider::HorizontalSlider(QWidget *parent)
     setTickPosition(QSlider::TicksBothSides);
     // creates 4 total ticks at off, 33, 66 and 99
     setTickInterval(1);
-
-    //TODO: Make 4 total ticks
+    
+    //To add text above slider ticks https://forum.qt.io/topic/101343/qslider-with-text-at-tick-marks
+    //TODO add text to slider ticks and thicken tick marks
+    setToolTip("Drag Slider to select a stiffness mode");
 
     connect(this, &QSlider::valueChanged, this, &HorizontalSlider::updateValue);
 }
