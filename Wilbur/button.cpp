@@ -8,15 +8,9 @@ Button::Button(QString text, QWidget * parent)
     : QToolButton(parent), currentState(false) // initialize current state of button
 {
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
-    //https://stackoverflow.com/questions/21685414/qt5-setting-background-color-to-qpushbutton-and-qcheckbox
     
-    /*QPalette pal = this->palette();
-    pal.setColor(QPalette::Button, QColor(Qt::blue));
-    this->setAutoFillBackground(true);
-    this->setPalette(pal);
-    this->update();*/
-    
-    this->setStyleSheet("background-color: #882255; font-size: 1.5px solid white");
+    //style sheet information https://doc.qt.io/qt-6/stylesheet-examples.html
+    this->setStyleSheet("color: white; background-color: #882255; font: bold 12px;");
 
     //State should always start in the open position
     setText(text);
@@ -53,12 +47,12 @@ void Button::buttonStateChange()
     if (currentState == true)
     {
         this->setText("Open");
-        this->setStyleSheet("background-color: #117733;");
+        this->setStyleSheet("color: white; background-color: #117733; font: bold 12px;");
     }
     else 
     { 
         this->setText("Closed"); 
-        this->setStyleSheet("background-color: #882255;");
+        this->setStyleSheet("color: white; background-color: #882255; font: bold 12px;");
     }
 
     // Emit the modified clicked signal
