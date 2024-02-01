@@ -18,6 +18,12 @@ HorizontalSlider::HorizontalSlider(QWidget *parent)
     setTickInterval(1);
     
     //To add text above slider ticks https://forum.qt.io/topic/101343/qslider-with-text-at-tick-marks
+    
+    //Setting Label Style
+    this->labelOne->setStyleSheet("font: bold 12px;");
+    this->labelTwo->setStyleSheet("font: bold 12px;");
+    this->labelThree->setStyleSheet("font: bold 12px;");
+    this->labelFour->setStyleSheet("font: bold 12px;");
     //TODO add text to slider ticks and thicken tick marks
     setToolTip("Drag Slider to select a stiffness mode");
 

@@ -18,39 +18,31 @@ ControlBox::ControlBox(QWidget* parent)
     QWidget* controller = new QWidget;
     setCentralWidget(controller);
 
-    // creating child widgets
-    //QWidget* controllerTop = new QWidget;
-    //controllerTop->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-
     controlLabel = new QLabel(tr("<i>Choose prototype settings."));
     controlLabel->setFrameStyle(QFrame::StyledPanel | QFrame::Raised);
     controlLabel->setAlignment(Qt::AlignCenter);
 
-    QWidget* controllerBottom = new QWidget(controller);
-    controllerBottom->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    
     //add instance of customDialog
     customDialog = new CustomDialog(this);
 
     // setting up duct buttons
     // TODO integrate backend code
-    //&ControlBox::handleButtonClicked replaced by [this](){handleButtonClicked
     buttonOne = createButton("Closed", [this]() {handleButtonPressed(0);  });
     QLabel* buttonOneTitle = new QLabel("Duct One:", controller);
-    buttonOneTitle->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
+    //buttonOneTitle->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
     // TODO Manipulate with backend code
     connect(buttonOne, &Button::clicked, customDialog, [this]() {controlManipulated("buttonOne", 0);  });
 
     buttonTwo = createButton("Closed", [this]() {handleButtonPressed(1);  });
     QLabel* buttonTwoTitle = new QLabel("Duct Two:", controller);
-    buttonTwoTitle->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
-    // TODO Manipulate with backend code
+    //buttonTwoTitle->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
+    // Manipulate with backend code
     connect(buttonTwo, &Button::clicked, customDialog, [this]() {controlManipulated("buttonTwo", 0);  });
 
     buttonThree = createButton("Closed", [this]() {handleButtonPressed(2);  });
     QLabel* buttonThreeTitle = new QLabel("Duct Three:", controller);
-    buttonThreeTitle->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
-    //TODO Manipulate with backend code
+    //buttonThreeTitle->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
+    // Manipulate with backend code
     connect(buttonThree, &Button::clicked, customDialog, [this]() {controlManipulated("buttonThree", 0);  });
 
     // Set fixed size for the buttons
@@ -59,62 +51,44 @@ ControlBox::ControlBox(QWidget* parent)
     buttonThree->setFixedSize(80, 30);   
     
     // Horizontal inner box for buttons and labels
-    QHBoxLayout* buttonLayout = new QHBoxLayout;
+    QGridLayout* buttonLayout = new QGridLayout;
     // Not implemented correctly
-    buttonLayout->setContentsMargins(0, 0, 300, 0);
-    buttonLayout->addWidget(buttonOneTitle);
-    buttonLayout->addWidget(buttonOne);
-    buttonLayout->addWidget(buttonTwoTitle);
-    buttonLayout->addWidget(buttonTwo);
-    buttonLayout->addWidget(buttonThreeTitle);
-    buttonLayout->addWidget(buttonThree);
+    //buttonLayout->setContentsMargins(0, 0, 150, 0);
+    buttonLayout->addWidget(buttonOneTitle, 0, 0, 1, 1, Qt::AlignLeft);
+    buttonLayout->addWidget(buttonOne, 0, 1, 1, 1, Qt::AlignLeft);
+    buttonLayout->addWidget(buttonTwoTitle, 0, 2, 1, 1, Qt::AlignLeft);
+    buttonLayout->addWidget(buttonTwo, 0, 3, 1, 1, Qt::AlignLeft);
+    buttonLayout->addWidget(buttonThreeTitle, 0, 4, 1, 1, Qt::AlignRight);
+    buttonLayout->addWidget(buttonThree, 0, 5, 1, 1, Qt::AlignRight);
     
     // create a child widget inside box for stiffness slide
-    stiffness = createSlider("Stiffness:", "StiffnessSlider");
-    stiffness->adjustSize();
-    QLabel* sliderTitle = new QLabel("Stiffness:", this);
+    stiffnessSlider = createSlider("Stiffness:", "StiffnessSlider");
+    QLabel* sliderTitle = new QLabel("Nipple Stiffness Control:", this);
     sliderTitle->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
-    /*connect(stiffness, &HorizontalSlider::sliderReleased, this, [this]() {
-        controlManipulated("StiffnessSlider", stiffness->value());
-        });*/
     
     //TODO Connect to backend code and add update
-    QHBoxLayout* sliderLayout = new QHBoxLayout;
-    sliderLayout->addWidget(sliderTitle);
-    sliderLayout->addWidget(stiffness);
-    
-    // Control Layout for buttons and sliders
-    QVBoxLayout* controllerLayout = new QVBoxLayout;
-    // fix size of controller box
-    //controllerLayout->
-    controllerLayout->addLayout(buttonLayout);
-    controllerLayout->addLayout(sliderLayout);
-    //QVBoxLayout* stiffnessLayout = new QVBoxLayout;
-    //sliderLayout->addWidget(sliderTitle);
-    //sliderLayout->addWidget(stiffness);
-    // Add row to object Layout for slider
-    //buttonLayout->addLayout(sliderLayout);
+    QGridLayout* sliderLayout = new QGridLayout;
+    sliderLayout->addWidget(sliderTitle, 0, 0, 1, 1);
+    sliderLayout->addWidget(stiffnessSlider->labelOne, 1, 0, 1, 1);
+    sliderLayout->addWidget(stiffnessSlider->labelTwo, 1, 1, 1, 1, Qt::AlignLeft);
+    sliderLayout->addWidget(stiffnessSlider->labelThree, 1, 3, 1, 1, Qt::AlignRight);
+    sliderLayout->addWidget(stiffnessSlider->labelFour, 1, 5, 1, 1, Qt::AlignRight);
+    sliderLayout->addWidget(stiffnessSlider, 2, 0, 1, 6);
+
+    sliderTitle->setStyleSheet("font: bold 12px;");
+    stiffnessSlider->setStyleSheet("QWidget { border: 1.25px solid black;}");
 
 
     //TODO RENAME LAYOUT OBJECT
     QVBoxLayout* controlLayout = new QVBoxLayout;
-    
-    //controlLayout->setContentsMargins(5, 5, 500, 450);
     controlLayout->setSizeConstraint(QLayout::SetFixedSize);
-    
-    //controlLayout->addWidget(controllerTop);
     controlLayout->addWidget(controlLabel);
-    controlLayout->addLayout(controllerLayout);
-    //controlLayout->addLayout(stiffnessLayout);
-    controlLayout->addWidget(controllerBottom);
-
+    controlLayout->addLayout(buttonLayout);
+    controlLayout->addLayout(sliderLayout);
     controller->setLayout(controlLayout);
 
-    // Set a border to each child widget
-    //controllerTop->setStyleSheet("QWidget { border: 1px solid black; }");
     controlLabel->setStyleSheet("QWidget { border: 1px solid black; }");
-    controllerBottom->setStyleSheet("QWidget { border: 1px solid black; }");
-    stiffness->setStyleSheet("QWidget { border: 1px solid black;}");
+
 
 };
 
@@ -217,7 +191,7 @@ void ControlBox::buttonClicked()
 void ControlBox::handleSliderValueChanged(int value) {
     // Handle the slider value change here
     // Trigger setPump function in demoSimulator
-    float sliderValue = static_cast<float>(value) / stiffness->maximum();
+    float sliderValue = static_cast<float>(value) / stiffnessSlider->maximum();
     bool success = demoSimulator.setPump(sliderValue); // Assuming setPump is designed to take a float value
     if (success) {
         // Call controlManipulation with the correct arguments

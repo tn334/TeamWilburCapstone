@@ -1,6 +1,7 @@
 #pragma once
 // Copyright (C) 2016 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
+// https://doc.qt.io/qt-6/qtwidgets-widgets-sliders-example.html
 
 #ifndef HORIZONTALSLIDERS_H
 #define HORIZONTALSLIDERS_H
@@ -8,6 +9,7 @@
 #include <QGroupBox>
 #include <QSlider>
 #include <QMainWindow>
+#include <QLabel>
 
 class HorizontalSlider : public QSlider
 {
@@ -15,6 +17,11 @@ class HorizontalSlider : public QSlider
 
 public:
     HorizontalSlider(QWidget* parent = nullptr);
+    QLabel* labelOne = new QLabel("Off", this);
+    QLabel* labelTwo = new QLabel("Low", this);
+    QLabel* labelThree = new QLabel("Medium", this);
+    QLabel* labelFour = new QLabel("High", this);
+
 
     /*int getValue() const;
     int setValue(int newVal);*/
