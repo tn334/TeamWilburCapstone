@@ -35,19 +35,19 @@ ControlBox::ControlBox(QWidget* parent)
     // setting up duct buttons
     // TODO integrate backend code
     //&ControlBox::handleButtonClicked replaced by [this](){handleButtonClicked
-    buttonOne = createButton("Duct One", [this]() {handleButtonPressed(0);  });
+    buttonOne = createButton("Closed", [this]() {handleButtonPressed(0);  });
     QLabel* buttonOneTitle = new QLabel("Duct One:", controller);
     buttonOneTitle->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
     // TODO Manipulate with backend code
     connect(buttonOne, &Button::clicked, customDialog, [this]() {controlManipulated("buttonOne", 0);  });
 
-    buttonTwo = createButton("Duct Two", [this]() {handleButtonPressed(1);  });
+    buttonTwo = createButton("Closed", [this]() {handleButtonPressed(1);  });
     QLabel* buttonTwoTitle = new QLabel("Duct Two:", controller);
     buttonTwoTitle->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
     // TODO Manipulate with backend code
     connect(buttonTwo, &Button::clicked, customDialog, [this]() {controlManipulated("buttonTwo", 0);  });
 
-    buttonThree = createButton("Duct Three", [this]() {handleButtonPressed(2);  });
+    buttonThree = createButton("Closed", [this]() {handleButtonPressed(2);  });
     QLabel* buttonThreeTitle = new QLabel("Duct Three:", controller);
     buttonThreeTitle->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
     //TODO Manipulate with backend code
