@@ -26,11 +26,10 @@ ControlBox::ControlBox(QWidget* parent)
     customDialog = new CustomDialog(this);
 
     // setting up duct buttons
-    // TODO integrate backend code
+
     buttonOne = createButton("Closed", [this]() {handleButtonPressed(0);  });
     QLabel* buttonOneTitle = new QLabel("Duct One:", controller);
-    //buttonOneTitle->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
-    // TODO Manipulate with backend code
+    //Manipulate with backend code
     connect(buttonOne, &Button::clicked, customDialog, [this]() {controlManipulated("buttonOne", 0);  });
 
     buttonTwo = createButton("Closed", [this]() {handleButtonPressed(1);  });
@@ -41,7 +40,6 @@ ControlBox::ControlBox(QWidget* parent)
 
     buttonThree = createButton("Closed", [this]() {handleButtonPressed(2);  });
     QLabel* buttonThreeTitle = new QLabel("Duct Three:", controller);
-    //buttonThreeTitle->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
     // Manipulate with backend code
     connect(buttonThree, &Button::clicked, customDialog, [this]() {controlManipulated("buttonThree", 0);  });
 
@@ -53,7 +51,6 @@ ControlBox::ControlBox(QWidget* parent)
     // Horizontal inner box for buttons and labels
     QGridLayout* buttonLayout = new QGridLayout;
     // Not implemented correctly
-    //buttonLayout->setContentsMargins(0, 0, 150, 0);
     buttonLayout->addWidget(buttonOneTitle, 0, 0, 1, 1, Qt::AlignLeft);
     buttonLayout->addWidget(buttonOne, 0, 1, 1, 1, Qt::AlignLeft);
     buttonLayout->addWidget(buttonTwoTitle, 0, 2, 1, 1, Qt::AlignLeft);
@@ -105,9 +102,6 @@ Button* ControlBox::createButton(const QString& text, const PointerToMemberFunct
 
 HorizontalSlider* ControlBox::createSlider(const QString& title, const QString& objectName) {
     HorizontalSlider* slider = new HorizontalSlider(this);
-    //Remove broken title b/c title hovers inches above actual object
-    //QLabel* sliderTitle = new QLabel(title, this);
-    //sliderTitle->setAlignment(Qt::AlignLeft | Qt::AlignAbsolute);
 
     // Disconnect any existing connections for the slider
     disconnect(slider, &HorizontalSlider::sliderReleased, this, nullptr);
@@ -161,8 +155,6 @@ void ControlBox::controlManipulated(std::string objectName, int newValue)
         {
             newState = buttonThree->getState();
         }
-         
-        
     }
     else
     {
@@ -188,6 +180,8 @@ void ControlBox::buttonClicked()
     qDebug() << "Button Clicked";
 }
 
+
+//NOT CURRENTLY IMPLEMENTED IN SLIDER
 void ControlBox::handleSliderValueChanged(int value) {
     // Handle the slider value change here
     // Trigger setPump function in demoSimulator

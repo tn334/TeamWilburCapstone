@@ -101,6 +101,8 @@
     <QtRcc Include="Wilbur.qrc" />
     <QtUic Include="Wilbur.ui" />
     <QtMoc Include="Wilbur.h" />
+    <ClCompile Include="bluetoothButton.cpp" />
+    <ClCompile Include="customButton.cpp" />
     <ClCompile Include="button.cpp" />
     <ClCompile Include="controlBox.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
@@ -128,6 +130,8 @@
     <QtMoc Include="customDialog.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="customButton.h" />
+    <QtMoc Include="bluetoothButton.h" />
     <ClInclude Include="demoSimulator.h" />
     <ClInclude Include="textHandler.h" />
   </ItemGroup>
