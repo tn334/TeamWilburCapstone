@@ -28,6 +28,8 @@ public:
 	ControlBox(QWidget *parent = nullptr);
 	~ControlBox();
 
+	//QSize sizeHint() const override;
+
 public slots:
 	void controlManipulated(std::string objectName, int newValue);
 	void handleButtonPressed(int valveNumber);

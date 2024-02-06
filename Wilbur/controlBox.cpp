@@ -36,7 +36,6 @@ ControlBox::ControlBox(QWidget* parent)
     bluetoothLayout->addWidget(bluetooth, 0, 1, 1, 1);
 
     // setting up duct buttons
-
     buttonOne = createButton("Closed", [this]() {handleButtonPressed(0);  });
     QLabel* buttonOneTitle = new QLabel("Duct One:", controller);
     //Manipulate with backend code
@@ -53,9 +52,9 @@ ControlBox::ControlBox(QWidget* parent)
     connect(buttonThree, &Button::clicked, customDialog, [this]() {controlManipulated("buttonThree", 0);  });
 
     // Set fixed size for the buttons
-    buttonOne->setFixedSize(80, 30);
-    buttonTwo->setFixedSize(80, 30);  // adjust size
-    buttonThree->setFixedSize(80, 30); //adjust size  
+    //buttonOne->setFixedSize(80, 30);
+    //buttonTwo->setFixedSize(80, 30);  // adjust size
+    //buttonThree->setFixedSize(80, 30); //adjust size  
     
     // Grid box for buttons and labels
     QGridLayout* buttonLayout = new QGridLayout;
@@ -87,14 +86,40 @@ ControlBox::ControlBox(QWidget* parent)
     QVBoxLayout* controlLayout = new QVBoxLayout;
     controlLayout->addLayout(bluetoothLayout);
     controlLayout->addSpacing(10);
-    controlLayout->setSizeConstraint(QLayout::SetFixedSize);
+    controlLayout->setSizeConstraint(QLayout::SetMinimumSize);
     controlLayout->addWidget(controlLabel);
     controlLayout->addLayout(buttonLayout);
     controlLayout->addLayout(sliderLayout);
     controller->setLayout(controlLayout);
     //Style for ControlBox
     controlLabel->setStyleSheet("QWidget { border: 1px solid black; }");
+   
 };
+
+//QSize ControlBox::sizeHint() const
+//{
+    // Get the sizeHint of the bluetoothLayout
+    //QSize bluetoothSize = bluetoothLayout->sizeHint();
+
+    // Get the sizeHint of the controlLabel
+//    QSize controlSize = controlLabel->sizeHint();
+
+    // Get the sizeHint of the buttonLayout
+    //QSize buttonSize = buttonLayout->sizeHint();
+
+    // Get the sizeHint of the sliderLayout
+//    QSize sliderSize = sliderLayout->sizeHint();
+
+    // Calculate the total width and height
+//    int width = qMax(bluetoothSize.width(), controlSize.width());
+//    width = qMax(width, buttonSize.width());
+//    width = qMax(width, sliderSize.width());
+
+//    int height = bluetoothSize.height() + controlSize.height() + buttonSize.height() + sliderSize.height();
+
+    // Return the QSize object
+    //return QSize(width, height);
+//}
 
 template<typename PointerToMemberFunction>
 Button* ControlBox::createButton(const QString& text, const PointerToMemberFunction& member)

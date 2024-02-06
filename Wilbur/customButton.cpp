@@ -21,6 +21,10 @@ CustomButton::CustomButton(const QString& tooltip,
 }
 
 //function implementation
+QSize CustomButton::sizeHint() const
+{
+	return QSize(80, 30);
+}
 QString CustomButton::getToolTip() const
 {
 	return m_tooltip;

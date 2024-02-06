@@ -25,10 +25,8 @@ Button::Button(QString text, QWidget * parent)
 
 QSize Button::sizeHint() const
 {
-    QSize size = QToolButton::sizeHint();
-    size.rheight() += 20;
-    size.rwidth() = qMax(size.width(), size.height());
-    return size;
+    //Code generated with AI assistance
+    return QSize(80, 30);
 }
 
 bool Button::getState() const {return currentState;}

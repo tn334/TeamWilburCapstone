@@ -11,7 +11,7 @@ BluetoothButton::BluetoothButton(QWidget* parent)
 	connect(this, &BluetoothButton::clicked, this, &BluetoothButton::handleButtonClicked); 
 	//set a fixed size for the button
 	setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-	setFixedSize(125, 50);
+	//setFixedSize(125, 50);
 	setStyleSheet("color: white;"
 		"background-color: #88CCEE;"
 		"border-width: 2px;"
@@ -22,6 +22,12 @@ BluetoothButton::BluetoothButton(QWidget* parent)
 
 
 //Function implementations
+QSize BluetoothButton::sizeHint() const
+{
+	// Return a QSize object with the fixed width and height
+	return QSize(125, 50);
+}
+
 void BluetoothButton::handleButtonClicked()
 {
 	// Toggle the connection status
