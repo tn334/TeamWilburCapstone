@@ -8,6 +8,10 @@
 #define OPEN true
 #define CLOSED false
 
+enum pumpValue {
+    OFF=0, LOW, MED, HIGH
+};
+
 class SimValve {
 public:
 
@@ -30,17 +34,17 @@ public:
 
     SimPump();
 
-    SimPump(float startingStiffness, float minVal, float maxVal);
+    SimPump(pumpValue startingStiffness, pumpValue minVal, pumpValue maxVal);
 
-    bool setStiffness(float newStiffness);
+    bool setStiffness(pumpValue newStiffness);
 
-    float getStiffness();
+    pumpValue getStiffness();
     std::string percentStiffness();
 
 private:
-    float stiffness;
-    float minimumVal;
-    float maximumVal;
+    pumpValue stiffness;
+    pumpValue minimumVal = OFF;
+    pumpValue maximumVal = HIGH;
 
 };
 
@@ -54,7 +58,7 @@ public:
 
     bool setValve(int valveToSet, bool stateToSet);
 
-    bool setPump(float stiffnessToSet);
+    bool setPump(pumpValue stiffnessToSet);
 
     std::string displayState();
 
