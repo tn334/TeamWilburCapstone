@@ -12,12 +12,12 @@ typedef Byte cs_byte;
 
 // Pump
 
-SimPump::SimPump() : stiffness(0), minimumVal(0), maximumVal(1) {}
+SimPump::SimPump() : stiffness(OFF), minimumVal(OFF), maximumVal(HIGH) {}
 
-SimPump::SimPump(float startingStiffness, float minVal, float maxVal) :
+SimPump::SimPump(pumpValue startingStiffness, pumpValue minVal, pumpValue maxVal) :
     stiffness(startingStiffness), minimumVal(minVal), maximumVal(maxVal) {}
 
-bool SimPump::setStiffness(float newStiffness) {
+bool SimPump::setStiffness(pumpValue newStiffness) {
     if (newStiffness >= minimumVal && newStiffness <= maximumVal) {
         Sleep(((rand() % 3) + 1) * 1000);
         stiffness = newStiffness;
@@ -26,12 +26,12 @@ bool SimPump::setStiffness(float newStiffness) {
     return false;
 }
 
-float SimPump::getStiffness() {
+pumpValue SimPump::getStiffness() {
     return stiffness;
 }
 
 std::string SimPump::percentStiffness() {
-    int percentStiffness = (int)(stiffness * 100);
+    int percentStiffness = (int)(stiffness * 30);
     return (std::to_string(percentStiffness) + "%");
 }
 
@@ -86,7 +86,7 @@ bool DemoSimulator::setValve(int valveToSet, bool stateToSet) {
     return false;
 }
 
-bool DemoSimulator::setPump(float stiffnessToSet) {
+bool DemoSimulator::setPump(pumpValue stiffnessToSet) {
     return pneumaticPump.setStiffness(stiffnessToSet);
 }
 

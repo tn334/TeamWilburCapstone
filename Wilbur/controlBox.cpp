@@ -185,7 +185,9 @@ void ControlBox::buttonClicked()
 void ControlBox::handleSliderValueChanged(int value) {
     // Handle the slider value change here
     // Trigger setPump function in demoSimulator
-    float sliderValue = static_cast<float>(value) / stiffnessSlider->maximum();
+
+    pumpValue sliderValue = (pumpValue)value;
+
     bool success = demoSimulator.setPump(sliderValue); // Assuming setPump is designed to take a float value
     if (success) {
         // Call controlManipulation with the correct arguments
