@@ -8,6 +8,7 @@
 // Local Headers
 #include "horizontalSlider.h"
 #include "button.h"
+#include "ductButton.h"
 #include "customDialog.h"
 #include "demoSimulator.h"
 
@@ -33,10 +34,11 @@ public slots:
 	void handleSliderValueChanged(int value);
 
 private slots:
-	void buttonClicked();
+	//void buttonClicked();
 
 private:
 	// objects
+	DuctButton* ductTestButton;
 	Button* buttonOne;
 	Button* buttonTwo;
 	Button* buttonThree;
@@ -47,7 +49,7 @@ private:
 	template<typename PointerToMemberFunction>
 	Button* createButton(const QString& text, const PointerToMemberFunction& member);
 	HorizontalSlider* createSlider(const QString& title, const QString& objectName);
-	/*void buttonClicked();*/
+	//void buttonClicked();
 	// controller
 	QLabel* controlLabel;
 	/*QLabel* minimumLabel;

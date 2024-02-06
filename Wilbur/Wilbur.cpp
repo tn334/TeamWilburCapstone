@@ -5,7 +5,9 @@
 #include "Wilbur.h"
 #include "controlBox.h"
 #include "navigationBar.h" //Nav Bar at Top of Window
-#include "customDialog.h"
+#include "customDialog.h" // Simulation Window
+#include "bluetoothButton.h"
+
 
 //Qt Header Files
 #include <QPlainTextEdit>
@@ -32,8 +34,8 @@ MainWindow::MainWindow(QWidget *parent)
     NavigationBar* navigationBar = new NavigationBar(this);
     mainLayout->addWidget(navigationBar);
 
-    ControlBox* controller = new ControlBox(this);
-    mainLayout->addWidget(controller);
+    ControlBox* roboControl = new ControlBox(this);
+    mainLayout->addWidget(roboControl);
 
     // Set the main layout for the central widget
     QWidget* centralWidget = new QWidget(this);

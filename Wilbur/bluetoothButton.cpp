@@ -1,22 +1,27 @@
 #include "BluetoothButton.h"
 
 BluetoothButton::BluetoothButton(QWidget* parent)
-	: CustomButton("Bluetooth Connection", "Click to establish bluetooth connection to prototype",
+	: CustomButton("Click to establish bluetooth connection to prototype",
 		"Disconnected", QColor(136, 204, 238), parent)
 {
 	//initialize the connection status to false
 	isConnected = false;
 
 	// connect button to event handler(clicked) and function(handleButtonClicked)
-	connect(this, &BluetoothButton::clicked, this, &BluetoothButton::handleButtonClicked);
-
+	connect(this, &BluetoothButton::clicked, this, &BluetoothButton::handleButtonClicked); 
 	//set a fixed size for the button
 	setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-	setFixedSize(100, 50);
+	setFixedSize(125, 50);
+	setStyleSheet("color: white;"
+		"background-color: #88CCEE;"
+		"border-width: 2px;"
+		"border-style: outset;"
+		"border-radius: 4px;"
+		"font: bold 12px; ");
 }
 
 
-
+//Function implementations
 void BluetoothButton::handleButtonClicked()
 {
 	// Toggle the connection status
@@ -25,13 +30,23 @@ void BluetoothButton::handleButtonClicked()
 	// Update the button text based on the new connection status
 	if (isConnected)
 	{
-		setText("Bluetooth Connected");
-		setStyleSheet("background-color: #332288");
+		setText("Connected");
+		setStyleSheet("color: white;"
+			"background-color: #332288;"
+			"border-width: 2px;"
+			"border-style: outset;"
+			"border-radius: 4px;"
+			"font: bold 12px; ");
 	}
 	else
 	{
-		setText("Connect Bluetooth");
-		setStyleSheet("background-color: #88CCEE");
+		setText("Disconnected");
+		setStyleSheet("color: white;"
+			"background-color: #88CCEE;"
+			"border-width: 2px;"
+			"border-style: outset;"
+			"border-radius: 4px;"
+			"font: bold 12px; ");
 	}
 		
 
