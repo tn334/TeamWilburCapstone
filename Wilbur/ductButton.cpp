@@ -12,7 +12,7 @@ DuctButton::DuctButton(QWidget* parent)
 
 	//set a fixed size for the button
 	setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-	setFixedSize(80, 30);
+	//setFixedSize(80, 30);
 
 	//style sheet information https://doc.qt.io/qt-6/stylesheet-examples.html
 	this->setStyleSheet("color: white;"

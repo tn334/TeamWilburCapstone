@@ -12,6 +12,7 @@ class BluetoothButton :
     Q_OBJECT
 public:
     explicit BluetoothButton(QWidget* parent = nullptr);
+    QSize sizeHint() const override;
 
     //method to set the bluetooth conection status
     void handleButtonClicked();

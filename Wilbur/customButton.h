@@ -27,6 +27,8 @@ public:
 	QString getText() const;
 	QColor getBackgroundColor() const;
 
+	QSize sizeHint() const override;
+
 	//https://doc.qt.io/qt-6/qpushbutton.html#flat-prop
 
 };

@@ -32,9 +32,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Instantiate Navigation Bar at top of window
     NavigationBar* navigationBar = new NavigationBar(this);
+    //navigationBar->setMaximumHeight(100);
     mainLayout->addWidget(navigationBar);
 
     ControlBox* roboControl = new ControlBox(this);
+    //roboControl->setMaximumSize(roboControl->sizeHint());
     mainLayout->addWidget(roboControl);
 
     // Set the main layout for the central widget
@@ -42,13 +44,12 @@ MainWindow::MainWindow(QWidget *parent)
     centralWidget->setLayout(mainLayout);
 
     mainLayout->setContentsMargins(0, 0, 0, 0);
-    centralWidget->layout()->setContentsMargins(0, 0, 0, 0);
+    //centralWidget->layout()->setContentsMargins(0, 0, 0, 0);
 
     setCentralWidget(centralWidget);
 
     showMaximized();
     setWindowTitle(tr("WilburMain", "Wilbur"));
-
 }
 
 //Destructor Wilbur - Main Windor

@@ -14,16 +14,20 @@ HorizontalSlider::HorizontalSlider(QWidget *parent)
     setMinimum(0);
     //display tick marks on top and bottom of slider
     setTickPosition(QSlider::TicksBothSides);
-    // creates 4 total ticks at off, 33, 66 and 99
+    // creates 4 total ticks at off, 33-Low, 66-Medium and 99-High
     setTickInterval(1);
     
     //To add text above slider ticks https://forum.qt.io/topic/101343/qslider-with-text-at-tick-marks
     
     //Setting Label Style
-    this->labelOne->setStyleSheet("font: bold 12px;");
-    this->labelTwo->setStyleSheet("font: bold 12px;");
-    this->labelThree->setStyleSheet("font: bold 12px;");
-    this->labelFour->setStyleSheet("font: bold 12px;");
+    labelOne = new QLabel("Off", this);
+    labelOne->setStyleSheet("font: bold 12px;");
+    labelTwo = new QLabel("Low", this);
+    labelTwo->setStyleSheet("font: bold 12px;");
+    labelThree = new QLabel("Medium", this);
+    labelThree->setStyleSheet("font: bold 12px;");
+    labelFour = new QLabel("High", this);
+    labelFour->setStyleSheet("font: bold 12px;");
     //TODO add text to slider ticks and thicken tick marks
     setToolTip("Drag Slider to select a stiffness mode");
 
