@@ -76,6 +76,9 @@
     <ClCompile Include="bluetoothButton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ductButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="button.h">
@@ -97,6 +100,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="bluetoothButton.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ductButton.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

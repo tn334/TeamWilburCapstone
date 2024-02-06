@@ -3,7 +3,6 @@
 
 #include "button.h"
 
-
 Button::Button(QString text, QWidget * parent)
     : QToolButton(parent), currentState(false) // initialize current state of button
 {
@@ -32,16 +31,9 @@ QSize Button::sizeHint() const
     return size;
 }
 
-bool Button::getState() const
-{
-    return currentState;
-}
+bool Button::getState() const {return currentState;}
 
-void Button::setState(bool newState)
-{
-    currentState = newState;
-    
-}
+void Button::setState(bool newState) { currentState = newState;}
 
 void Button::buttonStateChange()
 {
@@ -68,7 +60,4 @@ void Button::buttonStateChange()
             "border-radius: 4px;"
             "font: bold 12px;");
     }
-
-    // Emit the modified clicked signal
-    //emit clicked(currentState, text(), currentState);
 }

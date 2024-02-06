@@ -18,7 +18,6 @@
 // https://doc.qt.io/qtvstools/qtvstools-how-to-select-qt-versions-for-project.html
 
 NavigationBar::NavigationBar(QWidget* parent)
-    //: QMainWindow(parent)
 {
 
     // Create a wrapper a holder for the menubar
@@ -35,11 +34,13 @@ NavigationBar::NavigationBar(QWidget* parent)
     QWidget* bottomFiller = new QWidget;
     bottomFiller->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
-    QVBoxLayout* menuLayout = new QVBoxLayout;
-    menuLayout->setContentsMargins(5, 5, 5, 5);
-    menuLayout->addWidget(topFiller);
-    menuLayout->addWidget(infoLabel);
-    menuLayout->addWidget(bottomFiller);
+    QGridLayout* menuLayout = new QGridLayout;
+    //menuLayout->setContentsMargins(5, 5, 5, 5);
+    menuLayout->addWidget(topFiller, 0, 0, 1, 1);
+    menuLayout->addWidget(infoLabel, 1, 0, 1, 1, Qt::AlignCenter);
+    //menuLayout->addWidget(bottomFiller, 2, 0, 1, 1);
+
+    menuLayout->setSizeConstraint(QLayout::SetFixedSize);
     menuBar->setLayout(menuLayout);
 
     createActions();

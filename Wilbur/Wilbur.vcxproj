@@ -40,11 +40,13 @@
     <QtModules>core;gui;widgets</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
     <QtInstall>6.6.1_msvc2019_64</QtInstall>
+    <QtQMLDebugEnable>true</QtQMLDebugEnable>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
     <QtInstall>C:\Qt\Tools\QtDesignStudio\qt6_design_studio_reduced_version</QtInstall>
     <QtModules>core;gui;widgets</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
+    <QtQMLDebugEnable>true</QtQMLDebugEnable>
   </PropertyGroup>
   <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
     <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
@@ -112,6 +114,7 @@
     </ClCompile>
     <ClCompile Include="customDialog.cpp" />
     <ClCompile Include="demoSimulator.cpp" />
+    <ClCompile Include="ductButton.cpp" />
     <ClCompile Include="horizontalSlider.cpp" />
     <ClCompile Include="navigationBar.cpp" />
     <ClCompile Include="textHandler.cpp" />
@@ -133,6 +136,7 @@
     <QtMoc Include="customButton.h" />
     <QtMoc Include="bluetoothButton.h" />
     <ClInclude Include="demoSimulator.h" />
+    <QtMoc Include="ductButton.h" />
     <ClInclude Include="textHandler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

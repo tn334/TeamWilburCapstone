@@ -1,8 +1,10 @@
 // Copyright (C) 2016 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
 
-//Local Header files
+// Local Header files
 #include "controlBox.h"
+#include "bluetoothButton.h"
+#include "ductButton.h"
 
 // Qt header files
 #include <QBoxLayout>
@@ -25,6 +27,14 @@ ControlBox::ControlBox(QWidget* parent)
     //add instance of customDialog
     customDialog = new CustomDialog(this);
 
+    QLabel* bluetoothLabel = new QLabel("Bluetooth Connection:", controller);
+    bluetoothLabel->setStyleSheet("font: bold 12px; ");
+    BluetoothButton* bluetooth = new BluetoothButton(this);
+    //Bluetooth layout
+    QGridLayout* bluetoothLayout = new QGridLayout;
+    bluetoothLayout->addWidget(bluetoothLabel, 0, 0, 1, 1, Qt::AlignRight);
+    bluetoothLayout->addWidget(bluetooth, 0, 1, 1, 1);
+
     // setting up duct buttons
 
     buttonOne = createButton("Closed", [this]() {handleButtonPressed(0);  });
@@ -34,7 +44,6 @@ ControlBox::ControlBox(QWidget* parent)
 
     buttonTwo = createButton("Closed", [this]() {handleButtonPressed(1);  });
     QLabel* buttonTwoTitle = new QLabel("Duct Two:", controller);
-    //buttonTwoTitle->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
     // Manipulate with backend code
     connect(buttonTwo, &Button::clicked, customDialog, [this]() {controlManipulated("buttonTwo", 0);  });
 
@@ -44,11 +53,11 @@ ControlBox::ControlBox(QWidget* parent)
     connect(buttonThree, &Button::clicked, customDialog, [this]() {controlManipulated("buttonThree", 0);  });
 
     // Set fixed size for the buttons
-    buttonOne->setFixedSize(80, 30);  // Adjust the size as needed
-    buttonTwo->setFixedSize(80, 30);  
-    buttonThree->setFixedSize(80, 30);   
+    buttonOne->setFixedSize(80, 30);
+    buttonTwo->setFixedSize(80, 30);  // adjust size
+    buttonThree->setFixedSize(80, 30); //adjust size  
     
-    // Horizontal inner box for buttons and labels
+    // Grid box for buttons and labels
     QGridLayout* buttonLayout = new QGridLayout;
     // Not implemented correctly
     buttonLayout->addWidget(buttonOneTitle, 0, 0, 1, 1, Qt::AlignLeft);
@@ -62,7 +71,6 @@ ControlBox::ControlBox(QWidget* parent)
     stiffnessSlider = createSlider("Stiffness:", "StiffnessSlider");
     QLabel* sliderTitle = new QLabel("Nipple Stiffness Control:", this);
     sliderTitle->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
-    
     //TODO Connect to backend code and add update
     QGridLayout* sliderLayout = new QGridLayout;
     sliderLayout->addWidget(sliderTitle, 0, 0, 1, 1);
@@ -71,22 +79,21 @@ ControlBox::ControlBox(QWidget* parent)
     sliderLayout->addWidget(stiffnessSlider->labelThree, 1, 3, 1, 1, Qt::AlignRight);
     sliderLayout->addWidget(stiffnessSlider->labelFour, 1, 5, 1, 1, Qt::AlignRight);
     sliderLayout->addWidget(stiffnessSlider, 2, 0, 1, 6);
-
+    //Slider style TODO (incorporate into slide class)
     sliderTitle->setStyleSheet("font: bold 12px;");
     stiffnessSlider->setStyleSheet("QWidget { border: 1.25px solid black;}");
 
-
-    //TODO RENAME LAYOUT OBJECT
+    //Full ControlBox Layout
     QVBoxLayout* controlLayout = new QVBoxLayout;
+    controlLayout->addLayout(bluetoothLayout);
+    controlLayout->addSpacing(10);
     controlLayout->setSizeConstraint(QLayout::SetFixedSize);
     controlLayout->addWidget(controlLabel);
     controlLayout->addLayout(buttonLayout);
     controlLayout->addLayout(sliderLayout);
     controller->setLayout(controlLayout);
-
+    //Style for ControlBox
     controlLabel->setStyleSheet("QWidget { border: 1px solid black; }");
-
-
 };
 
 template<typename PointerToMemberFunction>
@@ -94,11 +101,8 @@ Button* ControlBox::createButton(const QString& text, const PointerToMemberFunct
 {
     Button* button = new Button(text);
     connect(button, &Button::clicked, this, member);
-    //TRY THIS TOMORROW
-    //connect(buttonThree, &Button::clicked, customDialog, [this]() {controlManipulated("buttonThree", 0);  });
     return button;
 }
-
 
 HorizontalSlider* ControlBox::createSlider(const QString& title, const QString& objectName) {
     HorizontalSlider* slider = new HorizontalSlider(this);
@@ -171,15 +175,6 @@ void ControlBox::controlManipulated(std::string objectName, int newValue)
     customDialog->show();
     customDialog->setAttribute(Qt::WA_ShowWithoutActivating);
 }
-
-//TODO Check this is being used or not
-void ControlBox::buttonClicked()
-{
-    // Provide the implementation for the buttonClicked function
-    // For example, you can add the following line to print a message
-    qDebug() << "Button Clicked";
-}
-
 
 //NOT CURRENTLY IMPLEMENTED IN SLIDER
 void ControlBox::handleSliderValueChanged(int value) {
