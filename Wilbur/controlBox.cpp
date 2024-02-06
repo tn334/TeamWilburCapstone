@@ -96,16 +96,16 @@ ControlBox::ControlBox(QWidget* parent)
    
 };
 
-QSize ControlBox::sizeHint() const
-{
+//QSize ControlBox::sizeHint() const
+//{
     // Get the sizeHint of the bluetoothLayout
-    QSize bluetoothSize = bluetoothLayout->sizeHint();
+    //QSize bluetoothSize = bluetoothLayout->sizeHint();
 
     // Get the sizeHint of the controlLabel
 //    QSize controlSize = controlLabel->sizeHint();
 
     // Get the sizeHint of the buttonLayout
-    QSize buttonSize = buttonLayout->sizeHint();
+    //QSize buttonSize = buttonLayout->sizeHint();
 
     // Get the sizeHint of the sliderLayout
 //    QSize sliderSize = sliderLayout->sizeHint();
@@ -118,8 +118,8 @@ QSize ControlBox::sizeHint() const
 //    int height = bluetoothSize.height() + controlSize.height() + buttonSize.height() + sliderSize.height();
 
     // Return the QSize object
-    return QSize(width, height);
-}
+    //return QSize(width, height);
+//}
 
 template<typename PointerToMemberFunction>
 Button* ControlBox::createButton(const QString& text, const PointerToMemberFunction& member)
