@@ -39,7 +39,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtModules>core;gui;widgets</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
-    <QtInstall>6.6.0_msvc2019_64</QtInstall>
+    <QtInstall>6.6.1_msvc2019_64</QtInstall>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
     <QtInstall>C:\Qt\Tools\QtDesignStudio\qt6_design_studio_reduced_version</QtInstall>
@@ -61,13 +61,13 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <LibraryPath>C:\Qt\6.6.0\msvc2019_64;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\Qt\6.6.1\msvc2019_64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Link>
-      <AdditionalLibraryDirectories>C:\Qt\6.6.0\msvc2019_arm64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Qt\6.6.1\msvc2019_64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <ClCompile>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -101,6 +101,8 @@
     <QtRcc Include="Wilbur.qrc" />
     <QtUic Include="Wilbur.ui" />
     <QtMoc Include="Wilbur.h" />
+    <ClCompile Include="bluetoothButton.cpp" />
+    <ClCompile Include="customButton.cpp" />
     <ClCompile Include="button.cpp" />
     <ClCompile Include="controlBox.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
@@ -128,6 +130,8 @@
     <QtMoc Include="customDialog.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="customButton.h" />
+    <QtMoc Include="bluetoothButton.h" />
     <ClInclude Include="demoSimulator.h" />
     <ClInclude Include="textHandler.h" />
   </ItemGroup>

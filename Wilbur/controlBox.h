@@ -40,7 +40,7 @@ private:
 	Button* buttonOne;
 	Button* buttonTwo;
 	Button* buttonThree;
-	HorizontalSlider* stiffness;
+	HorizontalSlider* stiffnessSlider;
 	// instances
 	DemoSimulator demoSimulator;
 	CustomDialog* customDialog;
@@ -50,9 +50,9 @@ private:
 	/*void buttonClicked();*/
 	// controller
 	QLabel* controlLabel;
-	QLabel* minimumLabel;
-	QLabel* maximumLabel;
-	QLabel* valueLabel;
+	/*QLabel* minimumLabel;
+	QLabel* maximumLabel;*/
+	/*QLabel* valueLabel;*/
 
 };
 

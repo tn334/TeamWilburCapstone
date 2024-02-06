@@ -24,8 +24,7 @@
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-{
-
+{ 
     // Set up the main layout
     QVBoxLayout* mainLayout = new QVBoxLayout;
 
@@ -35,9 +34,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     ControlBox* controller = new ControlBox(this);
     mainLayout->addWidget(controller);
-
-    /*CustomDialog* customDialog = new CustomDialog(this);
-    mainLayout->addWidget(customDialog);*/
 
     // Set the main layout for the central widget
     QWidget* centralWidget = new QWidget(this);

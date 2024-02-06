@@ -4,17 +4,27 @@
 #include "button.h"
 
 
-Button::Button(const QString& text, QWidget * parent)
+Button::Button(QString text, QWidget * parent)
     : QToolButton(parent), currentState(false) // initialize current state of button
 {
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+    
+    //style sheet information https://doc.qt.io/qt-6/stylesheet-examples.html
+    this->setStyleSheet("color: white;"
+        "background-color: #882255;"
+        "border-width: 2px;"
+        "border-style: outset;"
+        "border-radius: 4px;"
+        "font: bold 12px; ");
+
+    //State should always start in the open position
     setText(text);
+    setToolTip("Press button to open or close duct");
 
     connect(this, &Button::clicked, this, &Button::buttonStateChange);
 }
 
 QSize Button::sizeHint() const
-
 {
     QSize size = QToolButton::sizeHint();
     size.rheight() += 20;
@@ -30,12 +40,34 @@ bool Button::getState() const
 void Button::setState(bool newState)
 {
     currentState = newState;
+    
 }
 
 void Button::buttonStateChange()
 {
     // Toggle the state when the button is clicked
     currentState = !currentState;
+    //TODO change text of button from Open to close or vice versa
+    if (currentState == true)
+    {
+        this->setText("Open");
+        this->setStyleSheet("color: white;"
+            "background-color: #117733;"
+            "border-width: 2px;"
+            "border-style: outset;"
+            "border-radius: 4px;"
+            "font: bold 12px;");
+    }
+    else 
+    { 
+        this->setText("Closed"); 
+        this->setStyleSheet("color: white;"
+            "background-color: #882255;"
+            "border-width: 2px;"
+            "border-style: outset;"
+            "border-radius: 4px;"
+            "font: bold 12px;");
+    }
 
     // Emit the modified clicked signal
     //emit clicked(currentState, text(), currentState);
