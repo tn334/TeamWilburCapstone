@@ -8,10 +8,7 @@ class DuctButton : public CustomButton
     Q_OBJECT
 public:
     explicit DuctButton(QWidget* parent = nullptr);
-    enum ValveState { Closed, Open };
-    Q_ENUM(ValveState)
-    //method set to handle button clicked (redundant with bluetooth so maybe 
-    //incorp into base class
+
     void handleButtonClicked();
 
     //Function to get current state
@@ -19,9 +16,6 @@ public:
 
     //function to set current state
     void setState(bool newState);
-//public slots:
-//    void handleButtonPressed(int valveNumber);
-//    void controlManipulated(std::string objectName, int newValue);
 
 signals:
     void stateChanged(bool newState);

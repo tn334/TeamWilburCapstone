@@ -6,7 +6,7 @@
 #define CONTROLBOX_H
 
 // Local Headers
-#include "horizontalSlider.h"
+#include "stiffnessSlider.h"
 #include "button.h"
 #include "ductButton.h"
 #include "customDialog.h"
@@ -44,19 +44,18 @@ private:
 	Button* buttonOne;
 	Button* buttonTwo;
 	Button* buttonThree;
-	HorizontalSlider* stiffnessSlider;
+	StiffnessSlider* stiffnessSlider;
+
 	// instances
 	DemoSimulator demoSimulator;
 	CustomDialog* customDialog;
 	template<typename PointerToMemberFunction>
 	Button* createButton(const QString& text, const PointerToMemberFunction& member);
-	HorizontalSlider* createSlider(const QString& title, const QString& objectName);
-	//void buttonClicked();
+	StiffnessSlider* createSlider(const QString& title, const QString& objectName);
+
 	// controller
 	QLabel* controlLabel;
-	/*QLabel* minimumLabel;
-	QLabel* maximumLabel;*/
-	/*QLabel* valueLabel;*/
+
 
 };
 

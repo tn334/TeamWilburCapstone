@@ -23,8 +23,6 @@ int main(int argc, char *argv[])
 
     wilbur.show();
 
-    //std::cout << "Application started!" << std::endl;
-
     // call the application
     return app.exec();
 }

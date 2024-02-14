@@ -115,7 +115,7 @@
     <ClCompile Include="customDialog.cpp" />
     <ClCompile Include="demoSimulator.cpp" />
     <ClCompile Include="ductButton.cpp" />
-    <ClCompile Include="horizontalSlider.cpp" />
+    <ClCompile Include="stiffnessSlider.cpp" />
     <ClCompile Include="navigationBar.cpp" />
     <ClCompile Include="textHandler.cpp" />
     <ClCompile Include="Wilbur.cpp" />
@@ -124,7 +124,7 @@
   <ItemGroup>
     <QtMoc Include="button.h" />
     <QtMoc Include="controlBox.h" />
-    <QtMoc Include="horizontalSlider.h" />
+    <QtMoc Include="stiffnessSlider.h" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="navigationBar.h" />
