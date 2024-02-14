@@ -49,7 +49,7 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="horizontalSlider.cpp">
+    <ClCompile Include="stiffnessSlider.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="button.cpp">
@@ -87,7 +87,7 @@
     <QtMoc Include="controlBox.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="horizontalSlider.h">
+    <QtMoc Include="stiffnessSlider.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="navigationBar.h">

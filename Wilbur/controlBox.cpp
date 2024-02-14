@@ -30,6 +30,7 @@ ControlBox::ControlBox(QWidget* parent)
     QLabel* bluetoothLabel = new QLabel("Bluetooth Connection:", controller);
     bluetoothLabel->setStyleSheet("font: bold 12px; ");
     BluetoothButton* bluetooth = new BluetoothButton(this);
+
     //Bluetooth layout
     QGridLayout* bluetoothLayout = new QGridLayout;
     bluetoothLayout->addWidget(bluetoothLabel, 0, 0, 1, 1, Qt::AlignRight);
@@ -66,21 +67,24 @@ ControlBox::ControlBox(QWidget* parent)
     buttonLayout->addWidget(buttonThreeTitle, 0, 4, 1, 1, Qt::AlignRight);
     buttonLayout->addWidget(buttonThree, 0, 5, 1, 1, Qt::AlignRight);
     
+    //TODO Add a slider layout class
     // create a child widget inside box for stiffness slide
-    stiffnessSlider = createSlider("Stiffness:", "StiffnessSlider");
-    QLabel* sliderTitle = new QLabel("Nipple Stiffness Control:", this);
-    sliderTitle->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
-    //TODO Connect to backend code and add update
-    QGridLayout* sliderLayout = new QGridLayout;
-    sliderLayout->addWidget(sliderTitle, 0, 0, 1, 1);
-    sliderLayout->addWidget(stiffnessSlider->labelOne, 1, 0, 1, 1);
-    sliderLayout->addWidget(stiffnessSlider->labelTwo, 1, 1, 1, 1, Qt::AlignLeft);
-    sliderLayout->addWidget(stiffnessSlider->labelThree, 1, 3, 1, 1, Qt::AlignRight);
-    sliderLayout->addWidget(stiffnessSlider->labelFour, 1, 5, 1, 1, Qt::AlignRight);
-    sliderLayout->addWidget(stiffnessSlider, 2, 0, 1, 6);
-    //Slider style TODO (incorporate into slide class)
-    sliderTitle->setStyleSheet("font: bold 12px;");
-    stiffnessSlider->setStyleSheet("QWidget { border: 1.25px solid black;}");
+    //stiffnessSlider = createSlider("Stiffness:", "StiffnessSlider");
+    //QLabel* sliderTitle = new QLabel("Nipple Stiffness Control:", this);
+    //sliderTitle->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+    ////TODO Connect to backend code and add update
+    //QGridLayout* sliderLayout = new QGridLayout;
+    //sliderLayout->addWidget(sliderTitle, 0, 0, 1, 1);
+    //sliderLayout->addWidget(stiffnessSlider->labelOff, 1, 0, 1, 1);
+    //sliderLayout->addWidget(stiffnessSlider->labelLow, 1, 1, 1, 1, Qt::AlignLeft);
+    //sliderLayout->addWidget(stiffnessSlider->labelMedium, 1, 3, 1, 1, Qt::AlignRight);
+    //sliderLayout->addWidget(stiffnessSlider->labelHigh, 1, 5, 1, 1, Qt::AlignRight);
+    //sliderLayout->addWidget(stiffnessSlider, 2, 0, 1, 6);
+    ////Slider style TODO (incorporate into slide class)
+    //sliderTitle->setStyleSheet("font: bold 12px;");
+    //stiffnessSlider->setStyleSheet("QWidget { border: 1.25px solid black;}");
+
+    stiffnessSlider = new StiffnessSlider(this);
 
     //Full ControlBox Layout
     QVBoxLayout* controlLayout = new QVBoxLayout;
@@ -89,7 +93,7 @@ ControlBox::ControlBox(QWidget* parent)
     controlLayout->setSizeConstraint(QLayout::SetMinimumSize);
     controlLayout->addWidget(controlLabel);
     controlLayout->addLayout(buttonLayout);
-    controlLayout->addLayout(sliderLayout);
+    controlLayout->addWidget(stiffnessSlider);
     controller->setLayout(controlLayout);
     //Style for ControlBox
     controlLabel->setStyleSheet("QWidget { border: 1px solid black; }");
@@ -129,13 +133,13 @@ Button* ControlBox::createButton(const QString& text, const PointerToMemberFunct
     return button;
 }
 
-HorizontalSlider* ControlBox::createSlider(const QString& title, const QString& objectName) {
-    HorizontalSlider* slider = new HorizontalSlider(this);
+StiffnessSlider* ControlBox::createSlider(const QString& title, const QString& objectName) {
+    StiffnessSlider* slider = new StiffnessSlider(this);
 
     // Disconnect any existing connections for the slider
-    disconnect(slider, &HorizontalSlider::sliderReleased, this, nullptr);
+    disconnect(slider, &StiffnessSlider::sliderReleased, this, nullptr);
 
-    connect(slider, &HorizontalSlider::sliderReleased, this, [this, objectName, slider]() {
+    connect(slider, &StiffnessSlider::sliderReleased, this, [this, objectName, slider]() {
         controlManipulated(objectName.toStdString(), slider->value());
         });
 
@@ -161,8 +165,6 @@ void ControlBox::handleButtonPressed(int valveNumber)
 
      // Set to true for open, false for closed
     demoSimulator.setValve(valveNumber , newState);
-
-    // Optionally, you can update the UI or do additional tasks here
 }
 
 void ControlBox::controlManipulated(std::string objectName, int newValue)
