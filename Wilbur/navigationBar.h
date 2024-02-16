@@ -27,9 +27,7 @@ class NavigationBar : public QMainWindow
 public:
     NavigationBar(QWidget* parent = nullptr);
     ~NavigationBar();
-    //initialize visocity slider
-    //SlidersGroup *horizontalSliders;
-    //void createMenus();
+
 
 protected:
     // Context Menu
@@ -40,7 +38,7 @@ protected:
     //menuBar slots
 private slots:
     void newFile();
-    void open();
+    void exportLog();
     void save();
     void print();
     void copy();
@@ -55,7 +53,7 @@ private:
     QMenu* editMenu;
     QMenu* helpMenu;
     QAction* newAct;
-    QAction* openAct;
+    QAction* ExportLog;
     QAction* saveAct;
     QAction* printAct;
     QAction* copyAct;
