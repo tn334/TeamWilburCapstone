@@ -74,9 +74,9 @@ void NavigationBar::newFile()
     infoLabel->setText(tr("Invoked <b>File|New</b>"));
 }
 
-void NavigationBar::open()
+void NavigationBar::exportLog()
 {
-    infoLabel->setText(tr("Invoked <b>File|Open</b>"));
+    infoLabel->setText(tr("Invoked <b>File|Export Logn</b>"));
 }
 
 void NavigationBar::save()
@@ -114,20 +114,20 @@ void NavigationBar::createActions()
     newAct->setShortcuts(QKeySequence::New);
     newAct->setStatusTip(tr("Create a new file"));
     connect(newAct, &QAction::triggered, this, &NavigationBar::newFile);
-    //open existing file
-    openAct = new QAction(tr("&Open..."), this);
-    openAct->setShortcuts(QKeySequence::Open);
-    openAct->setStatusTip(tr("Open an existing file"));
-    connect(openAct, &QAction::triggered, this, &NavigationBar::open);
+    //exportLog existing file
+    ExportLog = new QAction(tr("&Export Log..."), this);
+    ExportLog->setShortcuts(QKeySequence::SaveAs);
+    ExportLog->setStatusTip(tr("Export control log"));
+    connect(ExportLog, &QAction::triggered, this, &NavigationBar::exportLog);
 
     saveAct = new QAction(tr("&Save"), this);
     saveAct->setShortcuts(QKeySequence::Save);
-    saveAct->setStatusTip(tr("Save the document to disk"));
+    saveAct->setStatusTip(tr("Save the log to disk"));
     connect(saveAct, &QAction::triggered, this, &NavigationBar::save);
 
     printAct = new QAction(tr("&Print..."), this);
     printAct->setShortcuts(QKeySequence::Print);
-    printAct->setStatusTip(tr("Print the document"));
+    printAct->setStatusTip(tr("Print the log"));
     connect(printAct, &QAction::triggered, this, &NavigationBar::print);
 
     copyAct = new QAction(tr("&Copy"), this);
@@ -156,7 +156,7 @@ void NavigationBar::createMenus()
 {
     fileMenu = menuBar()->addMenu(tr("&File"));
     fileMenu->addAction(newAct);
-    fileMenu->addAction(openAct);
+    fileMenu->addAction(ExportLog);
     fileMenu->addAction(saveAct);
     fileMenu->addAction(printAct);
     fileMenu->addSeparator();
