@@ -6,7 +6,7 @@
 #define CONTROLBOX_H
 
 // Local Headers
-#include "stiffnessSlider.h"
+#include "sliderLayout.h"
 #include "button.h"
 #include "ductButton.h"
 #include "customDialog.h"
@@ -44,7 +44,8 @@ private:
 	Button* buttonOne;
 	Button* buttonTwo;
 	Button* buttonThree;
-	StiffnessSlider* stiffnessSlider;
+	//StiffnessSlider* stiffnessSlider;
+	SliderLayout* sliderLayout;
 
 	// instances
 	DemoSimulator demoSimulator;

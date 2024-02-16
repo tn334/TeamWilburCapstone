@@ -50,12 +50,7 @@ ControlBox::ControlBox(QWidget* parent)
     buttonThree = createButton("Closed", [this]() {handleButtonPressed(2);  });
     QLabel* buttonThreeTitle = new QLabel("Duct Three:", controller);
     // Manipulate with backend code
-    connect(buttonThree, &Button::clicked, customDialog, [this]() {controlManipulated("buttonThree", 0);  });
-
-    // Set fixed size for the buttons
-    //buttonOne->setFixedSize(80, 30);
-    //buttonTwo->setFixedSize(80, 30);  // adjust size
-    //buttonThree->setFixedSize(80, 30); //adjust size  
+    connect(buttonThree, &Button::clicked, customDialog, [this]() {controlManipulated("buttonThree", 0);  });  
     
     // Grid box for buttons and labels
     QGridLayout* buttonLayout = new QGridLayout;
@@ -67,24 +62,8 @@ ControlBox::ControlBox(QWidget* parent)
     buttonLayout->addWidget(buttonThreeTitle, 0, 4, 1, 1, Qt::AlignRight);
     buttonLayout->addWidget(buttonThree, 0, 5, 1, 1, Qt::AlignRight);
     
-    //TODO Add a slider layout class
-    // create a child widget inside box for stiffness slide
-    //stiffnessSlider = createSlider("Stiffness:", "StiffnessSlider");
-    //QLabel* sliderTitle = new QLabel("Nipple Stiffness Control:", this);
-    //sliderTitle->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
-    ////TODO Connect to backend code and add update
-    //QGridLayout* sliderLayout = new QGridLayout;
-    //sliderLayout->addWidget(sliderTitle, 0, 0, 1, 1);
-    //sliderLayout->addWidget(stiffnessSlider->labelOff, 1, 0, 1, 1);
-    //sliderLayout->addWidget(stiffnessSlider->labelLow, 1, 1, 1, 1, Qt::AlignLeft);
-    //sliderLayout->addWidget(stiffnessSlider->labelMedium, 1, 3, 1, 1, Qt::AlignRight);
-    //sliderLayout->addWidget(stiffnessSlider->labelHigh, 1, 5, 1, 1, Qt::AlignRight);
-    //sliderLayout->addWidget(stiffnessSlider, 2, 0, 1, 6);
-    ////Slider style TODO (incorporate into slide class)
-    //sliderTitle->setStyleSheet("font: bold 12px;");
-    //stiffnessSlider->setStyleSheet("QWidget { border: 1.25px solid black;}");
-
-    stiffnessSlider = new StiffnessSlider(this);
+    //stiffnessSlider = new StiffnessSlider(this);
+    sliderLayout = new SliderLayout(this);
 
     //Full ControlBox Layout
     QVBoxLayout* controlLayout = new QVBoxLayout;
@@ -93,7 +72,7 @@ ControlBox::ControlBox(QWidget* parent)
     controlLayout->setSizeConstraint(QLayout::SetMinimumSize);
     controlLayout->addWidget(controlLabel);
     controlLayout->addLayout(buttonLayout);
-    controlLayout->addWidget(stiffnessSlider);
+    controlLayout->addWidget(sliderLayout);
     controller->setLayout(controlLayout);
     //Style for ControlBox
     controlLabel->setStyleSheet("QWidget { border: 1px solid black; }");

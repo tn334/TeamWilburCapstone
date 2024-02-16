@@ -11,7 +11,7 @@
 #include <QSlider>
 #include <QMainWindow>
 #include <QLabel>
-#include <QGridLayout>
+
 
 class StiffnessSlider : public QSlider
 {
@@ -23,12 +23,7 @@ public:
 private:
     //properties
     QSlider* slider;
-    QLabel* labelOff;
-    QLabel* labelLow;
-    QLabel* labelMedium;
-    QLabel* labelHigh;
-    QLabel* title;
-    QGridLayout* sliderLayout;
+
     //methods
     bool validValue(int value);
 signals:
