@@ -69,40 +69,16 @@ ControlBox::ControlBox(QWidget* parent)
     QVBoxLayout* controlLayout = new QVBoxLayout;
     controlLayout->addLayout(bluetoothLayout);
     controlLayout->addSpacing(10);
-    controlLayout->setSizeConstraint(QLayout::SetMinimumSize);
     controlLayout->addWidget(controlLabel);
     controlLayout->addLayout(buttonLayout);
     controlLayout->addWidget(sliderLayout);
     controller->setLayout(controlLayout);
     //Style for ControlBox
     controlLabel->setStyleSheet("QWidget { border: 1px solid black; }");
+    //controlLabel->setAlignment(Qt::AlignTop | Qt::AlignLeft);
+    //controller->resize(250, 250);
    
 };
-
-//QSize ControlBox::sizeHint() const
-//{
-    // Get the sizeHint of the bluetoothLayout
-    //QSize bluetoothSize = bluetoothLayout->sizeHint();
-
-    // Get the sizeHint of the controlLabel
-//    QSize controlSize = controlLabel->sizeHint();
-
-    // Get the sizeHint of the buttonLayout
-    //QSize buttonSize = buttonLayout->sizeHint();
-
-    // Get the sizeHint of the sliderLayout
-//    QSize sliderSize = sliderLayout->sizeHint();
-
-    // Calculate the total width and height
-//    int width = qMax(bluetoothSize.width(), controlSize.width());
-//    width = qMax(width, buttonSize.width());
-//    width = qMax(width, sliderSize.width());
-
-//    int height = bluetoothSize.height() + controlSize.height() + buttonSize.height() + sliderSize.height();
-
-    // Return the QSize object
-    //return QSize(width, height);
-//}
 
 template<typename PointerToMemberFunction>
 Button* ControlBox::createButton(const QString& text, const PointerToMemberFunction& member)

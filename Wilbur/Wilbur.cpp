@@ -27,24 +27,26 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 { 
-    // Set up the main layout
-    QVBoxLayout* mainLayout = new QVBoxLayout;
-
     // Instantiate Navigation Bar at top of window
     NavigationBar* navigationBar = new NavigationBar(this);
-    //navigationBar->setMaximumHeight(100);
-    mainLayout->addWidget(navigationBar);
 
+    // Instantiate Controller
     ControlBox* roboControl = new ControlBox(this);
-    //roboControl->setMaximumSize(roboControl->sizeHint());
-    mainLayout->addWidget(roboControl);
+
+    // Spacer item for bottom of window
+    QSpacerItem* verticalSpacer = new QSpacerItem(0, 20, QSizePolicy::Minimum, 
+        QSizePolicy::Expanding);
+
+    // Set up the main layout
+    QGridLayout* mainLayout = new QGridLayout;
+    mainLayout->addWidget(navigationBar, 0, 0, 1, 6);
+    mainLayout->addWidget(roboControl, 1, 0, 1, 3);
+    mainLayout->addItem(verticalSpacer, 2, 0, 1, 6);
+ // Align the main layout to the top left corner
 
     // Set the main layout for the central widget
     QWidget* centralWidget = new QWidget(this);
     centralWidget->setLayout(mainLayout);
-
-    mainLayout->setContentsMargins(0, 0, 0, 0);
-    //centralWidget->layout()->setContentsMargins(0, 0, 0, 0);
 
     setCentralWidget(centralWidget);
 
