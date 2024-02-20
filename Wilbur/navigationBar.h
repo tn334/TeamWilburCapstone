@@ -6,11 +6,13 @@
 #define NAVIGATIONBAR_H
 
 //Header files
-#include <QtWidgets/QMainWindow>
-#include <QWidget>
 #include <QMainWindow>
-#include "ui_Wilbur.h"
+#include <QWidget>
 #include <QGridLayout>
+#include <QContextMenuEvent>
+#include <QLabel>
+#include <QMessageBox>
+#include "ui_wilbur.h"
 
 // for menu
 QT_BEGIN_NAMESPACE
@@ -62,7 +64,6 @@ private:
     QAction* aboutAct;
     QAction* aboutQtAct;
     Ui::WilburClass ui;
-    // controller
     QLabel* controlLabel;
 };
 

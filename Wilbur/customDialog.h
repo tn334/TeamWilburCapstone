@@ -26,7 +26,6 @@ public:
 public slots:
 	void controlManipulated(std::string objectName, bool currentState, int valueChanged);
 	//void controlManipulated();
-	
 
 private:
 	void initUI();

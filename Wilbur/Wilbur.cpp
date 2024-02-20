@@ -6,30 +6,19 @@
 #include "controlBox.h"
 #include "navigationBar.h" //Nav Bar at Top of Window
 #include "customDialog.h" // Simulation Window
-#include "bluetoothButton.h"
-
-
-//Qt Header Files
-#include <QPlainTextEdit>
-#include <QWidget>
-#include <QContextMenuEvent>
-#include <QLabel>
-#include <QMessageBox>
-#include <QSlider>
-#include <QVBoxLayout>
-#include <QStackedWidget>
 
 // setting up Qt version through Qt Visual Studio Tools
 // https://doc.qt.io/qtvstools/qtvstools-how-to-add-qt-versions.html
 // setting Qt version for project 
 // https://doc.qt.io/qtvstools/qtvstools-how-to-select-qt-versions-for-project.html
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
+// Main Window Class
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 { 
     // Instantiate Navigation Bar at top of window
     NavigationBar* navigationBar = new NavigationBar(this);
 
+<<<<<<< Updated upstream
     // Instantiate Controller
     ControlBox* roboControl = new ControlBox(this);
 
@@ -43,27 +32,35 @@ MainWindow::MainWindow(QWidget *parent)
     mainLayout->addWidget(roboControl, 1, 0, 1, 3);
     mainLayout->addItem(verticalSpacer, 2, 0, 1, 6);
  // Align the main layout to the top left corner
+=======
+	// Instantiate Robot Control Box
+    ControlBox* robotControl = new ControlBox(this);
+    
+	// Instantiate Central Widget "holder"
+    QWidget* centralWidget = new QWidget(this);
+
+	// At main layout, add navigation bar and robot control box widgets
+    mainLayout->addWidget(navigationBar);
+    mainLayout->addWidget(robotControl);
+>>>>>>> Stashed changes
 
     // Set the main layout for the central widget
-    QWidget* centralWidget = new QWidget(this);
     centralWidget->setLayout(mainLayout);
 
+<<<<<<< Updated upstream
+=======
+	// Set the main widget in application
+>>>>>>> Stashed changes
     setCentralWidget(centralWidget);
 
+	// Start application in maximized view
     showMaximized();
-    setWindowTitle(tr("WilburMain", "Wilbur"));
+
+	// Set the application window title
+    setWindowTitle("Wilbur");
 }
 
-//Destructor Wilbur - Main Windor
+//Destructor Wilbur - Main Window
 MainWindow::~MainWindow()
 {
-    
 }
-
-void MainWindow::updateTextEdit(const QString& string)
-{
-    QTextEdit* textEdit = findChild<QTextEdit*>();
-    textEdit->append(string);
-}
-
-

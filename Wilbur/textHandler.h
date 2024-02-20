@@ -5,20 +5,23 @@
 #ifndef TEXTHANDLER_H
 #define TEXTHANDLER_H
 
+// Header files
 #include <QStringList>
 
 class TextHandler
 {
 public:
+	// Constructor
 	TextHandler();
 
+	// Change in front end
 	void controlManipulated(std::string objectName, bool currentState, int valueChanged);
 
-	void processSliderChange();
-
+	// Gather all session texts
 	QStringList getAllText() const;
 
 private:
+	// List that holds all texts
 	QStringList textList;
 };
 
