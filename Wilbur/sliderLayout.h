@@ -7,6 +7,8 @@
 #include <qwidget.h>
 #include <QLabel>
 #include <QGridLayout>
+#include <qstyle.h>
+#include <QResizeEvent>
 
 class SliderLayout : public QWidget
 {
@@ -16,7 +18,9 @@ public:
     explicit SliderLayout(QWidget* parent = nullptr);
     ~SliderLayout();
 
-    void updateTitle(int value);
+    void resizeEvent(QResizeEvent* event);
+
+    //void updateTitle(int value);
 
 public slots:
 

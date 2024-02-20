@@ -30,10 +30,11 @@ SliderLayout::SliderLayout(QWidget* parent)
     sLayout = new QGridLayout(this);
     sLayout->addWidget(title, 0, 0, 1, 1, Qt::AlignLeft);
     sLayout->addWidget(labelOff, 1, 0, 1, 1);
-    sLayout->addWidget(labelLow, 1, 2, 1, 1, Qt::AlignLeft);
+    sLayout->addWidget(labelLow, 1, 1, 1, 1, Qt::AlignLeft);
     sLayout->addWidget(labelMedium, 1, 3, 1, 1, Qt::AlignRight);
     sLayout->addWidget(labelHigh, 1, 5, 1, 1, Qt::AlignRight);
     sLayout->addWidget(stiffnessSlider, 2, 0, 1, 6);
+
 }
 
 SliderLayout::~SliderLayout()
@@ -44,6 +45,23 @@ SliderLayout::~SliderLayout()
     delete labelMedium;
     delete labelHigh;
     delete sLayout;
+}
+
+void SliderLayout::resizeEvent(QResizeEvent* event) {
+    // get the new size of the parent widget
+    QSize newSize = event->size();
+    // calculate the positions of the labels
+    int xOff = 10; // some offset from the left edge
+    int yOff = 10; // some offset from the top edge
+    int xLow = newSize.width() / 3; // position of the low label
+    int xMedium = newSize.width() / 8 * 5; // position of the medium label
+    int xHigh = newSize.width() / 20 * 19 ; // position of the high label
+    // move the labels to the new positions
+    title->move(xOff, yOff);
+    labelOff->move(xOff, yOff + title->height());
+    labelLow->move(xLow, yOff + title->height());
+    labelMedium->move(xMedium, yOff + title->height());
+    labelHigh->move(xHigh, yOff + title->height());
 }
 
 //void SliderLayout::updateTitle(int value)
