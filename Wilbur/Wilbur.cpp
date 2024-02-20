@@ -15,42 +15,31 @@
 // Main Window Class
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 { 
+    // Set up the main layout
+    QGridLayout* mainLayout = new QGridLayout;
+
     // Instantiate Navigation Bar at top of window
     NavigationBar* navigationBar = new NavigationBar(this);
 
-<<<<<<< Updated upstream
-    // Instantiate Controller
-    ControlBox* roboControl = new ControlBox(this);
-
-    // Spacer item for bottom of window
-    QSpacerItem* verticalSpacer = new QSpacerItem(0, 20, QSizePolicy::Minimum, 
-        QSizePolicy::Expanding);
-
-    // Set up the main layout
-    QGridLayout* mainLayout = new QGridLayout;
-    mainLayout->addWidget(navigationBar, 0, 0, 1, 6);
-    mainLayout->addWidget(roboControl, 1, 0, 1, 3);
-    mainLayout->addItem(verticalSpacer, 2, 0, 1, 6);
- // Align the main layout to the top left corner
-=======
 	// Instantiate Robot Control Box
     ControlBox* robotControl = new ControlBox(this);
     
 	// Instantiate Central Widget "holder"
     QWidget* centralWidget = new QWidget(this);
 
-	// At main layout, add navigation bar and robot control box widgets
-    mainLayout->addWidget(navigationBar);
-    mainLayout->addWidget(robotControl);
->>>>>>> Stashed changes
+	// Instantiate spacer item for bottom of window
+	QSpacerItem* verticalSpacer = new QSpacerItem(0, 20, QSizePolicy::Minimum,
+		QSizePolicy::Expanding);
+
+	// At main layout, add navigation bar, robot control box, and spacer widgets
+    mainLayout->addWidget(navigationBar, 0, 0, 1, 6);
+    mainLayout->addWidget(robotControl, 1, 0, 1, 3);
+    mainLayout->addItem(verticalSpacer, 2, 0, 1, 6);
 
     // Set the main layout for the central widget
     centralWidget->setLayout(mainLayout);
 
-<<<<<<< Updated upstream
-=======
 	// Set the main widget in application
->>>>>>> Stashed changes
     setCentralWidget(centralWidget);
 
 	// Start application in maximized view

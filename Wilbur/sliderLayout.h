@@ -3,8 +3,7 @@
 #define SLIDERLAYOUT_H
 
 // Header Files
-// QWidget and QLabel included in stiffnessSlider.h
-#include "stiffnessSlider.h"
+#include "stiffnessSlider.h" // QWidget and QLabel included here
 #include <QGridLayout>
 #include <qstyle.h>
 #include <QResizeEvent>
@@ -18,15 +17,9 @@ public:
     ~SliderLayout();
 	StiffnessSlider* stiffnessSlider;
 
-<<<<<<< Updated upstream
     void resizeEvent(QResizeEvent* event);
 
     //void updateTitle(int value);
-=======
-    // void updateTitle(int value);
->>>>>>> Stashed changes
-
-public slots:
 
 private:
     QLabel* labelOff;

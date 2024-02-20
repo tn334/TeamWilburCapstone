@@ -70,13 +70,8 @@ ControlBox::ControlBox(QWidget* parent)
 
     //Set style for ControlBox label
     controlLabel->setStyleSheet("QWidget { border: 1px solid black; }");
-<<<<<<< Updated upstream
     //controlLabel->setAlignment(Qt::AlignTop | Qt::AlignLeft);
     //controller->resize(250, 250);
-   
-};
-
-=======
 };
 
 //QSize ControlBox::sizeHint() const
@@ -105,7 +100,6 @@ ControlBox::ControlBox(QWidget* parent)
 //}
 
 // Create button derived from control box
->>>>>>> Stashed changes
 template<typename PointerToMemberFunction>
 Button* ControlBox::createButton(const QString& text, const PointerToMemberFunction& member)
 {
