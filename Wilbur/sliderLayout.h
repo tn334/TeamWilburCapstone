@@ -10,12 +10,12 @@
 
 class SliderLayout : public QWidget
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
     explicit SliderLayout(QWidget* parent = nullptr);
     ~SliderLayout();
-	StiffnessSlider* stiffnessSlider;
+    StiffnessSlider* stiffnessSlider;
 
     void resizeEvent(QResizeEvent* event);
 
@@ -27,7 +27,7 @@ private:
     QLabel* labelMedium;
     QLabel* labelHigh;
     QLabel* title;
-    QGridLayout* sLayout;
+    QGridLayout* stiffSliderLayout;
 };
 
 #endif // SLIDERLAYOUT_H

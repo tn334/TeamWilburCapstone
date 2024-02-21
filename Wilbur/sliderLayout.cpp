@@ -37,15 +37,14 @@ SliderLayout::SliderLayout(QWidget* parent)
     labelHigh->setStyleSheet("font: bold 12px;");
 
     // initialize grid layout
-    sLayout = new QGridLayout(this);
-
-	// Add title, labels, and slider to slider layout
-    sLayout->addWidget(title, 0, 0, 1, 1, Qt::AlignLeft);
-    sLayout->addWidget(labelOff, 1, 0, 1, 1);
-    sLayout->addWidget(labelLow, 1, 1, 1, 1, Qt::AlignLeft);
-    sLayout->addWidget(labelMedium, 1, 3, 1, 1, Qt::AlignRight);
-    sLayout->addWidget(labelHigh, 1, 5, 1, 1, Qt::AlignRight);
-    sLayout->addWidget(stiffnessSlider, 2, 0, 1, 6);
+    stiffSliderLayout = new QGridLayout(this);
+    // Add title, labels, and slider to slider layout
+    stiffSliderLayout->addWidget(title, 0, 0, 1, 1, Qt::AlignLeft);
+    stiffSliderLayout->addWidget(labelOff, 1, 0, 1, 1);
+    stiffSliderLayout->addWidget(labelLow, 1, 1, 1, 1, Qt::AlignLeft);
+    stiffSliderLayout->addWidget(labelMedium, 1, 3, 1, 1, Qt::AlignRight);
+    stiffSliderLayout->addWidget(labelHigh, 1, 5, 1, 1, Qt::AlignRight);
+    stiffSliderLayout->addWidget(stiffnessSlider, 2, 0, 1, 6);
 
 }
 
@@ -58,7 +57,7 @@ SliderLayout::~SliderLayout()
     delete labelLow;
     delete labelMedium;
     delete labelHigh;
-    delete sLayout;
+    delete stiffSliderLayout;
 }
 
 void SliderLayout::resizeEvent(QResizeEvent* event) {

@@ -7,8 +7,8 @@
 
 // Local Headers
 #include "sliderLayout.h"
+#include "ductLayout.h" // ductButton.h, QLabel included in ductLayout.
 #include "button.h" // QToolButton included in button.h
-#include "ductButton.h"
 #include "customDialog.h" // QLabel, QMainWindow included in customDialog.h
 #include "demoSimulator.h" 
 #include "bluetoothButton.h"
@@ -37,7 +37,8 @@ private slots:
 
 private:
 	// objects
-	DuctButton* ductTestButton;
+	BluetoothButton* bluetooth;
+	DuctLayout* ductLayout;
 	Button* buttonOne;
 	Button* buttonTwo;
 	Button* buttonThree;
