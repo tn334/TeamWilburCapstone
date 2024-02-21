@@ -22,7 +22,7 @@ ControlBox::ControlBox(QWidget* parent)
 	// Create bluetooth label and button
     QLabel* bluetoothLabel = new QLabel("Bluetooth Connection:", controller);
     bluetoothLabel->setStyleSheet("font: bold 12px; ");
-    BluetoothButton* bluetooth = new BluetoothButton(this);
+    bluetooth = new BluetoothButton(this);
 
     //Bluetooth layout
 	QGridLayout* bluetoothLayout = new QGridLayout;
