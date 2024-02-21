@@ -6,6 +6,7 @@
 Button::Button(QString text, QWidget * parent)
     : QToolButton(parent), currentState(false) // initialize current state of button
 {
+	// Set horizontal (1st parameter) and vertical (2nd parameter) size policies 
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     
     //style sheet information https://doc.qt.io/qt-6/stylesheet-examples.html
@@ -18,14 +19,18 @@ Button::Button(QString text, QWidget * parent)
 
     //State should always start in the open position
     setText(text);
+
+	// Display text when mouse hovers over buttons
     setToolTip("Press button to open or close duct");
 
+	// Connect button clicks with the buttonStateChange slot/action
     connect(this, &Button::clicked, this, &Button::buttonStateChange);
 }
 
 QSize Button::sizeHint() const
 {
     //Code generated with AI assistance
+	// Helps Qt choose a size for widgets, in this case the buttons
     return QSize(80, 30);
 }
 
@@ -37,8 +42,9 @@ void Button::buttonStateChange()
 {
     // Toggle the state when the button is clicked
     currentState = !currentState;
-    //TODO change text of button from Open to close or vice versa
-    if (currentState == true)
+
+    // Change text of button from Open to close or vice versa
+    if (currentState)
     {
         this->setText("Open");
         this->setStyleSheet("color: white;"
@@ -48,6 +54,7 @@ void Button::buttonStateChange()
             "border-radius: 4px;"
             "font: bold 12px;");
     }
+
     else 
     { 
         this->setText("Closed"); 

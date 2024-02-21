@@ -5,16 +5,19 @@
 #ifndef BUTTON_H
 #define BUTTON_H
 
-#include <qtoolbutton.h>
-#include <qpalette.h>
+// Header files
+#include <QToolButton>
+#include <QPalette>
 
 class Button : public QToolButton
 {
 	Q_OBJECT
 
 public:
+	// Button Constructor
 	explicit Button(QString text, QWidget* parent = nullptr);
 
+	// Function to set button size
 	QSize sizeHint() const override;
 
 	//Function to get current state
@@ -23,11 +26,9 @@ public:
 	//function to set current state
 	void setState(bool newState);
 
-signals:
-		//void clicked(bool checked, const QString& objectName, int valueChanged);
-
 private slots:
 	void buttonStateChange();
+
 private:
 	//member variable to store state
 	bool currentState;

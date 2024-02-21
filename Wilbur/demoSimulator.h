@@ -3,6 +3,11 @@
 #ifndef DEMOSIMULATOR_H
 #define DEMOSIMULATOR_H
 
+// Header Files
+#include <sstream>
+#include <Windows.h>
+#include <stdlib.h>
+#include <time.h>
 #include <iostream>
 #include <vector>
 #define OPEN true
@@ -12,7 +17,8 @@ enum pumpValue {
     OFF=0, LOW, MED, HIGH
 };
 
-class SimValve {
+class SimValve 
+{
 public:
 
     SimValve();
@@ -29,7 +35,8 @@ private:
     bool state;
 };
 
-class SimPump {
+class SimPump 
+{
 public:
 
     SimPump();

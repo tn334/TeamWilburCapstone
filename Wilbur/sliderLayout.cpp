@@ -1,33 +1,45 @@
+// Header Files
 #include "sliderLayout.h"
 
+// Slider layout constructor
 SliderLayout::SliderLayout(QWidget* parent)
 	: QWidget(parent)
 {
-    //create slider
+    // create slider
     stiffnessSlider = new StiffnessSlider(this);
 
-    //creating title
+    // creating title
     title = new QLabel("Nipple Stiffness Control:");
-    //set parent of title
+
+    // set parent of title and its settings
     title->setParent(parent);
     title->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
     title->setStyleSheet("font: bold 12px;");
-    //Setting Label Style
+
+    // Setting OFF Label settings
     labelOff = new QLabel("Off");
     labelOff->setParent(parent);
     labelOff->setStyleSheet("font: bold 12px;");
+
+	// Setting LOW Label settings
     labelLow = new QLabel("Low");
     labelLow->setParent(parent);
     labelLow->setStyleSheet("font: bold 12px;");
+
+	// Setting MEDIUM Label settings
     labelMedium = new QLabel("Medium");
     labelMedium->setParent(parent);
     labelMedium->setStyleSheet("font: bold 12px;");
+
+	// Setting HIGH Label settings
     labelHigh = new QLabel("High");
     labelHigh->setParent(parent);
     labelHigh->setStyleSheet("font: bold 12px;");
 
-    // create and initialize the layout
+    // initialize grid layout
     sLayout = new QGridLayout(this);
+
+	// Add title, labels, and slider to slider layout
     sLayout->addWidget(title, 0, 0, 1, 1, Qt::AlignLeft);
     sLayout->addWidget(labelOff, 1, 0, 1, 1);
     sLayout->addWidget(labelLow, 1, 1, 1, 1, Qt::AlignLeft);
@@ -37,8 +49,10 @@ SliderLayout::SliderLayout(QWidget* parent)
 
 }
 
+// Destructor
 SliderLayout::~SliderLayout()
 {
+	// Delete instantiated objects
     delete title;
     delete labelOff;
     delete labelLow;
