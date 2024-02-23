@@ -111,6 +111,7 @@
     <QtRcc Include="Wilbur.qrc" />
     <QtUic Include="Wilbur.ui" />
     <QtMoc Include="Wilbur.h" />
+    <ClCompile Include="actionLogging.cpp" />
     <ClCompile Include="bluetoothButton.cpp" />
     <ClCompile Include="customButton.cpp" />
     <ClCompile Include="button.cpp" />
@@ -145,6 +146,7 @@
   <ItemGroup>
     <QtMoc Include="customButton.h" />
     <QtMoc Include="bluetoothButton.h" />
+    <ClInclude Include="actionLogging.h" />
     <ClInclude Include="demoSimulator.h" />
     <QtMoc Include="ductButton.h" />
     <QtMoc Include="sliderLayout.h" />
