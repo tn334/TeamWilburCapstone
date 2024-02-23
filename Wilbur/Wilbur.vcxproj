@@ -123,6 +123,7 @@
     <ClCompile Include="customDialog.cpp" />
     <ClCompile Include="demoSimulator.cpp" />
     <ClCompile Include="ductButton.cpp" />
+    <ClCompile Include="inputDirector.cpp" />
     <ClCompile Include="sliderLayout.cpp" />
     <ClCompile Include="stiffnessSlider.cpp" />
     <ClCompile Include="navigationBar.cpp" />
@@ -147,6 +148,7 @@
     <ClInclude Include="demoSimulator.h" />
     <QtMoc Include="ductButton.h" />
     <QtMoc Include="sliderLayout.h" />
+    <ClInclude Include="inputDirector.h" />
     <ClInclude Include="textHandler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
