@@ -6,11 +6,14 @@
 #define NAVIGATIONBAR_H
 
 //Header files
-#include <QtWidgets/QMainWindow>
-#include <QWidget>
 #include <QMainWindow>
-#include "ui_Wilbur.h"
+#include <QWidget>
 #include <QGridLayout>
+#include <QContextMenuEvent>
+#include <QLabel>
+#include <QMessageBox>
+#include "ui_wilbur.h"
+#include "actionLogging.h"
 
 // for menu
 QT_BEGIN_NAMESPACE
@@ -25,11 +28,8 @@ class NavigationBar : public QMainWindow
     Q_OBJECT
 
 public:
-    NavigationBar(QWidget* parent = nullptr);
+    NavigationBar(QWidget* parent = nullptr, ActionLogging* actionLog = nullptr);
     ~NavigationBar();
-    //initialize visocity slider
-    //SlidersGroup *horizontalSliders;
-    //void createMenus();
 
 protected:
     // Context Menu
@@ -40,7 +40,7 @@ protected:
     //menuBar slots
 private slots:
     void newFile();
-    void open();
+    void exportLog();
     void save();
     void print();
     void copy();
@@ -55,7 +55,7 @@ private:
     QMenu* editMenu;
     QMenu* helpMenu;
     QAction* newAct;
-    QAction* openAct;
+    QAction* ExportLog;
     QAction* saveAct;
     QAction* printAct;
     QAction* copyAct;
@@ -64,8 +64,8 @@ private:
     QAction* aboutAct;
     QAction* aboutQtAct;
     Ui::WilburClass ui;
-    // controller
     QLabel* controlLabel;
+	ActionLogging* logPtr;
 };
 
 #endif // NAVIGATIONBAR_H

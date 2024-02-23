@@ -1,25 +1,23 @@
 #pragma once
+
 // Copyright (C) 2016 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
 
 #ifndef WILBUR_H
 #define WILBUR_H
 
-//Header files
-#include <QtWidgets/QMainWindow>
+// Header files
+#include "actionLogging.h"
 #include <QWidget>
 #include <QMainWindow>
-#include "ui_Wilbur.h"
 #include <QPlainTextEdit>
-#include <QGridLayout>
-
-// for menu
-QT_BEGIN_NAMESPACE
-class QAction;
-class QActionGroup;
-class QLabel;
-class QMenu;
-QT_END_NAMESPACE
+#include <QApplication>	
+#include <QLabel>
+#include <QMessageBox>
+#include <QSlider>
+#include <QVBoxLayout>
+#include <QStackedWidget>
+#include <QToolBar>
 
 class MainWindow : public QMainWindow
 {
@@ -31,26 +29,8 @@ public:
 
     //void printToConsole(const QString& message);
 
-public slots:
-    void updateTextEdit(const QString& string);
-
-private:
-    QPlainTextEdit* consoleOutput;
+    //private:
+    //    QPlainTextEdit* consoleOutput;
 };
-
-//class ParamGrid : public QGridLayout, MainWindow
-//{
-//    //What is this
-//    Q_OBJECT
-//
-//public:
-//    //Constructor
-//    ParamGrid(QWidget *parent = nullptr);
-//    //Deconstructor
-//    ~ParamGrid();
-//
-//private:
-//    
-//};
 
 #endif // WILBUR_H

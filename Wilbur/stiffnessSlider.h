@@ -12,20 +12,22 @@
 #include <QMainWindow>
 #include <QLabel>
 
-
 class StiffnessSlider : public QSlider
 {
     Q_OBJECT
 
 public:
     explicit StiffnessSlider(QWidget* parent = nullptr);
+	int test = 0;
     ~StiffnessSlider();
+
 private:
     //properties
     QSlider* slider;
 
     //methods
     bool validValue(int value);
+
 signals:
     void sliderValueChanged(bool newState);
 

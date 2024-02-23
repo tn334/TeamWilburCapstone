@@ -6,7 +6,7 @@
 #define CUSTOMDIALOG_H
 
 #include "textHandler.h"
-
+#include "actionLogging.h"
 #include <QApplication>
 #include <QDialog>
 #include <QLabel>
@@ -21,19 +21,17 @@ class CustomDialog : public QDialog
 	Q_OBJECT
 
 public:
-	CustomDialog(QWidget* parent = nullptr);
+	CustomDialog(QWidget* parent = nullptr, ActionLogging* actionLog = nullptr);
 
 public slots:
 	void controlManipulated(std::string objectName, bool currentState, int valueChanged);
 	//void controlManipulated();
-	
 
 private:
 	void initUI();
-
 	TextHandler textHandler;
-
 	QTextEdit* textEdit;
+	ActionLogging* logPtr;
 };
 
 #endif // CUSTOMDIALOG_H

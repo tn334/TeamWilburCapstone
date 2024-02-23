@@ -2,14 +2,14 @@
 #ifndef BLUETOOTHBUTTON_H
 #define BLUETOOTHBUTTON_H
 
-#include <qpushbutton.h>
-#include "customButton.h" // local file
-
+// Header Files
+#include "customButton.h" // QPushButton included here
 
 class BluetoothButton :
     public CustomButton
 {
     Q_OBJECT
+
 public:
     explicit BluetoothButton(QWidget* parent = nullptr);
     QSize sizeHint() const override;
@@ -19,7 +19,6 @@ public:
 
 private:
     bool isConnected; // tracking bluetooth connection status
-
-
 };
+
 #endif // BLUETOOTHBUTTON_H

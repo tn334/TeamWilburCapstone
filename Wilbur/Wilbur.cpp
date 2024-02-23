@@ -6,62 +6,53 @@
 #include "controlBox.h"
 #include "navigationBar.h" //Nav Bar at Top of Window
 #include "customDialog.h" // Simulation Window
-#include "bluetoothButton.h"
-
-
-//Qt Header Files
-#include <QPlainTextEdit>
-#include <QWidget>
-#include <QContextMenuEvent>
-#include <QLabel>
-#include <QMessageBox>
-#include <QSlider>
-#include <QVBoxLayout>
-#include <QStackedWidget>
 
 // setting up Qt version through Qt Visual Studio Tools
 // https://doc.qt.io/qtvstools/qtvstools-how-to-add-qt-versions.html
 // setting Qt version for project 
 // https://doc.qt.io/qtvstools/qtvstools-how-to-select-qt-versions-for-project.html
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
+// Main Window Class
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 { 
     // Set up the main layout
-    QVBoxLayout* mainLayout = new QVBoxLayout;
+    QGridLayout* mainLayout = new QGridLayout;
+	
+	// Instantiate Action Log
+	ActionLogging* actionLog = new ActionLogging;
 
     // Instantiate Navigation Bar at top of window
-    NavigationBar* navigationBar = new NavigationBar(this);
-    //navigationBar->setMaximumHeight(100);
-    mainLayout->addWidget(navigationBar);
+    NavigationBar* navigationBar = new NavigationBar(this, actionLog);
 
-    ControlBox* roboControl = new ControlBox(this);
-    //roboControl->setMaximumSize(roboControl->sizeHint());
-    mainLayout->addWidget(roboControl);
+	// Instantiate Robot Control Box
+    ControlBox* robotControl = new ControlBox(this, actionLog);
+    
+	// Instantiate Central Widget "holder"
+    QWidget* centralWidget = new QWidget(this);
+
+	// Instantiate spacer item for bottom of window
+	QSpacerItem* verticalSpacer = new QSpacerItem(0, 20, QSizePolicy::Minimum,
+		QSizePolicy::Expanding);
+
+	// At main layout, add navigation bar, robot control box, and spacer widgets
+    mainLayout->addWidget(navigationBar, 0, 0, 1, 6);
+    mainLayout->addWidget(robotControl, 1, 0, 1, 3);
+    mainLayout->addItem(verticalSpacer, 2, 0, 1, 6);
 
     // Set the main layout for the central widget
-    QWidget* centralWidget = new QWidget(this);
     centralWidget->setLayout(mainLayout);
 
-    mainLayout->setContentsMargins(0, 0, 0, 0);
-    //centralWidget->layout()->setContentsMargins(0, 0, 0, 0);
-
+	// Set the main widget in application
     setCentralWidget(centralWidget);
 
+	// Start application in maximized view
     showMaximized();
-    setWindowTitle(tr("WilburMain", "Wilbur"));
+
+	// Set the application window title
+    setWindowTitle("Wilbur");
 }
 
-//Destructor Wilbur - Main Windor
+//Destructor Wilbur - Main Window
 MainWindow::~MainWindow()
 {
-    
 }
-
-void MainWindow::updateTextEdit(const QString& string)
-{
-    QTextEdit* textEdit = findChild<QTextEdit*>();
-    textEdit->append(string);
-}
-
-

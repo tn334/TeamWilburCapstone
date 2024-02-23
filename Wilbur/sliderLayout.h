@@ -2,33 +2,32 @@
 #ifndef SLIDERLAYOUT_H
 #define SLIDERLAYOUT_H
 
-#include "stiffnessSlider.h"
-
-#include <qwidget.h>
-#include <QLabel>
+// Header Files
+#include "stiffnessSlider.h" // QWidget and QLabel included here
 #include <QGridLayout>
+#include <qstyle.h>
+#include <QResizeEvent>
 
 class SliderLayout : public QWidget
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
     explicit SliderLayout(QWidget* parent = nullptr);
     ~SliderLayout();
+    StiffnessSlider* stiffnessSlider;
 
-    void updateTitle(int value);
+    void resizeEvent(QResizeEvent* event);
 
-public slots:
+    //void updateTitle(int value);
 
 private:
-    
-    StiffnessSlider* stiffnessSlider;
     QLabel* labelOff;
     QLabel* labelLow;
     QLabel* labelMedium;
     QLabel* labelHigh;
     QLabel* title;
-    QGridLayout* sLayout;
-
+    QGridLayout* stiffSliderLayout;
 };
+
 #endif // SLIDERLAYOUT_H
