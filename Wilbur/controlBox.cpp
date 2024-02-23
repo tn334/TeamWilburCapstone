@@ -5,7 +5,7 @@
 #include "controlBox.h"
 
 // cite https://doc.qt.io/qt-6/qtwidgets-widgets-sliders-example.html
-ControlBox::ControlBox(QWidget* parent)
+ControlBox::ControlBox(QWidget* parent, ActionLogging* actionLog)
 {
     // Create a wrapper for controls
     QWidget* controller = new QWidget;
@@ -17,7 +17,7 @@ ControlBox::ControlBox(QWidget* parent)
     controlLabel->setAlignment(Qt::AlignCenter);
 
     //add instance of customDialog
-    customDialog = new CustomDialog(this);
+    customDialog = new CustomDialog(this, actionLog);
 
 	// Create bluetooth label and button
     QLabel* bluetoothLabel = new QLabel("Bluetooth Connection:", controller);

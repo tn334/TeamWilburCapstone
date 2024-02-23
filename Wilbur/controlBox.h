@@ -7,11 +7,11 @@
 
 // Local Headers
 #include "sliderLayout.h"
-#include "ductLayout.h" // ductButton.h, QLabel included in ductLayout.
 #include "button.h" // QToolButton included in button.h
 #include "customDialog.h" // QLabel, QMainWindow included in customDialog.h
 #include "demoSimulator.h" 
 #include "bluetoothButton.h"
+#include "actionLogging.h"
 #include <QWidget>
 #include <QSlider>
 #include <QGridLayout>
@@ -22,7 +22,7 @@ class ControlBox : public QMainWindow
 	Q_OBJECT
 
 public:
-	ControlBox(QWidget *parent = nullptr);
+	ControlBox(QWidget* parent = nullptr, ActionLogging* actionLog = nullptr);
 	~ControlBox();
 
 	//QSize sizeHint() const override;
@@ -38,7 +38,6 @@ private slots:
 private:
 	// objects
 	BluetoothButton* bluetooth;
-	DuctLayout* ductLayout;
 	Button* buttonOne;
 	Button* buttonTwo;
 	Button* buttonThree;

@@ -20,9 +20,11 @@ public:
 	// Gather all session texts
 	QStringList getAllText() const;
 
+	QString getActionText() const;
 private:
 	// List that holds all texts
 	QStringList textList;
+	QString objectText;
 };
 
 #endif // TEXTHANDLER_H
