@@ -13,7 +13,7 @@
 // https://doc.qt.io/qtvstools/qtvstools-how-to-select-qt-versions-for-project.html
 
 // Main Window Class
-MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
+MainWindow::MainWindow(QWidget *parent, int simulatorMode) : QMainWindow(parent)
 { 
     // Set up the main layout
     QGridLayout* mainLayout = new QGridLayout;
@@ -21,11 +21,14 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 	// Instantiate Action Log
 	ActionLogging* actionLog = new ActionLogging;
 
+    // Instantiate Input Director
+    InputDirector* inputDirector = new InputDirector(simulatorMode);
+
     // Instantiate Navigation Bar at top of window
     NavigationBar* navigationBar = new NavigationBar(this, actionLog);
 
 	// Instantiate Robot Control Box
-    ControlBox* robotControl = new ControlBox(this, actionLog);
+    ControlBox* robotControl = new ControlBox(this, actionLog, inputDirector);
     
 	// Instantiate Central Widget "holder"
     QWidget* centralWidget = new QWidget(this);
