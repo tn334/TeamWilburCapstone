@@ -123,6 +123,7 @@
     <ClCompile Include="customDialog.cpp" />
     <ClCompile Include="demoSimulator.cpp" />
     <ClCompile Include="ductButton.cpp" />
+    <ClCompile Include="inputDirector.cpp" />
     <ClCompile Include="ductLayout.cpp" />
     <ClCompile Include="sliderLayout.cpp" />
     <ClCompile Include="stiffnessSlider.cpp" />
@@ -148,6 +149,7 @@
     <ClInclude Include="demoSimulator.h" />
     <QtMoc Include="ductButton.h" />
     <QtMoc Include="sliderLayout.h" />
+    <ClInclude Include="inputDirector.h" />
     <QtMoc Include="ductLayout.h" />
     <ClInclude Include="textHandler.h" />
   </ItemGroup>
