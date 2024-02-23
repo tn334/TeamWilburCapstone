@@ -5,7 +5,7 @@
 #include "controlBox.h"
 
 // cite https://doc.qt.io/qt-6/qtwidgets-widgets-sliders-example.html
-ControlBox::ControlBox(QWidget* parent, ActionLogging* actionLog)
+ControlBox::ControlBox(QWidget* parent, ActionLogging* actionLog, InputDirector* inputDirector)
 {
     // Create a wrapper for controls
     QWidget* controller = new QWidget;
@@ -19,6 +19,9 @@ ControlBox::ControlBox(QWidget* parent, ActionLogging* actionLog)
     //add instance of customDialog
     customDialog = new CustomDialog(this, actionLog);
 
+    // create local variable to reference inputDirector
+    director = inputDirector;
+
 	// Create bluetooth label and button
     QLabel* bluetoothLabel = new QLabel("Bluetooth Connection:", controller);
     bluetoothLabel->setStyleSheet("font: bold 12px; ");
@@ -30,19 +33,16 @@ ControlBox::ControlBox(QWidget* parent, ActionLogging* actionLog)
     bluetoothLayout->addWidget(bluetooth, 0, 1, 1, 1);
 
     // Create and connect button one to allow changes
-    buttonOne = createButton("Closed", [this]() {handleButtonPressed(0);  });
+    buttonOne = createButton("Closed", [this]() {controlManipulated(VALVE1, buttonOne->getState());  });
     QLabel* buttonOneTitle = new QLabel("Duct One:", controller);
-    connect(buttonOne, &Button::clicked, customDialog, [this]() {controlManipulated("buttonOne", 0);  });
 
 	// Create and connect button two to allow changes
-    buttonTwo = createButton("Closed", [this]() {handleButtonPressed(1);  });
+    buttonTwo = createButton("Closed", [this]() {controlManipulated(VALVE2, buttonTwo->getState());  });
     QLabel* buttonTwoTitle = new QLabel("Duct Two:", controller);
-    connect(buttonTwo, &Button::clicked, customDialog, [this]() {controlManipulated("buttonTwo", 0);  });
 
 	// Create and connect button three to allow changes
-    buttonThree = createButton("Closed", [this]() {handleButtonPressed(2);  });
-    QLabel* buttonThreeTitle = new QLabel("Duct Three:", controller);
-    connect(buttonThree, &Button::clicked, customDialog, [this]() {controlManipulated("buttonThree", 0);  });  
+    buttonThree = createButton("Closed", [this]() {controlManipulated(VALVE3, buttonThree->getState());  });
+    QLabel* buttonThreeTitle = new QLabel("Duct Three:", controller); 
     
     // Grid box for buttons and labels
     QGridLayout* buttonLayout = new QGridLayout;
@@ -58,6 +58,7 @@ ControlBox::ControlBox(QWidget* parent, ActionLogging* actionLog)
     
     // Create a slider layout containing slider and its labels
     sliderLayout = new SliderLayout(this);
+    connect(sliderLayout->stiffnessSlider, &StiffnessSlider::sliderReleased, customDialog, [this]() {controlManipulated(PUMP, sliderLayout->stiffnessSlider->value()); });
 
     // Full ControlBox Layout
     QVBoxLayout* controlLayout = new QVBoxLayout;
@@ -122,60 +123,59 @@ Button* ControlBox::createButton(const QString& text, const PointerToMemberFunct
 //    return slider;
 //}
 
-void ControlBox::handleButtonPressed(int valveNumber)
-{
-    bool newState;
+//void ControlBox::handleButtonPressed(int valveNumber)
+//{
+    //bool newState;
 
     // Get current state of the pressed button
-    if (valveNumber == 0)
-    {
-        newState = buttonOne->getState();
-    }
-    else if (valveNumber == 1)
-    {
-        newState = buttonTwo->getState();
-    }
-    else
-    {
-        newState = buttonThree->getState();
-    }
+    //if (valveNumber == 0)
+    //{
+        //newState = buttonOne->getState();
+    //}
+    //else if (valveNumber == 1)
+    //{
+        //newState = buttonTwo->getState();
+    //}
+    //else
+    //{
+        //newState = buttonThree->getState();
+    //}
 
      // Set to true for open, false for closed
-    demoSimulator.setValve(valveNumber , newState);
-}
+    //demoSimulator.setValve(valveNumber , newState);
+//}
 
 // Control manipulation changes
-void ControlBox::controlManipulated(std::string objectName, int newValue)
+void ControlBox::controlManipulated(buttonType button, int newValue)
 {
 	// Initialize Variables
-    bool newState;
-    
-	// Check if a button as pressed
-    if (objectName == "buttonOne" || objectName == "buttonTwo" || objectName == "buttonThree")
+    std::string objectName = "N/A";
+    bool actionSuccess = false;
+
+
+    switch (button)
     {
-        // Get the current state of the button
-        if (objectName == "buttonOne")
-        {
-            newState = buttonOne->getState();
-        }
-        else if (objectName == "buttonTwo")
-        {
-            newState = buttonTwo->getState();
-        }
-        else
-        {
-            newState = buttonThree->getState();
-        }
+        case PUMP:
+            objectName = "Pump Slider";
+            break;
+        case VALVE1:
+            objectName = "Button One";
+            break;
+        case VALVE2:
+            objectName = "Button Two";
+            break; 
+        case VALVE3:
+            objectName = "Button Three";
+            break;
+        case CONNECT:
+            objectName = "Bluetooth Button";
+            break;
     }
 
-    else
-    {
-        std::string objectname = "PumpSlider"; // provide an appropriate name
-        newState = true; // you need to determine the current state based on your logic
-    }
+    actionSuccess = director->handleInput(button, newValue);
 
 	// Change dialog in dialog box
-    customDialog->controlManipulated(objectName, newState, newValue);
+    customDialog->controlManipulated(objectName, newValue);
 
     // Set the main window as the parent of the dialog
     customDialog->setParent(this);

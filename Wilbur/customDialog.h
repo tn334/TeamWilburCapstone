@@ -24,7 +24,7 @@ public:
 	CustomDialog(QWidget* parent = nullptr, ActionLogging* actionLog = nullptr);
 
 public slots:
-	void controlManipulated(std::string objectName, bool currentState, int valueChanged);
+	void controlManipulated(std::string objectName, int newValue);
 	//void controlManipulated();
 
 private:

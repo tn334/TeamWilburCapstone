@@ -40,10 +40,10 @@ void CustomDialog::initUI()
 }
 
 // Handle text editor text manipulation
-void CustomDialog::controlManipulated(std::string objectName, bool currentState, int valueChanged) 
+void CustomDialog::controlManipulated(std::string objectName, int newValue) 
 {
 	// Using the text handler, control text manipulation
-    textHandler.controlManipulated(objectName, currentState, valueChanged);
+    textHandler.controlManipulated(objectName, newValue);
 
 	// Optionally update the text in the QTextEdit immediately
     textEdit->setPlainText(textHandler.getAllText().join("\n"));
