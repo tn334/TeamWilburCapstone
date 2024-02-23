@@ -9,10 +9,8 @@ TextHandler::TextHandler()
     // Initialize if needed
 }
 
-void TextHandler::controlManipulated(std::string objectName, bool currentState, int valueChanged) {
-    // Object text variable
-    QString objectText;
-
+void TextHandler::controlManipulated(std::string objectName, bool currentState, int valueChanged) 
+{
     // check for button
     if (objectName == "buttonOne" || objectName == "buttonTwo" || objectName == "buttonThree") 
     {
@@ -34,4 +32,10 @@ void TextHandler::controlManipulated(std::string objectName, bool currentState, 
 QStringList TextHandler::getAllText() const {
 	// Return full list containing all strings regarding changes
     return textList;
+}
+
+QString TextHandler::getActionText() const
+{
+	// Return the text of the current object that was interacted with
+	return objectText;
 }

@@ -5,9 +5,12 @@
 #include "customDialog.h"
 
 // Custom Dialog Box Constructor
-CustomDialog::CustomDialog(QWidget* parent)
+CustomDialog::CustomDialog(QWidget* parent, ActionLogging* actionLog)
     : QDialog(parent, Qt::Window)
 {
+	// Set logPtr to action log
+	logPtr = actionLog;
+
 	// Initialize Dialog UI
     initUI();
 }
@@ -17,7 +20,7 @@ void CustomDialog::initUI()
 {
 	// Instantiate dialog layout
     QVBoxLayout* dialogLayout = new QVBoxLayout(this);
-
+	
 	// Create title label and set settings
     QLabel* titleLabel = new QLabel("Simulator:", this);
     titleLabel->setAlignment(Qt::AlignCenter); // Adjust alignment as needed
@@ -41,9 +44,12 @@ void CustomDialog::controlManipulated(std::string objectName, bool currentState,
 {
 	// Using the text handler, control text manipulation
     textHandler.controlManipulated(objectName, currentState, valueChanged);
-    
+
 	// Optionally update the text in the QTextEdit immediately
     textEdit->setPlainText(textHandler.getAllText().join("\n"));
+
+	// Add the action to the log of actions
+	logPtr->addActionToLog(textHandler.getActionText());
 
     // Show the dialog
     this->show();

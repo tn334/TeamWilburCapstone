@@ -7,6 +7,7 @@
 #define WILBUR_H
 
 // Header files
+#include "actionLogging.h"
 #include <QWidget>
 #include <QMainWindow>
 #include <QPlainTextEdit>

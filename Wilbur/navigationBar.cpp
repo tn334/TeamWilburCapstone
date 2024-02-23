@@ -11,7 +11,7 @@
 // https://doc.qt.io/qtvstools/qtvstools-how-to-select-qt-versions-for-project.html
 
 // NavigationBar Constructor
-NavigationBar::NavigationBar(QWidget* parent)
+NavigationBar::NavigationBar(QWidget* parent, ActionLogging* actionLog)
 {
     // Create a wrapper a holder for the menubar
     //cite: https://code.qt.io/cgit/qt/qtbase.git/tree/examples/widgets/mainwindows/menus?h=6.6
@@ -21,6 +21,9 @@ NavigationBar::NavigationBar(QWidget* parent)
 
 	// Instantiate layout
     QGridLayout* menuLayout = new QGridLayout;
+
+	// Set logPtr to action log
+	logPtr = actionLog;
 
 	// Set menu bar as main widget
     setCentralWidget(menuBar);
@@ -74,6 +77,7 @@ void NavigationBar::newFile()
 void NavigationBar::exportLog()
 {
     infoLabel->setText(tr("Invoked <b>File|Export Logn</b>"));
+	logPtr->exportLog();
 }
 
 void NavigationBar::save()
@@ -112,7 +116,7 @@ void NavigationBar::createActions()
     newAct->setShortcuts(QKeySequence::New);
     newAct->setStatusTip(tr("Create a new file"));
     connect(newAct, &QAction::triggered, this, &NavigationBar::newFile);
-
+	
     //export existing file
     ExportLog = new QAction(tr("&Export Log..."), this);
     ExportLog->setShortcuts(QKeySequence::SaveAs);

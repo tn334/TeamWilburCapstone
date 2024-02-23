@@ -17,12 +17,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 { 
     // Set up the main layout
     QGridLayout* mainLayout = new QGridLayout;
+	
+	// Instantiate Action Log
+	ActionLogging* actionLog = new ActionLogging;
 
     // Instantiate Navigation Bar at top of window
-    NavigationBar* navigationBar = new NavigationBar(this);
+    NavigationBar* navigationBar = new NavigationBar(this, actionLog);
 
 	// Instantiate Robot Control Box
-    ControlBox* robotControl = new ControlBox(this);
+    ControlBox* robotControl = new ControlBox(this, actionLog);
     
 	// Instantiate Central Widget "holder"
     QWidget* centralWidget = new QWidget(this);
