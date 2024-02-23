@@ -20,6 +20,7 @@ public:
 	// Gather all session texts
 	QStringList getAllText() const;
 
+	// Get the text of the most recent action
 	QString getActionText() const;
 private:
 	// List that holds all texts
