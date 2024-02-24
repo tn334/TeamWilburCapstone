@@ -9,20 +9,37 @@ TextHandler::TextHandler()
     // Initialize if needed
 }
 
-void TextHandler::controlManipulated(std::string objectName, bool currentState, int valueChanged) 
+void TextHandler::controlManipulated(std::string objectName, int newValue) 
 {
     // check for button
-    if (objectName == "buttonOne" || objectName == "buttonTwo" || objectName == "buttonThree") 
+    if (objectName == "Button One" || objectName == "Button Two" || objectName == "Button Three") 
     {
 		// Create button change string that will be shown in text window
-        objectText = QString("%1 is changed to %2").arg(QString::fromStdString(objectName)).arg(currentState ? "Open" : "Closed");
+        objectText = QString("%1 changed to %2").arg(QString::fromStdString(objectName)).arg(newValue ? "Open" : "Closed");
     }
 
 	// Check for slider
     else 
     {
 		// Create slider change string that will be shown in text window
-        objectText = QString("Prototype Stiffness is at %1%").arg(valueChanged);
+        std::string stiffnessString = "N/A";
+        switch (newValue)
+        {
+        case 0:
+            stiffnessString = "Off";
+            break;
+        case 1:
+            stiffnessString = "Low";
+            break;
+        case 2:
+            stiffnessString = "Med";
+            break;
+        case 3:
+            stiffnessString = "High";
+            break;
+        }
+
+        objectText = QString("Pump Stiffness set to %1").arg(QString::fromStdString(stiffnessString));
     }
 	
 	// Show text in window text history

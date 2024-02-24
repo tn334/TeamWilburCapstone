@@ -34,12 +34,11 @@ bool InputDirector::handleInput(buttonType inputType, int newValue)
 
 				// return success until simulator has a simulated bluetooth connection
 				hardwareResponse = true;
-
 				break;
 
 			default:
-				// default to a Valve input to catch valves 1-3
-				hardwareResponse = simObject.setValve(inputType, newValue);
+				// default to valve input, modify enum to translate for simulator values
+				hardwareResponse = simObject.setValve(static_cast<int>(inputType) - 1, newValue);
 				break;
 		}
 	}

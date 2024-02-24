@@ -15,7 +15,7 @@ public:
 	TextHandler();
 
 	// Change in front end
-	void controlManipulated(std::string objectName, bool currentState, int valueChanged);
+	void controlManipulated(std::string objectName, int newValue);
 
 	// Gather all session texts
 	QStringList getAllText() const;

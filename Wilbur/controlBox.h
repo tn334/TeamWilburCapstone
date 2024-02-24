@@ -12,6 +12,7 @@
 #include "demoSimulator.h" 
 #include "bluetoothButton.h"
 #include "actionLogging.h"
+#include "inputDirector.h"
 #include <QWidget>
 #include <QSlider>
 #include <QGridLayout>
@@ -22,14 +23,13 @@ class ControlBox : public QMainWindow
 	Q_OBJECT
 
 public:
-	ControlBox(QWidget* parent = nullptr, ActionLogging* actionLog = nullptr);
+	ControlBox(QWidget* parent = nullptr, ActionLogging* actionLog = nullptr, InputDirector* inputDirector = nullptr);
 	~ControlBox();
 
 	//QSize sizeHint() const override;
 
 public slots:
-	void controlManipulated(std::string objectName, int newValue);
-	void handleButtonPressed(int valveNumber);
+	void controlManipulated(buttonType button, int newValue);
 	/*void handleSliderValueChanged(int value);*/
 
 private slots:
@@ -46,6 +46,7 @@ private:
 
 	// instances
 	DemoSimulator demoSimulator;
+	InputDirector* director;
 	CustomDialog* customDialog;
 	template<typename PointerToMemberFunction>
 	Button* createButton(const QString& text, const PointerToMemberFunction& member);

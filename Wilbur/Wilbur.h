@@ -24,13 +24,9 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(QWidget *parent = nullptr, int simulatorMode = 1);
     ~MainWindow();
 
-    //void printToConsole(const QString& message);
-
-    //private:
-    //    QPlainTextEdit* consoleOutput;
 };
 
 #endif // WILBUR_H
