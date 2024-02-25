@@ -4,13 +4,15 @@
 // BluetoothButton Constructor
 BluetoothButton::BluetoothButton(QWidget* parent)
 	: CustomButton("Click to establish bluetooth connection to prototype",
-		"Disconnected", QColor(136, 204, 238), parent)
+		"Disconnected", QColor(136, 204, 238), parent), isConnected(false) //initialize button to disconnected
 {
 	// initialize connection status to false
-	isConnected = false;
+	//isConnected = false;
 
 	// connect button to event handler(clicked) and function(handleButtonClicked)
-	connect(this, &BluetoothButton::clicked, this, &BluetoothButton::handleButtonClicked); 
+	connect(this, &BluetoothButton::clicked, this, [this]() {
+		handleButtonClicked(CONNECT, this->getState());
+		});
 
 	// set a fixed size for the button
 	setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -26,6 +28,8 @@ BluetoothButton::BluetoothButton(QWidget* parent)
 
 
 //Function implementations
+//bool BluetoothButton::getState() const { return isConnected; }
+//void BluetoothButton::setState(bool newState) { isConnected = newState; }
 QSize BluetoothButton::sizeHint() const
 {
 	// Return a QSize with the fixed width and height
@@ -33,7 +37,7 @@ QSize BluetoothButton::sizeHint() const
 }
 
 // Handler of button clicks
-void BluetoothButton::handleButtonClicked()
+void BluetoothButton::handleButtonClicked(buttonType button, int newValue)
 {
 	// Toggle the connection status
 	isConnected = !isConnected;
@@ -62,6 +66,7 @@ void BluetoothButton::handleButtonClicked()
 			"border-radius: 4px;"
 			"font: bold 12px; ");
 	}
-		
+	
+	emit bluetoothButtonClicked(button, newValue);
 	//bluetooth control backend?
 }

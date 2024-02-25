@@ -6,34 +6,35 @@
 #define CONTROLBOX_H
 
 // Local Headers
-#include "sliderLayout.h"
 #include "button.h" // QToolButton included in button.h
+#include "bluetoothButton.h"
+#include "sliderLayout.h" // QSlider is included in file
+#include "ductLayout.h"
 #include "customDialog.h" // QLabel, QMainWindow included in customDialog.h
 #include "demoSimulator.h" 
-#include "bluetoothButton.h"
 #include "actionLogging.h"
 #include "inputDirector.h"
+
 #include <QWidget>
 #include <QSlider>
 #include <QGridLayout>
 #include <QGroupBox>
+
+//forward declaration of buttonType enum
+enum buttonType;
 
 class ControlBox : public QMainWindow
 {
 	Q_OBJECT
 
 public:
+	// constructor
 	ControlBox(QWidget* parent = nullptr, ActionLogging* actionLog = nullptr, InputDirector* inputDirector = nullptr);
+	// destructor
 	~ControlBox();
 
-	//QSize sizeHint() const override;
-
-public slots:
-	void controlManipulated(buttonType button, int newValue);
-	/*void handleSliderValueChanged(int value);*/
-
-private slots:
-	//void buttonClicked();
+	// define executeControl
+	void executeControl(buttonType button, int newValue);
 
 private:
 	// objects
@@ -42,7 +43,7 @@ private:
 	Button* buttonTwo;
 	Button* buttonThree;
 	SliderLayout* sliderLayout;
-	//StiffnessSlider* stiffnessSlider;
+	DuctLayout* ductLayout;
 
 	// instances
 	DemoSimulator demoSimulator;
@@ -50,7 +51,6 @@ private:
 	CustomDialog* customDialog;
 	template<typename PointerToMemberFunction>
 	Button* createButton(const QString& text, const PointerToMemberFunction& member);
-	/*StiffnessSlider* createSlider(const QString& title, const QString& objectName);*/
 
 	// controller label
 	QLabel* controlLabel;

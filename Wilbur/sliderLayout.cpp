@@ -51,12 +51,13 @@ SliderLayout::SliderLayout(QWidget* parent)
 // Destructor
 SliderLayout::~SliderLayout()
 {
-	// Delete instantiated objects
+	// Delete instantiated labels
     delete title;
     delete labelOff;
     delete labelLow;
     delete labelMedium;
     delete labelHigh;
+    // delete slider
     delete stiffSliderLayout;
 }
 
@@ -76,20 +77,3 @@ void SliderLayout::resizeEvent(QResizeEvent* event) {
     labelMedium->move(xMedium, yOff + title->height());
     labelHigh->move(xHigh, yOff + title->height());
 }
-
-//void SliderLayout::updateTitle(int value)
-//{
-//    //TODO add call to update value of slider (tie together)
-//    if (value == 0) {
-//        title->setText("Nipple Stiffness Control: Off");
-//    }
-//    else if (value <= 33) {
-//        title->setText("Nipple Stiffness Control: Low");
-//    }
-//    else if (value <= 66) {
-//        title->setText("Nipple Stiffness Control: Medium");
-//    }
-//    else {
-//        title->setText("Nipple Stiffness Control: High");
-//    }
-//}

@@ -3,9 +3,6 @@
 
 // Local header files
 #include "Wilbur.h"
-#include "controlBox.h"
-#include "navigationBar.h" //Nav Bar at Top of Window
-#include "customDialog.h" // Simulation Window
 
 // setting up Qt version through Qt Visual Studio Tools
 // https://doc.qt.io/qtvstools/qtvstools-how-to-add-qt-versions.html
@@ -13,13 +10,13 @@
 // https://doc.qt.io/qtvstools/qtvstools-how-to-select-qt-versions-for-project.html
 
 // Main Window Class
-MainWindow::MainWindow(QWidget *parent, int simulatorMode) : QMainWindow(parent)
-{ 
+MainWindow::MainWindow(QWidget* parent, int simulatorMode) : QMainWindow(parent)
+{
     // Set up the main layout
     QGridLayout* mainLayout = new QGridLayout;
-	
-	// Instantiate Action Log
-	ActionLogging* actionLog = new ActionLogging;
+
+    // Instantiate Action Log
+    ActionLogging* actionLog = new ActionLogging;
 
     // Instantiate Input Director
     InputDirector* inputDirector = new InputDirector(simulatorMode);
@@ -27,17 +24,17 @@ MainWindow::MainWindow(QWidget *parent, int simulatorMode) : QMainWindow(parent)
     // Instantiate Navigation Bar at top of window
     NavigationBar* navigationBar = new NavigationBar(this, actionLog);
 
-	// Instantiate Robot Control Box
+    // Instantiate Robot Control Box
     ControlBox* robotControl = new ControlBox(this, actionLog, inputDirector);
-    
-	// Instantiate Central Widget "holder"
+
+    // Instantiate Central Widget "holder"
     QWidget* centralWidget = new QWidget(this);
 
-	// Instantiate spacer item for bottom of window
-	QSpacerItem* verticalSpacer = new QSpacerItem(0, 20, QSizePolicy::Minimum,
-		QSizePolicy::Expanding);
+    // Instantiate spacer item for bottom of window
+    QSpacerItem* verticalSpacer = new QSpacerItem(0, 20, QSizePolicy::Minimum,
+        QSizePolicy::Expanding);
 
-	// At main layout, add navigation bar, robot control box, and spacer widgets
+    // At main layout, add navigation bar, robot control box, and spacer widgets
     mainLayout->addWidget(navigationBar, 0, 0, 1, 6);
     mainLayout->addWidget(robotControl, 1, 0, 1, 3);
     mainLayout->addItem(verticalSpacer, 2, 0, 1, 6);
@@ -45,15 +42,15 @@ MainWindow::MainWindow(QWidget *parent, int simulatorMode) : QMainWindow(parent)
     // Set the main layout for the central widget
     centralWidget->setLayout(mainLayout);
 
-	// Set the main widget in application
+    // Set the main widget in application
     setCentralWidget(centralWidget);
 
-	// Start application in maximized view
+    // Start application in maximized view
     showMaximized();
 
-	// Set the application window title
+    // Set the application window title
     setWindowTitle("Wilbur");
-}
+};
 
 //Destructor Wilbur - Main Window
 MainWindow::~MainWindow()
