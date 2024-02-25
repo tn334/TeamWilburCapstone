@@ -13,12 +13,6 @@ CustomButton::CustomButton(const QString& tooltip,
 	setText(m_text);
 	setToolTip(m_tooltip);
 	setStyleSheet(QString("background-color:%1").arg(m_backgroundColor.name()));
-	/*setStyleSheet("color: white;"
-		"background-color: #88CCEE;"
-		"border-width: 2px;"
-		"border-style: outset;"
-		"border-radius: 4px;"
-		"font: bold 12px; ");*/
 }
 
 // Function that returns width and heigth

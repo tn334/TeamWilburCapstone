@@ -26,127 +26,53 @@ ControlBox::ControlBox(QWidget* parent, ActionLogging* actionLog, InputDirector*
     QLabel* bluetoothLabel = new QLabel("Bluetooth Connection:", controller);
     bluetoothLabel->setStyleSheet("font: bold 12px; ");
     bluetooth = new BluetoothButton(this);
+    connect(bluetooth, &BluetoothButton::handleButtonClicked, this, &ControlBox::executeControl);
 
     //Bluetooth layout
 	QGridLayout* bluetoothLayout = new QGridLayout;
     bluetoothLayout->addWidget(bluetoothLabel, 0, 0, 1, 1, Qt::AlignRight);
     bluetoothLayout->addWidget(bluetooth, 0, 1, 1, 1);
 
-    // Create and connect button one to allow changes
-    buttonOne = createButton("Closed", [this]() {controlManipulated(VALVE1, buttonOne->getState());  });
-    QLabel* buttonOneTitle = new QLabel("Duct One:", controller);
-
-	// Create and connect button two to allow changes
-    buttonTwo = createButton("Closed", [this]() {controlManipulated(VALVE2, buttonTwo->getState());  });
-    QLabel* buttonTwoTitle = new QLabel("Duct Two:", controller);
-
-	// Create and connect button three to allow changes
-    buttonThree = createButton("Closed", [this]() {controlManipulated(VALVE3, buttonThree->getState());  });
-    QLabel* buttonThreeTitle = new QLabel("Duct Three:", controller); 
-    
-    // Grid box for buttons and labels
-    QGridLayout* buttonLayout = new QGridLayout;
-
-    // *Not implemented correctly*
-	// Add button labels and buttons themselves to layout
-    buttonLayout->addWidget(buttonOneTitle, 0, 0, 1, 1, Qt::AlignLeft);
-    buttonLayout->addWidget(buttonOne, 0, 1, 1, 1, Qt::AlignLeft);
-    buttonLayout->addWidget(buttonTwoTitle, 0, 2, 1, 1, Qt::AlignLeft);
-    buttonLayout->addWidget(buttonTwo, 0, 3, 1, 1, Qt::AlignLeft);
-    buttonLayout->addWidget(buttonThreeTitle, 0, 4, 1, 1, Qt::AlignRight);
-    buttonLayout->addWidget(buttonThree, 0, 5, 1, 1, Qt::AlignRight);
+    // set ductLayout
+    ductLayout = new DuctLayout(this);
+    // Connect the signal from DuctLayout to executeControl slot
+    connect(ductLayout, &DuctLayout::ductButtonClicked, this, &ControlBox::executeControl);
     
     // Create a slider layout containing slider and its labels
     sliderLayout = new SliderLayout(this);
-    connect(sliderLayout->stiffnessSlider, &StiffnessSlider::sliderReleased, customDialog, [this]() {controlManipulated(PUMP, sliderLayout->stiffnessSlider->value()); });
+    connect(sliderLayout->stiffnessSlider, &StiffnessSlider::sliderReleased, customDialog, [this]() {executeControl(PUMP, sliderLayout->stiffnessSlider->value()); });
 
     // Full ControlBox Layout
     QVBoxLayout* controlLayout = new QVBoxLayout;
     controlLayout->addLayout(bluetoothLayout);
     controlLayout->addSpacing(10);
     controlLayout->addWidget(controlLabel);
-    controlLayout->addLayout(buttonLayout);
+    controlLayout->addWidget(ductLayout);
     controlLayout->addWidget(sliderLayout);
+    
     controller->setLayout(controlLayout);
 
     //Set style for ControlBox label
     controlLabel->setStyleSheet("QWidget { border: 1px solid black; }");
-    //controlLabel->setAlignment(Qt::AlignTop | Qt::AlignLeft);
-    //controller->resize(250, 250);
 };
 
-//QSize ControlBox::sizeHint() const
-//{
-    // Get the sizeHint of the bluetoothLayout
-    //QSize bluetoothSize = bluetoothLayout->sizeHint();
-
-    // Get the sizeHint of the controlLabel
-//    QSize controlSize = controlLabel->sizeHint();
-
-    // Get the sizeHint of the buttonLayout
-    //QSize buttonSize = buttonLayout->sizeHint();
-
-    // Get the sizeHint of the sliderLayout
-//    QSize sliderSize = sliderLayout->sizeHint();
-
-    // Calculate the total width and height
-//    int width = qMax(bluetoothSize.width(), controlSize.width());
-//    width = qMax(width, buttonSize.width());
-//    width = qMax(width, sliderSize.width());
-
-//    int height = bluetoothSize.height() + controlSize.height() + buttonSize.height() + sliderSize.height();
-
-    // Return the QSize object
-    //return QSize(width, height);
-//}
-
 // Create button derived from control box
+// Name: createButton
+// Description: create a new button, initialize with provided text, establish 
+//  connection between the button's clicked signal and a specified member 
+//  function
+// Dependencies: connect()
 template<typename PointerToMemberFunction>
 Button* ControlBox::createButton(const QString& text, const PointerToMemberFunction& member)
 {
-	// Instantiate new button
+    // Instantiate new button
     Button* button = new Button(text);
     connect(button, &Button::clicked, this, member);
     return button;
 }
 
-//StiffnessSlider* ControlBox::createSlider(const QString& title, const QString& objectName) {
-//    StiffnessSlider* slider = new StiffnessSlider(this);
-//
-//    // Disconnect any existing connections for the slider
-//    disconnect(slider, &StiffnessSlider::sliderReleased, this, nullptr);
-//
-//    connect(slider, &StiffnessSlider::sliderReleased, this, [this, objectName, slider]() {
-//        controlManipulated(objectName.toStdString(), slider->value());
-//        });
-//
-//    return slider;
-//}
-
-//void ControlBox::handleButtonPressed(int valveNumber)
-//{
-    //bool newState;
-
-    // Get current state of the pressed button
-    //if (valveNumber == 0)
-    //{
-        //newState = buttonOne->getState();
-    //}
-    //else if (valveNumber == 1)
-    //{
-        //newState = buttonTwo->getState();
-    //}
-    //else
-    //{
-        //newState = buttonThree->getState();
-    //}
-
-     // Set to true for open, false for closed
-    //demoSimulator.setValve(valveNumber , newState);
-//}
-
 // Control manipulation changes
-void ControlBox::controlManipulated(buttonType button, int newValue)
+void ControlBox::executeControl(buttonType button, int newValue)
 {
 	// Initialize Variables
     std::string objectName = "N/A";
@@ -185,29 +111,15 @@ void ControlBox::controlManipulated(buttonType button, int newValue)
     customDialog->setAttribute(Qt::WA_ShowWithoutActivating);
 }
 
-////NOT CURRENTLY IMPLEMENTED IN SLIDER
-//void ControlBox::handleSliderValueChanged(int value) {
-//    // Handle the slider value change here
-//    // Trigger setPump function in demoSimulator
-//
-//    pumpValue sliderValue = (pumpValue)value;
-//
-//    bool success = demoSimulator.setPump(sliderValue); // Assuming setPump is designed to take a float value
-//    if (success) {
-//        // Call controlManipulation with the correct arguments
-//        // You need to define the correct arguments based on your requirements
-//        // For example, assuming controlManipulation takes a string, a boolean, and an int
-//        std::string objectName = "PumpSlider"; // Provide an appropriate name
-//        bool currentState = true; // You need to determine the current state based on your logic
-//        int valueChanged = value; // You might need to adjust this based on your requirements
-//
-//        // Call controlManipulation with the updated values
-//        
-//    }
-//}
-
 ControlBox::~ControlBox()
 {
+    // delete objects
+    delete bluetooth;
+    delete sliderLayout;
+    delete controlLabel;
+
+    // delete instances
+    delete director;
     delete customDialog;
 }
 

@@ -4,17 +4,16 @@
 // Duct Button Constructor
 DuctButton::DuctButton(QWidget* parent)
 	: CustomButton("Click to change state of the duct",
-		"Closed", QColor(136, 34, 85), parent)
+		"Closed", QColor(136, 34, 85), parent), isOpen(false) // initialize state to false
 {
 	//initialize isOpen to default of false
-	isOpen = false;
+	//isOpen = false;
 
 	//connect button to event handler(clicked)
 	connect(this, &DuctButton::clicked, this, & DuctButton::handleButtonClicked);
 
 	// set resizing policies for horizontal and vertical sizes
 	setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-	//setFixedSize(80, 30);
 
 	//style sheet information https://doc.qt.io/qt-6/stylesheet-examples.html
 	// Set style sheet for created button
@@ -24,7 +23,6 @@ DuctButton::DuctButton(QWidget* parent)
 		"border-style: outset;"
 		"border-radius: 4px;"
 		"font: bold 12px; ");
-
 }
 
 //Function implementations
@@ -42,9 +40,9 @@ void DuctButton::handleButtonClicked()
 	if (isOpen)
 	{
 		// Update text and style sheet when connection is made
-		setText("Connected");
+		setText("Open");
 		setStyleSheet("color: white;"
-			"background-color: #332288;"
+			"background-color: #117733;"
 			"border-width: 2px;"
 			"border-style: outset;"
 			"border-radius: 4px;"

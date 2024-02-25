@@ -8,6 +8,9 @@
 
 // Header files
 #include "actionLogging.h"
+#include "controlBox.h"
+#include "navigationBar.h" //Nav Bar at Top of Window
+#include "customDialog.h" // Simulation Window
 #include <QWidget>
 #include <QMainWindow>
 #include <QPlainTextEdit>
@@ -26,7 +29,6 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr, int simulatorMode = 1);
     ~MainWindow();
-
 };
 
 #endif // WILBUR_H
