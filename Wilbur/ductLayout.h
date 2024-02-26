@@ -5,10 +5,11 @@
 
 //Header Files
 #include "ductButton.h"
-#include "inputDirector.h" // includes enum def
+#include "inputDirector.h" // includes enum def of buttonType
 
 #include <QLabel>
 #include <QWidget>
+#include <QLineEdit>
 
 //Forward Declaration of buttonType
 enum buttonType;
@@ -34,14 +35,29 @@ private:
 	QLabel* buttonLabelOne;
 	QLabel* buttonLabelTwo;
 	QLabel* buttonLabelThree;
+	QLabel* flowRateUnitOne;
+	QLabel* flowRateUnitTwo;
+	QLabel* flowRateUnitThree;
 
 	// create duct button variables
 	DuctButton* buttonOne;
 	DuctButton* buttonTwo;
 	DuctButton* buttonThree;
 
+	// create value input labels
+	QLineEdit* viscValueOne;
+	QLineEdit* viscValueTwo;
+	QLineEdit* viscValueThree;
+
 	// create layout variable
-	QGridLayout* buttonLayout;
+	QHBoxLayout* layoutButtonOne;
+	QHBoxLayout* layoutButtonTwo;
+	QHBoxLayout* layoutButtonThree;
+	QVBoxLayout* verticalDuctLayout;
+	QHBoxLayout* buttonLayout;
+
+	// functions
+	QHBoxLayout* createButtonLayout(const QString& labelText, DuctButton** button, QLineEdit** lineEdit, QLabel** unitLabel, buttonType valveType);
 
 };
 
