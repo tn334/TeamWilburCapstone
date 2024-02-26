@@ -14,36 +14,40 @@ SliderLayout::SliderLayout(QWidget* parent)
     // set parent of title and its settings
     title->setParent(parent);
     title->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
-    title->setStyleSheet("font: bold 12px;");
+    title->setStyleSheet("font: bold 14px;");
 
     // Setting OFF Label settings
     labelOff = new QLabel("Off");
     labelOff->setParent(parent);
-    labelOff->setStyleSheet("font: bold 12px;");
+    labelOff->setStyleSheet("font: bold 14px;");
 
 	// Setting LOW Label settings
     labelLow = new QLabel("Low");
     labelLow->setParent(parent);
-    labelLow->setStyleSheet("font: bold 12px;");
+    labelLow->setStyleSheet("font: bold 14px;");
 
 	// Setting MEDIUM Label settings
     labelMedium = new QLabel("Medium");
     labelMedium->setParent(parent);
-    labelMedium->setStyleSheet("font: bold 12px;");
+    labelMedium->setStyleSheet("font: bold 14px;");
 
 	// Setting HIGH Label settings
     labelHigh = new QLabel("High");
     labelHigh->setParent(parent);
-    labelHigh->setStyleSheet("font: bold 12px;");
+    labelHigh->setStyleSheet("font: bold 14px;");
 
     // initialize grid layout
     stiffSliderLayout = new QGridLayout(this);
-    // Add title, labels, and slider to slider layout
+    // Add title
     stiffSliderLayout->addWidget(title, 0, 0, 1, 1, Qt::AlignLeft);
+    // Add spacing
+    stiffSliderLayout->addItem(new QSpacerItem(20, 50, QSizePolicy::Expanding, QSizePolicy::Preferred), 0, 1); // Adjust the size as needed
+    // Add Labels
     stiffSliderLayout->addWidget(labelOff, 1, 0, 1, 1);
     stiffSliderLayout->addWidget(labelLow, 1, 1, 1, 1, Qt::AlignLeft);
     stiffSliderLayout->addWidget(labelMedium, 1, 3, 1, 1, Qt::AlignRight);
     stiffSliderLayout->addWidget(labelHigh, 1, 5, 1, 1, Qt::AlignRight);
+    // Add Slider
     stiffSliderLayout->addWidget(stiffnessSlider, 2, 0, 1, 6);
 
 }

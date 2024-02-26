@@ -24,7 +24,7 @@ ControlBox::ControlBox(QWidget* parent, ActionLogging* actionLog, InputDirector*
 
 	// Create bluetooth label and button
     QLabel* bluetoothLabel = new QLabel("Bluetooth Connection:", controller);
-    bluetoothLabel->setStyleSheet("font: bold 12px; ");
+    bluetoothLabel->setStyleSheet("font: bold 14px; ");
     bluetooth = new BluetoothButton(this);
     connect(bluetooth, &BluetoothButton::handleButtonClicked, this, &ControlBox::executeControl);
 

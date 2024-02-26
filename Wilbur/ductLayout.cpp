@@ -3,53 +3,68 @@
 
 DuctLayout::DuctLayout(QWidget* parent)
 {
-	// declare label names
-	buttonLabelOne = new QLabel("Duct One:");
-	buttonLabelTwo = new QLabel("Duct Two:");
-	buttonLabelThree = new QLabel("Duct Three:");
+	// Create layout for button 1
+	layoutButtonOne = createButtonLayout("Duct One:", &buttonOne, &viscValueOne, &flowRateUnitOne, VALVE1);
 
-	// instantiate buttons for ducts 1-3
-	buttonOne = new DuctButton();
-	buttonTwo = new DuctButton();
-	buttonThree = new DuctButton();
+	// Create layout for button 2
+	layoutButtonTwo = createButtonLayout("Duct Two:", &buttonTwo, &viscValueTwo, &flowRateUnitTwo, VALVE2);
 
-	// set button event handlers
-	connect(buttonOne, &DuctButton::clicked, this, [this]() {
-		callExecuteControl(VALVE1, buttonOne->getState());
-	});
-	connect(buttonTwo, &DuctButton::clicked, this, [this]() {
-		callExecuteControl(VALVE2, buttonTwo->getState());
-	});
-	connect(buttonThree, &DuctButton::clicked, this, [this]() {
-		callExecuteControl(VALVE3, buttonThree->getState());
-	});
+	// Create layout for button 3
+	layoutButtonThree = createButtonLayout("Duct Three:", &buttonThree, &viscValueThree, &flowRateUnitThree, VALVE3);
 
-	// declare grid layout
-	buttonLayout = new QGridLayout;
-	buttonLayout->addWidget(buttonLabelOne, 0, 0, 1, 1, Qt::AlignLeft);
-	buttonLayout->addWidget(buttonOne, 0, 1, 1, 1, Qt::AlignLeft);
-	buttonLayout->addWidget(buttonLabelTwo, 0, 2, 1, 1, Qt::AlignLeft);
-	buttonLayout->addWidget(buttonTwo, 0, 3, 1, 1, Qt::AlignLeft);
-	buttonLayout->addWidget(buttonLabelThree, 0, 4, 1, 1, Qt::AlignRight);
-	buttonLayout->addWidget(buttonThree, 0, 5, 1, 1, Qt::AlignRight);
-	setLayout(buttonLayout);
+	// Main layout
+	verticalDuctLayout = new QVBoxLayout;
+	verticalDuctLayout->addLayout(layoutButtonOne);
+	verticalDuctLayout->addLayout(layoutButtonTwo);
+	verticalDuctLayout->addLayout(layoutButtonThree);
+	setLayout(verticalDuctLayout);
 
 };
 
 DuctLayout::~DuctLayout()
 {
 	// delete label objects
-	delete buttonLabelOne;
-	delete buttonLabelTwo;
-	delete buttonLabelThree;
-
-	// delete button objects
-	delete buttonOne;
-	delete buttonTwo;
-	delete buttonThree;
+	delete layoutButtonOne;
+	delete layoutButtonTwo;
+	delete layoutButtonThree;
 
 	// delete grid object
-	delete buttonLayout;
+	delete verticalDuctLayout;
+}
+
+QHBoxLayout* DuctLayout::createButtonLayout(const QString& labelText, DuctButton** button, QLineEdit** lineEdit, QLabel** unitLabel, buttonType valveType)
+{
+	// declare label name
+	QLabel* buttonLabel = new QLabel(labelText);
+	buttonLabel->setStyleSheet("font: bold 14px; ");
+
+	// instantiate button
+	*button = new DuctButton();
+
+	// instantiate line edit for viscocity value input
+	*lineEdit = new QLineEdit();
+	(*lineEdit)->setMaximumWidth(75);
+	(*lineEdit)->setFixedHeight(20); // Adjust the height as needed
+	(*lineEdit)->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Preferred);
+
+	// unit label
+	*unitLabel = new QLabel("m<sup>3</sup>/s");
+	(*unitLabel)->setStyleSheet("font: bold 12px; ");
+
+	// set button event handlers
+	connect(*button, &DuctButton::clicked, this, [this, valveType, button]() {
+		callExecuteControl(valveType, (*button)->getState());
+		});
+
+	// button layout
+	buttonLayout = new QHBoxLayout;
+	buttonLayout->addWidget(buttonLabel); // label
+	buttonLayout->addWidget(*lineEdit); // value edit
+	buttonLayout->addWidget(*unitLabel); // unit label
+	buttonLayout->addWidget(*button, Qt::AlignLeft); // button
+	buttonLayout->addSpacing(10);
+
+	return buttonLayout;
 }
 
 // coded along with ai
