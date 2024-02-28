@@ -1,7 +1,7 @@
 // Local Header Files
-#include "ductLayout.h"
+#include "ductLayoutView.h"
 
-DuctLayout::DuctLayout(QWidget* parent)
+DuctLayoutView::DuctLayoutView(QWidget* parent)
 {
 	// Create layout for button 1
 	layoutButtonOne = createButtonLayout("Duct One:", &buttonOne, &viscValueOne, &flowRateUnitOne, VALVE1);
@@ -21,7 +21,7 @@ DuctLayout::DuctLayout(QWidget* parent)
 
 };
 
-DuctLayout::~DuctLayout()
+DuctLayoutView::~DuctLayoutView()
 {
 	// delete label objects
 	delete layoutButtonOne;
@@ -32,14 +32,14 @@ DuctLayout::~DuctLayout()
 	delete verticalDuctLayout;
 }
 
-QHBoxLayout* DuctLayout::createButtonLayout(const QString& labelText, DuctButton** button, QLineEdit** lineEdit, QLabel** unitLabel, buttonType valveType)
+QHBoxLayout* DuctLayoutView::createButtonLayout(const QString& labelText, DuctButtonView** button, QLineEdit** lineEdit, QLabel** unitLabel, buttonType valveType)
 {
 	// declare label name
 	QLabel* buttonLabel = new QLabel(labelText);
 	buttonLabel->setStyleSheet("font: bold 14px; ");
 
 	// instantiate button
-	*button = new DuctButton();
+	*button = new DuctButtonView();
 
 	// instantiate line edit for viscocity value input
 	*lineEdit = new QLineEdit();
@@ -52,7 +52,7 @@ QHBoxLayout* DuctLayout::createButtonLayout(const QString& labelText, DuctButton
 	(*unitLabel)->setStyleSheet("font: bold 12px; ");
 
 	// set button event handlers
-	connect(*button, &DuctButton::clicked, this, [this, valveType, button]() {
+	connect(*button, &DuctButtonView::clicked, this, [this, valveType, button]() {
 		callExecuteControl(valveType, (*button)->getState());
 		});
 
@@ -68,7 +68,7 @@ QHBoxLayout* DuctLayout::createButtonLayout(const QString& labelText, DuctButton
 }
 
 // coded along with ai
-void DuctLayout::callExecuteControl(buttonType button, int newValue)
+void DuctLayoutView::callExecuteControl(buttonType button, int newValue)
 {
 	emit ductButtonClicked(button, newValue);
 }

@@ -8,7 +8,7 @@
 
 // Header files
 #include "actionLogging.h"
-#include "controlBox.h"
+#include "prototypeControllerView.h"
 #include "navigationBar.h" //Nav Bar at Top of Window
 #include "customDialog.h" // Simulation Window
 #include <QWidget>

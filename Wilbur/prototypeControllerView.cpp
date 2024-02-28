@@ -2,10 +2,10 @@
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
 
 // Local Header files
-#include "controlBox.h"
+#include "PrototypeControllerView.h"
 
 // cite https://doc.qt.io/qt-6/qtwidgets-widgets-sliders-example.html
-ControlBox::ControlBox(QWidget* parent, ActionLogging* actionLog, InputDirector* inputDirector)
+PrototypeControllerView::PrototypeControllerView(QWidget* parent, ActionLogging* actionLog, InputDirector* inputDirector)
 {
     // Create a wrapper for controls
     QWidget* controller = new QWidget;
@@ -25,8 +25,8 @@ ControlBox::ControlBox(QWidget* parent, ActionLogging* actionLog, InputDirector*
 	// Create bluetooth label and button
     QLabel* bluetoothLabel = new QLabel("Bluetooth Connection:", controller);
     bluetoothLabel->setStyleSheet("font: bold 14px; ");
-    bluetooth = new BluetoothButton(this);
-    connect(bluetooth, &BluetoothButton::handleButtonClicked, this, &ControlBox::executeControl);
+    bluetooth = new BluetoothButtonView(this);
+    connect(bluetooth, &BluetoothButtonView::handleButtonClicked, this, &PrototypeControllerView::executeControl);
 
     //Bluetooth layout
 	QGridLayout* bluetoothLayout = new QGridLayout;
@@ -34,15 +34,15 @@ ControlBox::ControlBox(QWidget* parent, ActionLogging* actionLog, InputDirector*
     bluetoothLayout->addWidget(bluetooth, 0, 1, 1, 1);
 
     // set ductLayout
-    ductLayout = new DuctLayout(this);
-    // Connect the signal from DuctLayout to executeControl slot
-    connect(ductLayout, &DuctLayout::ductButtonClicked, this, &ControlBox::executeControl);
+    ductLayout = new DuctLayoutView(this);
+    // Connect the signal from DuctLayoutView to executeControl slot
+    connect(ductLayout, &DuctLayoutView::ductButtonClicked, this, &PrototypeControllerView::executeControl);
     
     // Create a slider layout containing slider and its labels
     sliderLayout = new SliderLayout(this);
     connect(sliderLayout->stiffnessSlider, &StiffnessSlider::sliderReleased, customDialog, [this]() {executeControl(PUMP, sliderLayout->stiffnessSlider->value()); });
 
-    // Full ControlBox Layout
+    // Full PrototypeControllerView Layout
     QVBoxLayout* controlLayout = new QVBoxLayout;
     controlLayout->addLayout(bluetoothLayout);
     controlLayout->addSpacing(10);
@@ -52,7 +52,7 @@ ControlBox::ControlBox(QWidget* parent, ActionLogging* actionLog, InputDirector*
     
     controller->setLayout(controlLayout);
 
-    //Set style for ControlBox label
+    //Set style for PrototypeControllerView label
     controlLabel->setStyleSheet("QWidget { border: 1px solid black; }");
 };
 
@@ -63,7 +63,7 @@ ControlBox::ControlBox(QWidget* parent, ActionLogging* actionLog, InputDirector*
 //  function
 // Dependencies: connect()
 template<typename PointerToMemberFunction>
-Button* ControlBox::createButton(const QString& text, const PointerToMemberFunction& member)
+Button* PrototypeControllerView::createButton(const QString& text, const PointerToMemberFunction& member)
 {
     // Instantiate new button
     Button* button = new Button(text);
@@ -72,7 +72,7 @@ Button* ControlBox::createButton(const QString& text, const PointerToMemberFunct
 }
 
 // Control manipulation changes
-void ControlBox::executeControl(buttonType button, int newValue)
+void PrototypeControllerView::executeControl(buttonType button, int newValue)
 {
 	// Initialize Variables
     std::string objectName = "N/A";
@@ -111,7 +111,7 @@ void ControlBox::executeControl(buttonType button, int newValue)
     customDialog->setAttribute(Qt::WA_ShowWithoutActivating);
 }
 
-ControlBox::~ControlBox()
+PrototypeControllerView::~PrototypeControllerView()
 {
     // delete objects
     delete bluetooth;

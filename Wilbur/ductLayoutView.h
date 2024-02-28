@@ -1,10 +1,10 @@
 #pragma once
 
-#ifndef DUCTLAYOUT_H
-#define DUCTLAYOUT_H
+#ifndef DUCTLAYOUTVIEW_H
+#define DUCTLAYOUTVIEW_H
 
 //Header Files
-#include "ductButton.h"
+#include "ductButtonView.h"
 #include "inputDirector.h" // includes enum def of buttonType
 
 #include <QLabel>
@@ -14,16 +14,16 @@
 //Forward Declaration of buttonType
 enum buttonType;
 
-class DuctLayout : public QWidget
+class DuctLayoutView : public QWidget
 {
 	Q_OBJECT
 
 public:
 	// constructor
-	explicit DuctLayout(QWidget* parent = nullptr);
+	explicit DuctLayoutView(QWidget* parent = nullptr);
 
 	// destructor
-	~DuctLayout();
+	~DuctLayoutView();
 
 	void callExecuteControl(buttonType button, int newValue);
 
@@ -40,9 +40,9 @@ private:
 	QLabel* flowRateUnitThree;
 
 	// create duct button variables
-	DuctButton* buttonOne;
-	DuctButton* buttonTwo;
-	DuctButton* buttonThree;
+	DuctButtonView* buttonOne;
+	DuctButtonView* buttonTwo;
+	DuctButtonView* buttonThree;
 
 	// create value input labels
 	QLineEdit* viscValueOne;
@@ -57,8 +57,8 @@ private:
 	QHBoxLayout* buttonLayout;
 
 	// functions
-	QHBoxLayout* createButtonLayout(const QString& labelText, DuctButton** button, QLineEdit** lineEdit, QLabel** unitLabel, buttonType valveType);
+	QHBoxLayout* createButtonLayout(const QString& labelText, DuctButtonView** button, QLineEdit** lineEdit, QLabel** unitLabel, buttonType valveType);
 
 };
 
-#endif // DUCTLAYOUT_H
+#endif // DUCTLAYOUTVIEW_H
