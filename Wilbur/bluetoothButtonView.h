@@ -1,17 +1,17 @@
 #pragma once
-#ifndef BLUETOOTHBUTTON_H
-#define BLUETOOTHBUTTON_H
+#ifndef BLUETOOTHBUTTONVIEW_H
+#define BLUETOOTHBUTTONVIEW_H
 
 // Header Files
 #include "customButton.h" // QPushButton included here
 #include "inputDirector.h" // Where buttonType is defined
-class BluetoothButton :
+class BluetoothButtonView :
     public CustomButton
 {
     Q_OBJECT
 
 public:
-    explicit BluetoothButton(QWidget* parent = nullptr);
+    explicit BluetoothButtonView(QWidget* parent = nullptr);
     QSize sizeHint() const override;
 
     //method to set the bluetooth conection status
@@ -29,4 +29,4 @@ private:
     bool isConnected; // tracking bluetooth connection status
 };
 
-#endif // BLUETOOTHBUTTON_H
+#endif // BLUETOOTHBUTTONVIEW_H

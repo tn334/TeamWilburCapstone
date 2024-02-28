@@ -2,14 +2,14 @@
 // Copyright (C) 2016 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
 
-#ifndef CONTROLBOX_H
-#define CONTROLBOX_H
+#ifndef PROTOTYPECONTROLLERVIEW_H
+#define PROTOTYPECONTROLLERVIEW_H
 
 // Local Headers
 #include "button.h" // QToolButton included in button.h
-#include "bluetoothButton.h"
+#include "bluetoothButtonView.h"
 #include "sliderLayout.h" // QSlider is included in file
-#include "ductLayout.h"
+#include "ductLayoutView.h"
 #include "customDialog.h" // QLabel, QMainWindow included in customDialog.h
 #include "demoSimulator.h" 
 #include "actionLogging.h"
@@ -23,27 +23,24 @@
 //forward declaration of buttonType enum
 enum buttonType;
 
-class ControlBox : public QMainWindow
+class PrototypeControllerView : public QMainWindow
 {
 	Q_OBJECT
 
 public:
 	// constructor
-	ControlBox(QWidget* parent = nullptr, ActionLogging* actionLog = nullptr, InputDirector* inputDirector = nullptr);
+	PrototypeControllerView(QWidget* parent = nullptr, ActionLogging* actionLog = nullptr, InputDirector* inputDirector = nullptr);
 	// destructor
-	~ControlBox();
+	~PrototypeControllerView();
 
 	// define executeControl
 	void executeControl(buttonType button, int newValue);
 
 private:
 	// objects
-	BluetoothButton* bluetooth;
-	Button* buttonOne;
-	Button* buttonTwo;
-	Button* buttonThree;
+	BluetoothButtonView* bluetooth;
 	SliderLayout* sliderLayout;
-	DuctLayout* ductLayout;
+	DuctLayoutView* ductLayout;
 
 	// instances
 	DemoSimulator demoSimulator;
@@ -56,4 +53,4 @@ private:
 	QLabel* controlLabel;
 };
 
-#endif // CONTROLBOX_H
+#endif // PROTOTYPECONTROLLERVIEW_H

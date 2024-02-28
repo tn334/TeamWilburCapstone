@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget* parent, int simulatorMode) : QMainWindow(parent)
     NavigationBar* navigationBar = new NavigationBar(this, actionLog);
 
     // Instantiate Robot Control Box
-    ControlBox* robotControl = new ControlBox(this, actionLog, inputDirector);
+    PrototypeControllerView* robotControl = new PrototypeControllerView(this, actionLog, inputDirector);
 
     // Instantiate Central Widget "holder"
     QWidget* centralWidget = new QWidget(this);

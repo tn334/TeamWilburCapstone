@@ -112,8 +112,9 @@
     <QtUic Include="Wilbur.ui" />
     <QtMoc Include="Wilbur.h" />
     <ClCompile Include="actionLogging.cpp" />
-    <ClCompile Include="bluetoothButton.cpp" />
+    <ClCompile Include="bluetoothButtonView.cpp" />
     <ClCompile Include="customButton.cpp" />
+    <ClCompile Include="prototypeControllerView.cpp">
     <ClCompile Include="controlBox.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
@@ -122,9 +123,9 @@
     </ClCompile>
     <ClCompile Include="customDialog.cpp" />
     <ClCompile Include="demoSimulator.cpp" />
-    <ClCompile Include="ductButton.cpp" />
+    <ClCompile Include="ductButtonView.cpp" />
     <ClCompile Include="inputDirector.cpp" />
-    <ClCompile Include="ductLayout.cpp" />
+    <ClCompile Include="ductLayoutView.cpp" />
     <ClCompile Include="sliderLayout.cpp" />
     <ClCompile Include="stiffnessSlider.cpp" />
     <ClCompile Include="navigationBar.cpp" />
@@ -133,6 +134,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="prototypeControllerView.h" />
     <QtMoc Include="controlBox.h" />
     <QtMoc Include="stiffnessSlider.h" />
   </ItemGroup>
@@ -144,13 +146,13 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="customButton.h" />
-    <QtMoc Include="bluetoothButton.h" />
+    <QtMoc Include="bluetoothButtonView.h" />
     <ClInclude Include="actionLogging.h" />
     <ClInclude Include="demoSimulator.h" />
-    <QtMoc Include="ductButton.h" />
+    <QtMoc Include="ductButtonView.h" />
     <QtMoc Include="sliderLayout.h" />
     <ClInclude Include="inputDirector.h" />
-    <QtMoc Include="ductLayout.h" />
+    <QtMoc Include="ductLayoutView.h" />
     <ClInclude Include="textHandler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

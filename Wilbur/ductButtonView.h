@@ -1,16 +1,16 @@
 #pragma once
-#ifndef DUCTBUTTON_H
-#define DUCTBUTTON_H
+#ifndef DUCTBUTTONVIEW_H
+#define DUCTBUTTONVIEW_H
 
 // Header Files
 #include "customButton.h"
 
-class DuctButton : public CustomButton
+class DuctButtonView : public CustomButton
 {
     Q_OBJECT
 
 public:
-    explicit DuctButton(QWidget* parent = nullptr);
+    explicit DuctButtonView(QWidget* parent = nullptr);
 
     void handleButtonClicked();
 
@@ -27,4 +27,4 @@ private:
     bool isOpen; // tracking if duct is open or closed state
 };
 
-#endif // DUCTBUTTON_H
+#endif // DUCTBUTTONVIEW_H
