@@ -13,7 +13,7 @@
 #include <QLabel>
 #include <QMessageBox>
 #include "ui_wilbur.h"
-#include "actionLogging.h"
+#include "ActionLogModel.h"
 
 // for menu
 QT_BEGIN_NAMESPACE
@@ -28,7 +28,7 @@ class NavigationBar : public QMainWindow
     Q_OBJECT
 
 public:
-    NavigationBar(QWidget* parent = nullptr, ActionLogging* actionLog = nullptr);
+    NavigationBar(QWidget* parent = nullptr, ActionLogModel* actionLog = nullptr);
     ~NavigationBar();
 
 protected:
@@ -65,7 +65,7 @@ private:
     QAction* aboutQtAct;
     Ui::WilburClass ui;
     QLabel* controlLabel;
-	ActionLogging* logPtr;
+	ActionLogModel* logPtr;
 };
 
 #endif // NAVIGATIONBAR_H

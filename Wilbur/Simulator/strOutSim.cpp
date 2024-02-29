@@ -58,7 +58,7 @@ string SimValve::stringState() {
     }
 }
 
-Simulator::Simulator() {
+SimulatorModel::SimulatorModel() {
     srand(time(NULL));
     numValves = 3;
     pneumaticPump = SimPump();
@@ -67,7 +67,7 @@ Simulator::Simulator() {
     }
 }
 
-Simulator::Simulator(int numValves): numValves(numValves) {
+SimulatorModel::SimulatorModel(int numValves): numValves(numValves) {
     srand(time(NULL));
     pneumaticPump = SimPump();
     for (int i = 0; i < numValves; i++) {
@@ -75,20 +75,20 @@ Simulator::Simulator(int numValves): numValves(numValves) {
     }
 }
 
-bool Simulator::setValve(int valveToSet, bool stateToSet) {
+bool SimulatorModel::setValve(int valveToSet, bool stateToSet) {
     if (valveToSet > -1 && valveToSet < valveList.size()) {
         return valveList.at(valveToSet).setState(stateToSet);
     }
     return false;
 }
 
-bool Simulator::setPump(float stiffnessToSet) {
+bool SimulatorModel::setPump(float stiffnessToSet) {
         return pneumaticPump.setStiffness(stiffnessToSet);
 }
 
-string Simulator::displayState() {
+string SimulatorModel::displayState() {
     stringstream builtString;
-    builtString << "Simulator Component Status:" << endl;
+    builtString << "SimulatorModel Component Status:" << endl;
     builtString << "    Pump stiffness: " << pneumaticPump.percentStiffness() << endl;
     for (int i = 0; i < numValves; i++) {
         builtString << "    Valve " << i << " state: " << valveList.at(i).stringState() << endl;

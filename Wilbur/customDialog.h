@@ -5,8 +5,8 @@
 #ifndef CUSTOMDIALOG_H
 #define CUSTOMDIALOG_H
 
-#include "stringBuilderViewModel.h"
-#include "actionLogging.h"
+#include "StringBuilderViewModel.h"
+#include "ActionLogModel.h"
 #include <QApplication>
 #include <QDialog>
 #include <QLabel>
@@ -21,7 +21,7 @@ class CustomDialog : public QDialog
 	Q_OBJECT
 
 public:
-	CustomDialog(QWidget* parent = nullptr, ActionLogging* actionLog = nullptr);
+	CustomDialog(QWidget* parent = nullptr, ActionLogModel* actionLog = nullptr);
 
 public slots:
 	void controlManipulated(std::string objectName, int newValue);
@@ -30,7 +30,7 @@ private:
 	void initUI();
 	StringBuilderViewModel textHandler;
 	QTextEdit* textEdit;
-	ActionLogging* logPtr;
+	ActionLogModel* logPtr;
 };
 
 #endif // CUSTOMDIALOG_H

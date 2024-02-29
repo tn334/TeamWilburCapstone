@@ -1,13 +1,13 @@
-#include "inputDirector.h"
-#include "demoSimulator.h"
+#include "InputDirectorViewModel.h"
 
-InputDirector::InputDirector() : simulatorMode(true), simObject(DemoSimulator()) {}
 
-InputDirector::InputDirector(bool simState) : simulatorMode(simState) 
+InputDirectorViewModel::InputDirectorViewModel() : simulatorMode(true), simObject(SimulatorModel()) {}
+
+InputDirectorViewModel::InputDirectorViewModel(bool simState) : simulatorMode(simState) 
 {
 	if (simState) 
 	{
-		simObject = DemoSimulator();
+		simObject = SimulatorModel();
 	}
 	else 
 	{
@@ -15,7 +15,7 @@ InputDirector::InputDirector(bool simState) : simulatorMode(simState)
 	}
 }
 
-bool InputDirector::handleInput(buttonType inputType, int newValue) 
+bool InputDirectorViewModel::handleInput(buttonType inputType, int newValue) 
 {
 	bool hardwareResponse = false;
 

@@ -1,5 +1,5 @@
 // Header File
-#include "demoSimulator.h"
+#include "SimulatorModel.h"
 
 // Global Constants defined in .h file
 // OPEN = true
@@ -8,10 +8,10 @@
 typedef unsigned char Byte;
 typedef Byte cs_byte;
 
-// Simulator Pump Constructor
+// SimulatorModel Pump Constructor
 SimPump::SimPump() : stiffness(OFF), minimumVal(OFF), maximumVal(HIGH) {}
 
-// Simulator Pump Constructor with values
+// SimulatorModel Pump Constructor with values
 SimPump::SimPump(pumpValue startingStiffness, pumpValue minVal, pumpValue maxVal) :
     stiffness(startingStiffness), minimumVal(minVal), maximumVal(maxVal) {}
 
@@ -74,7 +74,7 @@ std::string SimValve::stringState()
 
 }
 
-DemoSimulator::DemoSimulator() 
+SimulatorModel::SimulatorModel() 
 {
     srand(time(NULL));
     numValves = 3;
@@ -85,7 +85,7 @@ DemoSimulator::DemoSimulator()
     }
 }
 
-DemoSimulator::DemoSimulator(int numValves) : numValves(numValves) 
+SimulatorModel::SimulatorModel(int numValves) : numValves(numValves) 
 {
     srand(time(NULL));
     pneumaticPump = SimPump();
@@ -95,7 +95,7 @@ DemoSimulator::DemoSimulator(int numValves) : numValves(numValves)
     }
 }
 
-bool DemoSimulator::setValve(int valveToSet, bool stateToSet) 
+bool SimulatorModel::setValve(int valveToSet, bool stateToSet) 
 {
     if (valveToSet > -1 && valveToSet < valveList.size()) 
 	{
@@ -105,15 +105,15 @@ bool DemoSimulator::setValve(int valveToSet, bool stateToSet)
     return false;
 }
 
-bool DemoSimulator::setPump(pumpValue stiffnessToSet) 
+bool SimulatorModel::setPump(pumpValue stiffnessToSet) 
 {
     return pneumaticPump.setStiffness(stiffnessToSet);
 }
 
-std::string DemoSimulator::displayState() 
+std::string SimulatorModel::displayState() 
 {
     std::stringstream builtString;
-    builtString << "Simulator Component Status:" << std::endl;
+    builtString << "SimulatorModel Component Status:" << std::endl;
     builtString << "    Pump stiffness: " << pneumaticPump.percentStiffness() << std::endl;
     for (int i = 0; i < numValves; i++) 
 	{

@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef DEMOSIMULATOR_H
-#define DEMOSIMULATOR_H
+#ifndef SIMULATORMODEL_H
+#define SIMULATORMODEL_H
 
 // Header Files
 #include <sstream>
@@ -55,13 +55,13 @@ private:
 
 };
 
-class DemoSimulator
+class SimulatorModel
 {
 public:
 
-    DemoSimulator();
+    SimulatorModel();
 
-    DemoSimulator(int numValves);
+    SimulatorModel(int numValves);
 
     bool setValve(int valveToSet, bool stateToSet);
 
@@ -75,4 +75,4 @@ private:
     int numValves;
 };
 
-#endif // DEMOSIMULATOR_H
+#endif // SIMULATORMODEL_H

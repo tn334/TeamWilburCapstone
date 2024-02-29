@@ -42,12 +42,12 @@ class SimValve {
     bool state;
 };
 
-class Simulator {
+class SimulatorModel {
     public:
 
-    Simulator();
+    SimulatorModel();
 
-    Simulator(int numValves);
+    SimulatorModel(int numValves);
 
     bool setValve(int valveToSet, bool stateToSet);
 

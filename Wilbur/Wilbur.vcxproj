@@ -111,7 +111,7 @@
     <QtRcc Include="Wilbur.qrc" />
     <QtUic Include="Wilbur.ui" />
     <QtMoc Include="WilburApplicationView.h" />
-    <ClCompile Include="actionLogging.cpp" />
+    <ClCompile Include="ActionLogModel.cpp" />
     <ClCompile Include="BluetoothButtonView.cpp" />
     <ClCompile Include="BaseButtonView.cpp" />
     <ClCompile Include="PrototypeControllerView.cpp">
@@ -121,9 +121,9 @@
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
     </ClCompile>
     <ClCompile Include="customDialog.cpp" />
-    <ClCompile Include="demoSimulator.cpp" />
+    <ClCompile Include="SimulatorModel.cpp" />
     <ClCompile Include="DuctButtonView.cpp" />
-    <ClCompile Include="inputDirector.cpp" />
+    <ClCompile Include="InputDirectorViewModel.cpp" />
     <ClCompile Include="DuctLayoutView.cpp" />
     <ClCompile Include="SliderLayoutView.cpp" />
     <ClCompile Include="StiffnessSliderView.cpp" />
@@ -145,11 +145,11 @@
   <ItemGroup>
     <QtMoc Include="BaseButtonView.h" />
     <QtMoc Include="BluetoothButtonView.h" />
-    <ClInclude Include="actionLogging.h" />
-    <ClInclude Include="demoSimulator.h" />
+    <ClInclude Include="ActionLogModel.h" />
+    <ClInclude Include="SimulatorModel.h" />
     <QtMoc Include="DuctButtonView.h" />
     <QtMoc Include="SliderLayoutView.h" />
-    <ClInclude Include="inputDirector.h" />
+    <ClInclude Include="InputDirectorViewModel.h" />
     <QtMoc Include="DuctLayoutView.h" />
     <ClInclude Include="StringBuilderViewModel.h" />
   </ItemGroup>
