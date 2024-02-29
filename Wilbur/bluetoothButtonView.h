@@ -3,10 +3,9 @@
 #define BLUETOOTHBUTTONVIEW_H
 
 // Header Files
-#include "customButton.h" // QPushButton included here
+#include "BaseButtonView.h" // QPushButton included here
 #include "inputDirector.h" // Where buttonType is defined
-class BluetoothButtonView :
-    public CustomButton
+class BluetoothButtonView : public BaseButtonView
 {
     Q_OBJECT
 

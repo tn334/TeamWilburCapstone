@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
 
 // Include header files
-#include "Wilbur.h"
+#include "WilburApplicationView.h"
 
 // https://doc.qt.io/qt-6/qgridlayout.html
 
@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
     }
 
     // Wilbur widgets - initialize object
-    MainWindow wilbur(nullptr, simMode);
+    WilburApplicationView wilbur(nullptr, simMode);
 
 	// Show Wilbur main window
     wilbur.show();

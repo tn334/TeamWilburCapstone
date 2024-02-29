@@ -1,10 +1,10 @@
 // Copyright (C) 2016 The Qt Company Ltd.
 
 // Header Files
-#include "customButton.h"
+#include "BaseButtonView.h"
 
 // Custom Button Constructor
-CustomButton::CustomButton(const QString& tooltip,
+BaseButtonView::BaseButtonView(const QString& tooltip,
 	const QString& text, const QColor& bgColor,
 	QWidget* parent) : QPushButton(parent),
 	m_tooltip(tooltip), m_text(text), m_backgroundColor(bgColor)
@@ -16,28 +16,28 @@ CustomButton::CustomButton(const QString& tooltip,
 }
 
 // Function that returns width and heigth
-QSize CustomButton::sizeHint() const
+QSize BaseButtonView::sizeHint() const
 {
 	// Return width (1st param) and height (2nd param)
 	return QSize(80, 30);
 }
 
 // Function that displays tool tips
-QString CustomButton::getToolTip() const
+QString BaseButtonView::getToolTip() const
 {
 	// Return button tool tip
 	return m_tooltip;
 }
 
 // Function that gets label text
-QString CustomButton::getText() const
+QString BaseButtonView::getText() const
 {
 	// Return button label text
 	return m_text;
 }
 
 // Function that retrieves current background color
-QColor CustomButton::getBackgroundColor() const
+QColor BaseButtonView::getBackgroundColor() const
 {
 	// Return current bg color
 	return m_backgroundColor;

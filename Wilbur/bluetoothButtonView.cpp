@@ -3,7 +3,7 @@
 
 // BluetoothButtonView Constructor
 BluetoothButtonView::BluetoothButtonView(QWidget* parent)
-	: CustomButton("Click to establish bluetooth connection to prototype",
+	: BaseButtonView("Click to establish bluetooth connection to prototype",
 		"Disconnected", QColor(136, 204, 238), parent), isConnected(false) //initialize button to disconnected
 {
 	// initialize connection status to false

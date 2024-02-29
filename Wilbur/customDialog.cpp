@@ -4,6 +4,7 @@
 // Header Files
 #include "customDialog.h"
 
+
 // Custom Dialog Box Constructor
 CustomDialog::CustomDialog(QWidget* parent, ActionLogging* actionLog)
     : QDialog(parent, Qt::Window)

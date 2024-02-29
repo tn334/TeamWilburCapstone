@@ -1,15 +1,15 @@
 #pragma once
 // https://doc.qt.io/qt-6/qpushbutton.html
 
-#ifndef CUSTOMBUTTON_H
-#define CUSTOMBUTTON_H
+#ifndef BASEBUTTONVIEW_H
+#define BASEBUTTONVIEW_H
 
 #include <QPushButton>
 #include <QColor>
 #include <QLabel>
 #include <QGridLayout>
 
-class CustomButton : public QPushButton
+class BaseButtonView : public QPushButton
 {
 	Q_OBJECT
 
@@ -20,7 +20,7 @@ private:
 	QColor m_backgroundColor;
 
 public:
-	CustomButton(const QString& tooltip,
+	BaseButtonView(const QString& tooltip,
 		const QString& text, const QColor& bgColor,
 		QWidget* parent = nullptr);
 
@@ -34,4 +34,4 @@ public:
 
 };
 
-#endif // CUSTOMBUTTON_H
+#endif // BASEBUTTONVIEW_H
