@@ -1,26 +1,26 @@
 #pragma once
-#ifndef SLIDERLAYOUT_H
-#define SLIDERLAYOUT_H
+#ifndef SLIDERLAYOUTVIEW_H
+#define SLIDERLAYOUTVIEW_H
 
 // Header Files
-#include "stiffnessSlider.h" // QWidget and QLabel included here
+#include "stiffnessSliderView.h" // QWidget and QLabel included here
 #include <QGridLayout>
 #include <qstyle.h>
 #include <QResizeEvent>
 
-class SliderLayout : public QWidget
+class SliderLayoutView : public QWidget
 {
     Q_OBJECT
 
 public:
     // constructor
-    explicit SliderLayout(QWidget* parent = nullptr);
+    explicit SliderLayoutView(QWidget* parent = nullptr);
 
     // destructor
-    ~SliderLayout();
+    ~SliderLayoutView();
     
     // create slider variable
-    StiffnessSlider* stiffnessSlider;
+    StiffnessSliderView* stiffnessSlider;
 
     // function to resize the size of the slider
     void resizeEvent(QResizeEvent* event);
@@ -39,4 +39,4 @@ private:
     QGridLayout* stiffSliderLayout;
 };
 
-#endif // SLIDERLAYOUT_H
+#endif // SLIDERLAYOUTVIEW_H

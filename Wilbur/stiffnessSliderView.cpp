@@ -3,10 +3,10 @@
 // Qt webpage breakdown of abstract slider https://doc.qt.io/qt-6/qslider.html
 
 // Header Files
-#include "stiffnessSlider.h"
+#include "stiffnessSliderView.h"
 
 // Stiffness Slider Constructor
-StiffnessSlider::StiffnessSlider(QWidget *parent) 
+StiffnessSliderView::StiffnessSliderView(QWidget *parent) 
     : QSlider(Qt::Horizontal, parent)
 {
     // setting tooltip for slider
@@ -33,18 +33,18 @@ StiffnessSlider::StiffnessSlider(QWidget *parent)
     setTickInterval(1);
 
 	// Connect slider to value updates
-    connect(slider, &QSlider::valueChanged, this, &StiffnessSlider::updateValue);
+    connect(slider, &QSlider::valueChanged, this, &StiffnessSliderView::updateValue);
 }
 
 // deconstructor
-StiffnessSlider::~StiffnessSlider()
+StiffnessSliderView::~StiffnessSliderView()
 {
     // delete the slider
     delete slider;
 }
 
 // Update slider value
-void StiffnessSlider::updateValue(int value) 
+void StiffnessSliderView::updateValue(int value) 
 {
 	// Check if the value is valid
     if (validValue(value)) 
@@ -56,7 +56,7 @@ void StiffnessSlider::updateValue(int value)
 }
 
 // Validate values
-bool StiffnessSlider::validValue(int value) 
+bool StiffnessSliderView::validValue(int value) 
 {
     // Perform any validation checks if needed
     // For simplicity, consider all values as valid in this example

@@ -3,8 +3,8 @@
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
 // https://doc.qt.io/qt-6/qtwidgets-widgets-sliders-example.html
 
-#ifndef STIFFNESSSLIDER_H
-#define STIFFNESSSLIDER_H
+#ifndef STIFFNESSSLIDERVIEW_H
+#define STIFFNESSSLIDERVIEW_H
 
 #include <QWidget>
 #include <QGroupBox>
@@ -12,14 +12,14 @@
 #include <QMainWindow>
 #include <QLabel>
 
-class StiffnessSlider : public QSlider
+class StiffnessSliderView : public QSlider
 {
     Q_OBJECT
 
 public:
-    explicit StiffnessSlider(QWidget* parent = nullptr);
+    explicit StiffnessSliderView(QWidget* parent = nullptr);
 	int test = 0;
-    ~StiffnessSlider();
+    ~StiffnessSliderView();
 
 private:
     //properties
@@ -35,4 +35,4 @@ private slots:
     void updateValue(int value);
 };
 
-#endif // STIFFNESSSLIDER_H
+#endif // STIFFNESSSLIDERVIEW_H

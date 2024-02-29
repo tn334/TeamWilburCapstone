@@ -2,14 +2,14 @@
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
 
 // Header files
-#include "textHandler.h"
+#include "stringBuilderViewModel.h"
 
-TextHandler::TextHandler() 
+StringBuilderViewModel::StringBuilderViewModel() 
 {
     // Initialize if needed
 }
 
-void TextHandler::controlManipulated(std::string objectName, int newValue) 
+void StringBuilderViewModel::controlManipulated(std::string objectName, int newValue) 
 {
     // check for button
     if (objectName == "Button One" || objectName == "Button Two" || objectName == "Button Three") 
@@ -46,12 +46,12 @@ void TextHandler::controlManipulated(std::string objectName, int newValue)
     textList.append(objectText);
 }
 
-QStringList TextHandler::getAllText() const {
+QStringList StringBuilderViewModel::getAllText() const {
 	// Return full list containing all strings regarding changes
     return textList;
 }
 
-QString TextHandler::getActionText() const
+QString StringBuilderViewModel::getActionText() const
 {
 	// Return the text of the current object that was interacted with
 	return objectText;

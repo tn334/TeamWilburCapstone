@@ -125,16 +125,16 @@
     <ClCompile Include="ductButtonView.cpp" />
     <ClCompile Include="inputDirector.cpp" />
     <ClCompile Include="ductLayoutView.cpp" />
-    <ClCompile Include="sliderLayout.cpp" />
-    <ClCompile Include="stiffnessSlider.cpp" />
+    <ClCompile Include="sliderLayoutView.cpp" />
+    <ClCompile Include="stiffnessSliderView.cpp" />
     <ClCompile Include="navigationBar.cpp" />
-    <ClCompile Include="textHandler.cpp" />
+    <ClCompile Include="stringBuilder.cpp" />
     <ClCompile Include="Wilbur.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="prototypeControllerView.h" />
-    <QtMoc Include="stiffnessSlider.h" />
+    <QtMoc Include="stiffnessSliderView.h" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="navigationBar.h" />
@@ -148,10 +148,10 @@
     <ClInclude Include="actionLogging.h" />
     <ClInclude Include="demoSimulator.h" />
     <QtMoc Include="ductButtonView.h" />
-    <QtMoc Include="sliderLayout.h" />
+    <QtMoc Include="sliderLayoutView.h" />
     <ClInclude Include="inputDirector.h" />
     <QtMoc Include="ductLayoutView.h" />
-    <ClInclude Include="textHandler.h" />
+    <ClInclude Include="stringBuilderViewModel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

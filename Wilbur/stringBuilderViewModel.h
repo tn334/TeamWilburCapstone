@@ -2,17 +2,17 @@
 // Copyright (C) 2016 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
 
-#ifndef TEXTHANDLER_H
-#define TEXTHANDLER_H
+#ifndef STRINGBUILDERVIEWMODEL_H
+#define STRINGBUILDERVIEWMODEL_H
 
 // Header files
 #include <QStringList>
 
-class TextHandler
+class StringBuilderViewModel
 {
 public:
 	// Constructor
-	TextHandler();
+	StringBuilderViewModel();
 
 	// Change in front end
 	void controlManipulated(std::string objectName, int newValue);
@@ -28,4 +28,4 @@ private:
 	QString objectText;
 };
 
-#endif // TEXTHANDLER_H
+#endif // STRINGBUILDERVIEWMODEL_H

@@ -39,8 +39,8 @@ PrototypeControllerView::PrototypeControllerView(QWidget* parent, ActionLogging*
     connect(ductLayout, &DuctLayoutView::ductButtonClicked, this, &PrototypeControllerView::executeControl);
     
     // Create a slider layout containing slider and its labels
-    sliderLayout = new SliderLayout(this);
-    connect(sliderLayout->stiffnessSlider, &StiffnessSlider::sliderReleased, customDialog, [this]() {executeControl(PUMP, sliderLayout->stiffnessSlider->value()); });
+    sliderLayout = new SliderLayoutView(this);
+    connect(sliderLayout->stiffnessSlider, &StiffnessSliderView::sliderReleased, customDialog, [this]() {executeControl(PUMP, sliderLayout->stiffnessSlider->value()); });
 
     // Full PrototypeControllerView Layout
     QVBoxLayout* controlLayout = new QVBoxLayout;

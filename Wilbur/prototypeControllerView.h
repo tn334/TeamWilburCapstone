@@ -8,7 +8,7 @@
 // Local Headers
 #include "button.h" // QToolButton included in button.h
 #include "bluetoothButtonView.h"
-#include "sliderLayout.h" // QSlider is included in file
+#include "sliderLayoutView.h" // QSlider is included in file
 #include "ductLayoutView.h"
 #include "customDialog.h" // QLabel, QMainWindow included in customDialog.h
 #include "demoSimulator.h" 
@@ -39,7 +39,7 @@ public:
 private:
 	// objects
 	BluetoothButtonView* bluetooth;
-	SliderLayout* sliderLayout;
+	SliderLayoutView* sliderLayout;
 	DuctLayoutView* ductLayout;
 
 	// instances
