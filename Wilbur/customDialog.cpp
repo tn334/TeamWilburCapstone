@@ -6,7 +6,7 @@
 
 
 // Custom Dialog Box Constructor
-CustomDialog::CustomDialog(QWidget* parent, ActionLogging* actionLog)
+CustomDialog::CustomDialog(QWidget* parent, ActionLogModel* actionLog)
     : QDialog(parent, Qt::Window)
 {
 	// Set logPtr to action log
@@ -23,7 +23,7 @@ void CustomDialog::initUI()
     QVBoxLayout* dialogLayout = new QVBoxLayout(this);
 	
 	// Create title label and set settings
-    QLabel* titleLabel = new QLabel("Simulator:", this);
+    QLabel* titleLabel = new QLabel("SimulatorModel:", this);
     titleLabel->setAlignment(Qt::AlignCenter); // Adjust alignment as needed
     titleLabel->setFont(QFont("Arial", 16, QFont::Bold)); // Adjust font as needed
     

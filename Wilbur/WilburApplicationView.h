@@ -7,8 +7,8 @@
 #define WILBURAPPLICATIONVIEW_H
 
 // Header files
-#include "actionLogging.h"
-#include "prototypeControllerView.h"
+#include "ActionLogModel.h"
+#include "PrototypeControllerView.h"
 #include "navigationBar.h" //Nav Bar at Top of Window
 #include "customDialog.h" // Simulation Window
 #include <QWidget>
@@ -31,8 +31,8 @@ public:
     ~WilburApplicationView();
 private:
     QGridLayout* mainLayout;
-    ActionLogging* actionLog;
-    InputDirector* inputDirector;
+    ActionLogModel* actionLog;
+    InputDirectorViewModel* inputDirector;
     NavigationBar* navigationBar;
     PrototypeControllerView* robotControl;
     QWidget* centralWidget;

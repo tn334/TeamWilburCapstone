@@ -2,7 +2,7 @@
 using namespace std;
 
 int main() {
-    Simulator testSim = Simulator();
+    SimulatorModel testSim = SimulatorModel();
 
     testSim.displayState();
     for (int valveNum = 0; valveNum < 3; valveNum++) {

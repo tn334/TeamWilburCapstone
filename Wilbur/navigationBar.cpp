@@ -11,7 +11,7 @@
 // https://doc.qt.io/qtvstools/qtvstools-how-to-select-qt-versions-for-project.html
 
 // NavigationBar Constructor
-NavigationBar::NavigationBar(QWidget* parent, ActionLogging* actionLog)
+NavigationBar::NavigationBar(QWidget* parent, ActionLogModel* actionLog)
 {
     // Create a wrapper a holder for the menubar
     //cite: https://code.qt.io/cgit/qt/qtbase.git/tree/examples/widgets/mainwindows/menus?h=6.6

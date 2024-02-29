@@ -16,10 +16,10 @@ WilburApplicationView::WilburApplicationView(QWidget* parent, int simulatorMode)
     mainLayout = new QGridLayout;
 
     // Instantiate Action Log
-    actionLog = new ActionLogging;
+    actionLog = new ActionLogModel;
 
     // Instantiate Input Director
-    inputDirector = new InputDirector(simulatorMode);
+    inputDirector = new InputDirectorViewModel(simulatorMode);
 
     // Instantiate Navigation Bar at top of window
     navigationBar = new NavigationBar(this, actionLog);

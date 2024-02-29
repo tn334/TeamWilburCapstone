@@ -1,13 +1,13 @@
 // Header Files
-#include "actionLogging.h"                                                     
+#include "ActionLogModel.h"                                                     
 
-ActionLogging::ActionLogging()
+ActionLogModel::ActionLogModel()
 {
 	// Initiate session timer
 	sessionTimer.start();
 }
 
-void ActionLogging::exportLog()
+void ActionLogModel::exportLog()
 {
 	// Create an IO stream to write into the file
 	QTextStream stream(&fileToExport);
@@ -25,7 +25,7 @@ void ActionLogging::exportLog()
 	fileToExport.close();
 }
 
-void ActionLogging::addActionToLog(QString actionToAdd)
+void ActionLogModel::addActionToLog(QString actionToAdd)
 {
 	// Format action time and text
 	QString formattedAction = QString("%1 | %2 -> %3").arg(
@@ -35,7 +35,7 @@ void ActionLogging::addActionToLog(QString actionToAdd)
 	listOfActions << formattedAction;
 }
 
-QString ActionLogging::getActionTime()
+QString ActionLogModel::getActionTime()
 {
 	// Get the current time and date
 	time_t time = std::time(0);
@@ -50,7 +50,7 @@ QString ActionLogging::getActionTime()
 	return timeString;
 }
 
-QString ActionLogging::formattedElapsedTime()
+QString ActionLogModel::formattedElapsedTime()
 {
 	// Return formatted elapsed time (hours/minutes/seconds/milliseconds)
 	return QTime::fromMSecsSinceStartOfDay(

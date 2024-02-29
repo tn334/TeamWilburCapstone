@@ -5,7 +5,7 @@
 
 //Header Files
 #include "ductButtonView.h"
-#include "inputDirector.h" // includes enum def of buttonType
+#include "InputDirectorViewModel.h" // includes enum def of buttonType
 
 #include <QLabel>
 #include <QWidget>

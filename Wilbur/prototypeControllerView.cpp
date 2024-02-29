@@ -5,7 +5,7 @@
 #include "PrototypeControllerView.h"
 
 // cite https://doc.qt.io/qt-6/qtwidgets-widgets-sliders-example.html
-PrototypeControllerView::PrototypeControllerView(QWidget* parent, ActionLogging* actionLog, InputDirector* inputDirector)
+PrototypeControllerView::PrototypeControllerView(QWidget* parent, ActionLogModel* actionLog, InputDirectorViewModel* inputDirector)
 {
     // Create a wrapper for controls
     QWidget* controller = new QWidget;
@@ -55,21 +55,6 @@ PrototypeControllerView::PrototypeControllerView(QWidget* parent, ActionLogging*
     //Set style for PrototypeControllerView label
     controlLabel->setStyleSheet("QWidget { border: 1px solid black; }");
 };
-
-// Create button derived from control box
-// Name: createButton
-// Description: create a new button, initialize with provided text, establish 
-//  connection between the button's clicked signal and a specified member 
-//  function
-// Dependencies: connect()
-template<typename PointerToMemberFunction>
-Button* PrototypeControllerView::createButton(const QString& text, const PointerToMemberFunction& member)
-{
-    // Instantiate new button
-    Button* button = new Button(text);
-    connect(button, &Button::clicked, this, member);
-    return button;
-}
 
 // Control manipulation changes
 void PrototypeControllerView::executeControl(buttonType button, int newValue)

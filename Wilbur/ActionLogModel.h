@@ -1,6 +1,6 @@
 #pragma once
-#ifndef ACTION_LOGGING
-#define ACTION_LOGGING
+#ifndef ACTIONLOGMODEL_H
+#define ACTIONLODMODEL_H
 
 // Header Files
 #include <iostream>
@@ -14,12 +14,12 @@
 #include <QTextStream>
 #include <QCoreApplication>
 
-// ActionLogging Class derived as a QFile
-class ActionLogging : public QFile
+// ActionLogModel Class derived as a QFile
+class ActionLogModel : public QFile
 {
 public:
 	// Action Log Constructor
-	ActionLogging();
+	ActionLogModel();
 	
 	// Export log as a txt file
 	void exportLog();
@@ -47,4 +47,4 @@ private:
 	QElapsedTimer sessionTimer;
 };
 
-#endif // ACTION_LOGGING
+#endif // ACTIONLOGMODEL_H
