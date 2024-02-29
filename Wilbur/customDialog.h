@@ -5,7 +5,7 @@
 #ifndef CUSTOMDIALOG_H
 #define CUSTOMDIALOG_H
 
-#include "textHandler.h"
+#include "stringBuilderViewModel.h"
 #include "actionLogging.h"
 #include <QApplication>
 #include <QDialog>
@@ -28,7 +28,7 @@ public slots:
 
 private:
 	void initUI();
-	TextHandler textHandler;
+	StringBuilderViewModel textHandler;
 	QTextEdit* textEdit;
 	ActionLogging* logPtr;
 };

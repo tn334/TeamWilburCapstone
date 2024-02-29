@@ -1,12 +1,12 @@
 // Header Files
-#include "sliderLayout.h"
+#include "sliderLayoutView.h"
 
 // Slider layout constructor
-SliderLayout::SliderLayout(QWidget* parent)
+SliderLayoutView::SliderLayoutView(QWidget* parent)
 	: QWidget(parent)
 {
     // create slider
-    stiffnessSlider = new StiffnessSlider(this);
+    stiffnessSlider = new StiffnessSliderView(this);
 
     // creating title
     title = new QLabel("Nipple Stiffness Control:");
@@ -53,7 +53,7 @@ SliderLayout::SliderLayout(QWidget* parent)
 }
 
 // Destructor
-SliderLayout::~SliderLayout()
+SliderLayoutView::~SliderLayoutView()
 {
 	// Delete instantiated labels
     delete title;
@@ -65,7 +65,7 @@ SliderLayout::~SliderLayout()
     delete stiffSliderLayout;
 }
 
-void SliderLayout::resizeEvent(QResizeEvent* event) {
+void SliderLayoutView::resizeEvent(QResizeEvent* event) {
     // get the new size of the parent widget
     QSize newSize = event->size();
     // calculate the positions of the labels
