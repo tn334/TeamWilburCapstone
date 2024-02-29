@@ -52,12 +52,6 @@
     <ClCompile Include="stiffnessSlider.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="button.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="controlBox.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="navigationBar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -73,26 +67,29 @@
     <ClCompile Include="customButton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="bluetoothButton.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ductButton.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="sliderLayout.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ductLayout.cpp">
+    <ClCompile Include="actionLogging.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bluetoothButtonView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="prototypeControllerView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ductButtonView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="inputDirector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ductLayoutView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="button.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="controlBox.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="stiffnessSlider.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -105,16 +102,19 @@
     <QtMoc Include="customButton.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="bluetoothButton.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="ductButton.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="sliderLayout.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="ductLayout.h">
+    <QtMoc Include="prototypeControllerView.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="bluetoothButtonView.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ductButtonView.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ductLayoutView.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -123,6 +123,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="demoSimulator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="actionLogging.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="inputDirector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -134,7 +134,6 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="prototypeControllerView.h" />
-    <QtMoc Include="controlBox.h" />
     <QtMoc Include="stiffnessSlider.h" />
   </ItemGroup>
   <ItemGroup>
