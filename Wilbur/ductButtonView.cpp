@@ -3,7 +3,7 @@
 
 // Duct Button Constructor
 DuctButtonView::DuctButtonView(QWidget* parent)
-	: CustomButton("Click to change state of the duct",
+	: BaseButtonView("Click to change state of the duct",
 		"Closed", QColor(136, 34, 85), parent), isOpen(false) // initialize state to false
 {
 	//initialize isOpen to default of false

@@ -3,8 +3,8 @@
 // Copyright (C) 2016 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
 
-#ifndef WILBUR_H
-#define WILBUR_H
+#ifndef WILBURMAINWINDOWVIEW_H
+#define WILBURMAINWINDOWVIEW_H
 
 // Header files
 #include "actionLogging.h"
@@ -22,13 +22,16 @@
 #include <QStackedWidget>
 #include <QToolBar>
 
-class MainWindow : public QMainWindow
+class WilburMainWindowView : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr, int simulatorMode = 1);
-    ~MainWindow();
+    WilburMainWindowView(QWidget *parent = nullptr, int simulatorMode = 1);
+    ~WilburMainWindowView();
+
+private:
+    NavigationBar* navigationBar;
 };
 
-#endif // WILBUR_H
+#endif // WILBURMAINWINDOWVIEW_H

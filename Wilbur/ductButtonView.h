@@ -3,9 +3,9 @@
 #define DUCTBUTTONVIEW_H
 
 // Header Files
-#include "customButton.h"
+#include "BaseButtonView.h"
 
-class DuctButtonView : public CustomButton
+class DuctButtonView : public BaseButtonView
 {
     Q_OBJECT
 

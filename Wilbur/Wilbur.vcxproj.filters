@@ -30,6 +30,15 @@
     <Filter Include="Source Files\ViewModel">
       <UniqueIdentifier>{2addccf2-fe7f-42ae-aa8b-b0a36b86fb54}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Model">
+      <UniqueIdentifier>{3fcb11ae-f1ef-4f1b-af16-ff6bdefefe12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\View">
+      <UniqueIdentifier>{511c2823-7d30-4c31-818b-1b1fcd3aed3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ViewModel">
+      <UniqueIdentifier>{cdc481b5-5ac1-4a6b-a7d8-04c388f97721}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="Wilbur.qrc">
@@ -38,18 +47,9 @@
     <QtUic Include="Wilbur.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtMoc Include="Wilbur.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <ClCompile Include="Wilbur.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="stiffnessSliderView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="navigationBar.cpp">
@@ -58,70 +58,76 @@
     <ClCompile Include="customDialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="stringBuilder.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="demoSimulator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="customButton.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="sliderLayoutView.cpp">
+    <ClCompile Include="BaseButtonView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="actionLogging.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="bluetoothButtonView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="prototypeControllerView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ductButtonView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="inputDirector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ductLayoutView.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="StringBuilderViewModel.cpp">
+      <Filter>Source Files\ViewModel</Filter>
+    </ClCompile>
+    <ClCompile Include="StiffnessSliderView.cpp">
+      <Filter>Source Files\View</Filter>
+    </ClCompile>
+    <ClCompile Include="SliderLayoutView.cpp">
+      <Filter>Source Files\View</Filter>
+    </ClCompile>
+    <ClCompile Include="DuctLayoutView.cpp">
+      <Filter>Source Files\View</Filter>
+    </ClCompile>
+    <ClCompile Include="DuctButtonView.cpp">
+      <Filter>Source Files\View</Filter>
+    </ClCompile>
+    <ClCompile Include="BluetoothButtonView.cpp">
+      <Filter>Source Files\View</Filter>
+    </ClCompile>
+    <ClCompile Include="PrototypeControllerView.cpp">
+      <Filter>Source Files\View</Filter>
+    </ClCompile>
+    <ClCompile Include="WilburApplicationView.cpp">
+      <Filter>Source Files\View</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="stiffnessSliderView.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="navigationBar.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="customDialog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="customButton.h">
+    <QtMoc Include="BaseButtonView.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="sliderLayoutView.h">
-      <Filter>Header Files</Filter>
+    <QtMoc Include="BluetoothButtonView.h">
+      <Filter>Header Files\View</Filter>
     </QtMoc>
-    <QtMoc Include="prototypeControllerView.h">
-      <Filter>Header Files</Filter>
+    <QtMoc Include="DuctButtonView.h">
+      <Filter>Header Files\View</Filter>
     </QtMoc>
-    <QtMoc Include="bluetoothButtonView.h">
-      <Filter>Header Files</Filter>
+    <QtMoc Include="PrototypeControllerView.h">
+      <Filter>Header Files\View</Filter>
     </QtMoc>
-    <QtMoc Include="ductButtonView.h">
-      <Filter>Header Files</Filter>
+    <QtMoc Include="DuctLayoutView.h">
+      <Filter>Header Files\View</Filter>
     </QtMoc>
-    <QtMoc Include="ductLayoutView.h">
-      <Filter>Header Files</Filter>
+    <QtMoc Include="SliderLayoutView.h">
+      <Filter>Header Files\View</Filter>
+    </QtMoc>
+    <QtMoc Include="StiffnessSliderView.h">
+      <Filter>Header Files\View</Filter>
+    </QtMoc>
+    <QtMoc Include="WilburApplicationView.h">
+      <Filter>Header Files\View</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stringBuilderViewModel.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="demoSimulator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -130,6 +136,9 @@
     </ClInclude>
     <ClInclude Include="inputDirector.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StringBuilderViewModel.h">
+      <Filter>Header Files\ViewModel</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
