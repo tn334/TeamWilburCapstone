@@ -44,6 +44,7 @@ private slots:
     void save();
     void print();
     void copy();
+	void darkMode();
     void about();
     void aboutQt();
 
@@ -54,15 +55,17 @@ private:
     QMenu* fileMenu;
     QMenu* editMenu;
     QMenu* helpMenu;
+	QMenu* viewMenu;
     QAction* newAct;
     QAction* ExportLog;
     QAction* saveAct;
     QAction* printAct;
     QAction* copyAct;
     QAction* exitAct;
-    QLabel* infoLabel;
     QAction* aboutAct;
     QAction* aboutQtAct;
+	QAction* darkModeAct;
+    QLabel* infoLabel;
     Ui::WilburClass ui;
     QLabel* controlLabel;
 	ActionLogModel* logPtr;
