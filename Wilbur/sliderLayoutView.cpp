@@ -38,18 +38,21 @@ SliderLayoutView::SliderLayoutView(QWidget* parent)
 
     // initialize grid layout
     stiffSliderLayout = new QGridLayout(this);
+
     // Add title
     stiffSliderLayout->addWidget(title, 0, 0, 1, 1, Qt::AlignLeft);
+
     // Add spacing
     stiffSliderLayout->addItem(new QSpacerItem(20, 50, QSizePolicy::Expanding, QSizePolicy::Preferred), 0, 1); // Adjust the size as needed
-    // Add Labels
+    
+	// Add Labels
     stiffSliderLayout->addWidget(labelOff, 1, 0, 1, 1);
     stiffSliderLayout->addWidget(labelLow, 1, 1, 1, 1, Qt::AlignLeft);
     stiffSliderLayout->addWidget(labelMedium, 1, 3, 1, 1, Qt::AlignRight);
     stiffSliderLayout->addWidget(labelHigh, 1, 5, 1, 1, Qt::AlignRight);
-    // Add Slider
+    
+	// Add Slider
     stiffSliderLayout->addWidget(stiffnessSlider, 2, 0, 1, 6);
-
 }
 
 // Destructor
@@ -68,16 +71,32 @@ SliderLayoutView::~SliderLayoutView()
 void SliderLayoutView::resizeEvent(QResizeEvent* event) {
     // get the new size of the parent widget
     QSize newSize = event->size();
+
     // calculate the positions of the labels
+	int xInset = 14;
     int xOff = 10; // some offset from the left edge
     int yOff = 10; // some offset from the top edge
     int xLow = newSize.width() / 3; // position of the low label
     int xMedium = newSize.width() / 8 * 5; // position of the medium label
     int xHigh = newSize.width() / 20 * 19 ; // position of the high label
-    // move the labels to the new positions
-    title->move(xOff, yOff);
+    
+	// move the labels to the new positions
     labelOff->move(xOff, yOff + title->height());
     labelLow->move(xLow, yOff + title->height());
     labelMedium->move(xMedium, yOff + title->height());
-    labelHigh->move(xHigh, yOff + title->height());
+
+	// Check if calculation value is close to being equal to window being in
+	// screen (600 through 690)
+	if (xHigh - xInset > 600 )
+	{
+		// Place label at specified location
+		labelHigh->move(xHigh + xOff, yOff + title->height());
+	}
+
+	// Otherwise, assume window is close to being or is minimized
+	else
+	{
+		// Place label at specified location
+		labelHigh->move(xHigh - xInset, yOff + title->height());
+	}
 }

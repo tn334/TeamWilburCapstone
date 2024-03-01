@@ -5,7 +5,7 @@
 // Header Files
 #include "stiffnessSliderView.h" // QWidget and QLabel included here
 #include <QGridLayout>
-#include <qstyle.h>
+#include <QStyle>
 #include <QResizeEvent>
 
 class SliderLayoutView : public QWidget

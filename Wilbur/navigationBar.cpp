@@ -90,6 +90,11 @@ void NavigationBar::copy()
     infoLabel->setText(tr("Invoked <b>Edit|Copy</b>"));
 }
 
+void NavigationBar::darkMode()
+{
+	infoLabel->setText("Invoked <b>Changed to dark mode<\b>");
+}
+
 void NavigationBar::print()
 {
     infoLabel->setText(tr("Invoked <b>File|Print</b>"));
@@ -148,6 +153,12 @@ void NavigationBar::createActions()
     exitAct->setStatusTip(tr("Exit the application"));
     connect(exitAct, &QAction::triggered, this, &QWidget::close);
 
+	//dark mode
+	darkModeAct = new QAction("Dark Mode", this);
+	darkModeAct->setStatusTip("no");
+	darkModeAct->setCheckable(true);
+	connect(darkModeAct, &QAction::triggered, this, &NavigationBar::darkMode);
+
 	//about application guide
     aboutAct = new QAction(tr("&About"), this);
     aboutAct->setStatusTip(tr("Show the application's About box"));
@@ -181,6 +192,10 @@ void NavigationBar::createMenus()
     //editMenu->addSeparator();
     //editMenu->addAction(cutAct);
     //editMenu->addAction(pasteAct);
+
+	// Create view menu and its actions
+	viewMenu = menuBar()->addMenu("View");
+	viewMenu->addAction(darkModeAct);
 
 	// Create help menu and its actions
     helpMenu = menuBar()->addMenu(tr("&Help"));

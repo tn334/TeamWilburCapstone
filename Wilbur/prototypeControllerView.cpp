@@ -63,7 +63,6 @@ void PrototypeControllerView::executeControl(buttonType button, int newValue)
     std::string objectName = "N/A";
     bool actionSuccess = false;
 
-
     switch (button)
     {
         case PUMP:
