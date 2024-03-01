@@ -58,16 +58,7 @@
     <ClCompile Include="customDialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="demoSimulator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="BaseButtonView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="actionLogging.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="inputDirector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StringBuilderViewModel.cpp">
@@ -93,6 +84,15 @@
     </ClCompile>
     <ClCompile Include="WilburApplicationView.cpp">
       <Filter>Source Files\View</Filter>
+    </ClCompile>
+    <ClCompile Include="ActionLogModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SimulatorModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InputDirectorViewModel.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -126,19 +126,25 @@
     <QtMoc Include="WilburApplicationView.h">
       <Filter>Header Files\View</Filter>
     </QtMoc>
+    <QtMoc Include="NippleBluetooth.cpp">
+      <Filter>Source Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="demoSimulator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="actionLogging.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="inputDirector.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="StringBuilderViewModel.h">
       <Filter>Header Files\ViewModel</Filter>
     </ClInclude>
+    <ClInclude Include="ActionLogModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SimulatorModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InputDirectorViewModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="test.pro" />
   </ItemGroup>
 </Project>
