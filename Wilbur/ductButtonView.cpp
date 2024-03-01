@@ -6,8 +6,6 @@ DuctButtonView::DuctButtonView(QWidget* parent)
 	: BaseButtonView("Click to change state of the duct",
 		"Closed", QColor(136, 34, 85), parent), isOpen(false) // initialize state to false
 {
-	//initialize isOpen to default of false
-	//isOpen = false;
 
 	//connect button to event handler(clicked)
 	connect(this, &DuctButtonView::clicked, this, & DuctButtonView::handleButtonClicked);

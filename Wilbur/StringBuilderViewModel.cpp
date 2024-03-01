@@ -12,10 +12,16 @@ StringBuilderViewModel::StringBuilderViewModel()
 void StringBuilderViewModel::controlManipulated(std::string objectName, int newValue) 
 {
     // check for button
-    if (objectName == "Button One" || objectName == "Button Two" || objectName == "Button Three") 
+    if (objectName == "Button One" || objectName == "Button Two" || objectName == "Button Three")
     {
 		// Create button change string that will be shown in text window
         objectText = QString("%1 changed to %2").arg(QString::fromStdString(objectName)).arg(newValue ? "Open" : "Closed");
+    }
+
+    else if (objectName == "Bluetooth Button")
+    {
+        // Create button change string that will be shown in text window
+        objectText = QString("%1 is %2").arg(QString::fromStdString(objectName)).arg(newValue ? "Connected" : "Disconnected");
     }
 
 	// Check for slider

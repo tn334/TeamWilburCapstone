@@ -11,18 +11,16 @@ class BluetoothButtonView : public BaseButtonView
 
 public:
     explicit BluetoothButtonView(QWidget* parent = nullptr);
+    
     QSize sizeHint() const override;
 
     //method to set the bluetooth conection status
-    void handleButtonClicked(buttonType button, int newValue);
+    void handleButtonClicked();
 
     //Function to get current state
-    bool getState() const { return isConnected; }
+    bool getState() const;
 
-    void setState(bool newState) { isConnected = newState; }
-
-signals:
-    void bluetoothButtonClicked(buttonType button, int newValue);
+    void setState(bool newState);
 
 private:
     bool isConnected; // tracking bluetooth connection status

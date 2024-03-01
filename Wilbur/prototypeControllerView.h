@@ -6,7 +6,7 @@
 #define PROTOTYPECONTROLLERVIEW_H
 
 // Local Headers
-#include "BluetoothButtonView.h"
+#include "BluetoothLayoutView.h"
 #include "SliderLayoutView.h" // QSlider is included in file
 #include "DuctLayoutView.h" // DuctButtonView and QAbstractButton included
 #include "customDialog.h" // QLabel, QMainWindow included in customDialog.h
@@ -36,7 +36,7 @@ public:
 
 private:
 	// objects
-	BluetoothButtonView* bluetooth;
+	BluetoothLayoutView* bluetoothLayout;
 	SliderLayoutView* sliderLayout;
 	DuctLayoutView* ductLayout;
 

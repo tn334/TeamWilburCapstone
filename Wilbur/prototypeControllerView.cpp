@@ -23,15 +23,16 @@ PrototypeControllerView::PrototypeControllerView(QWidget* parent, ActionLogModel
     director = inputDirector;
 
 	// Create bluetooth label and button
-    QLabel* bluetoothLabel = new QLabel("Bluetooth Connection:", controller);
+    /*QLabel* bluetoothLabel = new QLabel("Bluetooth Connection:", controller);
     bluetoothLabel->setStyleSheet("font: bold 14px; ");
-    bluetooth = new BluetoothButtonView(this);
-    connect(bluetooth, &BluetoothButtonView::handleButtonClicked, this, &PrototypeControllerView::executeControl);
+    bluetooth = new BluetoothButtonView(this);*/
+    bluetoothLayout = new BluetoothLayoutView(this);
+    connect(bluetoothLayout, &BluetoothLayoutView::bluetoothButtonClicked, this, &PrototypeControllerView::executeControl);
 
     //Bluetooth layout
-	QGridLayout* bluetoothLayout = new QGridLayout;
+	/*QGridLayout* bluetoothLayout = new QGridLayout;
     bluetoothLayout->addWidget(bluetoothLabel, 0, 0, 1, 1, Qt::AlignRight);
-    bluetoothLayout->addWidget(bluetooth, 0, 1, 1, 1);
+    bluetoothLayout->addWidget(bluetooth, 0, 1, 1, 1);*/
 
     // set ductLayout
     ductLayout = new DuctLayoutView(this);
@@ -40,11 +41,13 @@ PrototypeControllerView::PrototypeControllerView(QWidget* parent, ActionLogModel
     
     // Create a slider layout containing slider and its labels
     sliderLayout = new SliderLayoutView(this);
-    connect(sliderLayout->stiffnessSlider, &StiffnessSliderView::sliderReleased, customDialog, [this]() {executeControl(PUMP, sliderLayout->stiffnessSlider->value()); });
+    connect(sliderLayout->stiffnessSlider, &StiffnessSliderView::sliderReleased, customDialog, [this]() {
+        executeControl(PUMP, sliderLayout->stiffnessSlider->value()); 
+        });
 
     // Full PrototypeControllerView Layout
     QVBoxLayout* controlLayout = new QVBoxLayout;
-    controlLayout->addLayout(bluetoothLayout);
+    controlLayout->addWidget(bluetoothLayout);
     controlLayout->addSpacing(10);
     controlLayout->addWidget(controlLabel);
     controlLayout->addWidget(ductLayout);
@@ -99,7 +102,7 @@ void PrototypeControllerView::executeControl(buttonType button, int newValue)
 PrototypeControllerView::~PrototypeControllerView()
 {
     // delete objects
-    delete bluetooth;
+    delete bluetoothLayout;
     delete sliderLayout;
     delete controlLabel;
 

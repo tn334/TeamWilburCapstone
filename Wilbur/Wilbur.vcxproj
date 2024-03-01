@@ -114,6 +114,8 @@
     <ClCompile Include="ActionLogModel.cpp" />
     <ClCompile Include="BluetoothButtonView.cpp" />
     <ClCompile Include="BaseButtonView.cpp" />
+    <ClCompile Include="BluetoothLayoutView.cpp" />
+    <ClCompile Include="FlowRateView.cpp" />
     <ClCompile Include="PrototypeControllerView.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
@@ -146,6 +148,8 @@
     <QtMoc Include="BaseButtonView.h" />
     <QtMoc Include="BluetoothButtonView.h" />
     <ClInclude Include="ActionLogModel.h" />
+    <QtMoc Include="BluetoothLayoutView.h" />
+    <QtMoc Include="FlowRateView.h" />
     <ClInclude Include="SimulatorModel.h" />
     <QtMoc Include="DuctButtonView.h" />
     <QtMoc Include="SliderLayoutView.h" />
