@@ -22,17 +22,10 @@ PrototypeControllerView::PrototypeControllerView(QWidget* parent, ActionLogModel
     // create local variable to reference inputDirector
     director = inputDirector;
 
-	// Create bluetooth label and button
-    /*QLabel* bluetoothLabel = new QLabel("Bluetooth Connection:", controller);
-    bluetoothLabel->setStyleSheet("font: bold 14px; ");
-    bluetooth = new BluetoothButtonView(this);*/
+	// Create bluetooth layout
     bluetoothLayout = new BluetoothLayoutView(this);
+    // Connect layout to executeControl
     connect(bluetoothLayout, &BluetoothLayoutView::bluetoothButtonClicked, this, &PrototypeControllerView::executeControl);
-
-    //Bluetooth layout
-	/*QGridLayout* bluetoothLayout = new QGridLayout;
-    bluetoothLayout->addWidget(bluetoothLabel, 0, 0, 1, 1, Qt::AlignRight);
-    bluetoothLayout->addWidget(bluetooth, 0, 1, 1, 1);*/
 
     // set ductLayout
     ductLayout = new DuctLayoutView(this);
