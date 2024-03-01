@@ -98,6 +98,16 @@ signals:
     void messageReceived(const QString& message);
 
 public slots:
+    
+    void send(const QString& message)
+    {
+        if (m_socket && m_socket->isOpen()) {
+            QByteArray data = message.toUtf8();
+            m_socket->write(data);
+        }
+    }
+
+    /*
     void send(const QString& message)
     {
         if (m_socket && m_socket->isOpen()) {
@@ -105,7 +115,7 @@ public slots:
             m_socket->waitForBytesWritten();
         }
     }
-
+    */
 private slots:
     void deviceDiscovered(const QBluetoothDeviceInfo& info)
     {
@@ -115,6 +125,7 @@ private slots:
             connectToDevice();
         }
     }
+
 
     void connectToDevice()
     {
@@ -126,7 +137,7 @@ private slots:
             connect(m_socket, &QBluetoothSocket::readyRead, this, &BluetoothClient::readSocket);
 
             // Connect to the discovered device
-            m_socket->connectToService(m_deviceInfo.address(), QBluetoothUuid(QBluetoothUuid::SerialPort));
+            m_socket->connectToService(m_deviceInfo.address(), QBluetoothUuid(QString("{00001101-0000-1000-8000-00805F9B34FB}")));
         }
     }
 
