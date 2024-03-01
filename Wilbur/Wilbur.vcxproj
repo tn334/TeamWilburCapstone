@@ -114,6 +114,12 @@
     <ClCompile Include="ActionLogModel.cpp" />
     <ClCompile Include="BluetoothButtonView.cpp" />
     <ClCompile Include="BaseButtonView.cpp" />
+    <QtMoc Include="NippleBluetooth.cpp">
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
+    </QtMoc>
     <ClCompile Include="BluetoothLayoutView.cpp" />
     <ClCompile Include="FlowRateView.cpp" />
     <ClCompile Include="PrototypeControllerView.cpp">
@@ -156,6 +162,9 @@
     <ClInclude Include="InputDirectorViewModel.h" />
     <QtMoc Include="DuctLayoutView.h" />
     <ClInclude Include="StringBuilderViewModel.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="test.pro" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

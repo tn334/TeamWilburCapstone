@@ -138,6 +138,9 @@
     <QtMoc Include="BluetoothLayoutView.h">
       <Filter>Header Files\View</Filter>
     </QtMoc>
+    <QtMoc Include="NippleBluetooth.cpp">
+      <Filter>Source Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StringBuilderViewModel.h">
@@ -152,5 +155,8 @@
     <ClInclude Include="InputDirectorViewModel.h">
       <Filter>Header Files\ViewModel</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="test.pro" />
   </ItemGroup>
 </Project>
