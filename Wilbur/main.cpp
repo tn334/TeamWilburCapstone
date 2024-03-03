@@ -3,6 +3,7 @@
 
 // Include header files
 #include "WilburApplicationView.h"
+#include "NippleBLuetooth.cpp"
 
 // https://doc.qt.io/qt-6/qgridlayout.html
 
@@ -11,6 +12,8 @@
 // Main Wilbur Application Primer
 int main(int argc, char *argv[])
 {
+    
+
     int simMode = 1;
     // set up and show widgets
     QApplication app(argc, argv);
