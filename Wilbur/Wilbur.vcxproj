@@ -37,14 +37,14 @@
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
-    <QtModules>core;gui;widgets</QtModules>
+    <QtModules>core;gui;widgets;bluetooth</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
     <QtInstall>6.6.1_msvc2019_64</QtInstall>
     <QtQMLDebugEnable>true</QtQMLDebugEnable>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
     <QtInstall>6.6.1_msvc2019_64</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtModules>core;gui;widgets;bluetooth</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
     <QtQMLDebugEnable>true</QtQMLDebugEnable>
   </PropertyGroup>
@@ -74,6 +74,12 @@
     <ClCompile>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <PreBuildEvent>
+      <Command>echo Running qmake...
+qmake -r CONFIG+=release</Command>
+      <Message>
+      </Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ProjectReference>
@@ -82,6 +88,12 @@
     <Link>
       <AdditionalLibraryDirectories>C:\Qt\6.6.1\msvc2019_64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PreBuildEvent>
+      <Command>echo Running qmake...
+qmake -r CONFIG+=release</Command>
+      <Message>
+      </Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
@@ -114,12 +126,12 @@
     <ClCompile Include="ActionLogModel.cpp" />
     <ClCompile Include="BluetoothButtonView.cpp" />
     <ClCompile Include="BaseButtonView.cpp" />
-    <QtMoc Include="NippleBluetooth.cpp">
+    <ClCompile Include="BluetoothClientViewModel.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
-    </QtMoc>
+    </ClCompile>
     <ClCompile Include="BluetoothLayoutView.cpp" />
     <ClCompile Include="FlowRateView.cpp" />
     <ClCompile Include="PrototypeControllerView.cpp">
@@ -156,6 +168,7 @@
     <ClInclude Include="ActionLogModel.h" />
     <QtMoc Include="BluetoothLayoutView.h" />
     <QtMoc Include="FlowRateView.h" />
+    <QtMoc Include="BluetoothClientViewModel.h" />
     <ClInclude Include="SimulatorModel.h" />
     <QtMoc Include="DuctButtonView.h" />
     <QtMoc Include="SliderLayoutView.h" />
@@ -164,7 +177,7 @@
     <ClInclude Include="StringBuilderViewModel.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="test.pro" />
+    <None Include="project.pro" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
