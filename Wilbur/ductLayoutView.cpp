@@ -1,7 +1,7 @@
 // Local Header Files
 #include "ductLayoutView.h"
 
-DuctLayoutView::DuctLayoutView(QWidget* parent)
+DuctLayoutView::DuctLayoutView(QWidget* parent) : QWidget(parent)
 {
 	// Create layout for button 1
 	layoutButtonOne = createButtonLayout("Duct One:", &buttonOne, &viscValueOne, &flowRateUnitOne, VALVE1);

@@ -21,20 +21,12 @@ PrototypeControllerView::PrototypeControllerView(QWidget* parent, ActionLogModel
 
     // create local variable to reference inputDirector
     director = inputDirector;
-
     // create assign member variable to reference actionLogger
     actionLog = actionLoggerPtr;
-
-	// Create bluetooth label and button
-    QLabel* bluetoothLabel = new QLabel("Bluetooth Connection:", controller);
-    bluetoothLabel->setStyleSheet("font: bold 14px; ");
-    bluetooth = new BluetoothButtonView(this);
-    connect(bluetooth, &BluetoothButtonView::handleButtonClicked, this, &PrototypeControllerView::executeControl);
-
-    //Bluetooth layout
-	QGridLayout* bluetoothLayout = new QGridLayout;
-    bluetoothLayout->addWidget(bluetoothLabel, 0, 0, 1, 1, Qt::AlignRight);
-    bluetoothLayout->addWidget(bluetooth, 0, 1, 1, 1);
+	// Create bluetooth layout
+    bluetoothLayout = new BluetoothLayoutView(this);
+    // Connect layout to executeControl
+    connect(bluetoothLayout, &BluetoothLayoutView::bluetoothButtonClicked, this, &PrototypeControllerView::executeControl);
 
     // set ductLayout
     ductLayout = new DuctLayoutView(this);
@@ -47,7 +39,7 @@ PrototypeControllerView::PrototypeControllerView(QWidget* parent, ActionLogModel
 
     // Full PrototypeControllerView Layout
     QVBoxLayout* controlLayout = new QVBoxLayout;
-    controlLayout->addLayout(bluetoothLayout);
+    controlLayout->addWidget(bluetoothLayout);
     controlLayout->addSpacing(10);
     controlLayout->addWidget(controlLabel);
     controlLayout->addWidget(ductLayout);
@@ -65,7 +57,6 @@ void PrototypeControllerView::executeControl(buttonType button, int newValue)
 	// Initialize Variables
     std::string objectName = "N/A";
     bool actionSuccess = false;
-
 
     switch (button)
     {
@@ -97,7 +88,7 @@ void PrototypeControllerView::executeControl(buttonType button, int newValue)
 PrototypeControllerView::~PrototypeControllerView()
 {
     // delete objects
-    delete bluetooth;
+    delete bluetoothLayout;
     delete sliderLayout;
     delete controlLabel;
 

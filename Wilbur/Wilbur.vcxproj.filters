@@ -58,18 +58,6 @@
     <ClCompile Include="customDialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="demoSimulator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BaseButtonView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="actionLogging.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="inputDirector.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="StringBuilderViewModel.cpp">
       <Filter>Source Files\ViewModel</Filter>
     </ClCompile>
@@ -94,15 +82,30 @@
     <ClCompile Include="WilburApplicationView.cpp">
       <Filter>Source Files\View</Filter>
     </ClCompile>
+    <ClCompile Include="InputDirectorViewModel.cpp">
+      <Filter>Source Files\ViewModel</Filter>
+    </ClCompile>
+    <ClCompile Include="ActionLogModel.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseButtonView.cpp">
+      <Filter>Source Files\View</Filter>
+    </ClCompile>
+    <ClCompile Include="SimulatorModel.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="BluetoothLayoutView.cpp">
+      <Filter>Source Files\View</Filter>
+    </ClCompile>
+    <ClCompile Include="FlowRateView.cpp">
+      <Filter>Source Files\View</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="navigationBar.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="SimOutputViewModel.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="BaseButtonView.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="BluetoothButtonView.h">
@@ -126,19 +129,34 @@
     <QtMoc Include="WilburApplicationView.h">
       <Filter>Header Files\View</Filter>
     </QtMoc>
+    <QtMoc Include="BaseButtonView.h">
+      <Filter>Header Files\View</Filter>
+    </QtMoc>
+    <QtMoc Include="FlowRateView.h">
+      <Filter>Header Files\View</Filter>
+    </QtMoc>
+    <QtMoc Include="BluetoothLayoutView.h">
+      <Filter>Header Files\View</Filter>
+    </QtMoc>
+    <QtMoc Include="NippleBluetooth.cpp">
+      <Filter>Source Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="demoSimulator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="actionLogging.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="inputDirector.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="StringBuilderViewModel.h">
       <Filter>Header Files\ViewModel</Filter>
     </ClInclude>
+    <ClInclude Include="SimulatorModel.h">
+      <Filter>Header Files\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionLogModel.h">
+      <Filter>Header Files\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="InputDirectorViewModel.h">
+      <Filter>Header Files\ViewModel</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="test.pro" />
   </ItemGroup>
 </Project>

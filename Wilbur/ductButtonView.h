@@ -20,9 +20,6 @@ public:
     //function to set current state
     void setState(bool newState);
 
-//signals:
-    //void stateChanged(bool newState);
-
 private:
     bool isOpen; // tracking if duct is open or closed state
 };
