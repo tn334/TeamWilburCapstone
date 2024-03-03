@@ -16,21 +16,20 @@
 #include <QMainWindow>
 #include <QVBoxLayout>
 
-class CustomDialog : public QDialog
+class SimOutputViewModel : public QDialog
 {
 	Q_OBJECT
 
 public:
-	CustomDialog(QWidget* parent = nullptr, ActionLogModel* actionLog = nullptr);
+	SimOutputViewModel(QWidget* parent = nullptr);
 
 public slots:
-	void controlManipulated(std::string objectName, int newValue);
+	void appendActionString(std::string objectName, int newValue);
 
 private:
 	void initUI();
-	StringBuilderViewModel textHandler;
+	StringBuilderViewModel stringBuilder;
 	QTextEdit* textEdit;
-	ActionLogModel* logPtr;
 };
 
 #endif // CUSTOMDIALOG_H

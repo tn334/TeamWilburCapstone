@@ -2,22 +2,19 @@
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
 
 // Header Files
-#include "customDialog.h"
+#include "SimOutputViewModel.h"
 
 
 // Custom Dialog Box Constructor
-CustomDialog::CustomDialog(QWidget* parent, ActionLogModel* actionLog)
+SimOutputViewModel::SimOutputViewModel(QWidget* parent)
     : QDialog(parent, Qt::Window)
 {
-	// Set logPtr to action log
-	logPtr = actionLog;
-
 	// Initialize Dialog UI
     initUI();
 }
 
 // UI Initializer
-void CustomDialog::initUI()
+void SimOutputViewModel::initUI()
 {
 	// Instantiate dialog layout
     QVBoxLayout* dialogLayout = new QVBoxLayout(this);
@@ -41,16 +38,13 @@ void CustomDialog::initUI()
 }
 
 // Handle text editor text manipulation
-void CustomDialog::controlManipulated(std::string objectName, int newValue) 
+void SimOutputViewModel::appendActionString(std::string objectName, int newValue) 
 {
 	// Using the text handler, control text manipulation
-    textHandler.controlManipulated(objectName, newValue);
+    stringBuilder.buildString(objectName, newValue);
 
 	// Optionally update the text in the QTextEdit immediately
-    textEdit->setPlainText(textHandler.getAllText().join("\n"));
-
-	// Add the action to the log of actions
-	logPtr->addActionToLog(textHandler.getActionText());
+    textEdit->setPlainText(stringBuilder.getAllText().join("\n"));
 
     // Show the dialog
     this->show();

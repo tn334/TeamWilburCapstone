@@ -19,7 +19,7 @@ WilburApplicationView::WilburApplicationView(QWidget* parent, int simulatorMode)
     actionLog = new ActionLogModel;
 
     // Instantiate Input Director
-    inputDirector = new InputDirectorViewModel(simulatorMode);
+    inputDirector = new InputDirectorViewModel(simulatorMode, this);
 
     // Instantiate Navigation Bar at top of window
     navigationBar = new NavigationBar(this, actionLog);

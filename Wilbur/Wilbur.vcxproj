@@ -120,7 +120,7 @@
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
     </ClCompile>
-    <ClCompile Include="customDialog.cpp" />
+    <ClCompile Include="SimOutputViewModel.cpp" />
     <ClCompile Include="SimulatorModel.cpp" />
     <ClCompile Include="DuctButtonView.cpp" />
     <ClCompile Include="InputDirectorViewModel.cpp" />
@@ -140,7 +140,7 @@
     <QtMoc Include="navigationBar.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="customDialog.h" />
+    <QtMoc Include="SimOutputViewModel.h" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="BaseButtonView.h" />

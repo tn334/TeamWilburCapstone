@@ -9,7 +9,7 @@
 #include "BluetoothButtonView.h"
 #include "SliderLayoutView.h" // QSlider is included in file
 #include "DuctLayoutView.h" // DuctButtonView and QAbstractButton included
-#include "customDialog.h" // QLabel, QMainWindow included in customDialog.h
+#include "SimOutputViewModel.h" // QLabel, QMainWindow included in SimOutputViewModel.h
 #include "ActionLogModel.h"
 #include "InputDirectorViewModel.h"
 
@@ -43,7 +43,8 @@ private:
 	// instances
 	SimulatorModel demoSimulator;
 	InputDirectorViewModel* director;
-	CustomDialog* customDialog;
+	ActionLogModel* actionLog;
+	SimOutputViewModel* simOutput;
 
 	// controller label
 	QLabel* controlLabel;
