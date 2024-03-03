@@ -1,9 +1,16 @@
 #pragma once
 
+#ifndef BLUETOOTHCLIENTVIEWMODEL_H
+#define BLUETOOTHCLIENTVIEWMODEL_H
+
 #include <QObject>
 #include <QDebug>
 #include "QtBluetooth/QBluetoothDeviceDiscoveryAgent"
 #include "QtBluetooth/QBluetoothSocket" 
+#include <QLoggingCategory>
+
+// declaring logging objects citation:https://doc.qt.io/qt-6.5/qloggingcategory.html
+Q_DECLARE_LOGGING_CATEGORY(m_bluetooth)
 
 class BluetoothClient : public QObject
 {
@@ -40,6 +47,8 @@ private slots:
 
     void onDisconnected(); // implementation in cpp file
 
+    void onErrorOccurred(QBluetoothSocket::SocketError error);
+
     void readSocket(); // implementation in cpp file
 
 private:
@@ -47,3 +56,5 @@ private:
     QBluetoothDeviceInfo m_deviceInfo;
     QBluetoothSocket* m_socket;
 };
+
+#endif // BLUETOOTHCLIENTVIEWMODEL_H

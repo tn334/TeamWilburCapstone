@@ -3,6 +3,9 @@
 
 #include "BluetoothClientViewModel.h"
 
+// Declaring Logging object cite: https://doc.qt.io/qt-6.5/qloggingcategory.html
+Q_LOGGING_CATEGORY(m_bluetooth, "bluetooth")
+
 BluetoothClient::BluetoothClient(QObject* parent)
     : QObject(parent), m_socket(nullptr)
 {
@@ -35,7 +38,7 @@ void BluetoothClient::send(const QString& message)
 void BluetoothClient::deviceDiscovered(const QBluetoothDeviceInfo& info)
 {
     if (info.address().toString() == "17:06:42:11:69:91") {
-        qDebug() << "Found device:" << info.name() << info.address();
+        qCDebug(m_bluetooth) << "Found device:" << info.name() << info.address();
         m_deviceInfo = info;
         connectToDevice();
     }
@@ -45,26 +48,47 @@ void BluetoothClient::connectToDevice()
 {
     if (m_deviceInfo.isValid()) {
         // Create a Bluetooth socket
+        qCDebug(m_bluetooth) << "Create socket";
         m_socket = new QBluetoothSocket(QBluetoothServiceInfo::RfcommProtocol, this);
         connect(m_socket, &QBluetoothSocket::connected, this, &BluetoothClient::onConnected);
         connect(m_socket, &QBluetoothSocket::disconnected, this, &BluetoothClient::onDisconnected);
 
         connect(m_socket, &QBluetoothSocket::readyRead, this, &BluetoothClient::readSocket);
-
+        connect(m_socket, &QBluetoothSocket::errorOccurred, this, &BluetoothClient::onErrorOccurred);
+        
         // Connect to the discovered device
-        m_socket->connectToService(m_deviceInfo.address(), QBluetoothUuid(QString("{00001101-0000-1000-8000-00805F9B34FB}")));
+        const QBluetoothUuid rfcommUuid("{00001101-0000-1000-8000-00805F9B34FB}");
+        m_socket->connectToService(m_deviceInfo.address(), rfcommUuid);
+        qCDebug(m_bluetooth) << "Socket created and connected to device:" << m_deviceInfo.name();
+    }
+}
+
+void BluetoothClient::onErrorOccurred(QBluetoothSocket::SocketError error)
+{
+    // Error debug messages 
+    //  resource: https://doc.qt.io/qt-6/qbluetoothsocket.html#SocketError-enum
+    switch (error)
+    {
+    case QBluetoothSocket::SocketError::RemoteHostClosedError:
+        qCDebug(m_bluetooth) << "Remote host closed the connection.";
+        break;
+    case QBluetoothSocket::SocketError::HostNotFoundError:
+        qCDebug(m_bluetooth) << "Host not found.";
+        break;
+    default:
+        qCDebug(m_bluetooth) << "Unknown error occured.";
     }
 }
 
 void BluetoothClient::onConnected()
 {
-    qDebug() << "Connected to device:" << m_deviceInfo.name() << m_deviceInfo.address();
+    qCDebug(m_bluetooth) << "Connected to device:" << m_deviceInfo.name() << m_deviceInfo.address();
     emit connected();
 }
 
 void BluetoothClient::onDisconnected()
 {
-    qDebug() << "Disconnected from device:" << m_deviceInfo.name() << m_deviceInfo.address();
+    qCDebug(m_bluetooth) << "Disconnected from device:" << m_deviceInfo.name() << m_deviceInfo.address();
     emit disconnected();
 }
 
@@ -72,7 +96,7 @@ void BluetoothClient::readSocket()
 {
     if (m_socket && m_socket->canReadLine()) {
         QString message = QString::fromUtf8(m_socket->readLine()).trimmed();
-        qDebug() << "Received message:" << message;
+        qCDebug(m_bluetooth) << "Received message:" << message;
         emit messageReceived(message);
     }
 }

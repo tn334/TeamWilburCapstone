@@ -4,7 +4,6 @@
 // Include header files
 #include "WilburApplicationView.h"
 #include "BluetoothClientViewModel.h"
-#include <QLoggingCategory>
 
 // https://doc.qt.io/qt-6/qgridlayout.html
 
@@ -26,7 +25,10 @@ int main(int argc, char *argv[])
     }
 
     // Enabling all QtBluetooth Logging
-    QLoggingCategory::setFilterRules(QStringLiteral("qt.bluetooth* = true"));
+    QLoggingCategory::setFilterRules("bluetooth.debug=true"); // enables debug for bluetooth category
+    QLoggingCategory::setFilterRules(QStringLiteral("qt.bluetooth* = true")); // enables logging for 
+                                                                              //broader category of all 
+                                                                              // things starting with 'qt.bluetooth'
 
     // Wilbur widgets - initialize object
     WilburApplicationView wilbur(nullptr, simMode);

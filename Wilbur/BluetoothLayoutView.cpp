@@ -10,6 +10,8 @@ BluetoothLayoutView::BluetoothLayoutView(QWidget* parent) : QWidget(parent)
     connect(bluetoothButton, &BluetoothButtonView::clicked, this, [this] {
         callExecuteControl(CONNECT, bluetoothButton->getState());
         });
+    connect(bluetoothButton, &BluetoothButtonView::clicked, this, 
+        &BluetoothLayoutView::toggleBluetoothConnection);
 
     //Bluetooth layout
     layout = new QGridLayout(this);
@@ -28,4 +30,21 @@ BluetoothLayoutView::~BluetoothLayoutView()
 void BluetoothLayoutView::callExecuteControl(buttonType button, int newValue)
 {
     emit bluetoothButtonClicked(button, newValue);
+}
+
+// TBD by backend hook up
+void BluetoothLayoutView::toggleBluetoothConnection(bool isConnected)
+{
+    if (isConnected)
+    {
+        // Trigger Bluetooth connection here
+        // For example:
+        //bluetoothClient->connectToDevice();
+    }
+    else
+    {
+        // Trigger Bluetooth disconnection here
+        // For example:
+        // bluetoothClient->disconnectFromDevice();
+    }
 }
