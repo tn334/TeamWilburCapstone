@@ -3,7 +3,7 @@
 
 // Include header files
 #include "WilburApplicationView.h"
-#include "NippleBLuetooth.cpp"
+#include "BluetoothClientViewModel.h"
 
 // https://doc.qt.io/qt-6/qgridlayout.html
 
