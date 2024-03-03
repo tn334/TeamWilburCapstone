@@ -1,13 +1,15 @@
 #include "InputDirectorViewModel.h"
 
 
-InputDirectorViewModel::InputDirectorViewModel() : simulatorMode(true), simObject(SimulatorModel()) {}
+InputDirectorViewModel::InputDirectorViewModel() : simulatorMode(true), simObject(SimulatorModel()), simOutput(nullptr) {}
 
-InputDirectorViewModel::InputDirectorViewModel(bool simState) : simulatorMode(simState) 
+InputDirectorViewModel::InputDirectorViewModel(bool simState, QWidget* simOutputParent) : simulatorMode(simState), simOutput(nullptr)
 {
-	if (simState) 
+	if (simulatorMode)
 	{
 		simObject = SimulatorModel();
+
+		simOutput = new SimOutputViewModel(simOutputParent);
 	}
 	else 
 	{
@@ -15,12 +17,13 @@ InputDirectorViewModel::InputDirectorViewModel(bool simState) : simulatorMode(si
 	}
 }
 
-bool InputDirectorViewModel::handleInput(buttonType inputType, int newValue) 
+bool InputDirectorViewModel::handleInput(buttonType inputType, int newValue, std::string objectName) 
 {
 	bool hardwareResponse = false;
 
 	if (simulatorMode)
 	{
+
 		switch (inputType)
 		{
 
@@ -41,6 +44,9 @@ bool InputDirectorViewModel::handleInput(buttonType inputType, int newValue)
 				hardwareResponse = simObject.setValve(static_cast<int>(inputType) - 1, newValue);
 				break;
 		}
+
+		simOutput->appendActionString(objectName, newValue);
+
 	}
 	else
 	{

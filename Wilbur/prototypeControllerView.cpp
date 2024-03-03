@@ -5,7 +5,7 @@
 #include "PrototypeControllerView.h"
 
 // cite https://doc.qt.io/qt-6/qtwidgets-widgets-sliders-example.html
-PrototypeControllerView::PrototypeControllerView(QWidget* parent, ActionLogModel* actionLog, InputDirectorViewModel* inputDirector)
+PrototypeControllerView::PrototypeControllerView(QWidget* parent, ActionLogModel* actionLoggerPtr, InputDirectorViewModel* inputDirector)
 {
     // Create a wrapper for controls
     QWidget* controller = new QWidget;
@@ -16,12 +16,13 @@ PrototypeControllerView::PrototypeControllerView(QWidget* parent, ActionLogModel
     controlLabel->setFrameStyle(QFrame::StyledPanel | QFrame::Raised);
     controlLabel->setAlignment(Qt::AlignCenter);
 
-    //add instance of customDialog
-    customDialog = new CustomDialog(this, actionLog);
+    //add instance of simOutput window
+    simOutput = new SimOutputViewModel(this);
 
     // create local variable to reference inputDirector
     director = inputDirector;
-
+    // create assign member variable to reference actionLogger
+    actionLog = actionLoggerPtr;
 	// Create bluetooth layout
     bluetoothLayout = new BluetoothLayoutView(this);
     // Connect layout to executeControl
@@ -34,9 +35,7 @@ PrototypeControllerView::PrototypeControllerView(QWidget* parent, ActionLogModel
     
     // Create a slider layout containing slider and its labels
     sliderLayout = new SliderLayoutView(this);
-    connect(sliderLayout->stiffnessSlider, &StiffnessSliderView::sliderReleased, customDialog, [this]() {
-        executeControl(PUMP, sliderLayout->stiffnessSlider->value()); 
-        });
+    connect(sliderLayout->stiffnessSlider, &StiffnessSliderView::sliderReleased, this, [this]() {executeControl(PUMP, sliderLayout->stiffnessSlider->value()); });
 
     // Full PrototypeControllerView Layout
     QVBoxLayout* controlLayout = new QVBoxLayout;
@@ -78,17 +77,12 @@ void PrototypeControllerView::executeControl(buttonType button, int newValue)
             break;
     }
 
-    actionSuccess = director->handleInput(button, newValue);
+    actionSuccess = director->handleInput(button, newValue, objectName);
 
-	// Change dialog in dialog box
-    customDialog->controlManipulated(objectName, newValue);
+    // @TODO: make function call to actionlogger here
+    // textHandler.getActionText()
+    actionLog->addActionToLog("Previously this was stringBuilder.getActionText()");
 
-    // Set the main window as the parent of the dialog
-    customDialog->setParent(this);
-
-    // Show the existing customDialog without blocking
-    customDialog->show();
-    customDialog->setAttribute(Qt::WA_ShowWithoutActivating);
 }
 
 PrototypeControllerView::~PrototypeControllerView()
@@ -100,7 +94,7 @@ PrototypeControllerView::~PrototypeControllerView()
 
     // delete instances
     delete director;
-    delete customDialog;
+    delete simOutput;
 }
 
 

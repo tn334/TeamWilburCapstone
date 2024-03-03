@@ -105,7 +105,7 @@
     <QtMoc Include="navigationBar.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="customDialog.h">
+    <QtMoc Include="SimOutputViewModel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="BluetoothButtonView.h">

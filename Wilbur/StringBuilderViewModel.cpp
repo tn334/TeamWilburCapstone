@@ -9,7 +9,7 @@ StringBuilderViewModel::StringBuilderViewModel()
     // Initialize if needed
 }
 
-void StringBuilderViewModel::controlManipulated(std::string objectName, int newValue) 
+void StringBuilderViewModel::buildString(std::string objectName, int newValue) 
 {
     // check for button
     if (objectName == "Button One" || objectName == "Button Two" || objectName == "Button Three")

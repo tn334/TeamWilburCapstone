@@ -15,7 +15,7 @@ public:
 	StringBuilderViewModel();
 
 	// Change in front end
-	void controlManipulated(std::string objectName, int newValue);
+	void buildString(std::string objectName, int newValue);
 
 	// Gather all session texts
 	QStringList getAllText() const;

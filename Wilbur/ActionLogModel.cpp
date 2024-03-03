@@ -28,6 +28,7 @@ void ActionLogModel::exportLog()
 void ActionLogModel::addActionToLog(QString actionToAdd)
 {
 	// Format action time and text
+	// @TODO: this should use the implemented version of stringBuilder
 	QString formattedAction = QString("%1 | %2 -> %3").arg(
 						 formattedElapsedTime(), getActionTime(), actionToAdd);
 
