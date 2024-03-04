@@ -63,5 +63,4 @@ void BluetoothButtonView::handleButtonClicked()
 			"border-radius: 4px;"
 			"font: bold 12px; ");
 	}
-	//bluetooth control backend?
 }
