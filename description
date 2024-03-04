@@ -1,0 +1,6 @@
+Description:
+
+Our project's goal is to create a user friendly, simple control application for a robotic nipple prototype.
+Our application must control milk viscocity (through individual duct control), nipple stiffness, accept user input of flow rate and establish a bluetooth connection to the prototype. 
+
+Our project will use Qt libraries as well as C++ to accomplish our goals.
