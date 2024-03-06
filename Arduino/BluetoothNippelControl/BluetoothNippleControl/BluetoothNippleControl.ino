@@ -16,6 +16,15 @@ Servo C3M;
 
 String valveName = "";
 
+enum valveNumbers
+{
+  SRYNGE = 0, 
+  SERVO1 = 1,
+  SERVO2 = 2,
+  SERVO3 = 3,
+};
+
+
 //Switch Pin Declarations
 
 const int C1Switch = 2;
@@ -71,33 +80,7 @@ BLEStringCharacteristic valveNameCharacteristic( BLE_UUID_FILE_NAME, BLERead | B
 
 
 
-// void bluetoothSetup(){
-//   Serial.begin(9600);
-//   SerialBT.begin("Wilbur");
-// }
 
-// void sendData(char sendChar)
-// {
-//  if (Serial.available()) {
-//     Serial.print("Sending: ");
-//     Serial.println(sendChar); // Print the byte being sent to the serial monitor
-//     SerialBT.write(sendChar); // Send the byte to the built-in Bluetooth module
-//   }
-// }
-
-// char[] recieveData() //character encoding for each part to change
-// {
-//   char[2] receivedChar;
-//   if (SerialBT.available()) {
-//     receivedChar[0] = SerialBT.read(); // Read the incoming byte (type)
-//     Serial.print("Received: ");
-//     Serial.println(receivedChar); // Print the received byte to the serial monitor
-//     receivedChar[1] = SerialBT.read(); // Read the incoming byte (value)
-//     Serial.print("Received: ");
-//     Serial.println(receivedChar); // Print the received byte to the serial monitor
-//   }
-//   return receivedChar;
-// }
 
 void setup() {
   // put your setup code here, to run once:
@@ -164,8 +147,8 @@ void loop() {
 
 
   BLEDevice central = BLE.central();
-
-  if ( central )
+  Serial.println(central.connected());
+  if ( central.connected() )
   {
     Serial.print( "Connected to central: " );
     Serial.println( central.address() );
@@ -176,7 +159,92 @@ void loop() {
       {
         valveName = valveNameCharacteristic.value();
         Serial.print( "New Value recieved: " );
-        Serial.println( valveName );
+        Serial.println( valveName );  
+        String object = valveName.substring(0,1);
+        String value = valveName.substring(1);
+        //these next three if-else statements set the position of the servo based on the switch state
+        //uses the enum from above to check if the values are correct
+        if(object.toInt() == SERVO1){ 
+          if(value.toInt() == 0)
+          {
+            C1M.write(1);
+          }
+          else{
+            C1M.write(60);
+          }
+        }
+
+        if(object.toInt() == SERVO2){
+          if(value.toInt() == 0)
+          {
+            C1M.write(1);
+          }
+          else{
+            C1M.write(60);
+          }
+        }
+
+        if(object.toInt() == SERVO3){
+          if(value.toInt() == 0)
+          {
+            C1M.write(1);
+          }
+          else{
+            C1M.write(60);
+          }
+        }
+        //no manual reading of values, this is the bluetooth section
+        // LinSwitchState = analogRead(linPosSwitch); //reads the position of the rotary switch on the remote
+
+        // PressTransValue = analogRead(PressTransducer); //reads the value of the pressure transducer
+
+        //the following if/elseif/else statment converts the position of the rotary switch to one of the four pressure states based on the values you selected
+        if(object.toInt() == 0)
+        {
+          if(value.toInt() == 0){
+            CommandLinPos = PressOffPos;
+          }
+          else if(value.toInt() == 1){
+            CommandLinPos = PressLowPos;
+          }
+          else if (value.toInt() == 2){
+            CommandLinPos = PressMedPos;
+          }
+          else{
+            CommandLinPos = PressHighPos;
+          }
+        }
+
+        //the indexing variable i allows us to count interations across loops but needs to be reset to zero when it exceeds the number of readings
+        if(i==numRead){
+          i=0;
+        }
+        CurrentLinPos[i] = analogRead(LinPosSensor); //this line reads and stores the current linear position variable in the array that will be averaged
+        i++; //increases the value of i
+
+        meanCurrentPos = 0; //resets the value of the mean every loop
+        for(iA=0;iA<numRead;iA++){
+          meanCurrentPos = meanCurrentPos+CurrentLinPos[iA]; //sums all the values currently in the linear position storage array
+        }
+
+        meanCurrentPos = meanCurrentPos/numRead; //calculates the mean of the linear position storage array this is what smooths out the linear position values and helps prevent the linear actuator from jittering
+
+        //these if/elseif/else statements set the state of the linear actuator drive pins to be extending or retracting, based on the linear actuators onboard position sensor value
+        //it includes the deadband value to help the linear actuator hold a given position
+        
+        if((meanCurrentPos <= CommandLinPos+deadband) && (meanCurrentPos >= CommandLinPos-deadband)){
+          digitalWrite(LinExtendPin, LOW);
+          digitalWrite(LinRetractPin, LOW);
+        }
+        else if(meanCurrentPos > CommandLinPos+deadband){
+          digitalWrite(LinExtendPin, LOW);
+          digitalWrite(LinRetractPin, HIGH);
+        }
+        else if(meanCurrentPos < CommandLinPos-deadband){
+          digitalWrite(LinExtendPin, HIGH);
+          digitalWrite(LinRetractPin, LOW);
+        }
+
         
       }
     }
@@ -184,104 +252,105 @@ void loop() {
     Serial.print( F( "Disconnected from central: " ) );
     Serial.println( central.address() );
   }
-
-
-  // these 3 lines read the positions of the toggle switches and save their current values
-  C1State = digitalRead(C1Switch);
-  C2State = digitalRead(C2Switch);
-  C3State = digitalRead(C3Switch);
-
-
-  //these next three if-else statements set the position of the servo based on the switch state
-  if(C1State == 0){
-    C1M.write(1);
-  }
   else{
-    C1M.write(60);
-  }
-
-  if(C2State == 0){
-    C2M.write(1);
-  }
-  else{
-    C2M.write(60);
-  }
-
-  if(C3State == 0){
-    C3M.write(1);
-  }
-  else if(C3State == 1){
-    C3M.write(60);
-  }
-
-  LinSwitchState = analogRead(linPosSwitch); //reads the position of the rotary switch on the remote
-
-  PressTransValue = analogRead(PressTransducer); //reads the value of the pressure transducer
-
-  //the following if/elseif/else statment converts the position of the rotary switch to one of the four pressure states based on the values you selected
-  if(LinSwitchState<220){
-    CommandLinPos = PressOffPos;
-  }
-  else if(LinSwitchState>220 && LinSwitchState<440){
-    CommandLinPos = PressLowPos;
-  }
-  else if (LinSwitchState>440 && LinSwitchState<880){
-    CommandLinPos = PressMedPos;
-  }
-  else{
-    CommandLinPos = PressHighPos;
-  }
-
-  //the indexing variable i allows us to count interations across loops but needs to be reset to zero when it exceeds the number of readings
-  if(i==numRead){
-    i=0;
-  }
-  CurrentLinPos[i] = analogRead(LinPosSensor); //this line reads and stores the current linear position variable in the array that will be averaged
-  i++; //increases the value of i
-
-  meanCurrentPos = 0; //resets the value of the mean every loop
-  for(iA=0;iA<numRead;iA++){
-    meanCurrentPos = meanCurrentPos+CurrentLinPos[iA]; //sums all the values currently in the linear position storage array
-  }
-
-  meanCurrentPos = meanCurrentPos/numRead; //calculates the mean of the linear position storage array this is what smooths out the linear position values and helps prevent the linear actuator from jittering
-
-  //these if/elseif/else statements set the state of the linear actuator drive pins to be extending or retracting, based on the linear actuators onboard position sensor value
-  //it includes the deadband value to help the linear actuator hold a given position
-  
-  if((meanCurrentPos <= CommandLinPos+deadband) && (meanCurrentPos >= CommandLinPos-deadband)){
-    digitalWrite(LinExtendPin, LOW);
-    digitalWrite(LinRetractPin, LOW);
-  }
-  else if(meanCurrentPos > CommandLinPos+deadband){
-    digitalWrite(LinExtendPin, LOW);
-    digitalWrite(LinRetractPin, HIGH);
-  }
-  else if(meanCurrentPos < CommandLinPos-deadband){
-    digitalWrite(LinExtendPin, HIGH);
-    digitalWrite(LinRetractPin, LOW);
-  }
 
 
-//These lines when commented or uncommented will have the code print various values to the serial monitor for you to review and verify that everything is working correctly
-  // Serial.print("Channel 1 State : ");
-  // Serial.print(C1State);
-  // Serial.print("  Channel 2 State : ");
-  // Serial.print(C2State);
-  // Serial.print("  Channel 3 State : ");
-  // Serial.println(C3State);
-  // Serial.print("  SyringePumpState : ");
-  // Serial.print(CommandLinPos);
-  Serial.print("  LinearActuatorPosition : ");
-  Serial.print(meanCurrentPos);  
-  Serial.print("  Transducer value : ");
-  Serial.println(PressTransValue);
-  Serial.println();
-  // for(int j=0;j<numRead;j++){
-  //   Serial.print(CurrentLinPos[j]);
-  //   Serial.print(" , ");
-  // }
-  Serial.println();
-  delay(25);
+    // these 3 lines read the positions of the toggle switches and save their current values
+    C1State = digitalRead(C1Switch);
+    C2State = digitalRead(C2Switch);
+    C3State = digitalRead(C3Switch);
 
+
+    //these next three if-else statements set the position of the servo based on the switch state
+    if(C1State == 0){
+      C1M.write(1);
+    }
+    else{
+      C1M.write(60);
+    }
+
+    if(C2State == 0){
+      C2M.write(1);
+    }
+    else{
+      C2M.write(60);
+    }
+
+    if(C3State == 0){
+      C3M.write(1);
+    }
+    else if(C3State == 1){
+      C3M.write(60);
+    }
+
+    LinSwitchState = analogRead(linPosSwitch); //reads the position of the rotary switch on the remote
+
+    PressTransValue = analogRead(PressTransducer); //reads the value of the pressure transducer
+
+    //the following if/elseif/else statment converts the position of the rotary switch to one of the four pressure states based on the values you selected
+    if(LinSwitchState<220){
+      CommandLinPos = PressOffPos;
+    }
+    else if(LinSwitchState>220 && LinSwitchState<440){
+      CommandLinPos = PressLowPos;
+    }
+    else if (LinSwitchState>440 && LinSwitchState<880){
+      CommandLinPos = PressMedPos;
+    }
+    else{
+      CommandLinPos = PressHighPos;
+    }
+
+    //the indexing variable i allows us to count interations across loops but needs to be reset to zero when it exceeds the number of readings
+    if(i==numRead){
+      i=0;
+    }
+    CurrentLinPos[i] = analogRead(LinPosSensor); //this line reads and stores the current linear position variable in the array that will be averaged
+    i++; //increases the value of i
+
+    meanCurrentPos = 0; //resets the value of the mean every loop
+    for(iA=0;iA<numRead;iA++){
+      meanCurrentPos = meanCurrentPos+CurrentLinPos[iA]; //sums all the values currently in the linear position storage array
+    }
+
+    meanCurrentPos = meanCurrentPos/numRead; //calculates the mean of the linear position storage array this is what smooths out the linear position values and helps prevent the linear actuator from jittering
+
+    //these if/elseif/else statements set the state of the linear actuator drive pins to be extending or retracting, based on the linear actuators onboard position sensor value
+    //it includes the deadband value to help the linear actuator hold a given position
+    
+    if((meanCurrentPos <= CommandLinPos+deadband) && (meanCurrentPos >= CommandLinPos-deadband)){
+      digitalWrite(LinExtendPin, LOW);
+      digitalWrite(LinRetractPin, LOW);
+    }
+    else if(meanCurrentPos > CommandLinPos+deadband){
+      digitalWrite(LinExtendPin, LOW);
+      digitalWrite(LinRetractPin, HIGH);
+    }
+    else if(meanCurrentPos < CommandLinPos-deadband){
+      digitalWrite(LinExtendPin, HIGH);
+      digitalWrite(LinRetractPin, LOW);
+    }
+
+
+  //These lines when commented or uncommented will have the code print various values to the serial monitor for you to review and verify that everything is working correctly
+    // Serial.print("Channel 1 State : ");
+    // Serial.print(C1State);
+    // Serial.print("  Channel 2 State : ");
+    // Serial.print(C2State);
+    // Serial.print("  Channel 3 State : ");
+    // Serial.println(C3State);
+    // Serial.print("  SyringePumpState : ");
+    // Serial.print(CommandLinPos);
+    // Serial.print("  LinearActuatorPosition : ");
+    // Serial.print(meanCurrentPos);  
+    // Serial.print("  Transducer value : ");
+    // Serial.println(PressTransValue);
+    // Serial.println();
+    // for(int j=0;j<numRead;j++){
+    //   Serial.print(CurrentLinPos[j]);
+    //   Serial.print(" , ");
+    // }
+    Serial.println();
+    delay(60);
+  }
 }
