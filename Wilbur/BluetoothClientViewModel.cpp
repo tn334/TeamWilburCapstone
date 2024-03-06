@@ -57,7 +57,7 @@ void BluetoothClient::connectToDevice()
         connect(m_socket, &QBluetoothSocket::errorOccurred, this, &BluetoothClient::onErrorOccurred);
         
         // Connect to the discovered device
-        const QBluetoothUuid rfcommUuid("{00001101-0000-1000-8000-00805F9B34FB}");
+        const QBluetoothUuid rfcommUuid("{2D2F88C4-F244-5A80-21F1-EE0224E80658}");
         m_socket->connectToService(m_deviceInfo.address(), rfcommUuid);
         qCDebug(m_bluetooth) << "Socket created and connected to device:" << m_deviceInfo.name();
     }
@@ -66,7 +66,7 @@ void BluetoothClient::connectToDevice()
 void BluetoothClient::onErrorOccurred(QBluetoothSocket::SocketError error)
 {
     // Error debug messages 
-    //  resource: https://doc.qt.io/qt-6/qbluetoothsocket.html#SocketError-enum
+    // resource: https://doc.qt.io/qt-6/qbluetoothsocket.html#SocketError-enum
     switch (error)
     {
     case QBluetoothSocket::SocketError::RemoteHostClosedError:
