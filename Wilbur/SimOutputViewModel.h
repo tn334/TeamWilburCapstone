@@ -5,7 +5,7 @@
 #ifndef CUSTOMDIALOG_H
 #define CUSTOMDIALOG_H
 
-#include "StringBuilderViewModel.h"
+#include "IStringBuilder.h"
 #include "ActionLogModel.h"
 #include <QApplication>
 #include <QDialog>
@@ -15,6 +15,18 @@
 #include <QPushButton>
 #include <QMainWindow>
 #include <QVBoxLayout>
+
+class SimStringBuilder : IStringBuilder {
+public:
+	QString buildString(std::string objectName, int newValue);
+
+	QStringList getAllText() const;
+
+private:
+	// List that holds all texts
+	QStringList textList;
+	QString objectText;
+};
 
 class SimOutputViewModel : public QDialog
 {
@@ -28,7 +40,7 @@ public slots:
 
 private:
 	void initUI();
-	StringBuilderViewModel stringBuilder;
+	SimStringBuilder stringBuilder;
 	QTextEdit* textEdit;
 };
 

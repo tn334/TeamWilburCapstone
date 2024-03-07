@@ -174,7 +174,7 @@ qmake -r CONFIG+=release</Command>
     <QtMoc Include="SliderLayoutView.h" />
     <ClInclude Include="InputDirectorViewModel.h" />
     <QtMoc Include="DuctLayoutView.h" />
-    <ClInclude Include="StringBuilderViewModel.h" />
+    <ClInclude Include="IStringBuilder.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="project.pro" />
