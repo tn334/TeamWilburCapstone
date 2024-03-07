@@ -55,9 +55,6 @@
     <ClCompile Include="navigationBar.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="customDialog.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="StringBuilderViewModel.cpp">
       <Filter>Source Files\ViewModel</Filter>
     </ClCompile>
@@ -100,12 +97,15 @@
     <ClCompile Include="FlowRateView.cpp">
       <Filter>Source Files\View</Filter>
     </ClCompile>
+    <ClCompile Include="BluetoothClientViewModel.cpp">
+      <Filter>Source Files\ViewModel</Filter>
+    </ClCompile>
+    <ClCompile Include="SimOutputViewModel.cpp">
+      <Filter>Source Files\ViewModel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="navigationBar.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="SimOutputViewModel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="BluetoothButtonView.h">
@@ -138,14 +138,14 @@
     <QtMoc Include="BluetoothLayoutView.h">
       <Filter>Header Files\View</Filter>
     </QtMoc>
-    <QtMoc Include="NippleBluetooth.cpp">
-      <Filter>Source Files</Filter>
+    <QtMoc Include="SimOutputViewModel.h">
+      <Filter>Header Files\ViewModel</Filter>
+    </QtMoc>
+    <QtMoc Include="BluetoothClientViewModel.h">
+      <Filter>Header Files\ViewModel</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="StringBuilderViewModel.h">
-      <Filter>Header Files\ViewModel</Filter>
-    </ClInclude>
     <ClInclude Include="SimulatorModel.h">
       <Filter>Header Files\Model</Filter>
     </ClInclude>
@@ -155,8 +155,11 @@
     <ClInclude Include="InputDirectorViewModel.h">
       <Filter>Header Files\ViewModel</Filter>
     </ClInclude>
+    <ClInclude Include="IStringBuilder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="test.pro" />
+    <None Include="project.pro" />
   </ItemGroup>
 </Project>
