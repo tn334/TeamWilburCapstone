@@ -22,6 +22,7 @@ public:
 	InputDirectorViewModel(bool simState, QWidget* simOutputParent = nullptr);
 
 	bool handleInput(enum buttonType, int newValue, std::string objectName);
+	bool handleInput(enum buttonType, double newValue, std::string objectName);
 
 private:
 

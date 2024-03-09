@@ -23,7 +23,7 @@ public:
     void setState(bool newState);
 
 signals:
-    int bluetoothConnectionRequested(bool isConnected);
+    //int bluetoothConnectionRequested(bool isConnected);
 
 private:
     bool isConnected; // tracking bluetooth connection status
