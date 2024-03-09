@@ -33,6 +33,7 @@ public:
 
 	// define executeControl
 	void executeControl(buttonType button, int newValue);
+	void executeFlowRateControl(buttonType button, double newValue);
 
 private:
 	// objects

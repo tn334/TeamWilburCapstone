@@ -133,7 +133,7 @@ qmake -r CONFIG+=release</Command>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
     </ClCompile>
     <ClCompile Include="BluetoothLayoutView.cpp" />
-    <ClCompile Include="FlowRateView.cpp" />
+    <ClCompile Include="FlowRateLayoutView.cpp" />
     <ClCompile Include="PrototypeControllerView.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
@@ -167,7 +167,7 @@ qmake -r CONFIG+=release</Command>
     <QtMoc Include="BluetoothButtonView.h" />
     <ClInclude Include="ActionLogModel.h" />
     <QtMoc Include="BluetoothLayoutView.h" />
-    <QtMoc Include="FlowRateView.h" />
+    <QtMoc Include="FlowRateLayoutView.h" />
     <QtMoc Include="BluetoothClientViewModel.h" />
     <ClInclude Include="SimulatorModel.h" />
     <QtMoc Include="DuctButtonView.h" />

@@ -94,7 +94,7 @@
     <ClCompile Include="BluetoothLayoutView.cpp">
       <Filter>Source Files\View</Filter>
     </ClCompile>
-    <ClCompile Include="FlowRateView.cpp">
+    <ClCompile Include="FlowRateLayoutView.cpp">
       <Filter>Source Files\View</Filter>
     </ClCompile>
     <ClCompile Include="BluetoothClientViewModel.cpp">
@@ -132,9 +132,6 @@
     <QtMoc Include="BaseButtonView.h">
       <Filter>Header Files\View</Filter>
     </QtMoc>
-    <QtMoc Include="FlowRateView.h">
-      <Filter>Header Files\View</Filter>
-    </QtMoc>
     <QtMoc Include="BluetoothLayoutView.h">
       <Filter>Header Files\View</Filter>
     </QtMoc>
@@ -143,6 +140,9 @@
     </QtMoc>
     <QtMoc Include="BluetoothClientViewModel.h">
       <Filter>Header Files\ViewModel</Filter>
+    </QtMoc>
+    <QtMoc Include="FlowRateLayoutView.h">
+      <Filter>Header Files\View</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

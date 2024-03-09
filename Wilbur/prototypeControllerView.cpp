@@ -32,7 +32,9 @@ PrototypeControllerView::PrototypeControllerView(QWidget* parent, ActionLogModel
     ductLayout = new DuctLayoutView(this);
     // Connect the signal from DuctLayoutView to executeControl slot
     connect(ductLayout, &DuctLayoutView::ductButtonClicked, this, &PrototypeControllerView::executeControl);
-    
+
+    // @TODO: Need to log the milk viscocity values 
+   /* connect(ductLayout, &DuctLayoutView::ductFlowRateChanged, this, &PrototypeControllerView::executeFlowRateControl);*/
     // Create a slider layout containing slider and its labels
     sliderLayout = new SliderLayoutView(this);
     connect(sliderLayout->stiffnessSlider, &StiffnessSliderView::sliderReleased, this, [this]() {executeControl(PUMP, sliderLayout->stiffnessSlider->value()); });
@@ -80,6 +82,7 @@ void PrototypeControllerView::executeControl(buttonType button, int newValue)
     actionSuccess = director->handleInput(button, newValue, objectName);
 
     // @TODO: make function call to actionlogger here
+    // @TODO: also need to handle milk viscocity change to output to log
     // textHandler.getActionText()
     actionLog->addActionToLog("Previously this was stringBuilder.getActionText()");
 

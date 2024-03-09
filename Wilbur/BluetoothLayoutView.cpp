@@ -1,6 +1,6 @@
 #include "BluetoothLayoutView.h"
 
-BluetoothLayoutView::BluetoothLayoutView(QWidget* parent) : QWidget(parent)
+BluetoothLayoutView::BluetoothLayoutView(QWidget* parent)
 {
     // Create bluetooth label and button
     bluetoothLabel = new QLabel("Bluetooth Connection:");
@@ -10,8 +10,8 @@ BluetoothLayoutView::BluetoothLayoutView(QWidget* parent) : QWidget(parent)
     connect(bluetoothButton, &BluetoothButtonView::clicked, this, [this] {
         callExecuteControl(CONNECT, bluetoothButton->getState());
         });
-    connect(bluetoothButton, &BluetoothButtonView::clicked, this, 
-        &BluetoothLayoutView::toggleBluetoothConnection);
+    //connect(bluetoothButton, &BluetoothButtonView::clicked, this, 
+        //&BluetoothLayoutView::toggleBluetoothConnection);
 
     //Bluetooth layout
     layout = new QGridLayout(this);
@@ -33,18 +33,18 @@ void BluetoothLayoutView::callExecuteControl(buttonType button, int newValue)
 }
 
 // TBD by backend hook up
-void BluetoothLayoutView::toggleBluetoothConnection(bool isConnected)
-{
-    if (isConnected)
-    {
-        // Trigger Bluetooth connection here
-        // For example:
-        //bluetoothClient->connectToDevice();
-    }
-    else
-    {
-        // Trigger Bluetooth disconnection here
-        // For example:
-        // bluetoothClient->disconnectFromDevice();
-    }
-}
+//void BluetoothLayoutView::toggleBluetoothConnection(bool isConnected)
+//{
+//    if (isConnected)
+//    {
+//        // Trigger Bluetooth connection here
+//        // For example:
+//        //bluetoothClient->connectToDevice();
+//    }
+//    else
+//    {
+//        // Trigger Bluetooth disconnection here
+//        // For example:
+//        // bluetoothClient->disconnectFromDevice();
+//    }
+//}

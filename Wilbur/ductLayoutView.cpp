@@ -1,16 +1,16 @@
 // Local Header Files
-#include "ductLayoutView.h"
+#include "DuctLayoutView.h"
 
 DuctLayoutView::DuctLayoutView(QWidget* parent) : QWidget(parent)
 {
 	// Create layout for button 1
-	layoutButtonOne = createButtonLayout("Duct One:", &buttonOne, &viscValueOne, &flowRateUnitOne, VALVE1);
+	layoutButtonOne = createButtonLayout("Duct One:", &buttonOne, &flowRateOne, VALVE1);
 
 	// Create layout for button 2
-	layoutButtonTwo = createButtonLayout("Duct Two:", &buttonTwo, &viscValueTwo, &flowRateUnitTwo, VALVE2);
+	layoutButtonTwo = createButtonLayout("Duct Two:", &buttonTwo, &flowRateTwo, VALVE2);
 
 	// Create layout for button 3
-	layoutButtonThree = createButtonLayout("Duct Three:", &buttonThree, &viscValueThree, &flowRateUnitThree, VALVE3);
+	layoutButtonThree = createButtonLayout("Duct Three:", &buttonThree, &flowRateThree, VALVE3);
 
 	// Main layout
 	verticalDuctLayout = new QVBoxLayout;
@@ -32,7 +32,7 @@ DuctLayoutView::~DuctLayoutView()
 	delete verticalDuctLayout;
 }
 
-QHBoxLayout* DuctLayoutView::createButtonLayout(const QString& labelText, DuctButtonView** button, QLineEdit** lineEdit, QLabel** unitLabel, buttonType valveType)
+QHBoxLayout* DuctLayoutView::createButtonLayout(const QString& labelText, DuctButtonView** button, FlowRateLayoutView** flowLayout, buttonType valveType)
 {
 	// declare label name
 	QLabel* buttonLabel = new QLabel(labelText);
@@ -41,15 +41,13 @@ QHBoxLayout* DuctLayoutView::createButtonLayout(const QString& labelText, DuctBu
 	// instantiate button
 	*button = new DuctButtonView();
 
-	// instantiate line edit for viscocity value input
-	*lineEdit = new QLineEdit();
-	(*lineEdit)->setMaximumWidth(75);
-	(*lineEdit)->setFixedHeight(20); // Adjust the height as needed
-	(*lineEdit)->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Preferred);
+	// instantiate value box
+	*flowLayout = new FlowRateLayoutView();
 
-	// unit label
-	*unitLabel = new QLabel("m<sup>3</sup>/s");
-	(*unitLabel)->setStyleSheet("font: bold 12px; ");
+
+	//connect(*flowLayout, &FlowRateLayoutView::handleValueChanged, this, [this, valveType, flowLayout]() {
+	//	callExecuteControl(valveType, (*flowLayout)->getSpinBox()->value());
+	//	});
 
 	// set button event handlers
 	connect(*button, &DuctButtonView::clicked, this, [this, valveType, button]() {
@@ -59,8 +57,7 @@ QHBoxLayout* DuctLayoutView::createButtonLayout(const QString& labelText, DuctBu
 	// button layout
 	buttonLayout = new QHBoxLayout;
 	buttonLayout->addWidget(buttonLabel); // label
-	buttonLayout->addWidget(*lineEdit); // value edit
-	buttonLayout->addWidget(*unitLabel); // unit label
+	buttonLayout->addWidget(*flowLayout);
 	buttonLayout->addWidget(*button, Qt::AlignLeft); // button
 	buttonLayout->addSpacing(10);
 
@@ -72,3 +69,9 @@ void DuctLayoutView::callExecuteControl(buttonType button, int newValue)
 {
 	emit ductButtonClicked(button, newValue);
 }
+
+// @TODO: Hook up milk viscocity change to action logger
+//void DuctLayoutView::callExecuteFlowRateControl(buttonType button, double newValue)
+//{
+//	emit ductFlowRateChanged(button, newValue);
+//}
