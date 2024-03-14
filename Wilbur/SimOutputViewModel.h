@@ -16,7 +16,8 @@
 #include <QMainWindow>
 #include <QVBoxLayout>
 
-class SimStringBuilder : IStringBuilder {
+class SimStringBuilder : IStringBuilder 
+{
 public:
 	QString buildString(std::string objectName, int newValue);
 

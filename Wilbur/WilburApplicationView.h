@@ -11,6 +11,7 @@
 #include "PrototypeControllerView.h"
 #include "navigationBar.h" //Nav Bar at Top of Window
 #include "SimOutputViewModel.h" // Simulation Window
+
 #include <QWidget>
 #include <QMainWindow>
 #include <QPlainTextEdit>

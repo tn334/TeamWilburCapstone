@@ -4,7 +4,7 @@
 
 // Header Files
 #include "BaseButtonView.h" // QPushButton included here
-#include "InputDirectorViewModel.h" // Where buttonType is defined
+
 class BluetoothButtonView : public BaseButtonView
 {
     Q_OBJECT

@@ -6,14 +6,15 @@
 #define NAVIGATIONBAR_H
 
 //Header files
+#include "ui_wilbur.h"
+#include "ActionLogModel.h"
+
 #include <QMainWindow>
 #include <QWidget>
 #include <QGridLayout>
 #include <QContextMenuEvent>
 #include <QLabel>
 #include <QMessageBox>
-#include "ui_wilbur.h"
-#include "ActionLogModel.h"
 
 // for menu
 QT_BEGIN_NAMESPACE

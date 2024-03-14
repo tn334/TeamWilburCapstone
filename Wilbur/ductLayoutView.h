@@ -13,9 +13,6 @@
 #include <QWidget>
 #include <QLineEdit>
 
-//Forward Declaration of buttonType
-enum buttonType;
-
 class DuctLayoutView : public QWidget
 {
 	Q_OBJECT

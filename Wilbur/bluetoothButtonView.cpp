@@ -6,7 +6,6 @@ BluetoothButtonView::BluetoothButtonView(QWidget* parent)
 	: BaseButtonView("Click to establish bluetooth connection to prototype",
 		"Disconnected", QColor(136, 204, 238), parent), isConnected(false) //initialize button to disconnected
 {
-
 	connect(this, &BluetoothButtonView::clicked, this, &BluetoothButtonView::handleButtonClicked);
 
 	// set a fixed size for the button

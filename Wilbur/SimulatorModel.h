@@ -4,18 +4,14 @@
 #define SIMULATORMODEL_H
 
 // Header Files
+#include "EnumsAndConstants.h"
+
 #include <sstream>
 #include <Windows.h>
 #include <stdlib.h>
 #include <time.h>
 #include <iostream>
 #include <vector>
-#define OPEN true
-#define CLOSED false
-
-enum pumpValue {
-    OFF=0, LOW, MED, HIGH
-};
 
 class SimValve 
 {
