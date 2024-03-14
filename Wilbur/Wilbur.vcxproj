@@ -163,6 +163,7 @@ qmake -r CONFIG+=release</Command>
     <QtMoc Include="SimOutputViewModel.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="EnumsAndConstants.h" />
     <QtMoc Include="BaseButtonView.h" />
     <QtMoc Include="BluetoothButtonView.h" />
     <ClInclude Include="ActionLogModel.h" />

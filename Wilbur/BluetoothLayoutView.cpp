@@ -17,7 +17,6 @@ BluetoothLayoutView::BluetoothLayoutView(QWidget* parent)
     layout = new QGridLayout(this);
     layout->addWidget(bluetoothLabel, 0, 0, 1, 1, Qt::AlignRight);
     layout->addWidget(bluetoothButton, 0, 1, 1, 1);
-
 };
 
 BluetoothLayoutView::~BluetoothLayoutView()

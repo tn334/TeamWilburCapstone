@@ -1,12 +1,9 @@
 // Header File
 #include "SimulatorModel.h"
 
-// Global Constants defined in .h file
-// OPEN = true
-// CLOSED = false
-
-typedef unsigned char Byte;
-typedef Byte cs_byte;
+// NOT USED YET, COMMENTED FOR NOW (ADRIEL)
+//typedef unsigned char Byte;
+//typedef Byte cs_byte;
 
 // SimulatorModel Pump Constructor
 SimPump::SimPump() : stiffness(OFF), minimumVal(OFF), maximumVal(HIGH) {}

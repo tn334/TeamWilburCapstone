@@ -4,9 +4,7 @@
 // Header Files
 #include "SimOutputViewModel.h"
 
-
 // Sim String Builder buildString implementation
-
 QString SimStringBuilder::buildString(std::string objectName, int newValue)
 {
     QString returnText;
@@ -102,4 +100,3 @@ void SimOutputViewModel::appendActionString(std::string objectName, int newValue
     // Show the dialog
     this->show();
 }
-

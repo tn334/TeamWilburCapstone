@@ -9,9 +9,6 @@
 #include <QLineEdit>
 #include <QLabel>
 
-//Forward Declaration of buttonType
-enum buttonType;
-
 class FlowRateLayoutView : public QWidget
 {
 	Q_OBJECT

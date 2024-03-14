@@ -10,10 +10,6 @@
 #include <QGridLayout>
 #include <QGroupBox>
 
-enum buttonType {
-	PUMP = 0, VALVE1, VALVE2, VALVE3, CONNECT
-};
-
 class InputDirectorViewModel
 {
 public:
@@ -22,7 +18,9 @@ public:
 	InputDirectorViewModel(bool simState, QWidget* simOutputParent = nullptr);
 
 	bool handleInput(enum buttonType, int newValue, std::string objectName);
-	bool handleInput(enum buttonType, double newValue, std::string objectName);
+
+	// FUNCTION COMMENTED, NO USE DECLARED AS OF NOW (ADRIEL)
+	// bool handleInput(enum buttonType, double newValue, std::string objectName);
 
 private:
 

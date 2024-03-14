@@ -18,9 +18,6 @@
 #include <QGridLayout>
 #include <QGroupBox>
 
-//forward declaration of buttonType enum
-enum buttonType;
-
 class PrototypeControllerView : public QMainWindow
 {
 	Q_OBJECT

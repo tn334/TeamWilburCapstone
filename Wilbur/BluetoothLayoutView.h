@@ -4,13 +4,11 @@
 #define BLUETOOTHLAYOUTVIEW_H
 
 #include "BluetoothButtonView.h"
-//#include "BluetoothClientViewModel.h"
-#include "InputDirectorViewModel.h" // includes enum def of buttonType
+#include "EnumsAndConstants.h"
+
 #include <QLabel>
 #include <QWidget>
-
-//Forward Declaration of buttonType
-enum buttonType;
+//#include "BluetoothClientViewModel.h"
 
 class BluetoothLayoutView : public QWidget
 {

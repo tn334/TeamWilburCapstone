@@ -158,6 +158,9 @@
     <ClInclude Include="IStringBuilder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EnumsAndConstants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="project.pro" />
