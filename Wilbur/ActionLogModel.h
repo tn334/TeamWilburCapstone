@@ -3,6 +3,8 @@
 #define ACTIONLODMODEL_H
 
 // Header Files
+#include "IStringBuilder.h"
+
 #include <iostream>
 #include <ctime>
 #include <QFile>
@@ -13,14 +15,21 @@
 #include <QStringList>
 #include <QTextStream>
 #include <QCoreApplication>
+#include <QFileDialog>
 
 // ActionLogModel Class derived as a QFile
-class ActionLogModel : public QFile
+class ActionLogModel : public QFile, public IStringBuilder
 {
 public:
 	// Action Log Constructor
 	ActionLogModel();
 	
+	// Build string with provided parameters and append result to list
+	void buildStringAndAppend(std::string objectName, int newValue);
+	
+	// Build string with provided STRING parameters and append result to list
+	void buildStringAndAppend(std::string objectName, std::string newValue);
+
 	// Export log as a txt file
 	void exportLog();
 
@@ -34,9 +43,6 @@ public:
 	QString formattedElapsedTime();
 
 private:
-	// File name for exported file
-	QString fileName = "Log.txt";
-
 	// File container that will be exported
 	QFile fileToExport;
 
