@@ -7,6 +7,55 @@ ActionLogModel::ActionLogModel()
 	sessionTimer.start();
 }
 
+// Non Sim String Builder buildString implementation
+void ActionLogModel::buildStringAndAppend(std::string objectName, int newValue)
+{
+	QString returnText;
+
+	// check for button
+	if (objectName == "Switch One" || objectName == "Switch Two"
+		|| objectName == "Switch Three")
+	{
+		// Create button change string that will be shown in text window
+		returnText = QString("%1 changed to %2").arg(
+			 QString::fromStdString(objectName), newValue ? "Open" : "Closed");
+	}
+
+	else if (objectName == "Bluetooth Button")
+	{
+		// Create button change string that will be shown in text window
+		returnText = QString("%1 is %2").arg(QString::fromStdString(objectName),
+			newValue ? "Connected" : "Disconnected");
+	}
+
+	// Check for slider
+	else
+	{
+		// Create slider change string that will be shown in text window
+		std::string stiffnessString = "N/A";
+		switch (newValue)
+		{
+		case 0:
+			stiffnessString = "Off";
+			break;
+		case 1:
+			stiffnessString = "Low";
+			break;
+		case 2:
+			stiffnessString = "Med";
+			break;
+		case 3:
+			stiffnessString = "High";
+			break;
+		}
+
+		returnText = QString("Pump Stiffness set to %1").arg(
+			QString::fromStdString(stiffnessString));
+	}
+
+	addActionToLog(returnText);
+}
+
 void ActionLogModel::exportLog()
 {
 	// Create an IO stream to write into the file
@@ -28,7 +77,6 @@ void ActionLogModel::exportLog()
 void ActionLogModel::addActionToLog(QString actionToAdd)
 {
 	// Format action time and text
-	// @TODO: this should use the implemented version of stringBuilder
 	QString formattedAction = QString("%1 | %2 -> %3").arg(
 						 formattedElapsedTime(), getActionTime(), actionToAdd);
 

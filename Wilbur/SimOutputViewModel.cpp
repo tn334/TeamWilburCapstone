@@ -5,20 +5,24 @@
 #include "SimOutputViewModel.h"
 
 // Sim String Builder buildString implementation
-QString SimStringBuilder::buildString(std::string objectName, int newValue)
+void SimStringBuilder::buildStringAndAppend(std::string objectName, int newValue)
 {
     QString returnText;
+
     // check for button
-    if (objectName == "Button One" || objectName == "Button Two" || objectName == "Button Three")
+    if (objectName == "Switch One" || objectName == "Switch Two" 
+											   || objectName == "Switch Three")
     {
         // Create button change string that will be shown in text window
-        returnText = QString("%1 changed to %2").arg(QString::fromStdString(objectName)).arg(newValue ? "Open" : "Closed");
+        returnText = QString("%1 changed to %2").arg(
+			 QString::fromStdString(objectName), newValue ? "Open" : "Closed");
     }
 
     else if (objectName == "Bluetooth Button")
     {
         // Create button change string that will be shown in text window
-        returnText = QString("%1 is %2").arg(QString::fromStdString(objectName)).arg(newValue ? "Connected" : "Disconnected");
+        returnText = QString("%1 is %2").arg(QString::fromStdString(objectName), 
+									  newValue ? "Connected" : "Disconnected");
     }
 
     // Check for slider
@@ -42,16 +46,16 @@ QString SimStringBuilder::buildString(std::string objectName, int newValue)
             break;
         }
 
-        returnText = QString("Pump Stiffness set to %1").arg(QString::fromStdString(stiffnessString));
+        returnText = QString("Pump Stiffness set to %1").arg(
+									  QString::fromStdString(stiffnessString));
     }
 
     // Show text in window text history
     textList.append(returnText);
-
-    return returnText;
 }
 
-QStringList SimStringBuilder::getAllText() const {
+QStringList SimStringBuilder::getAllText() const 
+{
     // Return full list containing all strings regarding changes
     return textList;
 }
@@ -91,8 +95,9 @@ void SimOutputViewModel::initUI()
 // Handle text editor text manipulation
 void SimOutputViewModel::appendActionString(std::string objectName, int newValue) 
 {
-	// Using the text handler, control text manipulation
-    stringBuilder.buildString(objectName, newValue);
+	// Using the string builder, control text manipulation and append end 
+	// result to respective list
+    stringBuilder.buildStringAndAppend(objectName, newValue);
 
 	// Optionally update the text in the QTextEdit immediately
     textEdit->setPlainText(stringBuilder.getAllText().join("\n"));

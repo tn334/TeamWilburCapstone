@@ -1,9 +1,10 @@
 #include "InputDirectorViewModel.h"
 
+InputDirectorViewModel::InputDirectorViewModel() : simulatorMode(true), 
+						     simObject(SimulatorModel()), simOutput(nullptr) {}
 
-InputDirectorViewModel::InputDirectorViewModel() : simulatorMode(true), simObject(SimulatorModel()), simOutput(nullptr) {}
-
-InputDirectorViewModel::InputDirectorViewModel(bool simState, QWidget* simOutputParent) : simulatorMode(simState), simOutput(nullptr)
+InputDirectorViewModel::InputDirectorViewModel(bool simState, 
+	    QWidget* simOutputParent) : simulatorMode(simState), simOutput(nullptr)
 {
 	if (simulatorMode)
 	{
@@ -11,13 +12,15 @@ InputDirectorViewModel::InputDirectorViewModel(bool simState, QWidget* simOutput
 
 		simOutput = new SimOutputViewModel(simOutputParent);
 	}
+
 	else 
 	{
 		// Initialize bluetooth connection object here
 	}
 }
 
-bool InputDirectorViewModel::handleInput(buttonType inputType, int newValue, std::string objectName) 
+bool InputDirectorViewModel::handleInput(buttonType inputType, int newValue, 
+											            std::string objectName) 
 {
 	bool hardwareResponse = false;
 
@@ -26,8 +29,6 @@ bool InputDirectorViewModel::handleInput(buttonType inputType, int newValue, std
 
 		switch (inputType)
 		{
-
-
 			case PUMP:
 				// cast newValue int to a pump enum value
 				hardwareResponse = simObject.setPump(static_cast<pumpValue>(newValue));
