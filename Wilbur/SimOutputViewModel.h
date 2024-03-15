@@ -19,7 +19,7 @@
 class SimStringBuilder : IStringBuilder 
 {
 public:
-	QString buildString(std::string objectName, int newValue);
+	void buildStringAndAppend(std::string objectName, int newValue);
 
 	QStringList getAllText() const;
 

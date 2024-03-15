@@ -11,9 +11,8 @@
 class IStringBuilder
 {
 public:
-
 	// Change in front end
-	virtual QString buildString(std::string objectName, int newValue) = 0;
+	virtual void buildStringAndAppend(std::string objectName, int newValue) = 0;
 
 };
 

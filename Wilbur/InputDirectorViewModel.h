@@ -23,13 +23,11 @@ public:
 	// bool handleInput(enum buttonType, double newValue, std::string objectName);
 
 private:
-
 	bool simulatorMode;
 
 	SimOutputViewModel* simOutput;
 
 	SimulatorModel simObject;
-
 };
 
 #endif // INPUTDIRECTORVIEWMODEL_H
