@@ -144,15 +144,12 @@ void setup() {
 }
 
 void loop() {
-
-
+  
   BLEDevice central = BLE.central();
-  Serial.println(central.connected());
-  if ( central.connected() )
+  if ( central )
   {
     Serial.print( "Connected to central: " );
-    Serial.println( central.address() );
-
+    
     while ( central.connected() )
     {
       if ( valveNameCharacteristic.written() )
@@ -177,29 +174,24 @@ void loop() {
         if(object.toInt() == SERVO2){
           if(value.toInt() == 0)
           {
-            C1M.write(1);
+            C2M.write(1);
           }
           else{
-            C1M.write(60);
+            C2M.write(60);
           }
         }
 
         if(object.toInt() == SERVO3){
           if(value.toInt() == 0)
           {
-            C1M.write(1);
+            C3M.write(1);
           }
           else{
-            C1M.write(60);
+            C3M.write(60);
           }
         }
-        //no manual reading of values, this is the bluetooth section
-        // LinSwitchState = analogRead(linPosSwitch); //reads the position of the rotary switch on the remote
 
-        // PressTransValue = analogRead(PressTransducer); //reads the value of the pressure transducer
-
-        //the following if/elseif/else statment converts the position of the rotary switch to one of the four pressure states based on the values you selected
-        if(object.toInt() == 0)
+        if(object.toInt() == SRYNGE)
         {
           if(value.toInt() == 0){
             CommandLinPos = PressOffPos;
@@ -252,7 +244,8 @@ void loop() {
     Serial.print( F( "Disconnected from central: " ) );
     Serial.println( central.address() );
   }
-  else{
+  else
+  {
 
 
     // these 3 lines read the positions of the toggle switches and save their current values
@@ -350,7 +343,8 @@ void loop() {
     //   Serial.print(CurrentLinPos[j]);
     //   Serial.print(" , ");
     // }
-    Serial.println();
+    Serial.println("Looping");
     delay(60);
   }
+  delay(100);
 }
