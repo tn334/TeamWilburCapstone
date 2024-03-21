@@ -18,6 +18,7 @@ DuctButtonView::DuctButtonView(QWidget* parent)
 	this->setStyleSheet("color: white;"
 		"background-color: #882255;"
 		"border-width: 2px;"
+		"border-color: #333333;"
 		"border-style: outset;"
 		"border-radius: 4px;"
 		"font: bold 12px; ");
@@ -42,6 +43,7 @@ void DuctButtonView::handleButtonClicked()
 		setStyleSheet("color: white;"
 			"background-color: #117733;"
 			"border-width: 2px;"
+			"border-color: #333333;"
 			"border-style: outset;"
 			"border-radius: 4px;"
 			"font: bold 12px; ");
@@ -54,6 +56,7 @@ void DuctButtonView::handleButtonClicked()
 		setStyleSheet("color: white;"
 			"background-color: #882255;"
 			"border-width: 2px;"
+			"border-color: #333333;"
 			"border-style: outset;"
 			"border-radius: 4px;"
 			"font: bold 12px;");

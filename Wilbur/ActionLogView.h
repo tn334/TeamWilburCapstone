@@ -3,13 +3,14 @@
 #define ACTIONLOGVIEW_H
 
 // Header Files
-#include "ActionLogModel.h" // includes QFile
+#include "ActionLogModel.h"
 
 #include <QFrame>
 #include <QLabel>
 #include <QVBoxLayout>
+#include <QGridLayout>
 #include <QWidget>
-#include <QPlainTextEdit>
+
 class ActionLogView : public QWidget
 {
 	Q_OBJECT
@@ -21,9 +22,8 @@ signals:
 public slots:
 
 private:
-	QVBoxLayout* mainLayout;
-	QPlainTextEdit* logTextEdit;
-	QFile logFile;
+	QGridLayout* mainLayout;
+	QLabel* titleLabel;
 	QLabel* actionLabel;
 };
 
