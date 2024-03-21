@@ -103,6 +103,9 @@
     <ClCompile Include="SimOutputViewModel.cpp">
       <Filter>Source Files\ViewModel</Filter>
     </ClCompile>
+    <ClCompile Include="ActionLogView.cpp">
+      <Filter>Source Files\View</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="navigationBar.h">
@@ -144,12 +147,15 @@
     <QtMoc Include="FlowRateLayoutView.h">
       <Filter>Header Files\View</Filter>
     </QtMoc>
+    <QtMoc Include="ActionLogView.h">
+      <Filter>Header Files\View</Filter>
+    </QtMoc>
+    <QtMoc Include="ActionLogModel.h">
+      <Filter>Header Files\Model</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SimulatorModel.h">
-      <Filter>Header Files\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="ActionLogModel.h">
       <Filter>Header Files\Model</Filter>
     </ClInclude>
     <ClInclude Include="InputDirectorViewModel.h">

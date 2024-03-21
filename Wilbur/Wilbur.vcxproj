@@ -124,6 +124,7 @@ qmake -r CONFIG+=release</Command>
     <QtUic Include="Wilbur.ui" />
     <QtMoc Include="WilburApplicationView.h" />
     <ClCompile Include="ActionLogModel.cpp" />
+    <ClCompile Include="ActionLogView.cpp" />
     <ClCompile Include="BluetoothButtonView.cpp" />
     <ClCompile Include="BaseButtonView.cpp" />
     <ClCompile Include="BluetoothClientViewModel.cpp">
@@ -163,10 +164,11 @@ qmake -r CONFIG+=release</Command>
     <QtMoc Include="SimOutputViewModel.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="ActionLogView.h" />
     <ClInclude Include="EnumsAndConstants.h" />
     <QtMoc Include="BaseButtonView.h" />
     <QtMoc Include="BluetoothButtonView.h" />
-    <ClInclude Include="ActionLogModel.h" />
+    <QtMoc Include="ActionLogModel.h" />
     <QtMoc Include="BluetoothLayoutView.h" />
     <QtMoc Include="FlowRateLayoutView.h" />
     <QtMoc Include="BluetoothClientViewModel.h" />
