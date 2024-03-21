@@ -16,6 +16,8 @@ NavigationBar::NavigationBar(QWidget* parent, ActionLogModel* actionLog)
     // Create a wrapper a holder for the menubar
     //cite: https://code.qt.io/cgit/qt/qtbase.git/tree/examples/widgets/mainwindows/menus?h=6.6
 
+    this->setStyleSheet("background-color: #666666;");
+
 	// Instantiate bar and fillers as widgets
     QWidget* menuBar = new QWidget;
 
@@ -34,7 +36,7 @@ NavigationBar::NavigationBar(QWidget* parent, ActionLogModel* actionLog)
     infoLabel->setAlignment(Qt::AlignCenter);
 
 	// Set menu margins and add label
-    menuLayout->setContentsMargins(5, 5, 5, 5);
+    menuLayout->setContentsMargins(0, 0, 0, 0);
     menuLayout->addWidget(infoLabel, 1, 0, 1, 1);
 
 	// Set menu size constraints to a fixed size
@@ -60,7 +62,6 @@ void NavigationBar::contextMenuEvent(QContextMenuEvent* event)
 {
     // Instantiate menu
     QMenu menu(this);
-
 	// Allow for copy to be done using shortcut (CTRL+C presumably)
     menu.addAction(copyAct);
 	
@@ -187,11 +188,6 @@ void NavigationBar::createMenus()
     editMenu = menuBar()->addMenu(tr("&Edit"));
     editMenu->addAction(copyAct);
     editMenu->addSeparator();
-    //editMenu->addAction(undoAct);
-    //editMenu->addAction(redoAct);
-    //editMenu->addSeparator();
-    //editMenu->addAction(cutAct);
-    //editMenu->addAction(pasteAct);
 
 	// Create view menu and its actions
 	viewMenu = menuBar()->addMenu("View");

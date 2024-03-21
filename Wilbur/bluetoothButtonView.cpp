@@ -15,6 +15,7 @@ BluetoothButtonView::BluetoothButtonView(QWidget* parent)
 	setStyleSheet("color: white;"
 		"background-color: #88CCEE;"
 		"border-width: 2px;"
+		"border-color: #333333;"
 		"border-style: outset;"
 		"border-radius: 4px;"
 		"font: bold 12px; ");
@@ -46,6 +47,7 @@ void BluetoothButtonView::handleButtonClicked()
 		setStyleSheet("color: white;"
 			"background-color: #332288;"
 			"border-width: 2px;"
+			"border-color: #333333;"
 			"border-style: outset;"
 			"border-radius: 4px;"
 			"font: bold 12px; ");
@@ -58,6 +60,7 @@ void BluetoothButtonView::handleButtonClicked()
 		setStyleSheet("color: white;"
 			"background-color: #88CCEE;"
 			"border-width: 2px;"
+			"border-color: #333333;"
 			"border-style: outset;"
 			"border-radius: 4px;"
 			"font: bold 12px; ");

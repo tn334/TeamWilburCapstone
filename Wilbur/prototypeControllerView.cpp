@@ -17,6 +17,9 @@ PrototypeControllerView::PrototypeControllerView(QWidget* parent,
     controlLabel->setFrameStyle(QFrame::StyledPanel | QFrame::Raised);
     controlLabel->setAlignment(Qt::AlignCenter);
 
+    // change frame color
+    controlLabel->setStyleSheet("QFrame { background-color: white;");
+
     //add instance of simOutput window
     simOutput = new SimOutputViewModel(this);
 

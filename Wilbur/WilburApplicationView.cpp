@@ -12,9 +12,6 @@
 // Main Window Class
 WilburApplicationView::WilburApplicationView(QWidget* parent, int simulatorMode) : QMainWindow(parent)
 {
-    // Set up the main layout
-    mainLayout = new QGridLayout;
-
     // Instantiate Action Log
     actionLog = new ActionLogModel;
 
@@ -36,11 +33,23 @@ WilburApplicationView::WilburApplicationView(QWidget* parent, int simulatorMode)
     QSpacerItem* verticalSpacer = new QSpacerItem(0, 20, QSizePolicy::Minimum,
         QSizePolicy::Expanding);
 
+    // Set up the main layout
+    mainLayout = new QGridLayout;
+
     // At main layout, add navigation bar, robot control box, and spacer widgets
     mainLayout->addWidget(navigationBar, 0, 0, 1, 6);
     mainLayout->addWidget(robotControl, 1, 0, 1, 3);
     mainLayout->addWidget(actionLogDisplay, 1, 3, 1, 3);
     mainLayout->addItem(verticalSpacer, 2, 0, 1, 6);
+    mainLayout->setContentsMargins(0, 0, 0, 0); // remove 5 pt margin on all sides of all widgets
+
+    // set custom palette
+    QPalette customPalette;
+    customPalette.setColor(QPalette::Window, QColor("#333333"));
+    customPalette.setColor(QPalette::Base, QColor("#666666"));
+    customPalette.setColor(QPalette::AlternateBase, QColor("#444444"));
+    customPalette.setColor(QPalette::WindowText, Qt::white);
+    qApp->setPalette(customPalette);
 
     // Set the main layout for the central widget
     centralWidget->setLayout(mainLayout);
