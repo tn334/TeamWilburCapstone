@@ -19,6 +19,7 @@
 // ActionLogModel Class derived as a QFile
 class ActionLogModel : public QFile, public IStringBuilder
 {
+	Q_OBJECT // Added to make sure we can enable signals and slots
 public:
 	// Action Log Constructor
 	ActionLogModel();
@@ -37,7 +38,13 @@ public:
 
 	// Format the session timer
 	QString formattedElapsedTime();
+signals:
+	// Signal to emit when a new action is added to the log - used in ActionLogView
+	void actionAdded();
 
+public slots:
+	// function to retrieve the list of actions
+	QStringList getListOfActions() const { return listOfActions; };
 private:
 	// File name for exported file
 	QString fileName = "Log.txt";

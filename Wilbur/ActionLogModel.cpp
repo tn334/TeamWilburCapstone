@@ -82,6 +82,9 @@ void ActionLogModel::addActionToLog(QString actionToAdd)
 
 	// Insert the new action to the list of actions along with its time and date
 	listOfActions << formattedAction;
+
+	// Emit the actionAdded Signal for ActionLogView
+	emit actionAdded();
 }
 
 QString ActionLogModel::getActionTime()

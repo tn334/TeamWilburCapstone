@@ -27,6 +27,8 @@ WilburApplicationView::WilburApplicationView(QWidget* parent, int simulatorMode)
     // Instantiate Robot Control Box
     robotControl = new PrototypeControllerView(this, actionLog, inputDirector);
 
+    actionLogDisplay = new ActionLogView(actionLog, this);
+
     // Instantiate Central Widget "holder"
     centralWidget = new QWidget(this);
 
@@ -37,6 +39,7 @@ WilburApplicationView::WilburApplicationView(QWidget* parent, int simulatorMode)
     // At main layout, add navigation bar, robot control box, and spacer widgets
     mainLayout->addWidget(navigationBar, 0, 0, 1, 6);
     mainLayout->addWidget(robotControl, 1, 0, 1, 3);
+    mainLayout->addWidget(actionLogDisplay, 1, 3, 1, 3);
     mainLayout->addItem(verticalSpacer, 2, 0, 1, 6);
 
     // Set the main layout for the central widget

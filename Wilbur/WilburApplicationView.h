@@ -8,6 +8,7 @@
 
 // Header files
 #include "ActionLogModel.h"
+#include "ActionLogView.h"
 #include "PrototypeControllerView.h"
 #include "navigationBar.h" //Nav Bar at Top of Window
 #include "SimOutputViewModel.h" // Simulation Window
@@ -36,6 +37,7 @@ private:
     InputDirectorViewModel* inputDirector;
     NavigationBar* navigationBar;
     PrototypeControllerView* robotControl;
+    ActionLogView* actionLogDisplay;
     QWidget* centralWidget;
 };
 
