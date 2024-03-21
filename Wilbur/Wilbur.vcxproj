@@ -75,10 +75,8 @@
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <PreBuildEvent>
-      <Command>echo Running qmake...
-qmake -r CONFIG+=release</Command>
-      <Message>
-      </Message>
+      <Command>qmake -r CONFIG+=release</Command>
+      <Message>Running qmake</Message>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -89,10 +87,8 @@ qmake -r CONFIG+=release</Command>
       <AdditionalLibraryDirectories>C:\Qt\6.6.1\msvc2019_64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PreBuildEvent>
-      <Command>echo Running qmake...
-qmake -r CONFIG+=release</Command>
-      <Message>
-      </Message>
+      <Command>qmake -r CONFIG+=release</Command>
+      <Message>Running qmake</Message>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
