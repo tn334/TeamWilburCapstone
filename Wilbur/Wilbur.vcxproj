@@ -75,7 +75,7 @@
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <PreBuildEvent>
-      <Command>qmake -r CONFIG+=release</Command>
+      <Command>"C:\Qt\6.6.1\msvc2019_64\bin\qmake.exe" -r CONFIG+=release</Command>
       <Message>Running qmake</Message>
     </PreBuildEvent>
   </ItemDefinitionGroup>
