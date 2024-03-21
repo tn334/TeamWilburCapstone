@@ -124,8 +124,8 @@ void setup() {
   BLE.begin();
   
   // set advertised local name and service UUID:
-  BLE.setDeviceName( "Arduino Nano 33 BLE" );
-  BLE.setLocalName( "Arduino Nano 33 BLE" );
+  BLE.setDeviceName( "Nipple Robot" );
+  BLE.setLocalName( "Nipple Robot" );
   BLE.setAdvertisedService( testService );
 
   // BLE add characteristics
