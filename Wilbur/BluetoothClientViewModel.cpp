@@ -37,7 +37,7 @@ void BluetoothClient::send(const QString& message)
 
 void BluetoothClient::deviceDiscovered(const QBluetoothDeviceInfo& info)
 {
-    if (info.address().toString() == "17:06:42:11:69:91") {
+    if (info.name() == "Nipple Robot") {
         qCDebug(m_bluetooth) << "Found device:" << info.name() << info.address();
         m_deviceInfo = info;
         connectToDevice();
