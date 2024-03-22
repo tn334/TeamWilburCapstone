@@ -34,9 +34,12 @@ BluetoothClient::~BluetoothClient()
 
 void BluetoothClient::send(const QString& message)
 {
-    //qCDebug(m_bluetooth) << "Attempting to send" << message ;
+    qCDebug(m_bluetooth) << "Attempting to send" << message ;
     if (m_socket && m_socket->state() == QLowEnergyController::ConnectedState) {
         QByteArray data = message.toUtf8();
+        //qCDebug(m_bluetooth) << "list of services: " << m_socket->services(); empty qlist
+        
+
         //m_socket->writeCharacteristic(data);
         // Write data to the characteristic
         //controller->writeCharacteristic(characteristic, data);
@@ -67,21 +70,18 @@ void BluetoothClient::connectToDevice()
         m_socket = QLowEnergyController::createCentral(m_deviceInfo, this);
         connect(m_socket, &QLowEnergyController::connected, this, &BluetoothClient::onConnected);
         connect(m_socket, &QLowEnergyController::disconnected, this, &BluetoothClient::onDisconnected);
-        //connect(m_socket, &QLowEnergyController::error, this, &BluetoothClient::onErrorOccurred);
+        connect(m_socket, &QLowEnergyController::serviceDiscovered, this, &BluetoothClient::onServiceDiscovered);
+        connect(m_socket, &QLowEnergyController::stateChanged, this, &BluetoothClient::getState);
+        connect(m_socket, &QLowEnergyController::errorOccurred, this, &BluetoothClient::onErrorOccurred);
         
         // Connect to the discovered device
             // Create Service UUID
         //const QBluetoothUuid serviceUuid("9A48ECBA-2E92-082F-C079-9E75AAE428B1");
-        const QBluetoothUuid serviceUuid("0E9322C4-7513-40AB-AE21-E423DFC08BB7");
             // Connect to service UUID
+        m_socket->discoverServices();
         m_socket->connectToDevice();
-        //qCDebug(m_bluetooth) << "Connected to device Service UUID:" << m_deviceInfo.name();
         
-        /*bool connected = (m_socket->state() == QAbstractSocket::ConnectedState);
-        if (connected)
-        {
-            qCDebug(m_bluetooth) << "Socket created and connected to device:" << m_deviceInfo.name();
-        }*/
+        
     }
 }
 
@@ -174,7 +174,7 @@ void BluetoothClient::onConnected()
 {
     qCDebug(m_bluetooth) << "Connected to device Service UUID:" << m_deviceInfo.name();
     // Create characteristic UUID
-    const QBluetoothUuid charUuid("E05B7FCC-1920-465C-8BF9-AFB2BF45C25B");
+    const QBluetoothUuid charUuid("2D2F88C4-F244-5A80-21F1-EE0224E80658");
     // Connect to service UUID
     m_socket->connectToDevice();
     qCDebug(m_bluetooth) << "Connected to device Characteristic UUID:" << m_deviceInfo.name()<< m_deviceInfo.address();
@@ -191,4 +191,34 @@ void BluetoothClient::onDisconnected()
 void BluetoothClient::readSocket()
 {
   //todo not needed for tech demo
+}
+void BluetoothClient::onServiceDiscovered(const QBluetoothUuid& newService)
+{
+    // Check if the discovered service matches the one you're interested in
+    QBluetoothUuid test("9A48ECBA-2E92-082F-C079-9E75AAE428B1");
+
+    if (newService == test) {
+        // Retrieve the service
+        m_service = m_socket->createServiceObject(newService, this);
+
+        // Connect to the service's stateChanged signal
+        connect(m_service, &QLowEnergyService::stateChanged, this, &BluetoothClient::onServiceStateChanged);
+
+        // Discover the details of the service, including its characteristics
+        m_service->discoverDetails();
+    }
+}
+
+void BluetoothClient::onServiceStateChanged(QLowEnergyService::ServiceState newState)
+{
+    if (newState == QLowEnergyService::ServiceDiscovered) {
+        // Service has been discovered, now you can interact with its characteristics
+
+        // Retrieve the desired characteristic within the service
+        QBluetoothUuid test("2D2F88C4-F244-5A80-21F1-EE0224E80658");
+
+        m_characteristic = m_service->characteristic(test);
+
+        // Now you can read from or write to the characteristic as needed
+    }
 }
