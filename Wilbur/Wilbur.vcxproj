@@ -169,7 +169,7 @@
     <QtMoc Include="ActionLogModel.h" />
     <QtMoc Include="BluetoothLayoutView.h" />
     <QtMoc Include="FlowRateLayoutView.h" />
-    <ClInclude Include="BluetoothClientViewModel.h" />
+    <QtMoc Include="BluetoothClientViewModel.h" />
     <ClInclude Include="SimulatorModel.h" />
     <QtMoc Include="DuctButtonView.h" />
     <QtMoc Include="SliderLayoutView.h" />
