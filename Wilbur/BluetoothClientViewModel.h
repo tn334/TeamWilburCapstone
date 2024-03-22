@@ -43,9 +43,9 @@ private slots:
 
     void onDisconnected(); // implementation in cpp file
 
-    void getState(QBluetoothSocket::SocketState state);
+    void getState(QLowEnergyController::ControllerState state);
 
-    void onErrorOccurred(QBluetoothSocket::SocketError error);
+    void onErrorOccurred(QLowEnergyController::Error error);
 
     void readSocket(); // implementation in cpp file
 

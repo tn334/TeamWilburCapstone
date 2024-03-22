@@ -84,83 +84,88 @@ void BluetoothClient::connectToDevice()
         }*/
     }
 }
-void BluetoothClient::getState(QBluetoothSocket::SocketState state)
+
+void BluetoothClient::getState(QLowEnergyController::ControllerState state)
 {
+    //resource for ControllerState values and desscription: https://doc.qt.io/qt-6/qlowenergycontroller.html#ControllerState-enum
     switch (state)
     {
-        //state value 0
-    case QBluetoothSocket::SocketState::UnconnectedState:
-        qCDebug(m_bluetooth) << "Socket is not connected.";
+    case QLowEnergyController::UnconnectedState: // value 0
+        qCDebug(m_bluetooth) << "The controller is not connected to a remote device.";
         break;
 
-    // state value 1
-    case QBluetoothSocket::SocketState::ServiceLookupState:
-        qCDebug(m_bluetooth) << "Socket is querying connection parameters";
+    case QLowEnergyController::ConnectingState: // value 1
+        qCDebug(m_bluetooth) << "The controller is attempting to connect to a remote device.";
         break;
 
-    case QBluetoothSocket::SocketState::ConnectingState:
-        qCDebug(m_bluetooth) << "Socket is attempting to connect to a device.";
+    case QLowEnergyController::ConnectedState: // value 2
+        qCDebug(m_bluetooth) << "The controller is connected to a remote device.";
         break;
 
-    case QBluetoothSocket::SocketState::ConnectedState:
-        qCDebug(m_bluetooth) << "Socket is connected to device";
+    case QLowEnergyController::DiscoveringState: // value 3
+        qCDebug(m_bluetooth) << "The controller is retrieving the list of services offered by the remote device.";
         break;
 
-    case QBluetoothSocket::SocketState::BoundState:
-        qCDebug(m_bluetooth) << "Socket is bound to a local address and port";
+    case QLowEnergyController::DiscoveredState: // value 4
+        qCDebug(m_bluetooth) << "The controller has discovered all services offered by the remote device.";
         break;
 
-        // state val 5
-    case QBluetoothSocket::SocketState::ClosingState:
-        qCDebug(m_bluetooth) << "Socket is connected and will be closed once all pending data is written to the socket";
+    case QLowEnergyController::ClosingState: //value 5
+        qCDebug(m_bluetooth) << "The controller is about to be disconnected from the remote device.";
         break;
 
-    case QBluetoothSocket::SocketState::ListeningState:
-        qCDebug(m_bluetooth) << "Socket is listening for incoming connections";
+    case QLowEnergyController::AdvertisingState: // value 6
+        qCDebug(m_bluetooth) << "The controller is currently advertising data.";
         break;
     default:
-        qCDebug(m_bluetooth) << "Unknown Socket State";
+        qCDebug(m_bluetooth) << "Unknown Controller State";
         break;
     }
 
 }
-void BluetoothClient::onErrorOccurred(QBluetoothSocket::SocketError error)
+
+void BluetoothClient::onErrorOccurred(QLowEnergyController::Error error)
 {
     // resource https://doc.qt.io/qt-6/qlowenergycontroller.html#Error-enum
     // Error debug messages 
-    // resource: https://doc.qt.io/qt-6/qbluetoothsocket.html#SocketError-enum
     switch (error)
     {
-    case QBluetoothSocket::SocketError::NoSocketError: // error code value 0
-        qCDebug(m_bluetooth) << "No error. Used for testing";
+    case QLowEnergyController::NoError: // error code value 0
+        qCDebug(m_bluetooth) << "No error has occurred. Used for testing";
         break;
-    case QBluetoothSocket::SocketError::UnknownSocketError: // error code value 1
-        qCDebug(m_bluetooth) << "Unknown error occured.";
+    case QLowEnergyController::UnknownError: // error code value 1
+        qCDebug(m_bluetooth) << "An unknown error has occurred.";
         break;
-    case QBluetoothSocket::SocketError::RemoteHostClosedError: // error code value 2
-        qCDebug(m_bluetooth) << "Remote host closed the connection.";
+    case QLowEnergyController::UnknownRemoteDeviceError: // error code value 2
+        qCDebug(m_bluetooth) << "The remote Bluetooth Low Energy device with the address passed to the constructor of this class cannot be found.";
         break;
-    case QBluetoothSocket::SocketError::HostNotFoundError: // error code value 3
-        qCDebug(m_bluetooth) << "Host not found.";
+    case QLowEnergyController::NetworkError: // error code value 3
+        qCDebug(m_bluetooth) << "The attempt to read from or write to the remote device failed.";
         break;
-    
-    case QBluetoothSocket::SocketError::ServiceNotFoundError: // error code value 4
-        qCDebug(m_bluetooth) << "Could not find the service UUID on remote host";
+
+    case QLowEnergyController::InvalidBluetoothAdapterError: // error code value 4
+        qCDebug(m_bluetooth) << "The local Bluetooth device with the address passed to the constructor of this class cannot be found or there is no local Bluetooth device.";
         break;
-    case QBluetoothSocket::SocketError::NetworkError: // error code value 5
-        qCDebug(m_bluetooth) << "Attempt to read or write from socket returned an error";
+    case QLowEnergyController::ConnectionError: // error code value 5
+        qCDebug(m_bluetooth) << "The attempt to connect to the remote device failed.";
         break;
-    case QBluetoothSocket::SocketError::UnsupportedProtocolError: // error code value 6
-        qCDebug(m_bluetooth) << "The Protocol is not supported on this platform.";
+    case QLowEnergyController::AdvertisingError: // error code value 6
+        qCDebug(m_bluetooth) << "The attempt to start advertising failed.";
         break;
-    case QBluetoothSocket::SocketError::OperationError: // error code value 7
-        qCDebug(m_bluetooth) << "An operation was attempted while the socket was in a state that did not permit it";
+    case QLowEnergyController::RemoteHostClosedError: // error code value 7
+        qCDebug(m_bluetooth) << "The remote device closed the connection.";
         break;
-    case QBluetoothSocket::SocketError::MissingPermissionsError: // error code value 8
+    case QLowEnergyController::AuthorizationError: // error code value 8
+        qCDebug(m_bluetooth) << "The local Bluetooth device closed the connection due to insufficient authorization.";
+        break;
+    case QLowEnergyController::MissingPermissionsError: // error code value 9
         qCDebug(m_bluetooth) << "The operating system requests permissions which were not granted by the user.";
         break;
+    case QLowEnergyController::RssiReadError: // error code value 10
+        qCDebug(m_bluetooth) << "An attempt to read RSSI (received signal strength indicator) of a remote device finished with error.";
+        break;
     default:
-        qCDebug(m_bluetooth) << "Unknown/unHandled socket error";
+        qCDebug(m_bluetooth) << "Unknown/unHandled error";
         break;
     }
 }
