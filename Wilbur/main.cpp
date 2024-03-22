@@ -24,11 +24,30 @@ int main(int argc, char *argv[])
         simMode = argv[1][0] - '0';
     }
 
-    // Enabling all QtBluetooth Logging
-    QLoggingCategory::setFilterRules("bluetooth.debug=true"); // enables debug for bluetooth category
-    QLoggingCategory::setFilterRules(QStringLiteral("qt.bluetooth* = true")); // enables logging for 
-                                                                              //broader category of all 
-                                                                              // things starting with 'qt.bluetooth'
+    //// Create an instance of BluetoothClient
+    //BluetoothClient bluetoothClient;
+
+    //// Connect to signals to receive notifications
+    //QObject::connect(&bluetoothClient, &BluetoothClient::connected, [&]() {
+    //    qDebug() << "Connected to Bluetooth device.";
+
+    //    // Once connected, send a message to the peripheral
+    //    bluetoothClient.send("Hello, Arduino!");
+    //    });
+
+    //QObject::connect(&bluetoothClient, &BluetoothClient::disconnected, [&]() {
+    //    qDebug() << "Disconnected from Bluetooth device.";
+    //    });
+
+    //QObject::connect(&bluetoothClient, &BluetoothClient::messageReceived, [&](const QString& message) {
+    //    qDebug() << "Received message:" << message;
+    //    });
+
+    //// Enabling all QtBluetooth Logging
+    //QLoggingCategory::setFilterRules("bluetooth.debug=true"); // enables debug for bluetooth category
+    //QLoggingCategory::setFilterRules(QStringLiteral("qt.bluetooth* = true")); // enables logging for 
+    //                                                                          //broader category of all 
+    //                                                                          // things starting with 'qt.bluetooth'
 
     // Wilbur widgets - initialize object
     WilburApplicationView wilbur(nullptr, simMode);
