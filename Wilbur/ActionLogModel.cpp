@@ -7,7 +7,6 @@ ActionLogModel::ActionLogModel()
 	sessionTimer.start();
 }
 
-// Non Sim String Builder buildString implementation
 void ActionLogModel::buildStringAndAppend(std::string objectName, int newValue)
 {
 	QString returnText;
@@ -18,7 +17,7 @@ void ActionLogModel::buildStringAndAppend(std::string objectName, int newValue)
 	{
 		// Create button change string that will be shown in text window
 		returnText = QString("%1 changed to %2").arg(
-			 QString::fromStdString(objectName), newValue ? "Open" : "Closed");
+			QString::fromStdString(objectName), newValue ? "Open" : "Closed");
 	}
 
 	else if (objectName == "Bluetooth Button")
@@ -56,22 +55,82 @@ void ActionLogModel::buildStringAndAppend(std::string objectName, int newValue)
 	addActionToLog(returnText);
 }
 
+void ActionLogModel::buildStringAndAppend(std::string objectName, 
+														  std::string newValue)
+{
+	QString returnText;
+
+	// check for button
+	if (objectName == "Switch One" || objectName == "Switch Two"
+		|| objectName == "Switch Three")
+	{
+		// Create button change string that will be shown in text window
+		returnText = QString("%1 changed to %2").arg(
+											QString::fromStdString(objectName), 
+									  std::stoi(newValue) ? "Open" : "Closed");
+	}
+
+	else if (objectName == "Bluetooth Button")
+	{
+		// Create button change string that will be shown in text window
+		returnText = QString("%1 is %2").arg(QString::fromStdString(objectName),
+						   std::stoi(newValue) ? "Connected" : "Disconnected");
+	}
+
+	// Check for slider
+	else
+	{
+		// Create slider change string that will be shown in text window
+		std::string stiffnessString = "N/A";
+
+		switch (std::stoi(newValue))
+		{
+		case 0:
+			stiffnessString = "Off";
+			break;
+		case 1:
+			stiffnessString = "Low";
+			break;
+		case 2:
+			stiffnessString = "Med";
+			break;
+		case 3:
+			stiffnessString = "High";
+			break;
+		}
+
+		returnText = QString("Pump Stiffness set to %1").arg(
+									  QString::fromStdString(stiffnessString));
+	}
+
+	addActionToLog(returnText + " test");
+}
+
 void ActionLogModel::exportLog()
 {
-	// Create an IO stream to write into the file
-	QTextStream stream(&fileToExport);
-	
-	// Set the file name
-	fileToExport.setFileName(fileName);
+	// Open a file dialog to choose the file location
+	QString filePath = QFileDialog::getSaveFileName(nullptr, "Save Log File", 
+								   QDir::homePath(), tr("Text files (*.txt)"));
 
-	// Open output file
-	fileToExport.open(WriteOnly);
+	// Check if the user has not canceled the dialog
+	if (!filePath.isEmpty())
+	{
+		// Create an IO stream to write into the file
+		QTextStream stream(&fileToExport);
 
-	// Using the stream, write log of actions into the file
-	stream << listOfActions.join("\n");
+		// Set the file name
+		fileToExport.setFileName(filePath);
 
-	// Close file access
-	fileToExport.close();
+		// Open output file
+		fileToExport.open(WriteOnly);
+
+		// Using the stream, write log of actions into the file
+		stream << listOfActions.join("\n");
+
+		// Close file access
+		fileToExport.close();
+	}
+
 }
 
 void ActionLogModel::addActionToLog(QString actionToAdd)

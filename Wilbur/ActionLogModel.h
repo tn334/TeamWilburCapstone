@@ -15,6 +15,7 @@
 #include <QStringList>
 #include <QTextStream>
 #include <QCoreApplication>
+#include <QFileDialog>
 
 // ActionLogModel Class derived as a QFile
 class ActionLogModel : public QFile, public IStringBuilder
@@ -26,6 +27,9 @@ public:
 	
 	// Build string with provided parameters and append result to list
 	void buildStringAndAppend(std::string objectName, int newValue);
+	
+	// Build string with provided STRING parameters and append result to list
+	void buildStringAndAppend(std::string objectName, std::string newValue);
 
 	// Export log as a txt file
 	void exportLog();
@@ -46,9 +50,6 @@ public slots:
 	// function to retrieve the list of actions
 	QStringList getListOfActions() const { return listOfActions; };
 private:
-	// File name for exported file
-	QString fileName = "Log.txt";
-
 	// File container that will be exported
 	QFile fileToExport;
 

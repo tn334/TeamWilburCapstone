@@ -13,7 +13,6 @@ class IStringBuilder
 public:
 	// Change in front end
 	virtual void buildStringAndAppend(std::string objectName, int newValue) = 0;
-
 };
 
 #endif // ISTRINGBUILDER_H
