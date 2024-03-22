@@ -49,7 +49,13 @@ private slots:
 
     void readSocket(); // implementation in cpp file
 
+    void onServiceDiscovered(const QBluetoothUuid& newService);
+
+    void onServiceStateChanged(QLowEnergyService::ServiceState newState);
+
 private:
+    QLowEnergyCharacteristic m_characteristic; // Define the characteristic
+
     QBluetoothDeviceDiscoveryAgent* m_discoveryAgent;
     QBluetoothDeviceInfo m_deviceInfo;
     QBluetoothAddress device_address;

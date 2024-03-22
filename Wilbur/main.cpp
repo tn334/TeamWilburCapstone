@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
         qDebug() << "Connected to Bluetooth device.";
 
         // Once connected, send a message to the peripheral
-        bluetoothClient.send("Hello, Arduino!");
+        bluetoothClient.send("10");
         });
 
     QObject::connect(&bluetoothClient, &BluetoothClient::disconnected, [&]() {
