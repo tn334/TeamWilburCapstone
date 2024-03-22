@@ -16,7 +16,7 @@ NavigationBar::NavigationBar(QWidget* parent, ActionLogModel* actionLog)
     // Create a wrapper a holder for the menubar
     //cite: https://code.qt.io/cgit/qt/qtbase.git/tree/examples/widgets/mainwindows/menus?h=6.6
 
-    this->setStyleSheet("background-color: #666666;");
+    this->setStyleSheet("background-color: #333333;");
 
 	// Instantiate bar and fillers as widgets
     QWidget* menuBar = new QWidget;
