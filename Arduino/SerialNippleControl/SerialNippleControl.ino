@@ -1,29 +1,12 @@
 //Make sure that when uploading this code the board (Arduino nano 33iot) and port match what you are using.
 
 #include <Servo.h>
-#include <ArduinoBLE.h>
 
 //Servo Declarations
 
 Servo C1M;
 Servo C2M;
 Servo C3M;
-
-//Service definations for bluetooth
-
-#define BLE_UUID_TEST_SERVICE               "9A48ECBA-2E92-082F-C079-9E75AAE428B1"
-#define BLE_UUID_FILE_NAME                  "2D2F88C4-F244-5A80-21F1-EE0224E80658"
-
-String valveName = "";
-
-enum valveNumbers
-{
-  SRYNGE = 0, 
-  SERVO1 = 1,
-  SERVO2 = 2,
-  SERVO3 = 3,
-};
-
 
 //Switch Pin Declarations
 
@@ -75,12 +58,16 @@ int CommandLinPos = 0;  //stores the selected value of the linear potentiometer 
 int deadband = 10;  //this sets a range of values plus or minus your target to stop the actuator so it doesn't yo-yo around your set position. making it larger makes the actuator
                     //less likely to jitter but also reduces the resolution of pressures you can deliver to the nipple.
 
-BLEService testService( BLE_UUID_TEST_SERVICE );
-BLEStringCharacteristic valveNameCharacteristic( BLE_UUID_FILE_NAME, BLERead | BLEWrite, 20 );
+bool serialDisabled = false;
 
-
-
-
+enum valveNumbers
+{
+  SRYNGE = 0, 
+  SERVO1 = 1,
+  SERVO2 = 2,
+  SERVO3 = 3,
+  ESCAPE = 9,
+};
 
 void setup() {
   // put your setup code here, to run once:
@@ -118,96 +105,87 @@ void setup() {
     delay(5);
   }
 
-
-
-  //begin doing bluetooth operations
-  BLE.begin();
-  
-  // set advertised local name and service UUID:
-  BLE.setDeviceName( "Nipple Robot" );
-  BLE.setLocalName( "Nipple Robot" );
-  BLE.setAdvertisedService( testService );
-
-  // BLE add characteristics
-  testService.addCharacteristic( valveNameCharacteristic );
-
-  // add service
-  BLE.addService( testService );
-
-  // set the initial value for the characeristic:
-  valveNameCharacteristic.writeValue( valveName );
-  
-  // start advertising
-  BLE.advertise();
-
-
 }
 
 void loop() {
-  
-  BLEDevice central = BLE.central();
-  if ( central )
+
+  // these 3 lines read the positions of the toggle switches and save their current values
+  if(Serial.available())
   {
-    Serial.print( "Connected to central: " );
-    
-    while ( central.connected() )
+    char buffer[10];
+    while(!serialDisabled)
     {
-      if ( valveNameCharacteristic.written() )
+      if(Serial.available())
       {
-        valveName = valveNameCharacteristic.value();
-        Serial.print( "New Value recieved: " );
-        Serial.println( valveName );  
-        String object = valveName.substring(0,1);
-        String value = valveName.substring(1);
-        //these next three if-else statements set the position of the servo based on the switch state
-        //uses the enum from above to check if the values are correct
-        if(object.toInt() == SERVO1){ 
-          if(value.toInt() == 0)
+        int len = Serial.readBytesUntil('\n', buffer, 10);
+        for(int i = 0; i < len; i++)
+        {
+          Serial.print(buffer[i]);
+        }
+        //read from the serial buffer and see what value needs to be changed and to what
+        if(buffer[0] - '0' == SERVO1 )
+        {
+          if(buffer[1] - '0' == 0)
           {
+
             C1M.write(1);
           }
-          else{
+          else
+          {
             C1M.write(60);
           }
         }
-
-        if(object.toInt() == SERVO2){
-          if(value.toInt() == 0)
-          {
-            C2M.write(1);
-          }
-          else{
-            C2M.write(60);
-          }
-        }
-
-        if(object.toInt() == SERVO3){
-          if(value.toInt() == 0)
-          {
-            C3M.write(1);
-          }
-          else{
-            C3M.write(60);
-          }
-        }
-
-        if(object.toInt() == SRYNGE)
+        if(buffer[0] - '0' == SERVO2 )
         {
-          if(value.toInt() == 0){
+
+          if(buffer[1] - '0' == 0)
+          {
+            C1M.write(1);
+          }
+          else
+          {
+            C1M.write(60);
+          }
+        }
+        if(buffer[0] - '0' == SERVO3 )
+        {
+
+          if(buffer[1] - '0' == 0)
+          {
+            C1M.write(1);
+          }
+          else
+          {
+            C1M.write(60);
+          }
+        }
+        //the following if/elseif/else statment converts the position of the rotary switch to one of the four pressure states based on the values you selected
+        if(buffer[0] - '0' == SRYNGE)
+        {
+          
+          if(buffer [1] - '0' == 0)
+          {
             CommandLinPos = PressOffPos;
           }
-          else if(value.toInt() == 1){
+          else if(buffer [1] - '0' == 1)
+          {
             CommandLinPos = PressLowPos;
           }
-          else if (value.toInt() == 2){
+          else if(buffer [1] - '0' == 2)
+          {
             CommandLinPos = PressMedPos;
+
           }
-          else{
+          else
+          {
             CommandLinPos = PressHighPos;
           }
         }
+        
+
+        
       }
-      //the indexing variable i allows us to count interations across loops but needs to be reset to zero when it exceeds the number of readings
+      //once in the serial section, needed to make sure that values are working as intended (fast section)
       if(i==numRead){
         i=0;
       }
@@ -236,19 +214,27 @@ void loop() {
         digitalWrite(LinExtendPin, HIGH);
         digitalWrite(LinRetractPin, LOW);
       }
-
-      
-      
+      //check if buffer code is the code for escape
+      if(buffer[0] - '0' == ESCAPE)
+      {
+        Serial.println("SERIAL HAS ENDED");
+        Serial.end();
+        serialDisabled = true;
+      }
+      delay(40);
     }
-
-    Serial.print( F( "Disconnected from central: " ) );
-    Serial.println( central.address() );
   }
   else
   {
 
+    if(serialDisabled)
+    {
+      Serial.begin(115200);
+      serialDisabled = false;
 
-    // these 3 lines read the positions of the toggle switches and save their current values
+    }
+
+    //reading from the remote
     C1State = digitalRead(C1Switch);
     C2State = digitalRead(C2Switch);
     C3State = digitalRead(C3Switch);
@@ -334,17 +320,17 @@ void loop() {
     // Serial.println(C3State);
     // Serial.print("  SyringePumpState : ");
     // Serial.print(CommandLinPos);
-    // Serial.print("  LinearActuatorPosition : ");
-    // Serial.print(meanCurrentPos);  
-    // Serial.print("  Transducer value : ");
-    // Serial.println(PressTransValue);
-    // Serial.println();
+    //Serial.print("  LinearActuatorPosition : ");
+    //Serial.print(meanCurrentPos);  
+    //Serial.print("  Transducer value : ");
+    //Serial.println(PressTransValue);
+    //Serial.println();
     // for(int j=0;j<numRead;j++){
     //   Serial.print(CurrentLinPos[j]);
     //   Serial.print(" , ");
     // }
-    Serial.println("Looping");
-    delay(60);
+    delay(25);
   }
-  delay(100);
+
 }
+

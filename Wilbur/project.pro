@@ -1,1 +1,2 @@
 QT += bluetooth
+QT += serialport

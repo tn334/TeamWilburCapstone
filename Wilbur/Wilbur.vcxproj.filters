@@ -106,6 +106,12 @@
     <ClCompile Include="ActionLogView.cpp">
       <Filter>Source Files\View</Filter>
     </ClCompile>
+    <ClCompile Include="BluetoothLE.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SerialConnection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="navigationBar.h">
@@ -153,6 +159,9 @@
     <QtMoc Include="ActionLogModel.h">
       <Filter>Header Files\Model</Filter>
     </QtMoc>
+    <QtMoc Include="SerialConnection.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SimulatorModel.h">
@@ -165,6 +174,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="EnumsAndConstants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BluetoothLE.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

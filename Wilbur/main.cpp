@@ -4,6 +4,7 @@
 // Include header files
 #include "WilburApplicationView.h"
 #include "BluetoothClientViewModel.h"
+#include "SerialConnection.h"
 
 // https://doc.qt.io/qt-6/qgridlayout.html
 
@@ -24,30 +25,35 @@ int main(int argc, char *argv[])
         simMode = argv[1][0] - '0';
     }
 
-    // Create an instance of BluetoothClient
-    BluetoothClient bluetoothClient;
+    //// Create an instance of BluetoothClient
+    //BluetoothClient bluetoothClient;
 
-    // Connect to signals to receive notifications
-    QObject::connect(&bluetoothClient, &BluetoothClient::connected, [&]() {
-        qDebug() << "Connected to Bluetooth device.";
+    //// Connect to signals to receive notifications
+    //QObject::connect(&bluetoothClient, &BluetoothClient::connected, [&]() {
+    //    qDebug() << "Connected to Bluetooth device.";
 
-        // Once connected, send a message to the peripheral
-        bluetoothClient.send("10");
-        });
+    //    // Once connected, send a message to the peripheral
+    //    bluetoothClient.send("10");
+    //    });
 
-    QObject::connect(&bluetoothClient, &BluetoothClient::disconnected, [&]() {
-        qDebug() << "Disconnected from Bluetooth device.";
-        });
+    //QObject::connect(&bluetoothClient, &BluetoothClient::disconnected, [&]() {
+    //    qDebug() << "Disconnected from Bluetooth device.";
+    //    });
 
-    QObject::connect(&bluetoothClient, &BluetoothClient::messageReceived, [&](const QString& message) {
-        qDebug() << "Received message:" << message;
-        });
+    //QObject::connect(&bluetoothClient, &BluetoothClient::messageReceived, [&](const QString& message) {
+    //    qDebug() << "Received message:" << message;
+    //    });
 
     // Enabling all QtBluetooth Logging
-    QLoggingCategory::setFilterRules("bluetooth.debug=true"); // enables debug for bluetooth category
-    QLoggingCategory::setFilterRules(QStringLiteral("qt.bluetooth* = true")); // enables logging for 
+    //QLoggingCategory::setFilterRules("bluetooth.debug=true"); // enables debug for bluetooth category
+    //QLoggingCategory::setFilterRules(QStringLiteral("qt.bluetooth* = true")); // enables logging for 
                                                                               //broader category of all 
                                                                               // things starting with 'qt.bluetooth'
+
+    SerialConnection serial;
+    if (serial.open("COM3", QSerialPort::Baud115200)) { // Replace "COM1" with your serial port name
+        serial.write("03");
+    }
 
     // Wilbur widgets - initialize object
     WilburApplicationView wilbur(nullptr, simMode);
