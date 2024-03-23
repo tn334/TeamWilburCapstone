@@ -371,12 +371,14 @@ Makefile: project.pro C:\Qt\6.6.1\msvc2019_64\mkspecs\win32-msvc\qmake.conf C:\Q
 		C:\Qt\6.6.1\msvc2019_64\lib\Qt6Gui.prl \
 		C:\Qt\6.6.1\msvc2019_64\lib\Qt6Bluetooth.prl \
 		C:\Qt\6.6.1\msvc2019_64\lib\Qt6Network.prl \
+		C:\Qt\6.6.1\msvc2019_64\lib\Qt6SerialPort.prl \
 		C:\Qt\6.6.1\msvc2019_64\lib\Qt6Core.prl \
 		C:\Qt\6.6.1\msvc2019_64\lib\Qt6EntryPoint.prl \
 		C:\Qt\6.6.1\msvc2019_64\mkspecs\features\build_pass.prf \
 		C:\Qt\6.6.1\msvc2019_64\lib\Qt6Guid.prl \
 		C:\Qt\6.6.1\msvc2019_64\lib\Qt6Bluetoothd.prl \
 		C:\Qt\6.6.1\msvc2019_64\lib\Qt6Networkd.prl \
+		C:\Qt\6.6.1\msvc2019_64\lib\Qt6SerialPortd.prl \
 		C:\Qt\6.6.1\msvc2019_64\lib\Qt6Cored.prl \
 		C:\Qt\6.6.1\msvc2019_64\lib\Qt6EntryPointd.prl
 	$(QMAKE) -o Makefile project.pro "CONFIG+=release"
@@ -667,12 +669,14 @@ project.pro:
 C:\Qt\6.6.1\msvc2019_64\lib\Qt6Gui.prl:
 C:\Qt\6.6.1\msvc2019_64\lib\Qt6Bluetooth.prl:
 C:\Qt\6.6.1\msvc2019_64\lib\Qt6Network.prl:
+C:\Qt\6.6.1\msvc2019_64\lib\Qt6SerialPort.prl:
 C:\Qt\6.6.1\msvc2019_64\lib\Qt6Core.prl:
 C:\Qt\6.6.1\msvc2019_64\lib\Qt6EntryPoint.prl:
 C:\Qt\6.6.1\msvc2019_64\mkspecs\features\build_pass.prf:
 C:\Qt\6.6.1\msvc2019_64\lib\Qt6Guid.prl:
 C:\Qt\6.6.1\msvc2019_64\lib\Qt6Bluetoothd.prl:
 C:\Qt\6.6.1\msvc2019_64\lib\Qt6Networkd.prl:
+C:\Qt\6.6.1\msvc2019_64\lib\Qt6SerialPortd.prl:
 C:\Qt\6.6.1\msvc2019_64\lib\Qt6Cored.prl:
 C:\Qt\6.6.1\msvc2019_64\lib\Qt6EntryPointd.prl:
 qmake: FORCE

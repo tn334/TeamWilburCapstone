@@ -37,14 +37,14 @@
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
-    <QtModules>core;gui;widgets;bluetooth</QtModules>
+    <QtModules>core;gui;widgets;bluetooth;serialport</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
     <QtInstall>6.6.1_msvc2019_64</QtInstall>
     <QtQMLDebugEnable>true</QtQMLDebugEnable>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
     <QtInstall>6.6.1_msvc2019_64</QtInstall>
-    <QtModules>core;gui;widgets;bluetooth</QtModules>
+    <QtModules>core;gui;widgets;bluetooth;serialport</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
     <QtQMLDebugEnable>true</QtQMLDebugEnable>
   </PropertyGroup>
@@ -138,6 +138,7 @@
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
     </ClCompile>
+    <ClCompile Include="SerialConnection.cpp" />
     <ClCompile Include="SimOutputViewModel.cpp" />
     <ClCompile Include="SimulatorModel.cpp" />
     <ClCompile Include="DuctButtonView.cpp" />
@@ -170,6 +171,7 @@
     <QtMoc Include="BluetoothLayoutView.h" />
     <QtMoc Include="FlowRateLayoutView.h" />
     <QtMoc Include="BluetoothClientViewModel.h" />
+    <QtMoc Include="SerialConnection.h" />
     <ClInclude Include="SimulatorModel.h" />
     <QtMoc Include="DuctButtonView.h" />
     <QtMoc Include="SliderLayoutView.h" />
