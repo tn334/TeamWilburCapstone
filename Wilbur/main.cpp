@@ -53,6 +53,7 @@ int main(int argc, char *argv[])
     WilburApplicationView wilbur(nullptr, simMode);
 
 	// Show Wilbur main window
+    //wilbur.hide(); // comment out and uncomment line below to see application
     wilbur.show();
 
     // call the application

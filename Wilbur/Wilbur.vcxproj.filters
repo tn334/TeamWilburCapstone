@@ -97,14 +97,23 @@
     <ClCompile Include="FlowRateLayoutView.cpp">
       <Filter>Source Files\View</Filter>
     </ClCompile>
-    <ClCompile Include="BluetoothClientViewModel.cpp">
-      <Filter>Source Files\ViewModel</Filter>
-    </ClCompile>
     <ClCompile Include="SimOutputViewModel.cpp">
       <Filter>Source Files\ViewModel</Filter>
     </ClCompile>
     <ClCompile Include="ActionLogView.cpp">
       <Filter>Source Files\View</Filter>
+    </ClCompile>
+    <ClCompile Include="BluetoothClientViewModel.cpp">
+      <Filter>Source Files\ViewModel</Filter>
+    </ClCompile>
+    <ClCompile Include="BluetoothServiceInfoModel.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="BluetoothDeviceInfoModel.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="BluetoothCharacteristicInfoModel.cpp">
+      <Filter>Source Files\Model</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +160,15 @@
       <Filter>Header Files\View</Filter>
     </QtMoc>
     <QtMoc Include="ActionLogModel.h">
+      <Filter>Header Files\Model</Filter>
+    </QtMoc>
+    <QtMoc Include="BluetoothServiceInfoModel.h">
+      <Filter>Header Files\Model</Filter>
+    </QtMoc>
+    <QtMoc Include="BluetoothCharacteristicInfoModel.h">
+      <Filter>Header Files\Model</Filter>
+    </QtMoc>
+    <QtMoc Include="BluetoothDeviceInfoModel.h">
       <Filter>Header Files\Model</Filter>
     </QtMoc>
   </ItemGroup>
