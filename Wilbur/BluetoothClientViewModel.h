@@ -16,13 +16,15 @@
 
 // declaring logging objects citation:https://doc.qt.io/qt-6.5/qloggingcategory.html
 Q_DECLARE_LOGGING_CATEGORY(m_bluetooth)
+Q_DECLARE_LOGGING_CATEGORY(m_controller_error)
+Q_DECLARE_LOGGING_CATEGORY(m_controller_state)
 
 class BluetoothClient : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit BluetoothClient(QObject* parent = nullptr); // implementation in cpp file
+    explicit BluetoothClient(QObject* parent = nullptr); 
     ~BluetoothClient();
 
 signals:
@@ -32,26 +34,31 @@ signals:
 
 public slots:
 
-    void send(const QString& message); // implementation in cpp file
+    void send(const QString& message); 
 
 private slots:
-    void deviceDiscovered(const QBluetoothDeviceInfo& info); // implementation in cpp file
+    void deviceDiscovered(const QBluetoothDeviceInfo& info);
 
-    void connectToDevice(); // implementation in cpp file
+    void connectToDevice();
 
-    void onConnected(); // implementation in cpp file
+    void onConnected(); 
 
-    void onDisconnected(); // implementation in cpp file
+    void onDisconnected();
 
     void getState(QLowEnergyController::ControllerState state);
 
     void onErrorOccurred(QLowEnergyController::Error error);
 
-    void readSocket(); // implementation in cpp file
+    void readSocket(); 
 
     void onServiceDiscovered(const QBluetoothUuid& newService);
 
     void onServiceStateChanged(QLowEnergyService::ServiceState newState);
+
+    void serviceScanDone();
+
+//Q_SIGNALS:
+//    void serviceChanged();
 
 private:
     QLowEnergyCharacteristic m_characteristic; // Define the characteristic
@@ -59,8 +66,10 @@ private:
     QBluetoothDeviceDiscoveryAgent* m_discoveryAgent;
     QBluetoothDeviceInfo m_deviceInfo;
     QBluetoothAddress device_address;
-    QLowEnergyController* m_socket;
+    QLowEnergyController* m_controller;
+    // bluetooth service variables
     QLowEnergyService* m_service;
+    //QLowEnergyService *m_service = nullptr;
 };
 
 #endif // BLUETOOTHCLIENTVIEWMODEL_H

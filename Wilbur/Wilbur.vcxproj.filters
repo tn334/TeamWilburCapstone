@@ -97,9 +97,6 @@
     <ClCompile Include="FlowRateLayoutView.cpp">
       <Filter>Source Files\View</Filter>
     </ClCompile>
-    <ClCompile Include="BluetoothClientViewModel.cpp">
-      <Filter>Source Files\ViewModel</Filter>
-    </ClCompile>
     <ClCompile Include="SimOutputViewModel.cpp">
       <Filter>Source Files\ViewModel</Filter>
     </ClCompile>
@@ -159,8 +156,15 @@
     <QtMoc Include="ActionLogModel.h">
       <Filter>Header Files\Model</Filter>
     </QtMoc>
-    <QtMoc Include="SerialConnection.h">
-      <Filter>Header Files</Filter>
+    <QtMoc Include="BluetoothServiceInfoModel.h">
+      <Filter>Header Files\Model</Filter>
+    </QtMoc>
+    <QtMoc Include="BluetoothCharacteristicInfoModel.h">
+      <Filter>Header Files\Model</Filter>
+    </QtMoc>
+    <QtMoc Include="BluetoothDeviceInfoModel.h">
+      <Filter>Header Files\Model</Filter>
+
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
