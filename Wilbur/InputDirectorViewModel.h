@@ -4,6 +4,8 @@
 
 #include "SimulatorModel.h"
 #include "SimOutputViewModel.h"
+#include "BluetoothClientViewModel.h"
+#include "SerialConnection.h"
 
 #include <QWidget>
 #include <QSlider>
@@ -15,12 +17,9 @@ class InputDirectorViewModel
 public:
 	InputDirectorViewModel();
 
-	InputDirectorViewModel(bool simState, QWidget* simOutputParent = nullptr);
+	InputDirectorViewModel(bool simState, QWidget* QParent = nullptr);
 
 	bool handleInput(enum buttonType, int newValue, std::string objectName);
-
-	// FUNCTION COMMENTED, NO USE DECLARED AS OF NOW (ADRIEL)
-	// bool handleInput(enum buttonType, double newValue, std::string objectName);
 
 private:
 	bool simulatorMode;
@@ -28,6 +27,12 @@ private:
 	SimOutputViewModel* simOutput;
 
 	SimulatorModel simObject;
+
+	BluetoothClient* btClient;
+
+	SerialConnection* serialClient;
+
+	QWidget* QParent;
 };
 
 #endif // INPUTDIRECTORVIEWMODEL_H
