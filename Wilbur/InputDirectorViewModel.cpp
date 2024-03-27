@@ -1,21 +1,22 @@
 #include "InputDirectorViewModel.h"
 
 InputDirectorViewModel::InputDirectorViewModel() : simulatorMode(true), 
-						     simObject(SimulatorModel()), simOutput(nullptr) {}
+						     simObject(SimulatorModel()), simOutput(nullptr), serialClient(nullptr) {}
 
 InputDirectorViewModel::InputDirectorViewModel(bool simState, 
-	    QWidget* simOutputParent) : simulatorMode(simState), simOutput(nullptr)
+	    QWidget* WilburApp) : simulatorMode(simState), simOutput(nullptr), serialClient(nullptr)
 {
 	if (simulatorMode)
 	{
 		simObject = SimulatorModel();
 
-		simOutput = new SimOutputViewModel(simOutputParent);
+		simOutput = new SimOutputViewModel(WilburApp);
 	}
 
-	else 
+	// Initialize serial connection here?
+	else
 	{
-		// Initialize bluetooth connection object here
+		serialClient = new SerialConnection(WilburApp);
 	}
 }
 
@@ -35,8 +36,6 @@ bool InputDirectorViewModel::handleInput(buttonType inputType, int newValue,
 				break;
 
 			case CONNECT:
-
-				// return success until simulator has a simulated bluetooth connection
 				hardwareResponse = true;
 				break;
 
@@ -51,7 +50,38 @@ bool InputDirectorViewModel::handleInput(buttonType inputType, int newValue,
 	}
 	else
 	{
+		// Combine newValue and inputType into a single string to send over bluetooth
+		QString combinedChars = QString("%1%2").arg(static_cast<char>(inputType + '0')).arg(static_cast<char>(newValue + '0'));
+
 		// Handle bluetooth forwarding here
+		switch (inputType)
+		{
+		case CONNECT:
+			if (newValue)
+			{
+				hardwareResponse = serialClient->open("COM3", QSerialPort::Baud115200);
+			}
+			else
+			{
+				delete serialClient;
+				serialClient = nullptr;
+
+			}
+			break;
+
+		default:
+			// default to control hardware as normal
+			if (serialClient != nullptr)
+			{
+				serialClient->write(combinedChars);
+				hardwareResponse = true;
+			}
+			else
+			{
+				hardwareResponse = false;
+			}
+			break;
+		}
 	}
 
 	return hardwareResponse;
