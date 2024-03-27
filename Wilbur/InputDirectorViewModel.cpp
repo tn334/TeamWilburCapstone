@@ -1,10 +1,10 @@
 #include "InputDirectorViewModel.h"
 
 InputDirectorViewModel::InputDirectorViewModel() : simulatorMode(true), 
-						     simObject(SimulatorModel()), simOutput(nullptr), btClient(nullptr), serialClient(nullptr) {}
+						     simObject(SimulatorModel()), simOutput(nullptr), serialClient(nullptr) {}
 
 InputDirectorViewModel::InputDirectorViewModel(bool simState, 
-	    QWidget* WilburApp) : simulatorMode(simState), simOutput(nullptr), btClient(nullptr), serialClient(nullptr)
+	    QWidget* WilburApp) : simulatorMode(simState), simOutput(nullptr), serialClient(nullptr)
 {
 	if (simulatorMode)
 	{
@@ -16,7 +16,7 @@ InputDirectorViewModel::InputDirectorViewModel(bool simState,
 	// Initialize serial connection here?
 	else
 	{
-		QParent = WilburApp;
+		serialClient = new SerialConnection(WilburApp);
 	}
 }
 
@@ -57,28 +57,23 @@ bool InputDirectorViewModel::handleInput(buttonType inputType, int newValue,
 		switch (inputType)
 		{
 		case CONNECT:
-
-			// Initialize bluetooth connection or destroy it based on state
-			if (newValue == 1)
+			if (newValue)
 			{
-				// Establish a new connection object
-				btClient = new BluetoothClient(QParent);
+				hardwareResponse = serialClient->open("COM3", QSerialPort::Baud115200);
 			}
 			else
 			{
-				// Destroy the current connection object
-				delete btClient;
+				delete serialClient;
+				serialClient = nullptr;
 
-				btClient = nullptr;
 			}
-			hardwareResponse = true;
 			break;
 
 		default:
 			// default to control hardware as normal
-			if (btClient != nullptr)
+			if (serialClient != nullptr)
 			{
-				btClient->send(combinedChars);
+				serialClient->write(combinedChars);
 				hardwareResponse = true;
 			}
 			else
