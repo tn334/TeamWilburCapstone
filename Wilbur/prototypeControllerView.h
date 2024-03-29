@@ -6,7 +6,7 @@
 #define PROTOTYPECONTROLLERVIEW_H
 
 // Local Headers
-#include "BluetoothLayoutView.h"
+#include "ConnectionLayoutView.h"
 #include "SliderLayoutView.h" // QSlider is included in file
 #include "DuctLayoutView.h" // DuctButtonView and QAbstractButton included
 #include "SimOutputViewModel.h" // QLabel, QMainWindow included in SimOutputViewModel.h
@@ -34,7 +34,7 @@ public:
 
 private:
 	// objects
-	BluetoothLayoutView* bluetoothLayout;
+	ConnectionLayoutView* bluetoothLayout;
 	SliderLayoutView* sliderLayout;
 	DuctLayoutView* ductLayout;
 

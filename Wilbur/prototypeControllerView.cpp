@@ -18,7 +18,7 @@ PrototypeControllerView::PrototypeControllerView(QWidget* parent,
     controlLabel->setAlignment(Qt::AlignCenter);
 
     // change frame color
-    controlLabel->setStyleSheet("QFrame { background-color: white;");
+    //controlLabel->setStyleSheet("QFrame { background-color: white;");
 
     //add instance of simOutput window
     simOutput = new SimOutputViewModel(this);
@@ -30,10 +30,10 @@ PrototypeControllerView::PrototypeControllerView(QWidget* parent,
     actionLog = actionLoggerPtr;
 
 	// Create bluetooth layout
-    bluetoothLayout = new BluetoothLayoutView(this);
+    bluetoothLayout = new ConnectionLayoutView(this);
 
     // Connect layout to executeControl
-    connect(bluetoothLayout, &BluetoothLayoutView::bluetoothButtonClicked, 
+    connect(bluetoothLayout, &ConnectionLayoutView::connectionButtonClicked, 
 							   this, &PrototypeControllerView::executeControl);
 
     // set ductLayout
