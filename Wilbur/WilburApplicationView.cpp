@@ -19,9 +19,13 @@ WilburApplicationView::WilburApplicationView(QWidget* parent, int simulatorMode)
     inputDirector = new InputDirectorViewModel(simulatorMode, this);
 
     // Instantiate Navigation Bar at top of window
-    navigationBar = new NavigationBar(this, actionLog);
+    //navigationBar = new NavigationBar(this, actionLog);
+    menuBar = new MenuBarView(this, actionLog);
+    
+    
 
     // Instantiate Robot Control Box
+    //THIS IS WHERE QLABEL ERrors occur
     robotControl = new PrototypeControllerView(this, actionLog, inputDirector);
 
     actionLogDisplay = new ActionLogView(actionLog, this);
@@ -37,19 +41,23 @@ WilburApplicationView::WilburApplicationView(QWidget* parent, int simulatorMode)
     mainLayout = new QGridLayout;
 
     // At main layout, add navigation bar, robot control box, and spacer widgets
-    mainLayout->addWidget(navigationBar, 0, 0, 1, 6);
+    mainLayout->addWidget(menuBar, 0, 0, 1, 6);
     mainLayout->addWidget(robotControl, 1, 0, 1, 3);
     mainLayout->addWidget(actionLogDisplay, 1, 3, 1, 3);
     mainLayout->addItem(verticalSpacer, 2, 0, 1, 6);
     mainLayout->setContentsMargins(0, 0, 0, 0); // remove 5 pt margin on all sides of all widgets
 
     // set custom palette
-    QPalette customPalette;
+    /*QPalette customPalette;
     customPalette.setColor(QPalette::Window, QColor("#333333"));
     customPalette.setColor(QPalette::Base, QColor("#666666"));
     customPalette.setColor(QPalette::AlternateBase, QColor("#444444"));
     customPalette.setColor(QPalette::WindowText, Qt::white);
-    qApp->setPalette(customPalette);
+    customPalette.setColor(QPalette::ButtonText, Qt::white);
+    customPalette.setColor(QPalette::Highlight, QColor("#444444"));
+    qApp->setPalette(customPalette);*/
+
+    ///menuBar->setPalette(customPalette);
 
     // Set the main layout for the central widget
     centralWidget->setLayout(mainLayout);
@@ -67,4 +75,9 @@ WilburApplicationView::WilburApplicationView(QWidget* parent, int simulatorMode)
 //Destructor Wilbur - Main Window
 WilburApplicationView::~WilburApplicationView()
 {
+    /*delete actionLog;
+    delete inputDirector;
+    delete menuBar;
+    delete robotControl;
+    delete actionLogDisplay;*/
 }
