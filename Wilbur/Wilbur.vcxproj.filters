@@ -52,12 +52,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="navigationBar.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="StringBuilderViewModel.cpp">
-      <Filter>Source Files\ViewModel</Filter>
-    </ClCompile>
     <ClCompile Include="StiffnessSliderView.cpp">
       <Filter>Source Files\View</Filter>
     </ClCompile>
@@ -70,17 +64,11 @@
     <ClCompile Include="DuctButtonView.cpp">
       <Filter>Source Files\View</Filter>
     </ClCompile>
-    <ClCompile Include="BluetoothButtonView.cpp">
-      <Filter>Source Files\View</Filter>
-    </ClCompile>
     <ClCompile Include="PrototypeControllerView.cpp">
       <Filter>Source Files\View</Filter>
     </ClCompile>
     <ClCompile Include="WilburApplicationView.cpp">
       <Filter>Source Files\View</Filter>
-    </ClCompile>
-    <ClCompile Include="InputDirectorViewModel.cpp">
-      <Filter>Source Files\ViewModel</Filter>
     </ClCompile>
     <ClCompile Include="ActionLogModel.cpp">
       <Filter>Source Files\Model</Filter>
@@ -91,32 +79,53 @@
     <ClCompile Include="SimulatorModel.cpp">
       <Filter>Source Files\Model</Filter>
     </ClCompile>
-    <ClCompile Include="BluetoothLayoutView.cpp">
-      <Filter>Source Files\View</Filter>
-    </ClCompile>
     <ClCompile Include="FlowRateLayoutView.cpp">
       <Filter>Source Files\View</Filter>
-    </ClCompile>
-    <ClCompile Include="SimOutputViewModel.cpp">
-      <Filter>Source Files\ViewModel</Filter>
     </ClCompile>
     <ClCompile Include="ActionLogView.cpp">
       <Filter>Source Files\View</Filter>
     </ClCompile>
-    <ClCompile Include="BluetoothLE.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SerialConnection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MenuBarView.cpp">
+      <Filter>Source Files\View</Filter>
+    </ClCompile>
+    <ClCompile Include="HelpMenuModel.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="FileMenuModel.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="BluetoothCharacteristicInfoModel.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="BluetoothClientViewModel.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="BluetoothDeviceInfoModel.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="BluetoothServiceInfoModel.cpp">
+      <Filter>Source Files\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="ConnectionButtonView.cpp">
+      <Filter>Source Files\View</Filter>
+    </ClCompile>
+    <ClCompile Include="StringBuilderViewModel.cpp">
+      <Filter>Source Files\ViewModel</Filter>
+    </ClCompile>
+    <ClCompile Include="SimOutputViewModel.cpp">
+      <Filter>Source Files\ViewModel</Filter>
+    </ClCompile>
+    <ClCompile Include="InputDirectorViewModel.cpp">
+      <Filter>Source Files\ViewModel</Filter>
+    </ClCompile>
+    <ClCompile Include="ConnectionLayoutView.cpp">
+      <Filter>Source Files\View</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="navigationBar.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="BluetoothButtonView.h">
-      <Filter>Header Files\View</Filter>
-    </QtMoc>
     <QtMoc Include="DuctButtonView.h">
       <Filter>Header Files\View</Filter>
     </QtMoc>
@@ -136,9 +145,6 @@
       <Filter>Header Files\View</Filter>
     </QtMoc>
     <QtMoc Include="BaseButtonView.h">
-      <Filter>Header Files\View</Filter>
-    </QtMoc>
-    <QtMoc Include="BluetoothLayoutView.h">
       <Filter>Header Files\View</Filter>
     </QtMoc>
     <QtMoc Include="SimOutputViewModel.h">
@@ -164,7 +170,24 @@
     </QtMoc>
     <QtMoc Include="BluetoothDeviceInfoModel.h">
       <Filter>Header Files\Model</Filter>
-
+    </QtMoc>
+    <QtMoc Include="SerialConnection.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ConnectionButtonView.h">
+      <Filter>Header Files\View</Filter>
+    </QtMoc>
+    <QtMoc Include="ConnectionLayoutView.h">
+      <Filter>Header Files\View</Filter>
+    </QtMoc>
+    <QtMoc Include="FileMenuModel.h">
+      <Filter>Header Files\Model</Filter>
+    </QtMoc>
+    <QtMoc Include="HelpMenuModel.h">
+      <Filter>Header Files\Model</Filter>
+    </QtMoc>
+    <QtMoc Include="MenuBarView.h">
+      <Filter>Header Files\View</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
@@ -178,9 +201,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="EnumsAndConstants.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BluetoothLE.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

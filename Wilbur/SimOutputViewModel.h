@@ -41,6 +41,7 @@ public slots:
 
 private:
 	void initUI();
+	void setWindowGeometry(int x, int y, int width, int height);
 	SimStringBuilder stringBuilder;
 	QTextEdit* textEdit;
 };

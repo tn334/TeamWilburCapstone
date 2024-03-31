@@ -9,6 +9,9 @@
 #include <QLabel>
 #include <QVBoxLayout>
 #include <QGridLayout>
+#include <QScrollArea>
+#include <QScrollBar>
+#include <QTimer>
 #include <QWidget>
 
 class ActionLogView : public QWidget
