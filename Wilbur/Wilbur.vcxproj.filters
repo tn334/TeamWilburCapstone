@@ -124,6 +124,9 @@
     <ClCompile Include="ConnectionLayoutView.cpp">
       <Filter>Source Files\View</Filter>
     </ClCompile>
+    <ClCompile Include="InputDirectorViewModelBT.cpp">
+      <Filter>Source Files\ViewModel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="DuctButtonView.h">
@@ -202,6 +205,9 @@
     </ClInclude>
     <ClInclude Include="EnumsAndConstants.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InputDirectorViewModelBT.h">
+      <Filter>Header Files\ViewModel</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -50,10 +50,6 @@ int main(int argc, char *argv[])
                                                                               //broader category of all 
                                                                               // things starting with 'qt.bluetooth'
 
-    SerialConnection serial;
-    if (serial.open("COM3", QSerialPort::Baud115200)) { // Replace "COM1" with your serial port name
-        serial.write("03");
-    }
 
     // Wilbur widgets - initialize object
     WilburApplicationView wilbur(nullptr, simMode);

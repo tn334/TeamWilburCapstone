@@ -135,6 +135,7 @@
     <ClCompile Include="BluetoothServiceInfoModel.cpp" />
     <ClCompile Include="FileMenuModel.cpp" />
     <ClCompile Include="FlowRateLayoutView.cpp" />
+    <ClCompile Include="InputDirectorViewModelBT.cpp" />
     <ClCompile Include="HelpMenuModel.cpp" />
     <ClCompile Include="MenuBarView.cpp" />
     <ClCompile Include="PrototypeControllerView.cpp">
@@ -175,6 +176,7 @@
     <QtMoc Include="FlowRateLayoutView.h" />
     <QtMoc Include="BluetoothClientViewModel.h" />
     <QtMoc Include="SerialConnection.h" />
+    <ClInclude Include="InputDirectorViewModelBT.h" />
     <QtMoc Include="MenuBarView.h" />
     <QtMoc Include="FileMenuModel.h" />
     <QtMoc Include="HelpMenuModel.h" />

@@ -1,6 +1,6 @@
 #pragma once
-#ifndef INPUTDIRECTORVIEWMODEL_H
-#define INPUTDIRECTORVIEWMODEL_H
+#ifndef INPUTDIRECTORVIEWMODELBT_H
+#define INPUTDIRECTORVIEWMODELBT_H
 
 #include "SimulatorModel.h"
 #include "SimOutputViewModel.h"
@@ -12,12 +12,12 @@
 #include <QGridLayout>
 #include <QGroupBox>
 
-class InputDirectorViewModel
+class InputDirectorViewModelBT
 {
 public:
-	InputDirectorViewModel();
+	InputDirectorViewModelBT();
 
-	InputDirectorViewModel(bool simState, QWidget* QParent = nullptr);
+	InputDirectorViewModelBT(bool simState, QWidget* QParent = nullptr);
 
 	bool handleInput(enum buttonType, int newValue, std::string objectName);
 
@@ -28,7 +28,11 @@ private:
 
 	SimulatorModel simObject;
 
+	BluetoothClient* btClient;
+
 	SerialConnection* serialClient;
+
+	QWidget* QParent;
 };
 
-#endif // INPUTDIRECTORVIEWMODEL_H
+#endif // INPUTDIRECTORVIEWMODELBT_H
