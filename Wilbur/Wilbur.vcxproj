@@ -37,14 +37,14 @@
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
-    <QtModules>core;gui;widgets;bluetooth;serialport</QtModules>
+    <QtModules>core;gui;widgets;bluetooth;printsupport;serialport</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
     <QtInstall>6.6.1_msvc2019_64</QtInstall>
     <QtQMLDebugEnable>true</QtQMLDebugEnable>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
     <QtInstall>6.6.1_msvc2019_64</QtInstall>
-    <QtModules>core;gui;widgets;bluetooth;serialport</QtModules>
+    <QtModules>core;gui;widgets;bluetooth;printsupport;serialport</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
     <QtQMLDebugEnable>true</QtQMLDebugEnable>
   </PropertyGroup>
@@ -121,7 +121,7 @@
     <QtMoc Include="WilburApplicationView.h" />
     <ClCompile Include="ActionLogModel.cpp" />
     <ClCompile Include="ActionLogView.cpp" />
-    <ClCompile Include="BluetoothButtonView.cpp" />
+    <ClCompile Include="ConnectionButtonView.cpp" />
     <ClCompile Include="BaseButtonView.cpp" />
     <ClCompile Include="BluetoothCharacteristicInfoModel.cpp" />
     <ClCompile Include="BluetoothClientViewModel.cpp">
@@ -131,10 +131,13 @@
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
     </ClCompile>
     <ClCompile Include="BluetoothDeviceInfoModel.cpp" />
-    <ClCompile Include="BluetoothLayoutView.cpp" />
+    <ClCompile Include="ConnectionLayoutView.cpp" />
     <ClCompile Include="BluetoothServiceInfoModel.cpp" />
+    <ClCompile Include="FileMenuModel.cpp" />
     <ClCompile Include="FlowRateLayoutView.cpp" />
     <ClCompile Include="InputDirectorViewModelBT.cpp" />
+    <ClCompile Include="HelpMenuModel.cpp" />
+    <ClCompile Include="MenuBarView.cpp" />
     <ClCompile Include="PrototypeControllerView.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
@@ -149,7 +152,6 @@
     <ClCompile Include="DuctLayoutView.cpp" />
     <ClCompile Include="SliderLayoutView.cpp" />
     <ClCompile Include="StiffnessSliderView.cpp" />
-    <ClCompile Include="navigationBar.cpp" />
     <ClCompile Include="StringBuilderViewModel.cpp" />
     <ClCompile Include="WilburApplicationView.cpp" />
     <ClCompile Include="main.cpp" />
@@ -157,9 +159,6 @@
   <ItemGroup>
     <QtMoc Include="PrototypeControllerView.h" />
     <QtMoc Include="StiffnessSliderView.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="navigationBar.h" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="SimOutputViewModel.h" />
@@ -171,13 +170,16 @@
     <QtMoc Include="BluetoothDeviceInfoModel.h" />
     <ClInclude Include="EnumsAndConstants.h" />
     <QtMoc Include="BaseButtonView.h" />
-    <QtMoc Include="BluetoothButtonView.h" />
+    <QtMoc Include="ConnectionButtonView.h" />
     <QtMoc Include="ActionLogModel.h" />
-    <QtMoc Include="BluetoothLayoutView.h" />
+    <QtMoc Include="ConnectionLayoutView.h" />
     <QtMoc Include="FlowRateLayoutView.h" />
     <QtMoc Include="BluetoothClientViewModel.h" />
     <QtMoc Include="SerialConnection.h" />
     <ClInclude Include="InputDirectorViewModelBT.h" />
+    <QtMoc Include="MenuBarView.h" />
+    <QtMoc Include="FileMenuModel.h" />
+    <QtMoc Include="HelpMenuModel.h" />
     <ClInclude Include="SimulatorModel.h" />
     <QtMoc Include="DuctButtonView.h" />
     <QtMoc Include="SliderLayoutView.h" />

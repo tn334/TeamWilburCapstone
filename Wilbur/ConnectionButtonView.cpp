@@ -1,12 +1,12 @@
 // Header Files
-#include "BluetoothButtonView.h"
+#include "ConnectionButtonView.h"
 
-// BluetoothButtonView Constructor
-BluetoothButtonView::BluetoothButtonView(QWidget* parent)
-	: BaseButtonView("Click to establish bluetooth connection to prototype",
+// ConnectionButtonView Constructor
+ConnectionButtonView::ConnectionButtonView(QWidget* parent)
+	: BaseButtonView("Click to establish connection to prototype",
 		"Disconnected", QColor(136, 204, 238), parent), isConnected(false) //initialize button to disconnected
 {
-	connect(this, &BluetoothButtonView::clicked, this, &BluetoothButtonView::handleButtonClicked);
+	connect(this, &ConnectionButtonView::clicked, this, &ConnectionButtonView::handleButtonClicked);
 
 	// set a fixed size for the button
 	setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -23,18 +23,18 @@ BluetoothButtonView::BluetoothButtonView(QWidget* parent)
 
 
 //Function implementations
-QSize BluetoothButtonView::sizeHint() const
+QSize ConnectionButtonView::sizeHint() const
 {
 	// Return a QSize with the fixed width and height
 	return QSize(125, 50);
 }
 
-bool BluetoothButtonView::getState() const { return isConnected; }
+bool ConnectionButtonView::getState() const { return isConnected; }
 
-void BluetoothButtonView::setState(bool newState) { isConnected = newState; }
+void ConnectionButtonView::setState(bool newState) { isConnected = newState; }
 
 // Handler of button clicks
-void BluetoothButtonView::handleButtonClicked()
+void ConnectionButtonView::handleButtonClicked()
 {
 	// Toggle the connection status
 	isConnected = !isConnected;

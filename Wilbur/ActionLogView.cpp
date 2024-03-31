@@ -3,7 +3,7 @@
 ActionLogView::ActionLogView(ActionLogModel* actionLogModel, QWidget* parent) : QWidget(parent)
 {
 	// set widget background color
-	this->setStyleSheet("background-color: #666666;");
+	//this->setStyleSheet("background-color: #666666;");
 
 	QFrame* frame = new QFrame(this);
 	frame->setFrameShape(QFrame::Box); // set shape to a box
@@ -21,8 +21,7 @@ ActionLogView::ActionLogView(ActionLogModel* actionLogModel, QWidget* parent) : 
 	// create a titleLabel for the display
 	titleLabel = new QLabel("Action Log", this);
 	titleLabel->setAlignment(Qt::AlignCenter);
-	titleLabel->setStyleSheet("color: white;"
-		"font: bold 14px; ");
+	titleLabel->setStyleSheet("font: bold 14px; ");
 
 	// set size of titleLabel to make it small like a basic title
 	titleLabel->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
@@ -33,8 +32,7 @@ ActionLogView::ActionLogView(ActionLogModel* actionLogModel, QWidget* parent) : 
 	// set properties for the label
 	actionLabel->setWordWrap(true);
 	actionLabel->setAlignment(Qt::AlignTop | Qt::AlignLeft);
-	actionLabel->setStyleSheet("color: white;"
-	"font: 14px;");
+	actionLabel->setStyleSheet("font: 14px;");
 
 	// Add label to layout
 	frameLayout->addWidget(actionLabel);
