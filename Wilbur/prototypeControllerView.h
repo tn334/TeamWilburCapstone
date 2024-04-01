@@ -13,6 +13,7 @@
 #include "ActionLogModel.h"
 #include "InputDirectorViewModel.h"
 
+#include <QFrame>
 #include <QWidget>
 #include <QSlider>
 #include <QGridLayout>
@@ -34,7 +35,7 @@ public:
 
 private:
 	// objects
-	ConnectionLayoutView* bluetoothLayout;
+	ConnectionLayoutView* connectionLayout;
 	SliderLayoutView* sliderLayout;
 	DuctLayoutView* ductLayout;
 

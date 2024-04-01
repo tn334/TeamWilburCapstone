@@ -12,13 +12,23 @@ PrototypeControllerView::PrototypeControllerView(QWidget* parent,
     QWidget* controller = new QWidget;
     setCentralWidget(controller);
 
-	// Create control box label
-    controlLabel = new QLabel(tr("<i>Choose prototype settings."));
-    controlLabel->setFrameStyle(QFrame::StyledPanel | QFrame::Raised);
+	// Create control label
+    controlLabel = new QLabel(tr("<i>Choose prototype settings."), this);
+    //controlLabel->setFrameStyle(QFrame::StyledPanel | QFrame::Raised);
     controlLabel->setAlignment(Qt::AlignCenter);
+    controlLabel->setStyleSheet("font: bold 14px; ");
+    controlLabel->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+    // create a frame for control label
+    QFrame* controlFrame = new QFrame(this);
+    controlFrame->setFrameShape(QFrame::Box); // set shape to a box
+    controlFrame->setFrameShadow(QFrame::Raised);
+    controlFrame->setLineWidth(1); // set the width of the frames border
+    controlFrame->setMidLineWidth(0);
 
+    // create frame layout
+    QVBoxLayout* frameLayout = new QVBoxLayout(controlFrame);
+    frameLayout->addWidget(controlLabel);
     // change frame color
-    //controlLabel->setStyleSheet("QFrame { background-color: white;");
 
     //add instance of simOutput window
     simOutput = new SimOutputViewModel(this);
@@ -30,10 +40,10 @@ PrototypeControllerView::PrototypeControllerView(QWidget* parent,
     actionLog = actionLoggerPtr;
 
 	// Create bluetooth layout
-    bluetoothLayout = new ConnectionLayoutView(this);
+    connectionLayout = new ConnectionLayoutView(this);
 
     // Connect layout to executeControl
-    connect(bluetoothLayout, &ConnectionLayoutView::connectionButtonClicked, 
+    connect(connectionLayout, &ConnectionLayoutView::connectionButtonClicked, 
 							   this, &PrototypeControllerView::executeControl);
 
     // set ductLayout
@@ -54,15 +64,12 @@ PrototypeControllerView::PrototypeControllerView(QWidget* parent,
 
     // Full PrototypeControllerView Layout
     QVBoxLayout* controlLayout = new QVBoxLayout;
-    controlLayout->addWidget(bluetoothLayout);
+    controlLayout->addWidget(connectionLayout);
     controlLayout->addSpacing(10);
-    controlLayout->addWidget(controlLabel);
+    controlLayout->addWidget(controlFrame);
     controlLayout->addWidget(ductLayout);
     controlLayout->addWidget(sliderLayout);
     controller->setLayout(controlLayout);
-
-    //Set style for PrototypeControllerView label
-    controlLabel->setStyleSheet("QWidget { border: 1px solid black; }");
 };
 
 // Control manipulation changes
@@ -104,7 +111,7 @@ void PrototypeControllerView::executeControl(buttonType button, int newValue)
 PrototypeControllerView::~PrototypeControllerView()
 {
     // delete objects
-    delete bluetoothLayout;
+    delete connectionLayout;
     delete sliderLayout;
     delete controlLabel;
 

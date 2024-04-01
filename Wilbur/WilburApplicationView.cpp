@@ -48,14 +48,14 @@ WilburApplicationView::WilburApplicationView(QWidget* parent, int simulatorMode)
     mainLayout->setContentsMargins(0, 0, 0, 0); // remove 5 pt margin on all sides of all widgets
 
     // set custom palette
-    /*QPalette customPalette;
+    QPalette customPalette;
     customPalette.setColor(QPalette::Window, QColor("#333333"));
     customPalette.setColor(QPalette::Base, QColor("#666666"));
     customPalette.setColor(QPalette::AlternateBase, QColor("#444444"));
     customPalette.setColor(QPalette::WindowText, Qt::white);
     customPalette.setColor(QPalette::ButtonText, Qt::white);
     customPalette.setColor(QPalette::Highlight, QColor("#444444"));
-    qApp->setPalette(customPalette);*/
+    qApp->setPalette(customPalette);
 
     ///menuBar->setPalette(customPalette);
 
@@ -75,9 +75,4 @@ WilburApplicationView::WilburApplicationView(QWidget* parent, int simulatorMode)
 //Destructor Wilbur - Main Window
 WilburApplicationView::~WilburApplicationView()
 {
-    /*delete actionLog;
-    delete inputDirector;
-    delete menuBar;
-    delete robotControl;
-    delete actionLogDisplay;*/
 }

@@ -66,6 +66,9 @@ SimOutputViewModel::SimOutputViewModel(QWidget* parent)
 {
 	// Initialize Dialog UI
     initUI();
+
+    // Set initial window geometry
+    setWindowGeometry(100, 100, 300, 300);
 }
 
 // UI Initializer
@@ -103,5 +106,11 @@ void SimOutputViewModel::appendActionString(std::string objectName, int newValue
     textEdit->setPlainText(stringBuilder.getAllText().join("\n"));
 
     // Show the dialog
-    this->show();
+    this->show(); // This causes the error on the current terminal window.
+}
+
+// Set the geometry of the window
+void SimOutputViewModel::setWindowGeometry(int x, int y, int width, int height)
+{
+    this->setGeometry(x, y, width, height);
 }

@@ -4,8 +4,8 @@ MenuBarView::MenuBarView(QMainWindow* parent, ActionLogModel* actionLog) : QMenu
 {
 	//menuBar = new QMenuBar(parent);
 		// Apply stylesheet to customize appearance
-	/*setStyleSheet("QMenuBar { background-color: #333333; color: white; }"
-		"QMenuBar::item:selected { background-color: #444444; }");*/
+	setStyleSheet("QMenuBar { background-color: #333333; color: white; }"
+		"QMenuBar::item:selected { background-color: #444444; }");
 	log = actionLog;
 
 	fileMenu = new FileMenuModel(this, log);
