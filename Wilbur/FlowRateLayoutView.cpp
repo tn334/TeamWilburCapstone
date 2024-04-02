@@ -1,8 +1,11 @@
 #include "FlowRateLayoutView.h"
 
-FlowRateLayoutView::FlowRateLayoutView(QWidget* parent) : QWidget(parent) {
+FlowRateLayoutView::FlowRateLayoutView(QWidget* parent) : QWidget(parent)
+{
     QHBoxLayout* layout = new QHBoxLayout(this);
+
 	setToolTip("Click to enter Flow Rate");
+
     flowSpinBox = new QDoubleSpinBox();
     flowSpinBox->setSingleStep(0.01);
     flowSpinBox->setMaximumWidth(75);
@@ -17,6 +20,8 @@ FlowRateLayoutView::FlowRateLayoutView(QWidget* parent) : QWidget(parent) {
 
     setLayout(layout);
 
+	connect(flowSpinBox, &QDoubleSpinBox::valueChanged, 
+								this, &FlowRateLayoutView::handleValueChanged);
 };
 
 FlowRateLayoutView::~FlowRateLayoutView()
@@ -30,9 +35,7 @@ QDoubleSpinBox *FlowRateLayoutView::getSpinBox() const { return flowSpinBox; } /
 
 QLabel *FlowRateLayoutView::getUnitLabel() const { return flowUnitLabel; }
 
-
-// @TODO: Need to handle value change of milk viscocity
-//void FlowRateLayoutView::handleValueChanged()
-//{
-//
-//}
+void FlowRateLayoutView::handleValueChanged()
+{
+	spinBoxValue = flowSpinBox->value();
+}

@@ -59,6 +59,7 @@ void ActionLogModel::buildStringAndAppend(std::string objectName,
 														  std::string newValue)
 {
 	QString returnText;
+	size_t flowRateStrFound = objectName.find("Flow Rate");
 
 	// check for button
 	if (objectName == "Switch One" || objectName == "Switch Two"
@@ -75,6 +76,14 @@ void ActionLogModel::buildStringAndAppend(std::string objectName,
 		// Create button change string that will be shown in text window
 		returnText = QString("%1 is %2").arg(QString::fromStdString(objectName),
 						   std::stoi(newValue) ? "Connected" : "Disconnected");
+	}
+
+	else if (flowRateStrFound != std::string::npos)
+	{
+		double roundedNewValue = std::stod(newValue);
+		returnText = QString("%1 changed to %2").arg(
+											QString::fromStdString(objectName), 
+								     QString::number(roundedNewValue, 'f', 2));
 	}
 
 	// Check for slider
@@ -103,7 +112,7 @@ void ActionLogModel::buildStringAndAppend(std::string objectName,
 									  QString::fromStdString(stiffnessString));
 	}
 
-	addActionToLog(returnText + " test");
+	addActionToLog(returnText);
 }
 
 void ActionLogModel::exportLog()
