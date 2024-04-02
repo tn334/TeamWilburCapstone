@@ -8,7 +8,7 @@ DuctButtonView::DuctButtonView(QWidget* parent)
 {
 
 	//connect button to event handler(clicked)
-	connect(this, &DuctButtonView::clicked, this, & DuctButtonView::handleButtonClicked);
+	connect(this, &DuctButtonView::clicked, this, &DuctButtonView::handleButtonClicked);
 
 	// set resizing policies for horizontal and vertical sizes
 	setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);

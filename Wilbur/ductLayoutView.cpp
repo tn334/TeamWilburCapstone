@@ -44,10 +44,10 @@ QHBoxLayout* DuctLayoutView::createButtonLayout(const QString& labelText, DuctBu
 	// instantiate value box
 	*flowLayout = new FlowRateLayoutView();
 
-
-	//connect(*flowLayout, &FlowRateLayoutView::handleValueChanged, this, [this, valveType, flowLayout]() {
-	//	callExecuteControl(valveType, (*flowLayout)->getSpinBox()->value());
-	//	});
+	connect((*flowLayout)->getSpinBox(), &QDoubleSpinBox::valueChanged, this,
+		[this, valveType, flowLayout]() {callExecuteFlowRateControl(valveType, 
+										 (*flowLayout)->getSpinBox()->value());
+		});
 
 	// set button event handlers
 	connect(*button, &DuctButtonView::clicked, this, [this, valveType, button]() {
@@ -71,7 +71,7 @@ void DuctLayoutView::callExecuteControl(buttonType button, int newValue)
 }
 
 // @TODO: Hook up milk viscocity change to action logger
-//void DuctLayoutView::callExecuteFlowRateControl(buttonType button, double newValue)
-//{
-//	emit ductFlowRateChanged(button, newValue);
-//}
+void DuctLayoutView::callExecuteFlowRateControl(buttonType button, double newValue)
+{
+	emit ductFlowRateChanged(button, newValue);
+}

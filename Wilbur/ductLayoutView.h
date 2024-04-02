@@ -25,11 +25,11 @@ public:
 	~DuctLayoutView();
 
 	void callExecuteControl(buttonType button, int newValue);
-	//void callExecuteFlowRateControl(buttonType button, double newValue);
+	void callExecuteFlowRateControl(buttonType button, double newValue);
 
 signals:
 	void ductButtonClicked(buttonType button, int newValue);
-	//void ductFlowRateChanged(buttonType button, double newValue);
+	void ductFlowRateChanged(buttonType button, double newValue);
 
 private:
 	// create button label variables
