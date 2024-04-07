@@ -21,17 +21,16 @@ WilburApplicationView::WilburApplicationView(QWidget* parent, int simulatorMode)
     // Instantiate Navigation Bar at top of window
     //navigationBar = new NavigationBar(this, actionLog);
     menuBar = new MenuBarView(this, actionLog);
-    
-    
 
     // Instantiate Robot Control Box
     //THIS IS WHERE QLABEL ERrors occur
     robotControl = new PrototypeControllerView(this, actionLog, inputDirector);
 
+    //Instantiate Action Log View when window is not minimized
+        //
     actionLogDisplay = new ActionLogView(actionLog, this);
-
-    // Instantiate Central Widget "holder"
-    centralWidget = new QWidget(this);
+    // connect menu bar's action log visibility change signal to slot in main window
+    connect(menuBar, &MenuBarView::actionLogVisibilityChanged, this, &WilburApplicationView::toggleActionLogDisplay);
 
     // Instantiate spacer item for bottom of window
     QSpacerItem* verticalSpacer = new QSpacerItem(0, 20, QSizePolicy::Minimum,
@@ -57,7 +56,7 @@ WilburApplicationView::WilburApplicationView(QWidget* parent, int simulatorMode)
     customPalette.setColor(QPalette::Highlight, QColor("#444444"));
     qApp->setPalette(customPalette);
 
-    ///menuBar->setPalette(customPalette);
+    centralWidget = new QWidget(this);
 
     // Set the main layout for the central widget
     centralWidget->setLayout(mainLayout);
@@ -76,3 +75,12 @@ WilburApplicationView::WilburApplicationView(QWidget* parent, int simulatorMode)
 WilburApplicationView::~WilburApplicationView()
 {
 }
+
+void WilburApplicationView::toggleActionLogDisplay(bool visible)
+{
+    if (actionLogDisplay)
+    {
+        actionLogDisplay->setVisible(visible);
+    }
+}
+

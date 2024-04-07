@@ -22,12 +22,19 @@ public:
 	~MenuBarView();
 
 private:
+	QAction* toggleActionLog;
 	FileMenuModel* fileMenu;
 	HelpMenuModel* helpMenu;
 	//QGridLayout* menuLayout;
 
 	QMenuBar* menuBar;
 	ActionLogModel* log;
+
+signals:
+	void actionLogVisibilityChanged(bool visible);
+
+private slots:
+	void toggleLogVisibility();
 };
 
 #endif // !MENUBARVIEW_H
