@@ -18,8 +18,10 @@
 #include <QMainWindow>
 #include <QPlainTextEdit>
 #include <QApplication>	
+#include <QHideEvent>
 #include <QLabel>
 #include <QMessageBox>
+#include <QShowEvent>
 #include <QSlider>
 #include <QVBoxLayout>
 #include <QStackedWidget>
@@ -33,18 +35,24 @@ public:
     WilburApplicationView(QWidget *parent = nullptr, int simulatorMode = 1);
     ~WilburApplicationView();
 private:
+    // Instantiate objects
+        // widget layout
     QGridLayout* mainLayout;
 
-    ActionLogModel* actionLog;
-    ActionLogView* actionLogDisplay;
+    // Custom widgets
+    ActionLogModel* actionLog; // log of button presses
+    ActionLogView* actionLogDisplay; // in app view of log
 
-    InputDirectorViewModel* inputDirector;
+    InputDirectorViewModel* inputDirector; // handles control of button presses
 
-    MenuBarView* menuBar;
+    MenuBarView* menuBar; // menu bar at top of application
 
-    PrototypeControllerView* robotControl;
+    PrototypeControllerView* robotControl; // widget containing connection, duct control, and stiffness slider
     
     QWidget* centralWidget;
+
+    //void resizeEvent(QResizeEvent* event);
+    void toggleActionLogDisplay(bool visible);
 };
 
 #endif // WILBURAPPLICATIONVIEW_H
