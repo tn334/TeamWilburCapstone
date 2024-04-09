@@ -59,7 +59,7 @@ bool InputDirectorViewModel::handleInput(buttonType inputType, int newValue,
 		case CONNECT:
 			if (newValue)
 			{
-				hardwareResponse = serialClient->open("COM3", QSerialPort::Baud115200);
+				hardwareResponse = serialClient->open("COM5", QSerialPort::Baud115200);
 			}
 			else
 			{
