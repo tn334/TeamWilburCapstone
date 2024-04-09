@@ -97,7 +97,7 @@ void PrototypeControllerView::executeControl(buttonType button, int newValue)
 		objectName = "Switch Three";
 		break;
 	case CONNECT:
-		objectName = "Bluetooth Button";
+		objectName = "Connect Button";
 		break;
 	}
 
