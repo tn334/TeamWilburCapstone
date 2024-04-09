@@ -63,8 +63,7 @@ bool InputDirectorViewModel::handleInput(buttonType inputType, int newValue,
 			}
 			else
 			{
-				delete serialClient;
-				serialClient = nullptr;
+				serialClient->close();
 
 			}
 			break;
