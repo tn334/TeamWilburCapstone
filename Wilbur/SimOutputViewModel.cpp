@@ -18,7 +18,7 @@ void SimStringBuilder::buildStringAndAppend(std::string objectName, int newValue
 			 QString::fromStdString(objectName), newValue ? "Open" : "Closed");
     }
 
-    else if (objectName == "Bluetooth Button")
+    else if (objectName == "Connect Button")
     {
         // Create button change string that will be shown in text window
         returnText = QString("%1 is %2").arg(QString::fromStdString(objectName), 
