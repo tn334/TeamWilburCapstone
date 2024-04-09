@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 {
     
     //Simulator vs Prototype Mode
-    int simMode = 1;
+    int simMode = 0;
     // set up and show widgets
     QApplication app(argc, argv);
 
