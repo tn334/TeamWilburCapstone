@@ -123,7 +123,7 @@ void loop() {
           Serial.print(buffer[i]);
         }
         //read from the serial buffer and see what value needs to be changed and to what
-        if(buffer[0] - '0' == SERVO1 )
+        if(buffer[0] - '0' == SERVO3 ) //messed with to match left to right on the robot, (as they are plugged in as of 4/11/2024)
         {
           if(buffer[1] - '0' == 0)
           {
@@ -140,23 +140,23 @@ void loop() {
 
           if(buffer[1] - '0' == 0)
           {
-            C1M.write(1);
+            C2M.write(1);
           }
           else
           {
-            C1M.write(60);
+            C2M.write(60);
           }
         }
-        if(buffer[0] - '0' == SERVO3 )
+        if(buffer[0] - '0' == SERVO1 )
         {
 
           if(buffer[1] - '0' == 0)
           {
-            C1M.write(1);
+            C3M.write(1);
           }
           else
           {
-            C1M.write(60);
+            C3M.write(60);
           }
         }
         //the following if/elseif/else statment converts the position of the rotary switch to one of the four pressure states based on the values you selected
