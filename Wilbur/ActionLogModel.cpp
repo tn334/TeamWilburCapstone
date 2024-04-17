@@ -23,8 +23,8 @@ void ActionLogModel::buildStringAndAppend(std::string objectName, int newValue)
 	else if (objectName == "Connect Button")
 	{
 		// Create button change string that will be shown in text window
-		returnText = QString("%1 is %2").arg(QString::fromStdString(objectName),
-			newValue ? "Connected" : "Disconnected");
+		returnText = QString("%1 the prototype").arg(
+							  newValue ? "Connected to" : "Disconnected from");
 	}
 
 	// Check for slider
@@ -74,8 +74,8 @@ void ActionLogModel::buildStringAndAppend(std::string objectName,
 	else if (objectName == "Connect Button")
 	{
 		// Create button change string that will be shown in text window
-		returnText = QString("%1 is %2").arg(QString::fromStdString(objectName),
-						   std::stoi(newValue) ? "Connected" : "Disconnected");
+		returnText = QString("%1 the prototype").arg(
+				   std::stoi(newValue) ? "Connected to" : "Disconnected from");
 	}
 
 	else if (flowRateStrFound != std::string::npos)
