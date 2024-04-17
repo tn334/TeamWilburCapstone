@@ -20,9 +20,9 @@ void SimStringBuilder::buildStringAndAppend(std::string objectName, int newValue
 
     else if (objectName == "Connect Button")
     {
-        // Create button change string that will be shown in text window
-        returnText = QString("%1 is %2").arg(QString::fromStdString(objectName), 
-									  newValue ? "Connected" : "Disconnected");
+		// Create button change string that will be shown in text window
+		returnText = QString("%1 the prototype").arg(
+							  newValue ? "Connected to" : "Disconnected from");
     }
 
     // Check for slider
