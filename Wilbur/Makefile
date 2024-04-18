@@ -357,10 +357,11 @@ Makefile: project.pro C:\Qt\6.6.1\msvc2019_64\mkspecs\win32-msvc\qmake.conf C:\Q
 		C:\Qt\6.6.1\msvc2019_64\mkspecs\features\resources_functions.prf \
 		C:\Qt\6.6.1\msvc2019_64\mkspecs\features\resources.prf \
 		C:\Qt\6.6.1\msvc2019_64\mkspecs\features\moc.prf \
+		C:\Qt\6.6.1\msvc2019_64\mkspecs\features\testlib_defines.prf \
+		C:\Qt\6.6.1\msvc2019_64\mkspecs\features\win32\console.prf \
 		C:\Qt\6.6.1\msvc2019_64\mkspecs\features\win32\opengl.prf \
 		C:\Qt\6.6.1\msvc2019_64\mkspecs\features\qmake_use.prf \
 		C:\Qt\6.6.1\msvc2019_64\mkspecs\features\file_copies.prf \
-		C:\Qt\6.6.1\msvc2019_64\mkspecs\features\win32\windows.prf \
 		C:\Qt\6.6.1\msvc2019_64\mkspecs\features\testcase_targets.prf \
 		C:\Qt\6.6.1\msvc2019_64\mkspecs\features\exceptions.prf \
 		C:\Qt\6.6.1\msvc2019_64\mkspecs\features\yacc.prf \
@@ -370,6 +371,7 @@ Makefile: project.pro C:\Qt\6.6.1\msvc2019_64\mkspecs\win32-msvc\qmake.conf C:\Q
 		C:\Qt\6.6.1\msvc2019_64\lib\Qt6Bluetooth.prl \
 		C:\Qt\6.6.1\msvc2019_64\lib\Qt6Network.prl \
 		C:\Qt\6.6.1\msvc2019_64\lib\Qt6SerialPort.prl \
+		C:\Qt\6.6.1\msvc2019_64\lib\Qt6Test.prl \
 		C:\Qt\6.6.1\msvc2019_64\lib\Qt6Core.prl \
 		C:\Qt\6.6.1\msvc2019_64\lib\Qt6EntryPoint.prl \
 		C:\Qt\6.6.1\msvc2019_64\mkspecs\features\build_pass.prf \
@@ -377,6 +379,7 @@ Makefile: project.pro C:\Qt\6.6.1\msvc2019_64\mkspecs\win32-msvc\qmake.conf C:\Q
 		C:\Qt\6.6.1\msvc2019_64\lib\Qt6Bluetoothd.prl \
 		C:\Qt\6.6.1\msvc2019_64\lib\Qt6Networkd.prl \
 		C:\Qt\6.6.1\msvc2019_64\lib\Qt6SerialPortd.prl \
+		C:\Qt\6.6.1\msvc2019_64\lib\Qt6Testd.prl \
 		C:\Qt\6.6.1\msvc2019_64\lib\Qt6Cored.prl \
 		C:\Qt\6.6.1\msvc2019_64\lib\Qt6EntryPointd.prl
 	$(QMAKE) -o Makefile project.pro "CONFIG+=release"
@@ -653,10 +656,11 @@ C:\Qt\6.6.1\msvc2019_64\mkspecs\features\qt.prf:
 C:\Qt\6.6.1\msvc2019_64\mkspecs\features\resources_functions.prf:
 C:\Qt\6.6.1\msvc2019_64\mkspecs\features\resources.prf:
 C:\Qt\6.6.1\msvc2019_64\mkspecs\features\moc.prf:
+C:\Qt\6.6.1\msvc2019_64\mkspecs\features\testlib_defines.prf:
+C:\Qt\6.6.1\msvc2019_64\mkspecs\features\win32\console.prf:
 C:\Qt\6.6.1\msvc2019_64\mkspecs\features\win32\opengl.prf:
 C:\Qt\6.6.1\msvc2019_64\mkspecs\features\qmake_use.prf:
 C:\Qt\6.6.1\msvc2019_64\mkspecs\features\file_copies.prf:
-C:\Qt\6.6.1\msvc2019_64\mkspecs\features\win32\windows.prf:
 C:\Qt\6.6.1\msvc2019_64\mkspecs\features\testcase_targets.prf:
 C:\Qt\6.6.1\msvc2019_64\mkspecs\features\exceptions.prf:
 C:\Qt\6.6.1\msvc2019_64\mkspecs\features\yacc.prf:
@@ -666,6 +670,7 @@ C:\Qt\6.6.1\msvc2019_64\lib\Qt6Gui.prl:
 C:\Qt\6.6.1\msvc2019_64\lib\Qt6Bluetooth.prl:
 C:\Qt\6.6.1\msvc2019_64\lib\Qt6Network.prl:
 C:\Qt\6.6.1\msvc2019_64\lib\Qt6SerialPort.prl:
+C:\Qt\6.6.1\msvc2019_64\lib\Qt6Test.prl:
 C:\Qt\6.6.1\msvc2019_64\lib\Qt6Core.prl:
 C:\Qt\6.6.1\msvc2019_64\lib\Qt6EntryPoint.prl:
 C:\Qt\6.6.1\msvc2019_64\mkspecs\features\build_pass.prf:
@@ -673,6 +678,7 @@ C:\Qt\6.6.1\msvc2019_64\lib\Qt6Guid.prl:
 C:\Qt\6.6.1\msvc2019_64\lib\Qt6Bluetoothd.prl:
 C:\Qt\6.6.1\msvc2019_64\lib\Qt6Networkd.prl:
 C:\Qt\6.6.1\msvc2019_64\lib\Qt6SerialPortd.prl:
+C:\Qt\6.6.1\msvc2019_64\lib\Qt6Testd.prl:
 C:\Qt\6.6.1\msvc2019_64\lib\Qt6Cored.prl:
 C:\Qt\6.6.1\msvc2019_64\lib\Qt6EntryPointd.prl:
 qmake: FORCE

@@ -5,16 +5,32 @@ VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wilbur", "Wilbur\Wilbur.vcxproj", "{2D921F64-B696-458F-94CB-F3BCAF3E0F8A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WIlburTest", "WilburApplicationViewTest\WilburApplicationViewTest.vcxproj", "{2B7BDC6C-6064-4354-9E89-ACF2AB37971D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{2D921F64-B696-458F-94CB-F3BCAF3E0F8A}.Debug|x64.ActiveCfg = Debug|x64
 		{2D921F64-B696-458F-94CB-F3BCAF3E0F8A}.Debug|x64.Build.0 = Debug|x64
+		{2D921F64-B696-458F-94CB-F3BCAF3E0F8A}.Debug|x86.ActiveCfg = Debug|x64
+		{2D921F64-B696-458F-94CB-F3BCAF3E0F8A}.Debug|x86.Build.0 = Debug|x64
 		{2D921F64-B696-458F-94CB-F3BCAF3E0F8A}.Release|x64.ActiveCfg = Release|x64
 		{2D921F64-B696-458F-94CB-F3BCAF3E0F8A}.Release|x64.Build.0 = Release|x64
+		{2D921F64-B696-458F-94CB-F3BCAF3E0F8A}.Release|x86.ActiveCfg = Release|x64
+		{2D921F64-B696-458F-94CB-F3BCAF3E0F8A}.Release|x86.Build.0 = Release|x64
+		{2B7BDC6C-6064-4354-9E89-ACF2AB37971D}.Debug|x64.ActiveCfg = Debug|x64
+		{2B7BDC6C-6064-4354-9E89-ACF2AB37971D}.Debug|x64.Build.0 = Debug|x64
+		{2B7BDC6C-6064-4354-9E89-ACF2AB37971D}.Debug|x86.ActiveCfg = Debug|Win32
+		{2B7BDC6C-6064-4354-9E89-ACF2AB37971D}.Debug|x86.Build.0 = Debug|Win32
+		{2B7BDC6C-6064-4354-9E89-ACF2AB37971D}.Release|x64.ActiveCfg = Release|x64
+		{2B7BDC6C-6064-4354-9E89-ACF2AB37971D}.Release|x64.Build.0 = Release|x64
+		{2B7BDC6C-6064-4354-9E89-ACF2AB37971D}.Release|x86.ActiveCfg = Release|Win32
+		{2B7BDC6C-6064-4354-9E89-ACF2AB37971D}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
