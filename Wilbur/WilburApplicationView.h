@@ -34,6 +34,8 @@ class WilburApplicationView : public QMainWindow
 public:
     WilburApplicationView(QWidget *parent = nullptr, int simulatorMode = 1);
     ~WilburApplicationView();
+
+    friend class WilburApplicationViewTest;
 private:
     // Instantiate objects
         // widget layout
