@@ -1,7 +1,7 @@
 #pragma once
 #ifndef WILBURAPPLICATIONVIEWTEST_H
 #define WILBURAPPLICATIONVIEWTEST_H
-#include "WilburApplicationView.h"
+#include "WilburApplicationView.cpp"
 
 #include <QObject>
 

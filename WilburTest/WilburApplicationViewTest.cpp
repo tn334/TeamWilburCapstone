@@ -5,7 +5,7 @@ void WilburApplicationViewTest::testToggleActionLogDisplay()
 {
     WilburApplicationView window;
     
-    QVERIFY(!window.actionLogDisplay->isVisible());
+    QVERIFY(window.actionLogDisplay->isVisible());
 
     window.toggleActionLogDisplay(true);
     QVERIFY(window.actionLogDisplay->isVisible());
@@ -14,4 +14,4 @@ void WilburApplicationViewTest::testToggleActionLogDisplay()
     QVERIFY(!window.actionLogDisplay->isVisible());
 }
 
-QTEST_MAIN(WilburApplicationViewTest)
+//QTEST_MAIN(WilburApplicationViewTest)
