@@ -1,10 +1,9 @@
 #pragma once
-
+#ifndef WILBURTEST_H
+#define WILBURTEST_H
 #include <QtWidgets/QMainWindow>
 #include "ui_WilburTest.h"
 #include <QTest>
-
-#include "WilburApplicationView.h"
 
 class WilburTest : public QMainWindow
 {
@@ -17,3 +16,5 @@ public:
 private:
     Ui::WilburTestClass ui;
 };
+
+#endif // WILBURTEST_H

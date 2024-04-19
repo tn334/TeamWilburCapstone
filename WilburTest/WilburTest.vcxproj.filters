@@ -40,5 +40,156 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="WilburApplicationViewTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wilbur\WilburApplicationView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wilbur\ActionLogModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wilbur\ActionLogView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wilbur\BaseButtonView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wilbur\button.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wilbur\ConnectionButtonView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wilbur\ConnectionLayoutView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wilbur\ductButtonView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wilbur\ductLayoutView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wilbur\FileMenuModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wilbur\FlowRateLayoutView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wilbur\HelpMenuModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wilbur\InputDirectorViewModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wilbur\MenuBarModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wilbur\MenuBarView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wilbur\prototypeControllerView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wilbur\SerialConnection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wilbur\SimOutputViewModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wilbur\SimulatorModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wilbur\sliderLayoutView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wilbur\StiffnessSliderView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wilbur\StringBuilderViewModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="WilburApplicationViewTest.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="..\Wilbur\WilburApplicationView.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="..\Wilbur\ActionLogModel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="..\Wilbur\ActionLogView.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="..\Wilbur\BaseButtonView.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="..\Wilbur\button.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="..\Wilbur\ConnectionButtonView.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="..\Wilbur\ConnectionLayoutView.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="..\Wilbur\ductButtonView.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="..\Wilbur\ductLayoutView.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="..\Wilbur\FileMenuModel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="..\Wilbur\FlowRateLayoutView.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="..\Wilbur\HelpMenuModel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="..\Wilbur\InputDirectorUnitTest.cpp">
+      <Filter>Source Files</Filter>
+    </QtMoc>
+    <QtMoc Include="..\Wilbur\MenuBarView.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="..\Wilbur\prototypeControllerView.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="..\Wilbur\SerialConnection.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="..\Wilbur\SimOutputViewModel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="..\Wilbur\sliderLayoutView.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="..\Wilbur\StiffnessSliderView.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Wilbur\EnumsAndConstants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wilbur\InputDirectorViewModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wilbur\IStringBuilder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wilbur\MenuBarModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Wilbur\SimulatorModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="WilburTest.pro" />
   </ItemGroup>
 </Project>
