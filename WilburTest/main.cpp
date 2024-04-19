@@ -10,5 +10,5 @@
 //    return a.exec();
 //}
 
-//QTEST_MAIN(WilburApplicationViewTest)
+QTEST_MAIN(WilburApplicationViewTest)
 //#include "moc_WilburApplicationViewTest.cpp"
