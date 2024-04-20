@@ -101,6 +101,7 @@
     <QtRcc Include="WilburTest.qrc" />
     <QtUic Include="WilburTest.ui" />
     <QtMoc Include="WilburTest.h" />
+    <ClCompile Include="..\Wilbur\ActionLogModel.cpp" />
     <ClCompile Include="..\Wilbur\ActionLogView.cpp" />
     <ClCompile Include="..\Wilbur\BaseButtonView.cpp" />
     <ClCompile Include="..\Wilbur\button.cpp" />
@@ -127,6 +128,7 @@
     <ClCompile Include="..\Wilbur\sliderLayoutView.cpp" />
     <ClCompile Include="..\Wilbur\StiffnessSliderView.cpp" />
     <ClCompile Include="..\Wilbur\StringBuilderViewModel.cpp" />
+    <ClCompile Include="..\Wilbur\WilburApplicationView.cpp" />
     <ClCompile Include="WilburApplicationViewTest.cpp" />
     <ClCompile Include="WilburTest.cpp" />
     <ClCompile Include="main.cpp" />

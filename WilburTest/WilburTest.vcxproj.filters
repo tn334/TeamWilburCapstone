@@ -103,6 +103,12 @@
     <ClCompile Include="..\Wilbur\StringBuilderViewModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Wilbur\WilburApplicationView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Wilbur\ActionLogModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="WilburApplicationViewTest.h">
