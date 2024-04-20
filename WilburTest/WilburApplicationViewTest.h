@@ -1,8 +1,9 @@
 #pragma once
 #ifndef WILBURAPPLICATIONVIEWTEST_H
 #define WILBURAPPLICATIONVIEWTEST_H
-#include "WilburApplicationView.cpp"
+#include "WilburApplicationView.h"
 
+#include <QTest>
 #include <QObject>
 
 class WilburApplicationViewTest : public QObject
