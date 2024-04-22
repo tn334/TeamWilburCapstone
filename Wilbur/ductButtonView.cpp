@@ -1,5 +1,5 @@
 // Header Files
-#include "ductButtonView.h"
+#include "DuctButtonView.h"
 
 // Duct Button Constructor
 DuctButtonView::DuctButtonView(QWidget* parent)

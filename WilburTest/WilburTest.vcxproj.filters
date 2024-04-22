@@ -21,6 +21,12 @@
       <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
       <Extensions>ts</Extensions>
     </Filter>
+    <Filter Include="Header Files\Test Files">
+      <UniqueIdentifier>{47d978ca-0780-4ea0-8b5f-7fdacb5e63ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Test Files">
+      <UniqueIdentifier>{dfca8ca5-8440-476a-a3ed-85f27fee091f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="WilburTest.qrc">
@@ -29,18 +35,9 @@
     <QtUic Include="WilburTest.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtMoc Include="WilburTest.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <ClCompile Include="WilburTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WilburApplicationViewTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Wilbur\ActionLogView.cpp">
@@ -49,19 +46,16 @@
     <ClCompile Include="..\Wilbur\BaseButtonView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Wilbur\button.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\Wilbur\ConnectionButtonView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Wilbur\ConnectionLayoutView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Wilbur\ductButtonView.cpp">
+    <ClCompile Include="..\Wilbur\DuctButtonView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Wilbur\ductLayoutView.cpp">
+    <ClCompile Include="..\Wilbur\DuctLayoutView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Wilbur\FileMenuModel.cpp">
@@ -82,7 +76,7 @@
     <ClCompile Include="..\Wilbur\MenuBarView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Wilbur\prototypeControllerView.cpp">
+    <ClCompile Include="..\Wilbur\PrototypeControllerView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Wilbur\SerialConnection.cpp">
@@ -94,7 +88,7 @@
     <ClCompile Include="..\Wilbur\SimulatorModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Wilbur\sliderLayoutView.cpp">
+    <ClCompile Include="..\Wilbur\SliderLayoutView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Wilbur\StiffnessSliderView.cpp">
@@ -109,11 +103,14 @@
     <ClCompile Include="..\Wilbur\ActionLogModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="WilburTest.cpp">
+      <Filter>Source Files\Test Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseTestFrontEnd.cpp">
+      <Filter>Source Files\Test Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="WilburApplicationViewTest.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="..\Wilbur\WilburApplicationView.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -126,19 +123,16 @@
     <QtMoc Include="..\Wilbur\BaseButtonView.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="..\Wilbur\button.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="..\Wilbur\ConnectionButtonView.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="..\Wilbur\ConnectionLayoutView.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="..\Wilbur\ductButtonView.h">
+    <QtMoc Include="..\Wilbur\DuctButtonView.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="..\Wilbur\ductLayoutView.h">
+    <QtMoc Include="..\Wilbur\DuctLayoutView.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="..\Wilbur\FileMenuModel.h">
@@ -156,7 +150,7 @@
     <QtMoc Include="..\Wilbur\MenuBarView.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="..\Wilbur\prototypeControllerView.h">
+    <QtMoc Include="..\Wilbur\PrototypeControllerView.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="..\Wilbur\SerialConnection.h">
@@ -170,6 +164,18 @@
     </QtMoc>
     <QtMoc Include="..\Wilbur\StiffnessSliderView.h">
       <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="TestWilburApplicationView.h">
+      <Filter>Header Files\Test Files</Filter>
+    </QtMoc>
+    <QtMoc Include="WilburTest.h">
+      <Filter>Header Files\Test Files</Filter>
+    </QtMoc>
+    <QtMoc Include="TestWilburApplicationView.cpp">
+      <Filter>Source Files\Test Files</Filter>
+    </QtMoc>
+    <QtMoc Include="TestActionLogView.cpp">
+      <Filter>Source Files\Test Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
@@ -188,8 +194,22 @@
     <ClInclude Include="..\Wilbur\SimulatorModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BaseTestFrontEnd.h">
+      <Filter>Header Files\Test Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestActionLogTest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="WilburTest.pro" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WilburTest.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

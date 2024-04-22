@@ -6,22 +6,19 @@ ActionLogView::ActionLogView(ActionLogModel* actionLogModel, QWidget* parent) : 
 	this->setStyleSheet("background-color: #444444;");
 
 	// Create scroll area
-	QScrollArea* scrollArea = new QScrollArea(this);
+	scrollArea = new QScrollArea(this);
 	scrollArea->setWidgetResizable(true);
 
 	// Create Frame for action log display
-	QFrame* frame = new QFrame(this);
+	frame = new QFrame(this);
 	frame->setFrameShape(QFrame::Box); // set shape to a box
 	//frame->setStyleSheet("border: .5px solid black;");
 	frame->setFrameShadow(QFrame::Raised);
 	frame->setLineWidth(1); // set the width of the frames border
 	frame->setMidLineWidth(0);
 
-	// set the background color
-	//frame->setAutoFillBackground(true);
-
 	// create the layout
-	QVBoxLayout* frameLayout = new QVBoxLayout(frame);
+	frameLayout = new QVBoxLayout(frame);
 
 	// create a titleLabel for the display
 	titleLabel = new QLabel("Action Log", this);
@@ -61,7 +58,7 @@ ActionLogView::ActionLogView(ActionLogModel* actionLogModel, QWidget* parent) : 
 	// set the main layout for the action log view widget
 	setLayout(mainLayout);
 
-	connect(actionLogModel, &ActionLogModel::actionAdded, this, [this, actionLogModel, scrollArea]() {
+	connect(actionLogModel, &ActionLogModel::actionAdded, this, [this, actionLogModel]() {
 		// get list of actions from model and append
 		QString actionsText = actionLogModel->getListOfActions().join("\n");
 		// set the text of the label to the joined actions text

@@ -42,6 +42,7 @@ public:
 
 	// Format the session timer
 	QString formattedElapsedTime();
+
 signals:
 	// Signal to emit when a new action is added to the log - used in ActionLogView
 	void actionAdded();
