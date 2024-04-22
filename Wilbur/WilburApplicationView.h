@@ -11,7 +11,6 @@
 #include "ActionLogView.h"
 #include "PrototypeControllerView.h"
 #include "MenuBarView.h"
-//#include "navigationBar.h" //Nav Bar at Top of Window
 #include "SimOutputViewModel.h" // Simulation Window
 
 #include <QWidget>
@@ -35,7 +34,14 @@ public:
     WilburApplicationView(QWidget *parent = nullptr, int simulatorMode = 1);
     ~WilburApplicationView();
 
-    friend class WilburApplicationViewTest;
+    friend class TestWilburApplicationView;
+
+    ActionLogModel* getActionLog() const { return actionLog; };
+    ActionLogView* getActionLogDisplay() const { return actionLogDisplay; };
+    InputDirectorViewModel* getInputDirector() const { return inputDirector; };
+    MenuBarView* getMenuBar() const { return menuBar; };
+    PrototypeControllerView* getRobotControl() const { return robotControl; };
+    QWidget* getCentralWidget() const { return centralWidget; };
 private:
     // Instantiate objects
         // widget layout

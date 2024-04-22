@@ -104,11 +104,10 @@
     <ClCompile Include="..\Wilbur\ActionLogModel.cpp" />
     <ClCompile Include="..\Wilbur\ActionLogView.cpp" />
     <ClCompile Include="..\Wilbur\BaseButtonView.cpp" />
-    <ClCompile Include="..\Wilbur\button.cpp" />
     <ClCompile Include="..\Wilbur\ConnectionButtonView.cpp" />
     <ClCompile Include="..\Wilbur\ConnectionLayoutView.cpp" />
-    <ClCompile Include="..\Wilbur\ductButtonView.cpp" />
-    <ClCompile Include="..\Wilbur\ductLayoutView.cpp" />
+    <ClCompile Include="..\Wilbur\DuctButtonView.cpp" />
+    <ClCompile Include="..\Wilbur\DuctLayoutView.cpp" />
     <ClCompile Include="..\Wilbur\FileMenuModel.cpp" />
     <ClCompile Include="..\Wilbur\FlowRateLayoutView.cpp" />
     <ClCompile Include="..\Wilbur\HelpMenuModel.cpp" />
@@ -121,15 +120,27 @@
     <ClCompile Include="..\Wilbur\InputDirectorViewModel.cpp" />
     <ClCompile Include="..\Wilbur\MenuBarModel.cpp" />
     <ClCompile Include="..\Wilbur\MenuBarView.cpp" />
-    <ClCompile Include="..\Wilbur\prototypeControllerView.cpp" />
+    <ClCompile Include="..\Wilbur\PrototypeControllerView.cpp" />
     <ClCompile Include="..\Wilbur\SerialConnection.cpp" />
     <ClCompile Include="..\Wilbur\SimOutputViewModel.cpp" />
     <ClCompile Include="..\Wilbur\SimulatorModel.cpp" />
-    <ClCompile Include="..\Wilbur\sliderLayoutView.cpp" />
+    <ClCompile Include="..\Wilbur\SliderLayoutView.cpp" />
     <ClCompile Include="..\Wilbur\StiffnessSliderView.cpp" />
     <ClCompile Include="..\Wilbur\StringBuilderViewModel.cpp" />
     <ClCompile Include="..\Wilbur\WilburApplicationView.cpp" />
-    <ClCompile Include="WilburApplicationViewTest.cpp" />
+    <ClCompile Include="BaseTestFrontEnd.cpp" />
+    <QtMoc Include="TestWilburApplicationView.cpp">
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
+    </QtMoc>
+    <QtMoc Include="TestActionLogView.cpp">
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
+    </QtMoc>
     <ClCompile Include="WilburTest.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -139,7 +150,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="WilburApplicationViewTest.h" />
+    <QtMoc Include="TestWilburApplicationView.h" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="..\Wilbur\WilburApplicationView.h" />
@@ -154,19 +165,16 @@
     <QtMoc Include="..\Wilbur\BaseButtonView.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="..\Wilbur\button.h" />
-  </ItemGroup>
-  <ItemGroup>
     <QtMoc Include="..\Wilbur\ConnectionButtonView.h" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="..\Wilbur\ConnectionLayoutView.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="..\Wilbur\ductButtonView.h" />
+    <QtMoc Include="..\Wilbur\DuctButtonView.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="..\Wilbur\ductLayoutView.h" />
+    <QtMoc Include="..\Wilbur\DuctLayoutView.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Wilbur\EnumsAndConstants.h" />
@@ -174,11 +182,14 @@
     <ClInclude Include="..\Wilbur\IStringBuilder.h" />
     <ClInclude Include="..\Wilbur\MenuBarModel.h" />
     <ClInclude Include="..\Wilbur\SimulatorModel.h" />
+    <ClInclude Include="BaseTestFrontEnd.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="TestActionLogTest.h" />
     <QtMoc Include="..\Wilbur\StiffnessSliderView.h" />
     <QtMoc Include="..\Wilbur\sliderLayoutView.h" />
     <QtMoc Include="..\Wilbur\SimOutputViewModel.h" />
     <QtMoc Include="..\Wilbur\SerialConnection.h" />
-    <QtMoc Include="..\Wilbur\prototypeControllerView.h" />
+    <QtMoc Include="..\Wilbur\PrototypeControllerView.h" />
     <QtMoc Include="..\Wilbur\MenuBarView.h" />
     <QtMoc Include="..\Wilbur\HelpMenuModel.h" />
     <QtMoc Include="..\Wilbur\FlowRateLayoutView.h" />
@@ -186,6 +197,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="WilburTest.pro" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WilburTest.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
