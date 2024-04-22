@@ -128,7 +128,6 @@
     <ClCompile Include="..\Wilbur\StiffnessSliderView.cpp" />
     <ClCompile Include="..\Wilbur\StringBuilderViewModel.cpp" />
     <ClCompile Include="..\Wilbur\WilburApplicationView.cpp" />
-    <ClCompile Include="BaseTestFrontEnd.cpp" />
     <QtMoc Include="TestWilburApplicationView.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
@@ -182,7 +181,6 @@
     <ClInclude Include="..\Wilbur\IStringBuilder.h" />
     <ClInclude Include="..\Wilbur\MenuBarModel.h" />
     <ClInclude Include="..\Wilbur\SimulatorModel.h" />
-    <ClInclude Include="BaseTestFrontEnd.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="TestActionLogTest.h" />
     <QtMoc Include="..\Wilbur\StiffnessSliderView.h" />
@@ -197,9 +195,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="WilburTest.pro" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="WilburTest.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

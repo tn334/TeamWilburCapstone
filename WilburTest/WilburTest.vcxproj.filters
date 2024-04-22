@@ -106,9 +106,6 @@
     <ClCompile Include="WilburTest.cpp">
       <Filter>Source Files\Test Files</Filter>
     </ClCompile>
-    <ClCompile Include="BaseTestFrontEnd.cpp">
-      <Filter>Source Files\Test Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="..\Wilbur\WilburApplicationView.h">
@@ -194,9 +191,6 @@
     <ClInclude Include="..\Wilbur\SimulatorModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BaseTestFrontEnd.h">
-      <Filter>Header Files\Test Files</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -206,10 +200,5 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="WilburTest.pro" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="WilburTest.rc">
-      <Filter>Resource Files</Filter>
-    </ResourceCompile>
   </ItemGroup>
 </Project>
