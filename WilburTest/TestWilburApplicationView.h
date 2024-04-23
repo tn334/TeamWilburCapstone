@@ -11,7 +11,7 @@ class TestWilburApplicationView : public QObject
 	Q_OBJECT
 
 private slots:
-	// test object contructors
+	// Test object contructors
 	void testActionLogContruction();
 
 	void testActionLogDisplayConstruction();
@@ -24,8 +24,7 @@ private slots:
 
 	void testCentralWidget();
 
-
-	// test functions
+	// Test functions
 	void testToggleActionLogDisplay();
 
 };
