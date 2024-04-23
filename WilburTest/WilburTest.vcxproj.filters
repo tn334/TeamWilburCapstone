@@ -24,9 +24,6 @@
     <Filter Include="Header Files\Test Files">
       <UniqueIdentifier>{47d978ca-0780-4ea0-8b5f-7fdacb5e63ca}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Test Files">
-      <UniqueIdentifier>{dfca8ca5-8440-476a-a3ed-85f27fee091f}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="WilburTest.qrc">
@@ -104,7 +101,13 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="WilburTest.cpp">
-      <Filter>Source Files\Test Files</Filter>
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TestWilburApplicationView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TestActionLogView.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -168,11 +171,8 @@
     <QtMoc Include="WilburTest.h">
       <Filter>Header Files\Test Files</Filter>
     </QtMoc>
-    <QtMoc Include="TestWilburApplicationView.cpp">
-      <Filter>Source Files\Test Files</Filter>
-    </QtMoc>
-    <QtMoc Include="TestActionLogView.cpp">
-      <Filter>Source Files\Test Files</Filter>
+    <QtMoc Include="TestActionLogView.h">
+      <Filter>Header Files\Test Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

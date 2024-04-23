@@ -128,18 +128,18 @@
     <ClCompile Include="..\Wilbur\StiffnessSliderView.cpp" />
     <ClCompile Include="..\Wilbur\StringBuilderViewModel.cpp" />
     <ClCompile Include="..\Wilbur\WilburApplicationView.cpp" />
-    <QtMoc Include="TestWilburApplicationView.cpp">
+    <ClCompile Include="TestWilburApplicationView.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
-    </QtMoc>
-    <QtMoc Include="TestActionLogView.cpp">
+    </ClCompile>
+    <ClCompile Include="TestActionLogView.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
-    </QtMoc>
+    </ClCompile>
     <ClCompile Include="WilburTest.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -183,6 +183,7 @@
     <ClInclude Include="..\Wilbur\SimulatorModel.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="TestActionLogTest.h" />
+    <QtMoc Include="TestActionLogView.h" />
     <QtMoc Include="..\Wilbur\StiffnessSliderView.h" />
     <QtMoc Include="..\Wilbur\sliderLayoutView.h" />
     <QtMoc Include="..\Wilbur\SimOutputViewModel.h" />

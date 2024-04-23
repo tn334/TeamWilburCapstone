@@ -1,63 +1,56 @@
-//#include "TestWilburApplicationView.h"
-#include "WilburApplicationView.h"
+#include "TestWilburApplicationView.h"
+//#include "WilburApplicationView.h"
 
 #include <QTest>
 #include <QObject>
 
-class TestWilburApplicationView : public QObject
+void TestWilburApplicationView::testActionLogContruction()
 {
-	Q_OBJECT
-
-private slots:
-	// test object contructors
-	void testActionLogContruction()
-	{
-		WilburApplicationView window;
-		ActionLogModel* actionLog = window.getActionLog();
-		QVERIFY(actionLog != nullptr);
-	}
-	void testActionLogDisplayConstruction()
-	{
-		WilburApplicationView window;
-		ActionLogView* actionLogDisplay = window.getActionLogDisplay();
-		QVERIFY(actionLogDisplay != nullptr);
-	}
-	void testInputDirectorConstruction()
-	{
-		WilburApplicationView window;
-		InputDirectorViewModel* inputDirector = window.getInputDirector();
-		QVERIFY(inputDirector != nullptr);
-	}
-	void testMenuBarConstruction()
-	{
-		WilburApplicationView window;
-		MenuBarView* menuBar = window.getMenuBar();
-		QVERIFY(menuBar != nullptr);
-	}
-	void testPrototypeControllerConstruction()
-	{
-		WilburApplicationView window;
-		PrototypeControllerView* robotControl = window.getRobotControl();
-		QVERIFY(robotControl != nullptr);
-	}
-	void testCentralWidget()
-	{
-		WilburApplicationView window;
-		QWidget* centralWidget = window.getCentralWidget();
-		QVERIFY(centralWidget != nullptr);
-	}
+	WilburApplicationView window;
+	ActionLogModel* actionLog = window.getActionLog();
+	QVERIFY(actionLog != nullptr);
+}
+void TestWilburApplicationView::testActionLogDisplayConstruction()
+{
+	WilburApplicationView window;
+	ActionLogView* actionLogDisplay = window.getActionLogDisplay();
+	QVERIFY(actionLogDisplay != nullptr);
+}
+void TestWilburApplicationView::testInputDirectorConstruction()
+{
+	WilburApplicationView window;
+	InputDirectorViewModel* inputDirector = window.getInputDirector();
+	QVERIFY(inputDirector != nullptr);
+}
+void TestWilburApplicationView::testMenuBarConstruction()
+{
+	WilburApplicationView window;
+	MenuBarView* menuBar = window.getMenuBar();
+	QVERIFY(menuBar != nullptr);
+}
+void TestWilburApplicationView::testPrototypeControllerConstruction()
+{
+	WilburApplicationView window;
+	PrototypeControllerView* robotControl = window.getRobotControl();
+	QVERIFY(robotControl != nullptr);
+}
+void TestWilburApplicationView::testCentralWidget()
+{
+	WilburApplicationView window;
+	QWidget* centralWidget = window.getCentralWidget();
+	QVERIFY(centralWidget != nullptr);
+}
 
 	// test functions
-	void testToggleActionLogDisplay()
-	{
-		WilburApplicationView window;
+void TestWilburApplicationView::testToggleActionLogDisplay()
+{
+	WilburApplicationView window;
 
-		QVERIFY(window.actionLogDisplay->isVisible());
+	QVERIFY(window.actionLogDisplay->isVisible());
 
-		window.toggleActionLogDisplay(true);
-		QVERIFY(window.actionLogDisplay->isVisible());
+	window.toggleActionLogDisplay(true);
+	QVERIFY(window.actionLogDisplay->isVisible());
 
-		window.toggleActionLogDisplay(false);
-		QVERIFY(!window.actionLogDisplay->isVisible());
-	}
-};
+	window.toggleActionLogDisplay(false);
+	QVERIFY(!window.actionLogDisplay->isVisible());
+}

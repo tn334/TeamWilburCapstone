@@ -12,56 +12,22 @@ class TestWilburApplicationView : public QObject
 
 private slots:
 	// test object contructors
-	void testActionLogContruction()
-	{
-		WilburApplicationView window;
-		ActionLogModel* actionLog = window.getActionLog();
-		QVERIFY(actionLog != nullptr);
-	}
-	void testActionLogDisplayConstruction()
-	{
-		WilburApplicationView window;
-		ActionLogView* actionLogDisplay = window.getActionLogDisplay();
-		QVERIFY(actionLogDisplay != nullptr);
-	}
-	void testInputDirectorConstruction()
-	{
-		WilburApplicationView window;
-		InputDirectorViewModel* inputDirector = window.getInputDirector();
-		QVERIFY(inputDirector != nullptr);
-	}
-	void testMenuBarConstruction()
-	{
-		WilburApplicationView window;
-		MenuBarView* menuBar = window.getMenuBar();
-		QVERIFY(menuBar != nullptr);
-	}
-	void testPrototypeControllerConstruction()
-	{
-		WilburApplicationView window;
-		PrototypeControllerView* robotControl = window.getRobotControl();
-		QVERIFY(robotControl != nullptr);
-	}
-	void testCentralWidget()
-	{
-		WilburApplicationView window;
-		QWidget* centralWidget = window.getCentralWidget();
-		QVERIFY(centralWidget != nullptr);
-	}
+	void testActionLogContruction();
+
+	void testActionLogDisplayConstruction();
+
+	void testInputDirectorConstruction();
+
+	void testMenuBarConstruction();
+
+	void testPrototypeControllerConstruction();
+
+	void testCentralWidget();
+
 
 	// test functions
-	void testToggleActionLogDisplay()
-	{
-		WilburApplicationView window;
+	void testToggleActionLogDisplay();
 
-		QVERIFY(window.actionLogDisplay->isVisible());
-
-		window.toggleActionLogDisplay(true);
-		QVERIFY(window.actionLogDisplay->isVisible());
-
-		window.toggleActionLogDisplay(false);
-		QVERIFY(!window.actionLogDisplay->isVisible());
-	}
 };
 #endif // WILBURAPPLICATIONVIEWTEST_H
 
