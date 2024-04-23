@@ -142,11 +142,11 @@ void ActionLogModel::exportLog()
 
 }
 
-void ActionLogModel::addActionToLog(QString actionToAdd, const QTime& currentTime)
+void ActionLogModel::addActionToLog(QString actionToAdd)
 {
 	// Format action time and text
 	QString formattedAction = QString("%1 | %2 -> %3").arg(
-						 formattedElapsedTime(), m_currentTime.toString(), actionToAdd);
+						 formattedElapsedTime(), getActionTime(), actionToAdd);
 
 	// Insert the new action to the list of actions along with its time and date
 	listOfActions << formattedAction;
@@ -175,10 +175,4 @@ QString ActionLogModel::formattedElapsedTime()
 	// Return formatted elapsed time (hours/minutes/seconds/milliseconds)
 	return QTime::fromMSecsSinceStartOfDay(
 							  sessionTimer.elapsed()).toString("hh:mm:ss:zzz");
-}
-
-// Implementation of setCurrentTime
-void ActionLogModel::setCurrentTime(const QTime& currentTime)
-{
-	m_currentTime = currentTime;
 }

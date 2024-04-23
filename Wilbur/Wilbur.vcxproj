@@ -156,9 +156,9 @@
     <ClCompile Include="SerialConnection.cpp" />
     <ClCompile Include="SimOutputViewModel.cpp" />
     <ClCompile Include="SimulatorModel.cpp" />
-    <ClCompile Include="DuctButtonView.cpp" />
+    <ClCompile Include="SwitchButtonView.cpp" />
     <ClCompile Include="InputDirectorViewModel.cpp" />
-    <ClCompile Include="DuctLayoutView.cpp" />
+    <ClCompile Include="SwitchLayoutView.cpp" />
     <ClCompile Include="SliderLayoutView.cpp" />
     <ClCompile Include="StiffnessSliderView.cpp" />
     <ClCompile Include="StringBuilderViewModel.cpp" />
@@ -190,10 +190,10 @@
     <QtMoc Include="FileMenuModel.h" />
     <QtMoc Include="HelpMenuModel.h" />
     <ClInclude Include="SimulatorModel.h" />
-    <QtMoc Include="DuctButtonView.h" />
+    <QtMoc Include="SwitchButtonView.h" />
     <QtMoc Include="SliderLayoutView.h" />
     <ClInclude Include="InputDirectorViewModel.h" />
-    <QtMoc Include="DuctLayoutView.h" />
+    <QtMoc Include="SwitchLayoutView.h" />
     <ClInclude Include="IStringBuilder.h" />
   </ItemGroup>
   <ItemGroup>
