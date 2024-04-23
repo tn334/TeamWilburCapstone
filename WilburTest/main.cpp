@@ -26,5 +26,6 @@ int main(int argc, char* argv[]) {
     return 0;
 }
 
+// Comment out main function and uncomment one of the below test calls to run tests for one file only
 //QTEST_MAIN(TestWilburApplicationView)
 //QTEST_MAIN(TestActionLogView)

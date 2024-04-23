@@ -35,13 +35,16 @@ public:
 	void exportLog();
 
 	// Add an action to the list of logs
-	void addActionToLog(QString logToAdd);
+	void addActionToLog(QString logToAdd, const QTime& currentTime = QTime::currentTime());
 
 	// Get the time at which the action was made
 	QString getActionTime();
 
 	// Format the session timer
 	QString formattedElapsedTime();
+
+	// Method to set the current time for testing
+	void setCurrentTime(const QTime& currentTime);
 
 signals:
 	// Signal to emit when a new action is added to the log - used in ActionLogView
@@ -59,6 +62,9 @@ private:
 
 	// Session timer
 	QElapsedTimer sessionTimer;
+
+	// Member variable to store the current time
+	QTime m_currentTime;
 };
 
 #endif // ACTIONLOGMODEL_H

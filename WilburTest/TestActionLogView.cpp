@@ -16,7 +16,7 @@ void TestActionLogView::testWidgetConstruction()
     QVERIFY(actionLogView.getActionLabel() != nullptr);
 }
 
-void TestActionLogView::testActionLogUpdate()
+void TestActionLogView::testActionLogUpdate() // Test Fails
 {
     // Create an ActionLogModel
     ActionLogModel actionLogModel;
@@ -24,12 +24,19 @@ void TestActionLogView::testActionLogUpdate()
     // Create an ActionLogView widget
     ActionLogView actionLogView(&actionLogModel);
 
+    // Set a fixed time for the test
+    QTime fixedTime(10, 43, 46, 0);
+
+    // Set the current time for the ActionLogModel
+    actionLogModel.setCurrentTime(fixedTime);
+
     // Add actions to the action log model
     actionLogModel.addActionToLog("Action 1");
     actionLogModel.addActionToLog("Action 2");
-
+    qDebug() << actionLogView.getActionLabel()->text();
+    QString formatedString = QString("00:00:00:000 | Tue Apr 23 10:43:46 2024 -> Action 1\n00:00:00:000 | Tue Apr 23 10:43:46 2024 -> Action 2");
     // Verify that the action label updates with the new actions
-    QCOMPARE(actionLogView.getActionLabel()->text(), QString("Action 1\nAction 2"));
+    QCOMPARE(actionLogView.getActionLabel()->text(), formatedString);
 }
 
 void TestActionLogView::testScrollToBottom()
