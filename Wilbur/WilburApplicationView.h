@@ -55,7 +55,7 @@ private:
 
     MenuBarView* menuBar; // menu bar at top of application
 
-    PrototypeControllerView* robotControl; // widget containing connection, duct control, and stiffness slider
+    PrototypeControllerView* robotControl; // widget containing connection, switch control, and stiffness slider
     
     QWidget* centralWidget;
 

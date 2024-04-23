@@ -1,16 +1,16 @@
 #pragma once
-#ifndef DUCTBUTTONVIEW_H
-#define DUCTBUTTONVIEW_H
+#ifndef SWITCHBUTTONVIEW_H
+#define SWITCHBUTTONVIEW_H
 
 // Header Files
 #include "BaseButtonView.h"
 
-class DuctButtonView : public BaseButtonView
+class SwitchButtonView : public BaseButtonView
 {
     Q_OBJECT
 
 public:
-    explicit DuctButtonView(QWidget* parent = nullptr);
+    explicit SwitchButtonView(QWidget* parent = nullptr);
 
     void handleButtonClicked();
 
@@ -21,7 +21,7 @@ public:
     void setState(bool newState);
 
 private:
-    bool isOpen; // tracking if duct is open or closed state
+    bool isOpen; // tracking if switch is open or closed state
 };
 
-#endif // DUCTBUTTONVIEW_H
+#endif // SWITCHBUTTONVIEW_H

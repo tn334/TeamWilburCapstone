@@ -8,7 +8,7 @@
 // Local Headers
 #include "ConnectionLayoutView.h"
 #include "SliderLayoutView.h" // QSlider is included in file
-#include "DuctLayoutView.h" // DuctButtonView and QAbstractButton included
+#include "SwitchLayoutView.h" // SwitchButtonView and QAbstractButton included
 #include "SimOutputViewModel.h" // QLabel, QMainWindow included in SimOutputViewModel.h
 #include "ActionLogModel.h"
 #include "InputDirectorViewModel.h"
@@ -37,7 +37,7 @@ private:
 	// objects
 	ConnectionLayoutView* connectionLayout;
 	SliderLayoutView* sliderLayout;
-	DuctLayoutView* ductLayout;
+	SwitchLayoutView* switchLayout;
 
 	// instances
 	SimulatorModel demoSimulator;

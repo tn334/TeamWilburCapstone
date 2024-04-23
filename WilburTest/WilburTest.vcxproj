@@ -106,8 +106,8 @@
     <ClCompile Include="..\Wilbur\BaseButtonView.cpp" />
     <ClCompile Include="..\Wilbur\ConnectionButtonView.cpp" />
     <ClCompile Include="..\Wilbur\ConnectionLayoutView.cpp" />
-    <ClCompile Include="..\Wilbur\DuctButtonView.cpp" />
-    <ClCompile Include="..\Wilbur\DuctLayoutView.cpp" />
+    <ClCompile Include="..\Wilbur\SwitchButtonView.cpp" />
+    <ClCompile Include="..\Wilbur\SwitchLayoutView.cpp" />
     <ClCompile Include="..\Wilbur\FileMenuModel.cpp" />
     <ClCompile Include="..\Wilbur\FlowRateLayoutView.cpp" />
     <ClCompile Include="..\Wilbur\HelpMenuModel.cpp" />
@@ -170,10 +170,10 @@
     <QtMoc Include="..\Wilbur\ConnectionLayoutView.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="..\Wilbur\DuctButtonView.h" />
+    <QtMoc Include="..\Wilbur\SwitchButtonView.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="..\Wilbur\DuctLayoutView.h" />
+    <QtMoc Include="..\Wilbur\SwitchLayoutView.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Wilbur\EnumsAndConstants.h" />
@@ -181,7 +181,6 @@
     <ClInclude Include="..\Wilbur\IStringBuilder.h" />
     <ClInclude Include="..\Wilbur\MenuBarModel.h" />
     <ClInclude Include="..\Wilbur\SimulatorModel.h" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="TestActionLogTest.h" />
     <QtMoc Include="TestActionLogView.h" />
     <QtMoc Include="..\Wilbur\StiffnessSliderView.h" />

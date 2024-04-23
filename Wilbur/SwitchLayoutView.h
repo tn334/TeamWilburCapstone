@@ -1,10 +1,10 @@
 #pragma once
 
-#ifndef DUCTLAYOUTVIEW_H
-#define DUCTLAYOUTVIEW_H
+#ifndef SWITCHLAYOUTVIEW_H
+#define SWITCHLAYOUTVIEW_H
 
 //Header Files
-#include "DuctButtonView.h"
+#include "SwitchButtonView.h"
 #include "FlowRateLayoutView.h"
 #include "InputDirectorViewModel.h" // includes enum def of buttonType
 
@@ -13,23 +13,23 @@
 #include <QWidget>
 #include <QLineEdit>
 
-class DuctLayoutView : public QWidget
+class SwitchLayoutView : public QWidget
 {
 	Q_OBJECT
 
 public:
 	// constructor
-	explicit DuctLayoutView(QWidget* parent = nullptr);
+	explicit SwitchLayoutView(QWidget* parent = nullptr);
 
 	// destructor
-	~DuctLayoutView();
+	~SwitchLayoutView();
 
 	void callExecuteControl(buttonType button, int newValue);
 	void callExecuteFlowRateControl(buttonType button, double newValue);
 
 signals:
-	void ductButtonClicked(buttonType button, int newValue);
-	void ductFlowRateChanged(buttonType button, double newValue);
+	void switchButtonClicked(buttonType button, int newValue);
+	void switchFlowRateChanged(buttonType button, double newValue);
 
 private:
 	// create button label variables
@@ -37,10 +37,10 @@ private:
 	QLabel* buttonLabelTwo;
 	QLabel* buttonLabelThree;
 
-	// create duct button variables
-	DuctButtonView* buttonOne;
-	DuctButtonView* buttonTwo;
-	DuctButtonView* buttonThree;
+	// create Switch button variables
+	SwitchButtonView* buttonOne;
+	SwitchButtonView* buttonTwo;
+	SwitchButtonView* buttonThree;
 
 	// create value input box
 	FlowRateLayoutView* flowRateOne;
@@ -51,12 +51,12 @@ private:
 	QHBoxLayout* layoutButtonOne;
 	QHBoxLayout* layoutButtonTwo;
 	QHBoxLayout* layoutButtonThree;
-	QVBoxLayout* verticalDuctLayout;
+	QVBoxLayout* verticalSwitchLayout;
 	QHBoxLayout* buttonLayout;
 
 	// functions
-	QHBoxLayout* createButtonLayout(const QString& labelText, DuctButtonView** button, FlowRateLayoutView** flowLayout, buttonType valveType);
+	QHBoxLayout* createButtonLayout(const QString& labelText, SwitchButtonView** button, FlowRateLayoutView** flowLayout, buttonType valveType);
 
 };
 
-#endif // DUCTLAYOUTVIEW_H
+#endif // SWITCHLAYOUTVIEW_H

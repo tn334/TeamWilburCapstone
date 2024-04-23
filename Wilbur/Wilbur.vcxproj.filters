@@ -58,10 +58,10 @@
     <ClCompile Include="SliderLayoutView.cpp">
       <Filter>Source Files\View</Filter>
     </ClCompile>
-    <ClCompile Include="DuctLayoutView.cpp">
+    <ClCompile Include="SwitchLayoutView.cpp">
       <Filter>Source Files\View</Filter>
     </ClCompile>
-    <ClCompile Include="DuctButtonView.cpp">
+    <ClCompile Include="SwitchButtonView.cpp">
       <Filter>Source Files\View</Filter>
     </ClCompile>
     <ClCompile Include="PrototypeControllerView.cpp">
@@ -129,13 +129,13 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="DuctButtonView.h">
+    <QtMoc Include="SwitchButtonView.h">
       <Filter>Header Files\View</Filter>
     </QtMoc>
     <QtMoc Include="PrototypeControllerView.h">
       <Filter>Header Files\View</Filter>
     </QtMoc>
-    <QtMoc Include="DuctLayoutView.h">
+    <QtMoc Include="SwitchLayoutView.h">
       <Filter>Header Files\View</Filter>
     </QtMoc>
     <QtMoc Include="SliderLayoutView.h">
