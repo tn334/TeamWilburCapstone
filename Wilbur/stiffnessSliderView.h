@@ -21,18 +21,20 @@ public:
 	int test = 0;
     ~StiffnessSliderView();
 
+signals:
+    void sliderValueChanged(bool newState);
+
+private slots:
+    void handleSliderValueChanged();
+
 private:
     //properties
     QSlider* slider;
 
     //methods
     bool validValue(int value);
-
-signals:
-    void sliderValueChanged(bool newState);
-
-private slots:
-    void updateValue(int value);
+    
+    int previousValue;
 };
 
 #endif // STIFFNESSSLIDERVIEW_H

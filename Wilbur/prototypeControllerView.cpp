@@ -59,7 +59,7 @@ PrototypeControllerView::PrototypeControllerView(QWidget* parent,
 
 	// Create a slider layout containing slider and its labels
 	sliderLayout = new SliderLayoutView(this);
-	connect(sliderLayout->stiffnessSlider, &StiffnessSliderView::sliderReleased,
+	connect(sliderLayout->stiffnessSlider, &StiffnessSliderView::sliderValueChanged,
 		this, [this]() {executeControl(PUMP,
 			sliderLayout->stiffnessSlider->value()); });
 
