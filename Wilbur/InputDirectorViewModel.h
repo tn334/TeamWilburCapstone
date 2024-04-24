@@ -11,6 +11,7 @@
 #include <QSlider>
 #include <QGridLayout>
 #include <QGroupBox>
+#include <QDebug>
 
 class InputDirectorViewModel
 {
@@ -19,7 +20,7 @@ public:
 
 	InputDirectorViewModel(bool simState, QWidget* QParent = nullptr);
 
-	bool handleInput(enum buttonType, int newValue, std::string objectName);
+	bool handleInput(enum buttonType, int newState, std::string objectName);
 
 private:
 	bool simulatorMode;
