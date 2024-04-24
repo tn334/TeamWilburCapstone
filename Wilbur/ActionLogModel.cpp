@@ -175,4 +175,3 @@ QString ActionLogModel::formattedElapsedTime()
 	// Return formatted elapsed time (hours/minutes/seconds/milliseconds)
 	return QTime::fromMSecsSinceStartOfDay(
 							      sessionTimer.elapsed()).toString("hh:mm:ss");
-}
