@@ -28,9 +28,6 @@ private slots:
     void handleSliderValueChanged();
 
 private:
-    //properties
-    QSlider* slider;
-
     //methods
     bool validValue(int value);
     
