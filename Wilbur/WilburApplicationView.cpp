@@ -49,8 +49,10 @@ WilburApplicationView::WilburApplicationView(QWidget* parent, int simulatorMode)
     // set custom palette
     QPalette customPalette;
     customPalette.setColor(QPalette::Window, QColor("#333333"));
-    customPalette.setColor(QPalette::Base, QColor("#666666"));
-    customPalette.setColor(QPalette::AlternateBase, QColor("#444444"));
+
+	/*THIS LINES DO NOT SEEM TO AFFECT ANYTHING SO I COMMENTED THEM (ADRIEL)*/
+    //customPalette.setColor(QPalette::Base, QColor("#666666"));
+    //customPalette.setColor(QPalette::AlternateBase, QColor("#444444"));
     customPalette.setColor(QPalette::WindowText, Qt::white);
     customPalette.setColor(QPalette::ButtonText, Qt::white);
     customPalette.setColor(QPalette::Highlight, QColor("#444444"));
