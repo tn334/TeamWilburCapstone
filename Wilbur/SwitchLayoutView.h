@@ -32,6 +32,11 @@ signals:
 	void switchFlowRateChanged(buttonType button, double newValue);
 
 private:
+	// create title variable
+	QLabel* switchLabel;
+	QLabel* viscosityLabel;
+	QLabel* buttonLabel;
+
 	// create button label variables
 	QLabel* buttonLabelOne;
 	QLabel* buttonLabelTwo;
@@ -48,6 +53,8 @@ private:
 	FlowRateLayoutView* flowRateThree;
 
 	// create layout variable
+	QHBoxLayout* horizontalLabelLayout;
+	QGridLayout* labelLayout;
 	QHBoxLayout* layoutButtonOne;
 	QHBoxLayout* layoutButtonTwo;
 	QHBoxLayout* layoutButtonThree;

@@ -18,6 +18,7 @@ PrototypeControllerView::PrototypeControllerView(QWidget* parent,
 	controlLabel->setAlignment(Qt::AlignCenter);
 	controlLabel->setStyleSheet("font: bold 14px; ");
 	controlLabel->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+
 	// create a frame for control label
 	QFrame* controlFrame = new QFrame(this);
 	controlFrame->setFrameShape(QFrame::Box); // set shape to a box
