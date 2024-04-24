@@ -1,5 +1,5 @@
 // Header Files
-#include "sliderLayoutView.h"
+#include "SliderLayoutView.h"
 
 // Slider layout constructor
 SliderLayoutView::SliderLayoutView(QWidget* parent)

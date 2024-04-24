@@ -3,11 +3,11 @@
 // Qt webpage breakdown of abstract slider https://doc.qt.io/qt-6/qslider.html
 
 // Header Files
-#include "stiffnessSliderView.h"
+#include "StiffnessSliderView.h"
 
 // Stiffness Slider Constructor
 StiffnessSliderView::StiffnessSliderView(QWidget *parent) 
-    : QSlider(Qt::Horizontal, parent)
+    : QSlider(Qt::Horizontal, parent), previousValue(0)
 {
     // setting tooltip for slider
     setToolTip("Drag Slider to select a stiffness mode");
@@ -15,7 +15,7 @@ StiffnessSliderView::StiffnessSliderView(QWidget *parent)
     //To add text above slider ticks https://forum.qt.io/topic/101343/qslider-with-text-at-tick-marks
 	
     //creating slider
-    slider = new QSlider(Qt::Horizontal);
+    //slider = new QSlider(Qt::Horizontal);
 
     //Setting up actual slider parameters
     setFocusPolicy(Qt::StrongFocus);
@@ -32,20 +32,28 @@ StiffnessSliderView::StiffnessSliderView(QWidget *parent)
     // creates 4 total ticks at off, 33-Low, 66-Medium and 99-High
     setTickInterval(1);
 
+    setTracking(true);
+
 	// Connect slider to value updates
-    connect(slider, &QSlider::valueChanged, this, &StiffnessSliderView::updateValue);
+    connect(this, &QAbstractSlider::valueChanged, this, &StiffnessSliderView::handleSliderValueChanged);
 }
 
 // deconstructor
 StiffnessSliderView::~StiffnessSliderView()
 {
     // delete the slider
-    delete slider;
 }
 
 // Update slider value
-void StiffnessSliderView::updateValue(int value) 
+void StiffnessSliderView::handleSliderValueChanged() 
 {
+    // Calculate the position of the click relative to the tick marks
+    int tickPosition = mapFromGlobal(QCursor::pos()).x() - this->x();
+    int tickWidth = width() / (maximum() - minimum());
+
+    // Calculate the nearest tick mark
+    int value = (tickPosition + tickWidth / 2) / tickWidth;
+    setValue(value);
 	// Check if the value is valid
     if (validValue(value)) 
 	{
@@ -60,6 +68,11 @@ bool StiffnessSliderView::validValue(int value)
 {
     // Perform any validation checks if needed
     // For simplicity, consider all values as valid in this example
-    Q_UNUSED(value);
-    return true;
+
+    if (value != previousValue)
+    {
+        previousValue = value;
+        return true;
+    }
+    return false;
 }

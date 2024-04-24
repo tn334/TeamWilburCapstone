@@ -1,14 +1,14 @@
 // Header Files
-#include "DuctButtonView.h"
+#include "SwitchButtonView.h"
 
 // Duct Button Constructor
-DuctButtonView::DuctButtonView(QWidget* parent)
-	: BaseButtonView("Click to change state of the duct",
+SwitchButtonView::SwitchButtonView(QWidget* parent)
+	: BaseButtonView("Click to change state of the switch",
 		"Closed", QColor(136, 34, 85), parent), isOpen(false) // initialize state to false
 {
 
 	//connect button to event handler(clicked)
-	connect(this, &DuctButtonView::clicked, this, &DuctButtonView::handleButtonClicked);
+	connect(this, &SwitchButtonView::clicked, this, &SwitchButtonView::handleButtonClicked);
 
 	// set resizing policies for horizontal and vertical sizes
 	setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -25,12 +25,12 @@ DuctButtonView::DuctButtonView(QWidget* parent)
 }
 
 //Function implementations
-bool DuctButtonView::getState() const {return isOpen;}
+bool SwitchButtonView::getState() const {return isOpen;}
 
-void DuctButtonView::setState(bool newState) {isOpen = newState;}
+void SwitchButtonView::setState(bool newState) {isOpen = newState;}
 
 // Button Clicks Handler
-void DuctButtonView::handleButtonClicked()
+void SwitchButtonView::handleButtonClicked()
 {
 	// Toggle the connection status
 	isOpen = !isOpen;

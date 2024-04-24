@@ -49,10 +49,10 @@
     <ClCompile Include="..\Wilbur\ConnectionLayoutView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Wilbur\DuctButtonView.cpp">
+    <ClCompile Include="..\Wilbur\SwitchButtonView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Wilbur\DuctLayoutView.cpp">
+    <ClCompile Include="..\Wilbur\SwitchLayoutView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Wilbur\FileMenuModel.cpp">
@@ -129,10 +129,10 @@
     <QtMoc Include="..\Wilbur\ConnectionLayoutView.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="..\Wilbur\DuctButtonView.h">
+    <QtMoc Include="..\Wilbur\SwitchButtonView.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="..\Wilbur\DuctLayoutView.h">
+    <QtMoc Include="..\Wilbur\SwitchLayoutView.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="..\Wilbur\FileMenuModel.h">
@@ -189,9 +189,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Wilbur\SimulatorModel.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TestActionLogTest.h">

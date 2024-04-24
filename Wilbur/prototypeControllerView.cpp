@@ -46,20 +46,20 @@ PrototypeControllerView::PrototypeControllerView(QWidget* parent,
 	connect(connectionLayout, &ConnectionLayoutView::connectionButtonClicked,  
 		this, &PrototypeControllerView::executeControl);
 
-	// set ductLayout
-	ductLayout = new DuctLayoutView(this);
+	// set switchLayout
+	switchLayout = new SwitchLayoutView(this);
 
-	// Connect the signal from DuctLayoutView to executeControl slot
-	connect(ductLayout, &DuctLayoutView::ductButtonClicked, this,
+	// Connect the signal from SwitchLayoutView to executeControl slot
+	connect(switchLayout, &SwitchLayoutView::switchButtonClicked, this,
 		&PrototypeControllerView::executeControl);
 
 	// Connect the signal from DuctLayoutView to executeFlowRateControl slot
-	connect(ductLayout, &DuctLayoutView::ductFlowRateChanged, this,
+	connect(switchLayout, &SwitchLayoutView::switchFlowRateChanged, this,
 		&PrototypeControllerView::executeFlowRateControl);
 
 	// Create a slider layout containing slider and its labels
 	sliderLayout = new SliderLayoutView(this);
-	connect(sliderLayout->stiffnessSlider, &StiffnessSliderView::sliderReleased,
+	connect(sliderLayout->stiffnessSlider, &StiffnessSliderView::sliderValueChanged,
 		this, [this]() {executeControl(PUMP,
 			sliderLayout->stiffnessSlider->value()); });
 
@@ -68,7 +68,7 @@ PrototypeControllerView::PrototypeControllerView(QWidget* parent,
 	controlLayout->addWidget(connectionLayout);
 	controlLayout->addSpacing(10);
 	controlLayout->addWidget(controlFrame);
-	controlLayout->addWidget(ductLayout);
+	controlLayout->addWidget(switchLayout);
 	controlLayout->addWidget(sliderLayout);
 	controller->setLayout(controlLayout);
 };
