@@ -10,6 +10,7 @@ MenuBarView::MenuBarView(QMainWindow* parent, ActionLogModel* actionLog) : QMenu
 
 	toggleActionLog = new QAction("Toggle Action Log", this);
 	toggleActionLog->setCheckable(true);
+
 	// connect checkable action to enable action log
 	connect(toggleActionLog, &QAction::triggered, this, &MenuBarView::toggleLogVisibility);
 
@@ -21,7 +22,6 @@ MenuBarView::MenuBarView(QMainWindow* parent, ActionLogModel* actionLog) : QMenu
 	addMenu(fileMenu);
 	addMenu(helpMenu);
 	addAction(toggleActionLog);
-
 }
 
 MenuBarView::~MenuBarView()
@@ -31,6 +31,6 @@ MenuBarView::~MenuBarView()
 
 void MenuBarView::toggleLogVisibility()
 {
-	bool visible = toggleActionLog->isChecked();
+	bool visible = !toggleActionLog->isChecked();
 	emit actionLogVisibilityChanged(visible);
 }

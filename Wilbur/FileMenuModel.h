@@ -10,8 +10,6 @@
 #include <QMenu>
 #include <QMenuBar>
 #include <QMessageBox>
-#include <QPrinter>
-#include <QPrintDialog>
 #include <QPainter>
 #include <QTextDocument>  
 
@@ -25,11 +23,9 @@ public:
 
 private slots:
 	void exportLog();
-	void print();
 
 private:
 	QAction* exportAct;
-	QAction* printAct;
 
 	QMenu* fileMenu;
 

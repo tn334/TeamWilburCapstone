@@ -174,5 +174,11 @@ QString ActionLogModel::formattedElapsedTime()
 {
 	// Return formatted elapsed time (hours/minutes/seconds/milliseconds)
 	return QTime::fromMSecsSinceStartOfDay(
-							  sessionTimer.elapsed()).toString("hh:mm:ss:zzz");
+							      sessionTimer.elapsed()).toString("hh:mm:ss");
+}
+
+// Implementation of setCurrentTime
+void ActionLogModel::setCurrentTime(const QTime& currentTime)
+{
+	m_currentTime = currentTime;
 }
