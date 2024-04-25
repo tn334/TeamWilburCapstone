@@ -44,6 +44,9 @@ int iA = 0;
 const int numRead = 5; //this variable sets the number of readings to store and average. Larger numbers give a smoother output, but it can delay the signal and cause unexpected movements, I found 5 was a good number
 int CurrentLinPos[numRead]; //this variable stores the last X number of linear potentiometer values to average. this helps smooth out the signal so the actuator is not jittering around.
 int PressTransValue = 0;
+const int stepDuration = 25;
+int instLinPos = 0;
+
 
 //Linear potentiometer set position values. These are set manually and cannot be changed by other variables in the code the range is 0--1023.
 //The fully closed position is 0 and the fully open position is 1023.
@@ -112,16 +115,16 @@ void loop() {
   // these 3 lines read the positions of the toggle switches and save their current values
   if(Serial.available())
   {
-    char buffer[10];
+    char buffer[2];
     while(!serialDisabled)
     {
       if(Serial.available())
       {
-        int len = Serial.readBytesUntil('\n', buffer, 3);
-        for(int i = 0; i < len; i++)
-        {
-          Serial.print(buffer[i]);
-        }
+        int len = Serial.readBytesUntil('\0', buffer, 2);
+        //for(int i = 0; i < len; i++)
+        // {
+        //   Serial.print(buffer[i]);
+        // }
         //read from the serial buffer and see what value needs to be changed and to what
         if(buffer[0] - '0' == SERVO3 ) //messed with to match left to right on the robot, (as they are plugged in as of 4/11/2024)
         {
@@ -209,7 +212,7 @@ void loop() {
       else if(meanCurrentPos > CommandLinPos+deadband){
         digitalWrite(LinExtendPin, LOW);
         digitalWrite(LinRetractPin, HIGH);
-        delay(stepDuration);
+          delay(stepDuration);
         digitalWrite(LinExtendPin, LOW);
         digitalWrite(LinRetractPin, LOW);
       }
@@ -229,7 +232,6 @@ void loop() {
       }
       delay(20);
     }
-    Serial.print("1");
   }
   else
   {
