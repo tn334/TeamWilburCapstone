@@ -5,7 +5,7 @@ FlowRateLayoutView::FlowRateLayoutView(ConnectionButtonView* connectionButton, Q
 {
     QHBoxLayout* layout = new QHBoxLayout(this);
 
-	setToolTip("Click to enter Flow Rate");
+	setToolTip("Press Enter to log Flow Rate changes");
 
     flowSpinBox = new QDoubleSpinBox();
     flowSpinBox->setSingleStep(0.01);
@@ -32,7 +32,7 @@ FlowRateLayoutView::~FlowRateLayoutView()
 }
 
 // function implementation
-QDoubleSpinBox *FlowRateLayoutView::getSpinBox() const { return flowSpinBox; } // must return something
+QDoubleSpinBox *FlowRateLayoutView::getSpinBox() const { return flowSpinBox; }
 
 QLabel *FlowRateLayoutView::getUnitLabel() const { return flowUnitLabel; }
 
@@ -40,25 +40,36 @@ void FlowRateLayoutView::handleValueChanged()
 {
     if (!connectButton->getState())
     {
-		//set value back to 0 value
+		QMessageBox msgBox;
+		QPalette palette = msgBox.palette();
+
+		// Disconnect value changed signal to allow reset for value back to 0
+		disconnect(flowSpinBox, &QDoubleSpinBox::valueChanged,
+								this, &FlowRateLayoutView::handleValueChanged);
+
+		// Set the value of the spin box back to 0
 		flowSpinBox->setValue(0.00);
 
-		QMessageBox msgBox;
+		// Connect value changed signal again to allow for future inputs
+		connect(flowSpinBox, &QDoubleSpinBox::valueChanged,
+								this, &FlowRateLayoutView::handleValueChanged);
+
 		msgBox.setWindowTitle("Warning");
 		msgBox.setText("The prototype is not connected!");
 
 		// Set text color
-		QPalette palette = msgBox.palette();
 		palette.setColor(QPalette::Text, Qt::white); // Change text color to red
 		msgBox.setPalette(palette);
 
-		// Set background color
+		// Set background colors to light gray
 		msgBox.setStyleSheet("QMessageBox { background-color: #333333; }"
-			"QPushButton { background-color: #333333; }"); // Change background color to light gray
+								 "QPushButton { background-color: #333333; }"); 
 
+		// Open warning message box
 		msgBox.exec();
-		//QMessageBox::warning(this, "Warning", "The Application is not connected to the Prototype!");
+
 		return;
     }
+
 	spinBoxValue = flowSpinBox->value();
 }

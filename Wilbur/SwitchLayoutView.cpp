@@ -74,7 +74,7 @@ QHBoxLayout* SwitchLayoutView::createButtonLayout(const QString& labelText, Swit
 	*flowLayout = new FlowRateLayoutView(connectButton);
 
 	// set event handler for when flow rate is changed
-	connect((*flowLayout)->getSpinBox(), &QDoubleSpinBox::valueChanged, this,
+	connect((*flowLayout)->getSpinBox(), &QDoubleSpinBox::editingFinished, this,
 		[this, valveType, flowLayout]() {callExecuteFlowRateControl(valveType, 
 										 (*flowLayout)->getSpinBox()->value());
 		});
