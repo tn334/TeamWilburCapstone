@@ -156,6 +156,7 @@ Makefile: project.pro C:\Qt\6.6.1\msvc2019_64\mkspecs\win32-msvc\qmake.conf C:\Q
 		C:\Qt\6.6.1\msvc2019_64\mkspecs\modules\qt_lib_help.pri \
 		C:\Qt\6.6.1\msvc2019_64\mkspecs\modules\qt_lib_help_private.pri \
 		C:\Qt\6.6.1\msvc2019_64\mkspecs\modules\qt_lib_jpeg_private.pri \
+		C:\Qt\6.6.1\msvc2019_64\mkspecs\modules\qt_lib_jsonrpc_private.pri \
 		C:\Qt\6.6.1\msvc2019_64\mkspecs\modules\qt_lib_labsanimation.pri \
 		C:\Qt\6.6.1\msvc2019_64\mkspecs\modules\qt_lib_labsanimation_private.pri \
 		C:\Qt\6.6.1\msvc2019_64\mkspecs\modules\qt_lib_labsfolderlistmodel.pri \
@@ -168,6 +169,7 @@ Makefile: project.pro C:\Qt\6.6.1\msvc2019_64\mkspecs\win32-msvc\qmake.conf C:\Q
 		C:\Qt\6.6.1\msvc2019_64\mkspecs\modules\qt_lib_labssharedimage_private.pri \
 		C:\Qt\6.6.1\msvc2019_64\mkspecs\modules\qt_lib_labswavefrontmesh.pri \
 		C:\Qt\6.6.1\msvc2019_64\mkspecs\modules\qt_lib_labswavefrontmesh_private.pri \
+		C:\Qt\6.6.1\msvc2019_64\mkspecs\modules\qt_lib_languageserver_private.pri \
 		C:\Qt\6.6.1\msvc2019_64\mkspecs\modules\qt_lib_linguist.pri \
 		C:\Qt\6.6.1\msvc2019_64\mkspecs\modules\qt_lib_linguist_private.pri \
 		C:\Qt\6.6.1\msvc2019_64\mkspecs\modules\qt_lib_multimedia.pri \
@@ -455,6 +457,7 @@ C:\Qt\6.6.1\msvc2019_64\mkspecs\modules\qt_lib_harfbuzz_private.pri:
 C:\Qt\6.6.1\msvc2019_64\mkspecs\modules\qt_lib_help.pri:
 C:\Qt\6.6.1\msvc2019_64\mkspecs\modules\qt_lib_help_private.pri:
 C:\Qt\6.6.1\msvc2019_64\mkspecs\modules\qt_lib_jpeg_private.pri:
+C:\Qt\6.6.1\msvc2019_64\mkspecs\modules\qt_lib_jsonrpc_private.pri:
 C:\Qt\6.6.1\msvc2019_64\mkspecs\modules\qt_lib_labsanimation.pri:
 C:\Qt\6.6.1\msvc2019_64\mkspecs\modules\qt_lib_labsanimation_private.pri:
 C:\Qt\6.6.1\msvc2019_64\mkspecs\modules\qt_lib_labsfolderlistmodel.pri:
@@ -467,6 +470,7 @@ C:\Qt\6.6.1\msvc2019_64\mkspecs\modules\qt_lib_labssharedimage.pri:
 C:\Qt\6.6.1\msvc2019_64\mkspecs\modules\qt_lib_labssharedimage_private.pri:
 C:\Qt\6.6.1\msvc2019_64\mkspecs\modules\qt_lib_labswavefrontmesh.pri:
 C:\Qt\6.6.1\msvc2019_64\mkspecs\modules\qt_lib_labswavefrontmesh_private.pri:
+C:\Qt\6.6.1\msvc2019_64\mkspecs\modules\qt_lib_languageserver_private.pri:
 C:\Qt\6.6.1\msvc2019_64\mkspecs\modules\qt_lib_linguist.pri:
 C:\Qt\6.6.1\msvc2019_64\mkspecs\modules\qt_lib_linguist_private.pri:
 C:\Qt\6.6.1\msvc2019_64\mkspecs\modules\qt_lib_multimedia.pri:

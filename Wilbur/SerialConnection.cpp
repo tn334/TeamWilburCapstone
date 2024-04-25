@@ -46,3 +46,16 @@ void SerialConnection::readData()
     QByteArray data = serialPort->readAll();
     emit dataReceived(data);
 }
+
+char SerialConnection::readSingleChar()
+{
+    char readChar = '\0';
+    int numBytesRead = serialPort->read(&readChar, 1);
+
+    if (numBytesRead > 0)
+    {
+        return readChar;
+    }
+
+    return '\0';
+}

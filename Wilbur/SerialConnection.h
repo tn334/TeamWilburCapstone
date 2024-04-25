@@ -15,9 +15,10 @@ public:
     bool open(const QString& portName, qint32 baudRate);
     void close();
     qint64 write(const QString& data);
+    char readSingleChar();
 
 signals:
-    void dataReceived(const QByteArray& data);
+    void dataReceived(const QByteArray &data);
 
 private slots:
     void readData();
