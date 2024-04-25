@@ -63,7 +63,7 @@ bool InputDirectorViewModel::handleInput(buttonType inputType, int newState,
 			if (newState)
 			{
 				
-				hardwareResponse = serialClient->open("COM3", QSerialPort::Baud115200);
+				hardwareResponse = serialClient->open("COM5", QSerialPort::Baud115200);
 				qDebug() << "connected to hardware";
 				if (hardwareResponse)
 				{
