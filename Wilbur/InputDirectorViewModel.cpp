@@ -86,12 +86,7 @@ bool InputDirectorViewModel::handleInput(buttonType inputType, int newState,
 		default:
 			// default to control hardware as normal
 
-			hardwareResponse = serialClient->write(combinedChars) == 2;
-			
-			if (hardwareResponse)
-			{
-				hardwareResponse = serialClient->readSingleChar() == '\0';
-			}
+			hardwareResponse = serialClient->write(combinedChars) == 3;
 
 			break;
 		}
