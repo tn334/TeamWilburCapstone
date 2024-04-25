@@ -6,7 +6,7 @@
 #define MyAppPublisher "Project Wilbur"
 #define MyAppURL "https://ceias.nau.edu/capstone/projects/CS/2024/Wilbur_F23/"
 #define MyAppExeName "Wilbur.exe"
-#define MyAppAssocName MyAppName + ""
+#define MyAppAssocName MyAppName + "File"
 #define MyAppAssocExt ".myp"
 #define MyAppAssocKey StringChange(MyAppAssocName, " ", "") + MyAppAssocExt
 
@@ -27,8 +27,9 @@ DefaultGroupName={#MyAppName}
 LicenseFile=C:\Users\niels\source\repos\TeamWilbur\LICENSE.txt
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
-OutputDir=C:\Users\niels\source\repos\TeamWilbur\New folder
-OutputBaseFilename=mysetup
+OutputDir=C:\Users\niels\source\repos\TeamWilbur\WilburControl1.6
+OutputBaseFilename=mysetup1.6
+SetupIconFile=C:\Users\niels\source\repos\TeamWilbur\WilburLogo.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -67,7 +68,7 @@ Root: HKA; Subkey: "Software\Classes\Applications\{#MyAppExeName}\SupportedTypes
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 Name: "{group}\{cm:UninstallProgram,{#MyAppName}}"; Filename: "{uninstallexe}"
-Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
+Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon; IconFilename: "{app}\WilburLogo.ico"
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
