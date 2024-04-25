@@ -44,6 +44,8 @@ int iA = 0;
 const int numRead = 5; //this variable sets the number of readings to store and average. Larger numbers give a smoother output, but it can delay the signal and cause unexpected movements, I found 5 was a good number
 int CurrentLinPos[numRead]; //this variable stores the last X number of linear potentiometer values to average. this helps smooth out the signal so the actuator is not jittering around.
 int PressTransValue = 0;
+int instLinPos = 0;
+
 
 //Linear potentiometer set position values. These are set manually and cannot be changed by other variables in the code the range is 0--1023.
 //The fully closed position is 0 and the fully open position is 1023.
@@ -53,6 +55,8 @@ const int PressOffPos = 450;
 const int PressLowPos = 300;
 const int PressMedPos = 150;
 const int PressHighPos = 0;
+const int stepDuration = 25;
+
 
 int CommandLinPos = 0;  //stores the selected value of the linear potentiometer based on the position of the rotary switch and the previously set values
 int deadband = 10;  //this sets a range of values plus or minus your target to stop the actuator so it doesn't yo-yo around your set position. making it larger makes the actuator
@@ -112,7 +116,7 @@ void loop() {
   // these 3 lines read the positions of the toggle switches and save their current values
   if(Serial.available())
   {
-    char buffer[10];
+    char buffer[3];
     while(!serialDisabled)
     {
       if(Serial.available())
@@ -229,7 +233,6 @@ void loop() {
       }
       delay(20);
     }
-    Serial.print("1");
   }
   else
   {
