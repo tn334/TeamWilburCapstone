@@ -1,4 +1,5 @@
 #include "InputDirectorViewModel.h"
+#include "qdebug.h"
 
 InputDirectorViewModel::InputDirectorViewModel() : simulatorMode(true), 
 						     simObject(SimulatorModel()), simOutput(nullptr), serialClient(nullptr) {}
@@ -52,6 +53,8 @@ bool InputDirectorViewModel::handleInput(buttonType inputType, int newState,
 	{
 		// Combine newState and inputType into a single string to send over bluetooth
 		QString combinedChars = QString("%1%2").arg(static_cast<char>(inputType + '0')).arg(static_cast<char>(newState + '0'));
+		qDebug() << "made string";
+
 
 		// Handle bluetooth forwarding here
 		switch (inputType)
@@ -59,25 +62,27 @@ bool InputDirectorViewModel::handleInput(buttonType inputType, int newState,
 		case CONNECT:
 			if (newState)
 			{
-				hardwareResponse = serialClient->open("COM5", QSerialPort::Baud115200);
-
+				
+				hardwareResponse = serialClient->open("COM3", QSerialPort::Baud115200);
+				qDebug() << "connected to hardware";
 				if (hardwareResponse)
 				{
 					for (int i = 0; i < 4; i++)
 					{
-						QString initHardwareChars = QString("%1%2").arg(static_cast<char>(i + '0')).arg(static_cast<char>('0'));
+						QString initHardwareChars = QString("%1%2").arg(static_cast<char>(i + '0')).arg(static_cast<char>('0'));//explore qstring null terminator later
 						qDebug() << initHardwareChars;
 						serialClient->write(initHardwareChars);
-						if (serialClient->readSingleChar() == '\0')
-						{
-							qDebug() << "Failed to initialize a hardware component";
-						}
+						//if (serialClient->readSingleChar() == '\0')
+						//{
+						//	qDebug() << "Failed to initialize a hardware component";
+						//}
 					}
 				}
 
 			}
 			else
 			{
+				serialClient->write("9");
 				serialClient->close();
 
 			}
@@ -85,13 +90,14 @@ bool InputDirectorViewModel::handleInput(buttonType inputType, int newState,
 
 		default:
 			// default to control hardware as normal
+			qDebug() << "About to send data";
 
 			hardwareResponse = serialClient->write(combinedChars) == 2;
+			qDebug() << "Data sent";
+
+
 			
-			if (hardwareResponse)
-			{
-				hardwareResponse = serialClient->readSingleChar() == '\0';
-			}
+			
 
 			break;
 		}
