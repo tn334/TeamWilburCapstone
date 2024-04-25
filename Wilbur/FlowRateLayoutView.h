@@ -3,17 +3,19 @@
 #define FLOWRATELAYOUTVIEW_H
 
 // Header Files
+#include "ConnectionButtonView.h"
 #include "InputDirectorViewModel.h" // includes enum def of buttonType
 
 #include <QDoubleSpinBox>
 #include <QLineEdit>
 #include <QLabel>
+#include <QMessageBox>
 
 class FlowRateLayoutView : public QWidget
 {
 	Q_OBJECT
 public:
-	explicit FlowRateLayoutView(QWidget* parent = nullptr);
+	explicit FlowRateLayoutView(ConnectionButtonView* connectionButton, QWidget* parent = nullptr);
 	~FlowRateLayoutView();
 
 	QDoubleSpinBox *getSpinBox() const;
@@ -23,6 +25,9 @@ public:
 	void handleValueChanged();
 
 private:
+	// create connection object
+	ConnectionButtonView* connectButton;
+
 	// create flow rate labels
 	QLabel* flowUnitLabel;
 

@@ -40,26 +40,31 @@ PrototypeControllerView::PrototypeControllerView(QWidget* parent,
 	// create assign member variable to reference actionLogger
 	actionLog = actionLoggerPtr;
 
-	// Create bluetooth layout
-	connectionLayout = new ConnectionLayoutView(this);
+	// create connection button
+	connectButton = new ConnectionButtonView;
+
+	// Create connection layout
+	connectionLayout = new ConnectionLayoutView(connectButton, this);
 
 	// Connect layout to executeControl
 	connect(connectionLayout, &ConnectionLayoutView::connectionButtonClicked,  
 		this, &PrototypeControllerView::executeControl);
 
 	// set switchLayout
-	switchLayout = new SwitchLayoutView(this);
+	switchLayout = new SwitchLayoutView(connectButton, this);
 
 	// Connect the signal from SwitchLayoutView to executeControl slot
 	connect(switchLayout, &SwitchLayoutView::switchButtonClicked, this,
 		&PrototypeControllerView::executeControl);
 
-	// Connect the signal from DuctLayoutView to executeFlowRateControl slot
+	// Connect the signal from SwitchLayoutView to executeFlowRateControl slot
 	connect(switchLayout, &SwitchLayoutView::switchFlowRateChanged, this,
 		&PrototypeControllerView::executeFlowRateControl);
 
 	// Create a slider layout containing slider and its labels
-	sliderLayout = new SliderLayoutView(this);
+	sliderLayout = new SliderLayoutView(connectButton, this);
+
+	// Connect the signal from SliderLayoutView to function executeControl
 	connect(sliderLayout->stiffnessSlider, &StiffnessSliderView::sliderValueChanged,
 		this, [this]() {executeControl(PUMP,
 			sliderLayout->stiffnessSlider->value()); });
@@ -74,9 +79,40 @@ PrototypeControllerView::PrototypeControllerView(QWidget* parent,
 	controller->setLayout(controlLayout);
 };
 
+PrototypeControllerView::~PrototypeControllerView()
+{
+	// delete objects
+	delete connectionLayout;
+	delete sliderLayout;
+	delete controlLabel;
+
+	// delete instances
+	delete director;
+	delete simOutput;
+}
+
 // Control manipulation changes
 void PrototypeControllerView::executeControl(buttonType button, int newValue)
 {
+	//if (!connectionLayout->connectionButton->getState())
+	//{
+	//	QMessageBox msgBox;
+	//	msgBox.setWindowTitle("Warning");
+	//	msgBox.setText("The prototype is not connected!");
+
+	//	// Set text color
+	//	QPalette palette = msgBox.palette();
+	//	palette.setColor(QPalette::Text, Qt::white); // Change text color to red
+	//	msgBox.setPalette(palette);
+
+	//	// Set background color
+	//	msgBox.setStyleSheet("QMessageBox { background-color: #333333; }"
+	//						"QPushButton { background-color: #333333; }"); // Change background color to light gray
+
+	//	msgBox.exec();
+	//	//QMessageBox::warning(this, "Warning", "The Application is not connected to the Prototype!");
+	//	return;
+	//}
 	// Initialize Variables
 	std::string objectName = "N/A";
 	bool actionSuccess = false;
@@ -135,18 +171,6 @@ void PrototypeControllerView::executeFlowRateControl(buttonType button,
 
 	// At action logger, build string and append it to list of actions
 	actionLog->buildStringAndAppend(objectName, std::to_string(newValue));
-}
-
-PrototypeControllerView::~PrototypeControllerView()
-{
-	// delete objects
-	delete connectionLayout;
-	delete sliderLayout;
-	delete controlLabel;
-
-	// delete instances
-	delete director;
-	delete simOutput;
 }
 
 

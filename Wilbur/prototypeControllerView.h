@@ -6,6 +6,7 @@
 #define PROTOTYPECONTROLLERVIEW_H
 
 // Local Headers
+#include "ConnectionButtonView.h"
 #include "ConnectionLayoutView.h"
 #include "SliderLayoutView.h" // QSlider is included in file
 #include "SwitchLayoutView.h" // SwitchButtonView and QAbstractButton included
@@ -18,6 +19,9 @@
 #include <QSlider>
 #include <QGridLayout>
 #include <QGroupBox>
+#include <QMessageBox>
+#include <QObject>
+#include <QEvent>
 
 class PrototypeControllerView : public QMainWindow
 {
@@ -35,6 +39,7 @@ public:
 
 private:
 	// objects
+	ConnectionButtonView* connectButton;
 	ConnectionLayoutView* connectionLayout;
 	SliderLayoutView* sliderLayout;
 	SwitchLayoutView* switchLayout;
@@ -47,6 +52,9 @@ private:
 
 	// controller label
 	QLabel* controlLabel;
+
+	// boolean for connection
+	bool isConnected;
 };
 
 #endif // PROTOTYPECONTROLLERVIEW_H

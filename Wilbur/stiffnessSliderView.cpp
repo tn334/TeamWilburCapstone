@@ -6,16 +6,13 @@
 #include "StiffnessSliderView.h"
 
 // Stiffness Slider Constructor
-StiffnessSliderView::StiffnessSliderView(QWidget *parent) 
-    : QSlider(Qt::Horizontal, parent), previousValue(0)
+StiffnessSliderView::StiffnessSliderView(ConnectionButtonView* connectionButton, QWidget *parent)
+    : QSlider(Qt::Horizontal, parent), previousValue(0), connectButton(connectionButton)
 {
     // setting tooltip for slider
     setToolTip("Drag Slider to select a stiffness mode");
     
     //To add text above slider ticks https://forum.qt.io/topic/101343/qslider-with-text-at-tick-marks
-	
-    //creating slider
-    //slider = new QSlider(Qt::Horizontal);
 
     //Setting up actual slider parameters
     setFocusPolicy(Qt::StrongFocus);
@@ -47,6 +44,26 @@ StiffnessSliderView::~StiffnessSliderView()
 // Update slider value
 void StiffnessSliderView::handleSliderValueChanged() 
 {
+    if (!connectButton->getState())
+    {
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Warning");
+        msgBox.setText("The prototype is not connected!");
+
+        // Set text color
+        QPalette palette = msgBox.palette();
+        palette.setColor(QPalette::Text, Qt::white); // Change text color to red
+        msgBox.setPalette(palette);
+
+        // Set background color
+        msgBox.setStyleSheet("QMessageBox { background-color: #333333; }"
+            "QPushButton { background-color: #333333; }"); // Change background color to light gray
+
+        msgBox.exec();
+        //QMessageBox::warning(this, "Warning", "The Application is not connected to the Prototype!");
+        return;
+    }
+
     // Calculate the position of the click relative to the tick marks
     int tickPosition = mapFromGlobal(QCursor::pos()).x() - this->x();
     int tickWidth = width() / (maximum() - minimum());
@@ -54,13 +71,13 @@ void StiffnessSliderView::handleSliderValueChanged()
     // Calculate the nearest tick mark
     int value = (tickPosition + tickWidth / 2) / tickWidth;
     setValue(value);
-	// Check if the value is valid
-    if (validValue(value)) 
-	{
+    // Check if the value is valid
+    if (validValue(value))
+    {
         // Emit the slider value when it changes
         emit sliderValueChanged(value);
     }
-    
+
 }
 
 // Validate values

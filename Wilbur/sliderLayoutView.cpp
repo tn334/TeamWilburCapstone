@@ -2,11 +2,11 @@
 #include "SliderLayoutView.h"
 
 // Slider layout constructor
-SliderLayoutView::SliderLayoutView(QWidget* parent)
-	: QWidget(parent)
+SliderLayoutView::SliderLayoutView(ConnectionButtonView* connectionButton, QWidget* parent)
+	: QWidget(parent), connectButton(connectionButton)
 {
     // create slider
-    stiffnessSlider = new StiffnessSliderView(this);
+    stiffnessSlider = new StiffnessSliderView(connectButton, this);
 
     // creating title
     title = new QLabel("Nipple Stiffness Control:");
