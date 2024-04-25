@@ -6,10 +6,13 @@
 #ifndef STIFFNESSSLIDERVIEW_H
 #define STIFFNESSSLIDERVIEW_H
 
+#include "ConnectionButtonView.h"
+
 #include <QWidget>
 #include <QGroupBox>
 #include <QSlider>
 #include <QMainWindow>
+#include <QMessageBox>
 #include <QLabel>
 
 class StiffnessSliderView : public QSlider
@@ -17,7 +20,7 @@ class StiffnessSliderView : public QSlider
     Q_OBJECT
 
 public:
-    explicit StiffnessSliderView(QWidget* parent = nullptr);
+    explicit StiffnessSliderView(ConnectionButtonView* connectionButton, QWidget* parent = nullptr);
 	int test = 0;
     ~StiffnessSliderView();
 
@@ -28,6 +31,8 @@ private slots:
     void handleSliderValueChanged();
 
 private:
+    // object 
+    ConnectionButtonView* connectButton;
     //methods
     bool validValue(int value);
     

@@ -4,6 +4,7 @@
 #define SWITCHLAYOUTVIEW_H
 
 //Header Files
+#include "ConnectionButtonView.h"
 #include "SwitchButtonView.h"
 #include "FlowRateLayoutView.h"
 #include "InputDirectorViewModel.h" // includes enum def of buttonType
@@ -12,6 +13,7 @@
 #include <QLabel>
 #include <QWidget>
 #include <QLineEdit>
+#include <QMessageBox>
 
 class SwitchLayoutView : public QWidget
 {
@@ -19,7 +21,7 @@ class SwitchLayoutView : public QWidget
 
 public:
 	// constructor
-	explicit SwitchLayoutView(QWidget* parent = nullptr);
+	explicit SwitchLayoutView(ConnectionButtonView* connectionButton, QWidget* parent = nullptr);
 
 	// destructor
 	~SwitchLayoutView();
@@ -32,6 +34,8 @@ signals:
 	void switchFlowRateChanged(buttonType button, double newValue);
 
 private:
+	// create connectionButton object
+	ConnectionButtonView* connectButton;
 	// create title variable
 	QLabel* switchLabel;
 	QLabel* viscosityLabel;

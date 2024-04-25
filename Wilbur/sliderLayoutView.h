@@ -3,10 +3,12 @@
 #define SLIDERLAYOUTVIEW_H
 
 // Header Files
+#include "ConnectionButtonView.h"
 #include "stiffnessSliderView.h" // QWidget and QLabel included here
 #include <QGridLayout>
 #include <QStyle>
 #include <QResizeEvent>
+#include <QMessageBox>
 
 class SliderLayoutView : public QWidget
 {
@@ -14,7 +16,7 @@ class SliderLayoutView : public QWidget
 
 public:
     // constructor
-    explicit SliderLayoutView(QWidget* parent = nullptr);
+    explicit SliderLayoutView(ConnectionButtonView* connectionButton, QWidget* parent = nullptr);
 
     // destructor
     ~SliderLayoutView();
@@ -28,6 +30,9 @@ public:
     //void updateTitle(int value);
 
 private:
+    // Object construction
+    ConnectionButtonView* connectButton;
+
     // create label variables
     QLabel* labelOff;
     QLabel* labelLow;

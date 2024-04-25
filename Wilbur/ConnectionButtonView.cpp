@@ -12,6 +12,14 @@ ConnectionButtonView::ConnectionButtonView(QWidget* parent)
 	setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 
 	// set style sheet to button
+	initialSetupStyle();
+	
+}
+
+void ConnectionButtonView::initialSetupStyle()
+{
+	//style sheet information https://doc.qt.io/qt-6/stylesheet-examples.html
+	// Set the initial stylesheet
 	setStyleSheet("color: white;"
 		"background-color: #88CCEE;"
 		"border-width: 2px;"
@@ -20,7 +28,6 @@ ConnectionButtonView::ConnectionButtonView(QWidget* parent)
 		"border-radius: 4px;"
 		"font: bold 12px; ");
 }
-
 
 //Function implementations
 QSize ConnectionButtonView::sizeHint() const

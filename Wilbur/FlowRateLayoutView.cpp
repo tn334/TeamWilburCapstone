@@ -1,6 +1,7 @@
 #include "FlowRateLayoutView.h"
 
-FlowRateLayoutView::FlowRateLayoutView(QWidget* parent) : QWidget(parent)
+FlowRateLayoutView::FlowRateLayoutView(ConnectionButtonView* connectionButton, QWidget* parent) 
+    : QWidget(parent), connectButton(connectionButton)
 {
     QHBoxLayout* layout = new QHBoxLayout(this);
 
@@ -37,5 +38,27 @@ QLabel *FlowRateLayoutView::getUnitLabel() const { return flowUnitLabel; }
 
 void FlowRateLayoutView::handleValueChanged()
 {
+    if (!connectButton->getState())
+    {
+		//set value back to 0 value
+		flowSpinBox->setValue(0.00);
+
+		QMessageBox msgBox;
+		msgBox.setWindowTitle("Warning");
+		msgBox.setText("The prototype is not connected!");
+
+		// Set text color
+		QPalette palette = msgBox.palette();
+		palette.setColor(QPalette::Text, Qt::white); // Change text color to red
+		msgBox.setPalette(palette);
+
+		// Set background color
+		msgBox.setStyleSheet("QMessageBox { background-color: #333333; }"
+			"QPushButton { background-color: #333333; }"); // Change background color to light gray
+
+		msgBox.exec();
+		//QMessageBox::warning(this, "Warning", "The Application is not connected to the Prototype!");
+		return;
+    }
 	spinBoxValue = flowSpinBox->value();
 }
