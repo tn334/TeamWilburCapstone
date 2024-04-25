@@ -10,6 +10,11 @@ SerialConnection::SerialConnection(QObject* parent)
 
 SerialConnection::~SerialConnection()
 {
+    if (serialPort->isOpen())
+    {
+        serialPort->write("9");
+        serialPort->close();
+    }
     close();
 }
 
