@@ -34,7 +34,9 @@ private:
 	// create value input labels
 	QDoubleSpinBox* flowSpinBox;
 
-	double spinBoxValue = 0;
+	double spinBoxValue;
+
+	double previousValue;
 };
 
 #endif // FLOWRATELAYOUTVIEW_H

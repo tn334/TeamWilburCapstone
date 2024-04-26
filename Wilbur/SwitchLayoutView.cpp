@@ -109,7 +109,13 @@ void SwitchLayoutView::callExecuteFlowRateControl(buttonType button, double newV
 {
 	if (connectButton->getState())
 	{
-		emit switchFlowRateChanged(button, newValue);
+		if (newValue != previousValue)
+		{
+			previousValue = newValue;
+
+			emit switchFlowRateChanged(button, newValue);
+		}
+
 	}
 
 }
