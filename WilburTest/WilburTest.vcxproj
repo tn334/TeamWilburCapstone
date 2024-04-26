@@ -111,12 +111,6 @@
     <ClCompile Include="..\Wilbur\FileMenuModel.cpp" />
     <ClCompile Include="..\Wilbur\FlowRateLayoutView.cpp" />
     <ClCompile Include="..\Wilbur\HelpMenuModel.cpp" />
-    <QtMoc Include="..\Wilbur\InputDirectorUnitTest.cpp">
-      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
-      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
-      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
-      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
-    </QtMoc>
     <ClCompile Include="..\Wilbur\InputDirectorViewModel.cpp" />
     <ClCompile Include="..\Wilbur\MenuBarModel.cpp" />
     <ClCompile Include="..\Wilbur\MenuBarView.cpp" />
@@ -128,6 +122,7 @@
     <ClCompile Include="..\Wilbur\StiffnessSliderView.cpp" />
     <ClCompile Include="..\Wilbur\StringBuilderViewModel.cpp" />
     <ClCompile Include="..\Wilbur\WilburApplicationView.cpp" />
+    <ClCompile Include="TestInputDirector.cpp" />
     <ClCompile Include="TestWilburApplicationView.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
@@ -181,6 +176,7 @@
     <ClInclude Include="..\Wilbur\IStringBuilder.h" />
     <ClInclude Include="..\Wilbur\MenuBarModel.h" />
     <ClInclude Include="..\Wilbur\SimulatorModel.h" />
+    <QtMoc Include="TestInputDirector.h" />
     <ClInclude Include="TestActionLogTest.h" />
     <QtMoc Include="TestActionLogView.h" />
     <QtMoc Include="..\Wilbur\StiffnessSliderView.h" />

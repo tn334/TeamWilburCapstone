@@ -3,8 +3,9 @@
 #include <QTest>
 #include "TestWilburApplicationView.h"
 #include "TestActionLogView.h"
+#include "TestInputDirector.h"
 
-int main(int argc, char* argv[]) {
+/*int main(int argc, char* argv[]) {
     QApplication app(argc, argv);
 
     // Run your tests
@@ -25,7 +26,8 @@ int main(int argc, char* argv[]) {
     qDebug() << "All tests passed!";
     return 0;
 }
-
+*/
 // Comment out main function and uncomment one of the below test calls to run tests for one file only
 //QTEST_MAIN(TestWilburApplicationView)
 //QTEST_MAIN(TestActionLogView)
+QTEST_MAIN(TestInputDirector)

@@ -20,6 +20,8 @@ public:
 
 	InputDirectorViewModel(bool simState, QWidget* QParent = nullptr);
 
+	friend class TestInputDirector;
+
 	bool handleInput(enum buttonType, int newState, std::string objectName);
 
 private:
