@@ -92,13 +92,8 @@ bool InputDirectorViewModel::handleInput(buttonType inputType, int newState,
 		default:
 			// default to control hardware as normal
 			qDebug() << "About to send data";
-
 			hardwareResponse = serialClient->write(combinedChars) == 2;
 			qDebug() << "Data sent";
-
-
-			
-			
 
 			break;
 		}

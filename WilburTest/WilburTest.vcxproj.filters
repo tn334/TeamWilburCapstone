@@ -109,6 +109,9 @@
     <ClCompile Include="TestActionLogView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TestInputDirector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="..\Wilbur\WilburApplicationView.h">
@@ -144,9 +147,6 @@
     <QtMoc Include="..\Wilbur\HelpMenuModel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="..\Wilbur\InputDirectorUnitTest.cpp">
-      <Filter>Source Files</Filter>
-    </QtMoc>
     <QtMoc Include="..\Wilbur\MenuBarView.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -172,6 +172,9 @@
       <Filter>Header Files\Test Files</Filter>
     </QtMoc>
     <QtMoc Include="TestActionLogView.h">
+      <Filter>Header Files\Test Files</Filter>
+    </QtMoc>
+    <QtMoc Include="TestInputDirector.h">
       <Filter>Header Files\Test Files</Filter>
     </QtMoc>
   </ItemGroup>

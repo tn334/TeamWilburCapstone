@@ -36,6 +36,8 @@ public:
 
     friend class TestWilburApplicationView;
 
+    friend class TestInputDirector;
+
     ActionLogModel* getActionLog() const { return actionLog; };
     ActionLogView* getActionLogDisplay() const { return actionLogDisplay; };
     InputDirectorViewModel* getInputDirector() const { return inputDirector; };
