@@ -55,6 +55,7 @@ private:
 	FlowRateLayoutView* flowRateOne;
 	FlowRateLayoutView* flowRateTwo;
 	FlowRateLayoutView* flowRateThree;
+	double previousValue = 0;
 
 	// create layout variable
 	QHBoxLayout* horizontalLabelLayout;

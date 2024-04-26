@@ -3,6 +3,8 @@
 FlowRateLayoutView::FlowRateLayoutView(ConnectionButtonView* connectionButton, QWidget* parent) 
     : QWidget(parent), connectButton(connectionButton)
 {
+	previousValue = 0;
+
     QHBoxLayout* layout = new QHBoxLayout(this);
 
 	setToolTip("Press Enter to log Flow Rate changes");
@@ -71,5 +73,11 @@ void FlowRateLayoutView::handleValueChanged()
 		return;
     }
 
-	spinBoxValue = flowSpinBox->value();
+	if (spinBoxValue != previousValue)
+	{
+		spinBoxValue = flowSpinBox->value();
+
+		previousValue = spinBoxValue;
+	}
+
 }
