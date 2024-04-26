@@ -1,7 +1,8 @@
 // Local Header Files
 #include "SwitchLayoutView.h"
 
-SwitchLayoutView::SwitchLayoutView(QWidget* parent) : QWidget(parent)
+SwitchLayoutView::SwitchLayoutView(ConnectionButtonView* connectionButton, QWidget* parent)
+	: QWidget(parent), connectButton(connectionButton)
 {
 	// Create labels for switches
 	switchLabel = new QLabel;
@@ -67,12 +68,13 @@ QHBoxLayout* SwitchLayoutView::createButtonLayout(const QString& labelText, Swit
 	buttonLabel->setStyleSheet("font: bold 14px; ");
 
 	// instantiate button
-	*button = new SwitchButtonView();
+	*button = new SwitchButtonView(connectButton);
 
 	// instantiate value box
-	*flowLayout = new FlowRateLayoutView();
+	*flowLayout = new FlowRateLayoutView(connectButton);
 
-	connect((*flowLayout)->getSpinBox(), &QDoubleSpinBox::valueChanged, this,
+	// set event handler for when flow rate is changed
+	connect((*flowLayout)->getSpinBox(), &QDoubleSpinBox::editingFinished, this,
 		[this, valveType, flowLayout]() {callExecuteFlowRateControl(valveType, 
 										 (*flowLayout)->getSpinBox()->value());
 		});
@@ -95,11 +97,19 @@ QHBoxLayout* SwitchLayoutView::createButtonLayout(const QString& labelText, Swit
 // coded along with ai
 void SwitchLayoutView::callExecuteControl(buttonType button, int newValue)
 {
-	emit switchButtonClicked(button, newValue);
+	if (connectButton->getState())
+	{
+		emit switchButtonClicked(button, newValue);
+	}
+
 }
 
-// @TODO: Hook up milk viscocity change to action logger
+// Connected milk viscocity change to action logger
 void SwitchLayoutView::callExecuteFlowRateControl(buttonType button, double newValue)
 {
-	emit switchFlowRateChanged(button, newValue);
+	if (connectButton->getState())
+	{
+		emit switchFlowRateChanged(button, newValue);
+	}
+
 }

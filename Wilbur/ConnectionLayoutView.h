@@ -8,6 +8,9 @@
 
 #include <QLabel>
 #include <QWidget>
+#include <QObject>
+#include <QEvent>
+
 //#include "BluetoothClientViewModel.h"
 
 class ConnectionLayoutView : public QWidget
@@ -15,25 +18,24 @@ class ConnectionLayoutView : public QWidget
 	Q_OBJECT
 
 public:
-	explicit ConnectionLayoutView(QWidget* parent = nullptr);
+	explicit ConnectionLayoutView(ConnectionButtonView* connectionButton, QWidget* parent = nullptr);
 	~ConnectionLayoutView();
 
 	// Declare Objects
-	ConnectionButtonView* connectionButton;
+	ConnectionButtonView* connectButton;
 
 	// Functions
 	void callExecuteControl(buttonType button, int newValue);
 
 	//void toggleBluetoothConnection(bool isConnected);
 
-signals:
-	void connectionButtonClicked(buttonType button, int newValue);
-
 private:
 	
 	QLabel* connectionLabel;
 	QGridLayout* layout;
 
+signals:
+	void connectionButtonClicked(buttonType button, int newValue);
 };
 
 #endif // CONNECTIONLAYOUTVIEW_H

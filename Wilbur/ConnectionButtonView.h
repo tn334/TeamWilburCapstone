@@ -12,6 +12,8 @@ class ConnectionButtonView : public BaseButtonView
 public:
     explicit ConnectionButtonView(QWidget* parent = nullptr);
     
+    void initialSetupStyle();
+
     QSize sizeHint() const override;
 
     //method to set the conection status

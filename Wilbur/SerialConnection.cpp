@@ -10,6 +10,11 @@ SerialConnection::SerialConnection(QObject* parent)
 
 SerialConnection::~SerialConnection()
 {
+    if (serialPort->isOpen())
+    {
+        serialPort->write("9");
+        serialPort->close();
+    }
     close();
 }
 
@@ -44,6 +49,8 @@ qint64 SerialConnection::write(const QString& data)
 void SerialConnection::readData()
 {
     QByteArray data = serialPort->readAll();
+    qDebug() << "Read data:" << QString(data);
+
     emit dataReceived(data);
 }
 

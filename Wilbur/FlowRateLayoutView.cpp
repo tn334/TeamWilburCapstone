@@ -1,10 +1,11 @@
 #include "FlowRateLayoutView.h"
 
-FlowRateLayoutView::FlowRateLayoutView(QWidget* parent) : QWidget(parent)
+FlowRateLayoutView::FlowRateLayoutView(ConnectionButtonView* connectionButton, QWidget* parent) 
+    : QWidget(parent), connectButton(connectionButton)
 {
     QHBoxLayout* layout = new QHBoxLayout(this);
 
-	setToolTip("Click to enter Flow Rate");
+	setToolTip("Press Enter to log Flow Rate changes");
 
     flowSpinBox = new QDoubleSpinBox();
     flowSpinBox->setSingleStep(0.01);
@@ -31,11 +32,44 @@ FlowRateLayoutView::~FlowRateLayoutView()
 }
 
 // function implementation
-QDoubleSpinBox *FlowRateLayoutView::getSpinBox() const { return flowSpinBox; } // must return something
+QDoubleSpinBox *FlowRateLayoutView::getSpinBox() const { return flowSpinBox; }
 
 QLabel *FlowRateLayoutView::getUnitLabel() const { return flowUnitLabel; }
 
 void FlowRateLayoutView::handleValueChanged()
 {
+    if (!connectButton->getState())
+    {
+		QMessageBox msgBox;
+		QPalette palette = msgBox.palette();
+
+		// Disconnect value changed signal to allow reset for value back to 0
+		disconnect(flowSpinBox, &QDoubleSpinBox::valueChanged,
+								this, &FlowRateLayoutView::handleValueChanged);
+
+		// Set the value of the spin box back to 0
+		flowSpinBox->setValue(0.00);
+
+		// Connect value changed signal again to allow for future inputs
+		connect(flowSpinBox, &QDoubleSpinBox::valueChanged,
+								this, &FlowRateLayoutView::handleValueChanged);
+
+		msgBox.setWindowTitle("Warning");
+		msgBox.setText("The prototype is not connected!");
+
+		// Set text color
+		palette.setColor(QPalette::Text, Qt::white); // Change text color to red
+		msgBox.setPalette(palette);
+
+		// Set background colors to light gray
+		msgBox.setStyleSheet("QMessageBox { background-color: #333333; }"
+								 "QPushButton { background-color: #333333; }"); 
+
+		// Open warning message box
+		msgBox.exec();
+
+		return;
+    }
+
 	spinBoxValue = flowSpinBox->value();
 }
