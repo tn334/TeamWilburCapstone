@@ -55,7 +55,6 @@ private:
 	FlowRateLayoutView* flowRateOne;
 	FlowRateLayoutView* flowRateTwo;
 	FlowRateLayoutView* flowRateThree;
-	double previousValue = 0;
 
 	// create layout variable
 	QHBoxLayout* horizontalLabelLayout;
@@ -67,8 +66,9 @@ private:
 	QHBoxLayout* buttonLayout;
 
 	// functions
-	QHBoxLayout* createButtonLayout(const QString& labelText, SwitchButtonView** button, FlowRateLayoutView** flowLayout, buttonType valveType);
-
+	QHBoxLayout* createButtonLayout(const QString& labelText, 
+					SwitchButtonView** button, FlowRateLayoutView** flowLayout, 
+														 buttonType valveType);
 };
 
 #endif // SWITCHLAYOUTVIEW_H

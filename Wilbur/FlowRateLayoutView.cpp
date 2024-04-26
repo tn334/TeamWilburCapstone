@@ -3,8 +3,6 @@
 FlowRateLayoutView::FlowRateLayoutView(ConnectionButtonView* connectionButton, QWidget* parent) 
     : QWidget(parent), connectButton(connectionButton)
 {
-	previousValue = 0;
-
     QHBoxLayout* layout = new QHBoxLayout(this);
 
 	setToolTip("Press Enter to log Flow Rate changes");
@@ -14,6 +12,11 @@ FlowRateLayoutView::FlowRateLayoutView(ConnectionButtonView* connectionButton, Q
     flowSpinBox->setMaximumWidth(75);
     flowSpinBox->setFixedHeight(20);
     flowSpinBox->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Preferred);
+
+	// Set keyboard tracking to false so that the spin box value only changes
+	// when the user is done typing by pressing Enter or using the spin box 
+	// arrows
+	flowSpinBox->setKeyboardTracking(false);
 
     flowUnitLabel = new QLabel("m<sup>3</sup>/s");
     flowUnitLabel->setStyleSheet("font: bold 12px; ");
@@ -73,11 +76,5 @@ void FlowRateLayoutView::handleValueChanged()
 		return;
     }
 
-	if (spinBoxValue != previousValue)
-	{
-		spinBoxValue = flowSpinBox->value();
-
-		previousValue = spinBoxValue;
-	}
-
+	spinBoxValue = flowSpinBox->value();
 }
