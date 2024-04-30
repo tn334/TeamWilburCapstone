@@ -19,15 +19,12 @@ WilburApplicationView::WilburApplicationView(QWidget* parent, int simulatorMode)
     inputDirector = new InputDirectorViewModel(simulatorMode, this);
 
     // Instantiate Navigation Bar at top of window
-    //navigationBar = new NavigationBar(this, actionLog);
     menuBar = new MenuBarView(this, actionLog);
 
     // Instantiate Robot Control Box
-    //THIS IS WHERE QLABEL ERrors occur
     robotControl = new PrototypeControllerView(this, actionLog, inputDirector);
 
     //Instantiate Action Log View when window is not minimized
-        //
     actionLogDisplay = new ActionLogView(actionLog, this);
     // connect menu bar's action log visibility change signal to slot in main window
     connect(menuBar, &MenuBarView::actionLogVisibilityChanged, this, &WilburApplicationView::toggleActionLogDisplay);
@@ -50,9 +47,6 @@ WilburApplicationView::WilburApplicationView(QWidget* parent, int simulatorMode)
     QPalette customPalette;
     customPalette.setColor(QPalette::Window, QColor("#333333"));
 
-	/*THIS LINES DO NOT SEEM TO AFFECT ANYTHING SO I COMMENTED THEM (ADRIEL)*/
-    //customPalette.setColor(QPalette::Base, QColor("#666666"));
-    //customPalette.setColor(QPalette::AlternateBase, QColor("#444444"));
     customPalette.setColor(QPalette::WindowText, Qt::white);
     customPalette.setColor(QPalette::ButtonText, Qt::white);
     customPalette.setColor(QPalette::Highlight, QColor("#444444"));
@@ -71,6 +65,8 @@ WilburApplicationView::WilburApplicationView(QWidget* parent, int simulatorMode)
 
     // Set the application window title
     setWindowTitle("Wilbur");
+    setWindowIcon(QIcon("../ResizedWilburLogo.png"));
+
 };
 
 //Destructor Wilbur - Main Window

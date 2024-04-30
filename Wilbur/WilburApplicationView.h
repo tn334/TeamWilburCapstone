@@ -25,6 +25,7 @@
 #include <QVBoxLayout>
 #include <QStackedWidget>
 #include <QToolBar>
+#include <QIcon>
 
 class WilburApplicationView : public QMainWindow
 {
