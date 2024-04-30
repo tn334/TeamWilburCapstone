@@ -213,4 +213,9 @@
   <ItemGroup>
     <None Include="project.pro" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\ResizedWilburLogo.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

@@ -19,7 +19,7 @@ FlowRateLayoutView::FlowRateLayoutView(ConnectionButtonView* connectionButton, Q
 	flowSpinBox->setKeyboardTracking(false);
 
     flowUnitLabel = new QLabel("m<sup>3</sup>/s");
-    flowUnitLabel->setStyleSheet("font: bold 12px; ");
+    flowUnitLabel->setStyleSheet("font: bold 12px;");
 
     layout->addWidget(flowSpinBox);
     layout->addWidget(flowUnitLabel);
