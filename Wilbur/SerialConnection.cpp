@@ -35,6 +35,7 @@ bool SerialConnection::open(const QString& portName, qint32 baudRate)
 void SerialConnection::close()
 {
     if (serialPort->isOpen()) {
+        write("9");
         serialPort->close();
         qDebug() << "Serial port closed.";
     }
