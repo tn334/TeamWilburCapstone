@@ -5,7 +5,7 @@ FlowRateLayoutView::FlowRateLayoutView(ConnectionButtonView* connectionButton, Q
 {
     QHBoxLayout* layout = new QHBoxLayout(this);
 
-	setToolTip("Press Enter to log Flow Rate changes");
+	setToolTip("Press Enter or click on another prototype setting to log Flow Rate changes");
 
     flowSpinBox = new QDoubleSpinBox();
     flowSpinBox->setSingleStep(0.01);
