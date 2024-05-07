@@ -53,7 +53,7 @@ bool InputDirectorViewModel::handleInput(buttonType inputType, int newState,
 	{
 		// Combine newState and inputType into a single string to send over bluetooth
 		QString combinedChars = QString("%1%2").arg(static_cast<char>(inputType + '0')).arg(static_cast<char>(newState + '0'));
-		qDebug() << "made string";
+		// qDebug() << "made string";
 
 
 		// Handle bluetooth forwarding here
@@ -65,13 +65,15 @@ bool InputDirectorViewModel::handleInput(buttonType inputType, int newState,
 				
 				hardwareResponse = serialClient->open("COM5", QSerialPort::Baud115200);
 
-				qDebug() << "connected to hardware";
+				// qDebug() << "connected to hardware";
 				if (hardwareResponse)
 				{
 					for (int i = 0; i < 4; i++)
 					{
 						QString initHardwareChars = QString("%1%2").arg(static_cast<char>(i + '0')).arg(static_cast<char>('0'));//explore qstring null terminator later
-						qDebug() << initHardwareChars;
+						
+						// qDebug() << initHardwareChars;
+						
 						serialClient->write(initHardwareChars);
 						//if (serialClient->readSingleChar() == '\0')
 						//{
@@ -91,9 +93,9 @@ bool InputDirectorViewModel::handleInput(buttonType inputType, int newState,
 
 		default:
 			// default to control hardware as normal
-			qDebug() << "About to send data";
+			// qDebug() << "About to send data";
 			hardwareResponse = serialClient->write(combinedChars) == 2;
-			qDebug() << "Data sent";
+			// qDebug() << "Data sent";
 
 			break;
 		}

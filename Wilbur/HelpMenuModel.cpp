@@ -30,8 +30,15 @@ void HelpMenuModel::about()
 	QMessageBox aboutMsgBox;
 
 	aboutMsgBox.setWindowTitle("About Menu");
-	aboutMsgBox.setText("TAdaaa");
 	aboutMsgBox.setStyleSheet("background-color: #333333; ");
+		
+	aboutMsgBox.setTextFormat(Qt::RichText);
+
+	aboutMsgBox.setText(QString(
+		"If you have any questions or concerns, here are some resources that can help:<br><br>"
+		"<a href = 'https://ceias.nau.edu/capstone/projects/CS/2024/Wilbur_F23/index.html'>Team Wilbur's Website</a><br><br>"
+		"<a href='https://ceias.nau.edu/capstone/projects/CS/2024/Wilbur_F23/doc-manual.html'>Team Wilbur's Manual</a><br><br>"
+		"<a href='https://github.com/tn334/TeamWilburCapstone'>Team Wilbur's GitHub Repository</a>"));
 
 	aboutMsgBox.exec();
 }

@@ -40,6 +40,9 @@ public:
 	// Get the time at which the action was made
 	QString getActionTime();
 
+	// Get the time at which the action was made in seconds of day
+	QString getActionTimeSeconds();
+
 	// Format the session timer
 	QString formattedElapsedTime();
 

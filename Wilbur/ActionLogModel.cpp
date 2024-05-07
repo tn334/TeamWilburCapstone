@@ -157,18 +157,43 @@ void ActionLogModel::addActionToLog(QString actionToAdd)
 
 QString ActionLogModel::getActionTime()
 {
-	// Get the current time and date
-	time_t time = std::time(0);
+	// Get the current time
+	QTime currentTime = QTime::currentTime();
 
-	// Convert time into a string
-	QString timeString = ctime(&time);
+	// Get the current time as a string in the format "hh:mm:ss"
+	QString timeString = currentTime.toString("hh:mm:ss");
 
-	// Remove '\n' from time string
-	timeString.remove("\n");
+	// Append milliseconds to the time string
+	timeString += "." + QString::number(currentTime.msec());
 
-	// Return the time string
-	return timeString;
+	// Get the current date in the desired format
+	QString dateString = QDate::currentDate().toString("ddd MMM yyyy");
+
+	// Combine the date and time strings
+	QString dateTimeString = dateString + " " + timeString;
+
+	// Return complete string
+	return dateTimeString;
 }
+
+QString ActionLogModel::getActionTimeSeconds()
+{
+	    // Get the current time
+    QTime currentTime = QTime::currentTime();
+
+    // Calculate the total number of milliseconds since midnight
+    qint64 totalMilliseconds = currentTime.msecsSinceStartOfDay();
+
+    // Convert totalMilliseconds to a floating-point number including milliseconds
+    float timeFloat = totalMilliseconds / 1000.0f;
+
+    // Convert timeFloat to a string with 3 decimal places for milliseconds
+    QString timeString = QString::number(timeFloat, 'f', 5);
+
+    // Return the time string
+    return timeString;
+}
+
 
 QString ActionLogModel::formattedElapsedTime()
 {
