@@ -38,7 +38,7 @@
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
-    <QtModules>core;gui;widgets;bluetooth;printsupport;serialport</QtModules>
+    <QtModules>core;gui;testlib;widgets;bluetooth;printsupport;serialport</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
     <QtInstall>6.6.1_msvc2019_64</QtInstall>
     <QtQMLDebugEnable>true</QtQMLDebugEnable>
