@@ -66,7 +66,6 @@ WilburApplicationView::WilburApplicationView(QWidget* parent, int simulatorMode)
     // Set the application window title
     setWindowTitle("Wilbur");
     setWindowIcon(QIcon("../ResizedWilburLogo.png"));
-
 };
 
 //Destructor Wilbur - Main Window
